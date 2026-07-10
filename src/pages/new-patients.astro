@@ -52,25 +52,25 @@ import { branches } from '../data/branches';
         <div class="grid grid--2" style="gap:0 18px">
           <div class="form-field">
             <label for="name">Your name</label>
-            <input id="name" name="name" type="text" required autocomplete="name" />
+            <input id="name" name="Name" type="text" required autocomplete="name" />
           </div>
           <div class="form-field">
             <label for="contact">Phone or email</label>
-            <input id="contact" name="contact" type="text" required />
+            <input id="contact" name="Contact (phone or email)" type="text" required />
           </div>
         </div>
 
         <div class="grid grid--2" style="gap:0 18px">
           <div class="form-field">
             <label for="branch">Preferred center</label>
-            <select id="branch" name="preferred_branch">
+            <select id="branch" name="Preferred center">
               <option value="">No preference</option>
               {branches.map((b) => <option value={b.name}>{b.name}</option>)}
             </select>
           </div>
           <div class="form-field">
             <label for="type">Are you…</label>
-            <select id="type" name="patient_type">
+            <select id="type" name="Patient type">
               <option value="new">A new dialysis patient</option>
               <option value="transfer">Transferring from another center</option>
               <option value="asking">Just asking a question</option>
@@ -80,7 +80,7 @@ import { branches } from '../data/branches';
 
         <div class="form-field">
           <label for="philhealth">Are you a PhilHealth member?</label>
-          <select id="philhealth" name="philhealth_member">
+          <select id="philhealth" name="PhilHealth member">
             <option value="yes">Yes</option>
             <option value="no">No</option>
             <option value="unsure">Not sure</option>
@@ -89,11 +89,11 @@ import { branches } from '../data/branches';
 
         <div class="form-field">
           <label for="message">How can we help?</label>
-          <textarea id="message" name="message" placeholder="Tell us anything that helps us prepare for you."></textarea>
+          <textarea id="message" name="Message" placeholder="Tell us anything that helps us prepare for you."></textarea>
         </div>
 
         <label class="consent">
-          <input type="checkbox" name="consent" required />
+          <input type="checkbox" name="Consent (Data Privacy Act)" required />
           <span>I agree that St. John Biocare may contact me about my inquiry and handle my
           information in line with the Data Privacy Act of 2012 (RA&nbsp;10173).</span>
         </label>
