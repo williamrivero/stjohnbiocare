@@ -21,7 +21,7 @@
   --border: #e3ddd0;      /* Warm hairline borders */
 
   /* ---- Type ---- */
-  --font-head: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-head: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   /* ---- Layout ---- */
@@ -58,9 +58,9 @@ h1, h2, h3, h4 {
   font-family: var(--font-head);
   color: var(--forest);
   line-height: 1.15;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0 0 .5em;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
 h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); }
