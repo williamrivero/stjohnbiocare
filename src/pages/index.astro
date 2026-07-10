@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BiocareValues from '../components/BiocareValues.astro';
+import { branches } from '../data/branches';
+import { site } from '../data/site';
+
+const services = [
+  { title: 'Hemodialysis', text: 'Modern machines, careful nurses, early-morning schedules that fit real life.', href: '/services#hemodialysis', icon: '🩺' },
+  { title: 'Laboratory & Diagnostics', text: 'In-house labs mean faster results for dialysis patients.', href: '/services#laboratory', icon: '🧪' },
+  { title: 'X-ray / Imaging', text: 'On-site imaging to support your care without extra trips.', href: '/services#imaging', icon: '🩻' },
+  { title: 'Renal Education', text: 'We explain kidney health in plain language for you and your family.', href: '/kidney-health', icon: '📘' },
+];
+---
+<BaseLayout>
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <span class="pill">A foundation, not a chain · Since 2011</span>
+        <h1>Kidney care that sees the <span class="hl">person</span>, not just the patient.</h1>
+        <p class="lead">
+          St. John Biocare is a family-founded network of hemodialysis and diagnostic
+          centers across Metro Manila. We reduce the fear, explain the costs honestly,
+          and treat you and your family like our own.
+        </p>
+        <div class="hero__actions">
+          <a href="/new-patients#request" class="btn btn--crimson">Request an appointment</a>
+          <a href="/centers" class="btn btn--ghost">Find a center near you</a>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <div class="hero__heart">
+          <svg viewBox="0 0 200 190" width="100%" height="100%" role="img" aria-label="">
+            <path d="M100 178C90 178 20 130 20 74 20 45 42 24 70 24c14 0 26 6 34 18 8-12 20-18 34-18 28 0 50 21 50 50 0 56-70 104-80 104Z"
+                  fill="url(#g)" />
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#089838"/>
+                <stop offset="1" stop-color="#006028"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. REASSURANCE STRIP -->
+  <section class="reassure">
+    <div class="container reassure__grid">
+      <div><strong>5 centers</strong><span>across Metro Manila</span></div>
+      <div><strong>Open 5:30&nbsp;AM</strong><span>Mon–Sat, early for working patients</span></div>
+      <div><strong>PhilHealth</strong><span>we help you understand your coverage</span></div>
+    </div>
+  </section>
+
+  <!-- 3. WHY WE EXIST -->
+  <section class="section">
+    <div class="container" style="max-width:820px;text-align:center">
+      <p class="eyebrow">Why we exist</p>
+      <h2>Born from one family's experience of kidney failure.</h2>
+      <p class="lead" style="margin-inline:auto">
+        The idea for St. John Biocare came from a son watching his mother live with
+        end-stage renal disease — and believing dialysis could feel more human than
+        what he saw. We were built as a <strong>foundation</strong>, so putting the
+        patient first isn't a slogan; it's who we answer to.
+      </p>
+      <p><a href="/about" class="btn btn--ghost" style="margin-top:8px">Read our story</a></p>
+    </div>
+  </section>
+
+  <!-- 4. SERVICES AT A GLANCE -->
+  <section class="section section--sand">
+    <div class="container">
+      <div class="center" style="margin-bottom:32px">
+        <p class="eyebrow">What we do</p>
+        <h2>Everything for your dialysis care, in one place.</h2>
+      </div>
+      <div class="grid grid--4">
+        {services.map((s) => (
+          <a class="card" href={s.href} style="text-decoration:none;color:inherit;display:block">
+            <div class="card__icon" style="font-size:1.5rem">{s.icon}</div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            <span class="card__link">Learn more</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FIND YOUR CENTER -->
+  <section class="section">
+    <div class="container">
+      <div class="center" style="margin-bottom:32px">
+        <p class="eyebrow">Our centers</p>
+        <h2>Find the center nearest you.</h2>
+        <p class="lead" style="margin-inline:auto">Five locations across Metro Manila, each open six days a week from early morning.</p>
+      </div>
+      <div class="grid grid--3">
+        {branches.map((b) => (
+          <a class="card" href={`/centers/${b.slug}`} style="text-decoration:none;color:inherit;display:block">
+            <span class="pill" style="margin-bottom:10px">{b.area}</span>
+            <h3>{b.name}</h3>
+            <p>{b.hours}</p>
+            <span class="card__link">View this center</span>
+          </a>
+        ))}
+      </div>
+      <div class="center" style="margin-top:26px">
+        <a href="/centers" class="btn btn--primary">See all centers &amp; map</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. BIOCARE PROMISE -->
+  <section class="section section--mist">
+    <div class="container">
+      <div class="center" style="margin-bottom:32px">
+        <p class="eyebrow">Our promise</p>
+        <h2>The BIOCARE way.</h2>
+        <p class="lead" style="margin-inline:auto">Seven values that spell out how we care — the heart of everything we do.</p>
+      </div>
+      <BiocareValues />
+    </div>
+  </section>
+
+  <!-- 7. COST & PHILHEALTH -->
+  <section class="section">
+    <div class="container cost">
+      <div>
+        <p class="eyebrow">Honest about cost</p>
+        <h2>The question everyone's afraid to ask: how much will this cost?</h2>
+        <p class="lead">
+          Most centers won't talk about money. We will. We'll walk you through your
+          PhilHealth coverage, what the case rates mean, and what to expect — in plain
+          language, before you commit to anything.
+        </p>
+        <a href="/kidney-health/philhealth-cost" class="btn btn--primary">PhilHealth &amp; cost, explained</a>
+      </div>
+      <div class="cost__card notice">
+        <strong>Good to know</strong>
+        <p style="margin-top:.4rem">
+          PhilHealth provides dialysis coverage for eligible members. Bring your
+          member data record (MDR) and we'll help you check what applies to you.
+        </p>
+        <p class="muted" style="font-size:.85rem;margin:0">Details confirmed with you before launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. VOICES (placeholder) -->
+  <section class="section section--sand">
+    <div class="container center" style="max-width:760px">
+      <p class="eyebrow">Patient &amp; family voices</p>
+      <blockquote class="quote">
+        “They explained everything to my mother in words she understood, and never
+        made us feel rushed. For the first time, dialysis didn't feel frightening.”
+      </blockquote>
+      <p class="muted">— A family member, Quezon City <em>(sample — real, consented quotes to be added)</em></p>
+    </div>
+  </section>
+
+  <!-- 9. KIDNEY HEALTH TEASER -->
+  <section class="section">
+    <div class="container">
+      <div class="center" style="margin-bottom:32px">
+        <p class="eyebrow">Kidney Health Hub</p>
+        <h2>Understand your kidneys, in plain Filipino-English.</h2>
+      </div>
+      <div class="grid grid--3">
+        <a class="card" href="/kidney-health/understanding-kidney-disease" style="text-decoration:none;color:inherit">
+          <h3>Understanding kidney disease &amp; ESRD</h3>
+          <p>What happens to the kidneys, and what dialysis actually does.</p>
+          <span class="card__link">Read</span>
+        </a>
+        <a class="card" href="/kidney-health/starting-dialysis" style="text-decoration:none;color:inherit">
+          <h3>Starting dialysis: what to expect</h3>
+          <p>Your first sessions, step by step, with the fear taken out.</p>
+          <span class="card__link">Read</span>
+        </a>
+        <a class="card" href="/kidney-health/philhealth-cost" style="text-decoration:none;color:inherit">
+          <h3>PhilHealth &amp; the cost of dialysis</h3>
+          <p>The most-searched, least-answered question — answered honestly.</p>
+          <span class="card__link">Read</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FOR NURSES -->
+  <section class="section section--forest">
+    <div class="container nurses">
+      <div>
+        <p class="eyebrow">For nurses</p>
+        <h2>We train the nurses others hire.</h2>
+        <p style="color:#e5f3e9;font-size:1.15rem;max-width:52ch">
+          Our Hemodialysis Nurses Training Program builds renal nursing skill from the
+          ground up — then many graduates join the family. Strong benefits, real mentorship.
+        </p>
+      </div>
+      <div class="nurses__actions">
+        <a href="/training-academy" class="btn btn--light">Training Academy</a>
+        <a href="/careers" class="btn btn--crimson">See open roles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. FINAL CTA -->
+  <section class="section center">
+    <div class="container" style="max-width:680px">
+      <h2>Not sure where to start? Talk to us.</h2>
+      <p class="lead" style="margin-inline:auto">
+        Call, message, or send a short request. A real person will help you take the next step.
+      </p>
+      <div class="hero__actions" style="justify-content:center">
+        <a href={site.phoneHref} class="btn btn--primary">Call {site.phone}</a>
+        <a href="/new-patients#request" class="btn btn--ghost">Send a request</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { background: linear-gradient(180deg, var(--mist), var(--cream)); overflow: hidden; }
+  .hero__inner { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; padding-block: clamp(40px, 7vw, 84px); }
+  .hero__copy .pill { margin-bottom: 18px; }
+  .hero h1 { margin-top: 6px; }
+  .hero h1 .hl { color: var(--crimson); }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+  .hero__art { display: grid; place-items: center; }
+  .hero__heart { width: min(360px, 80%); filter: drop-shadow(0 20px 40px rgba(0,96,40,.22)); animation: floaty 6s ease-in-out infinite; }
+  @keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+  @media (max-width: 860px) { .hero__inner { grid-template-columns: 1fr; } .hero__art { order: -1; } .hero__heart { width: 200px; } }
+
+  .reassure { background: var(--forest); color: var(--cream); }
+  .reassure__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-block: 26px; text-align: center; }
+  .reassure__grid div { display: flex; flex-direction: column; }
+  .reassure__grid strong { font-family: var(--font-head); font-size: 1.4rem; color: #fff; }
+  .reassure__grid span { color: #cfe6d6; font-size: .95rem; }
+  @media (max-width: 620px) { .reassure__grid { grid-template-columns: 1fr; gap: 12px; } }
+
+  .cost { display: grid; grid-template-columns: 1.3fr .7fr; gap: 34px; align-items: center; }
+  @media (max-width: 820px) { .cost { grid-template-columns: 1fr; } }
+
+  .quote { font-family: var(--font-head); font-size: clamp(1.3rem, 3vw, 1.9rem); color: var(--forest); line-height: 1.4; margin: 10px 0 14px; }
+
+  .nurses { display: grid; grid-template-columns: 1.4fr .6fr; gap: 30px; align-items: center; }
+  .nurses__actions { display: flex; flex-direction: column; gap: 12px; }
+  @media (max-width: 820px) { .nurses { grid-template-columns: 1fr; } .nurses__actions { flex-direction: row; flex-wrap: wrap; } }
+</style>

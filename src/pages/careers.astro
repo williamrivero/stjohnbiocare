@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const benefits = [
+  'SSS, PhilHealth & Pag-IBIG', '13th-month pay', 'Hazard pay', 'HMO card',
+  'Free annual physical + hepatitis vaccination', '15 days annual leave',
+  'Company loans', 'Staff service discounts',
+];
+---
+<BaseLayout title="Careers" description="Join a foundation that invests in its people — strong benefits, real mentorship, and an empowerment culture.">
+  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:48px">
+    <div class="container" style="max-width:780px">
+      <p class="eyebrow">Careers</p>
+      <h1>Work somewhere that invests in you.</h1>
+      <p class="lead">We're a foundation, so our people come first too — with an unusually strong benefits story and a culture of empowerment.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <h2>Why work here</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 30px">
+        {benefits.map((b) => <span class="pill">{b}</span>)}
+      </div>
+
+      <h2>Open roles</h2>
+      <p class="muted">Nurses, medical technologists, radiologic technologists, reuse technicians, and admin — across all five centers.</p>
+      <div class="notice" style="margin-top:14px">
+        Current openings and an application form (with resume upload) will be added here.
+        In the meantime, tell us about yourself via the <a href="/new-patients#request">contact form</a>
+        or email us.
+      </div>
+    </div>
+  </section>
+</BaseLayout>

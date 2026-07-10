@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const services = [
+  { id: 'hemodialysis', title: 'Hemodialysis', text: 'Our core service. Modern machines, careful monitoring, strict infection control, and early-morning schedules built around working patients and caregivers.' },
+  { id: 'laboratory', title: 'Laboratory & Diagnostics', text: 'In-house laboratory testing means faster turnaround for the bloodwork dialysis patients need regularly — fewer trips, quicker answers.' },
+  { id: 'imaging', title: 'X-ray / Imaging', text: 'On-site imaging supports your dialysis care without sending you elsewhere.' },
+  { id: 'reuse', title: 'Dialyzer Reuse & Infection Control', text: 'Careful, protocol-driven dialyzer reprocessing and formal infection-control practices — the quiet work that keeps you safe.' },
+  { id: 'education', title: 'Renal Education & Health Promotion', text: 'We explain kidney health in plain language, so you and your family understand what is happening and what to do.' },
+];
+---
+<BaseLayout title="Services" description="Hemodialysis, in-house laboratory and imaging, dialyzer reprocessing, and renal education at St. John Biocare.">
+  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:48px">
+    <div class="container" style="max-width:760px">
+      <p class="eyebrow">Services</p>
+      <h1>Everything your dialysis care needs, under one roof.</h1>
+      <p class="lead">Careful clinical work, explained in plain terms — with the safety details we're proud of.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container stack" style="max-width:820px">
+      {services.map((s) => (
+        <div id={s.id} class="card">
+          <h2 style="font-size:1.4rem">{s.title}</h2>
+          <p>{s.text}</p>
+        </div>
+      ))}
+      <p class="muted" style="font-size:.92rem">
+        Confirming for launch: whether we also offer peritoneal / home dialysis, dietitian
+        counseling, telemedicine follow-up, and vascular-access services.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

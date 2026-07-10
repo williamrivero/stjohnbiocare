@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import { branches } from '../data/branches';
+---
+<BaseLayout title="Contact" description="Reach St. John Biocare — head office and all five center contacts across Metro Manila.">
+  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:48px">
+    <div class="container" style="max-width:760px">
+      <p class="eyebrow">Contact</p>
+      <h1>Talk to us.</h1>
+      <p class="lead">Call, email, or reach your nearest center directly. A real person will help.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid--2">
+      <div class="card">
+        <h2 style="font-size:1.35rem">Head office</h2>
+        <p style="margin:0 0 .3rem"><strong>Phone:</strong> <a href={site.phoneHref}>{site.phone}</a></p>
+        <p style="margin:0 0 .3rem"><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p style="margin:0">1st &amp; 2nd Floor Casman Building, 1198 Quezon Avenue, Barangay Paligsahan, District 4, Quezon City</p>
+      </div>
+      <div class="notice">
+        <strong>Not for emergencies</strong>
+        <p style="margin:.4rem 0 0">
+          If you're having a medical emergency, please call your nearest center or go to the
+          nearest hospital emergency room right away.
+        </p>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top:30px">
+      <h2 style="font-size:1.35rem">All centers</h2>
+      <div class="grid grid--2" style="margin-top:14px">
+        {branches.map((b) => (
+          <div class="card">
+            <h3>{b.name}</h3>
+            <p class="muted" style="margin:0 0 .4rem">{b.address}</p>
+            <p style="margin:0"><strong>Phone:</strong> {b.phone} · <a href={`/centers/${b.slug}`}>Center page →</a></p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

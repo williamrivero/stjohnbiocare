@@ -1,0 +1,192 @@
+/* ==========================================================================
+   St. John Biocare — global styles & brand tokens
+   Design direction: warm · human · hopeful
+   Palette sampled from the foundation logo.
+   Edit colours/spacing HERE and the whole site follows.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand colour tokens ---- */
+  --forest: #006028;      /* Primary brand: headers, footer, deep anchors */
+  --forest-deep: #004d20; /* Darker forest for hover states */
+  --life: #089838;        /* Actions, growth/hope accents */
+  --crimson: #E02048;     /* Sparing accent for the "heart" of the brand & key CTAs */
+  --crimson-deep: #b81339;
+  --cream: #FBF7F0;       /* Warm off-white page background (not clinical white) */
+  --sand: #F3E9D8;        /* Soft section backgrounds, cards */
+  --ink: #222A24;         /* Warm near-black body text */
+  --ink-soft: #4a5450;    /* Muted body text */
+  --mist: #E8F1EA;        /* Tints, hovers, subtle fills */
+  --white: #ffffff;
+  --border: #e3ddd0;      /* Warm hairline borders */
+
+  /* ---- Type ---- */
+  --font-head: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* ---- Layout ---- */
+  --maxw: 1140px;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 10px 30px rgba(0, 60, 30, 0.08);
+  --shadow-lg: 0 20px 50px rgba(0, 60, 30, 0.14);
+}
+
+/* ---- Reset-ish ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;              /* large minimum for older readers */
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--forest); text-decoration-color: rgba(0,96,40,.35); text-underline-offset: 3px; }
+a:hover { color: var(--life); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  color: var(--forest);
+  line-height: 1.15;
+  font-weight: 600;
+  margin: 0 0 .5em;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); }
+h3 { font-size: clamp(1.25rem, 2.4vw, 1.55rem); }
+p { margin: 0 0 1rem; }
+
+/* ---- Layout helpers ---- */
+.container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 22px; }
+.section { padding-block: clamp(48px, 8vw, 96px); }
+.section--sand { background: var(--sand); }
+.section--mist { background: var(--mist); }
+.section--forest { background: var(--forest); color: var(--cream); }
+.section--forest h2, .section--forest h3 { color: var(--white); }
+.eyebrow {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--life);
+  margin: 0 0 .6rem;
+}
+.section--forest .eyebrow { color: #7fe0a0; }
+.lead { font-size: 1.18rem; color: var(--ink-soft); max-width: 62ch; }
+.center { text-align: center; }
+.center .lead, .center p { margin-inline: auto; }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--font-body); font-weight: 700; font-size: 1.02rem;
+  padding: .85rem 1.5rem; border-radius: 999px;
+  border: 2px solid transparent; cursor: pointer; text-decoration: none;
+  transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+  line-height: 1.1;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--life); color: var(--white); box-shadow: 0 8px 20px rgba(8,152,56,.25); }
+.btn--primary:hover { background: var(--forest); color: var(--white); }
+.btn--crimson { background: var(--crimson); color: var(--white); box-shadow: 0 8px 20px rgba(224,32,72,.22); }
+.btn--crimson:hover { background: var(--crimson-deep); color: var(--white); }
+.btn--ghost { background: transparent; color: var(--forest); border-color: var(--forest); }
+.btn--ghost:hover { background: var(--forest); color: var(--white); }
+.btn--light { background: var(--white); color: var(--forest); }
+.btn--light:hover { background: var(--mist); color: var(--forest); }
+
+/* Visible focus for keyboard users (accessibility) */
+a:focus-visible, .btn:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible {
+  outline: 3px solid var(--crimson);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.grid { display: grid; gap: 22px; }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 860px) { .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; } }
+
+.card__icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: grid; place-items: center; margin-bottom: 14px;
+  background: var(--mist); color: var(--forest);
+}
+.card h3 { margin-bottom: .35em; }
+.card p { color: var(--ink-soft); margin-bottom: .5rem; }
+.card__link { font-weight: 700; text-decoration: none; }
+.card__link::after { content: " →"; }
+
+/* ---- Skip link (accessibility) ---- */
+.skip-link {
+  position: absolute; left: 12px; top: -60px; z-index: 200;
+  background: var(--forest); color: #fff; padding: 10px 16px; border-radius: 10px;
+  transition: top .2s ease;
+}
+.skip-link:focus { top: 12px; }
+
+/* ---- Gentle scroll-in motion ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(16px); animation: rise .7s ease forwards; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+}
+
+/* ---- Footer ---- */
+.footer { background: var(--forest); color: var(--cream); padding-block: 56px 30px; }
+.footer a { color: var(--cream); text-decoration: none; }
+.footer a:hover { color: #7fe0a0; text-decoration: underline; }
+.footer h4 { color: var(--white); font-size: 1.05rem; margin-bottom: .7rem; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 32px; }
+@media (max-width: 860px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .footer__grid { grid-template-columns: 1fr; } }
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,.18); margin-top: 36px; padding-top: 22px;
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
+  font-size: .9rem; color: #cfe6d6;
+}
+.footer__dedication { font-family: var(--font-head); font-style: italic; color: #9fdcb2; }
+
+/* ---- Forms ---- */
+.form-field { margin-bottom: 18px; }
+.form-field label { display: block; font-weight: 700; margin-bottom: 6px; color: var(--forest); }
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%; font: inherit; padding: 12px 14px; border: 1.5px solid var(--border);
+  border-radius: 12px; background: var(--white); color: var(--ink);
+}
+.form-field textarea { min-height: 120px; resize: vertical; }
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: .95rem; color: var(--ink-soft); }
+.consent input { width: auto; margin-top: 5px; }
+
+/* ---- Misc utilities ---- */
+.pill {
+  display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; font-weight: 700;
+  background: var(--mist); color: var(--forest); padding: 6px 13px; border-radius: 999px;
+}
+.notice {
+  background: #fff6e9; border: 1px solid #f0d9ad; border-left: 5px solid var(--crimson);
+  border-radius: 12px; padding: 16px 18px; color: var(--ink);
+}
+.stack > * + * { margin-top: 1rem; }
+.muted { color: var(--ink-soft); }

@@ -1,0 +1,68 @@
+---
+import { site } from '../data/site';
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
+---
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="brand" aria-label={`${site.name} home`}>
+      <img src="/favicon.svg" alt="" width="40" height="40" />
+      <span class="brand__text">
+        <strong>St. John Biocare</strong>
+        <em>Dialysis &amp; Kidney Care</em>
+      </span>
+    </a>
+
+    <input type="checkbox" id="navtoggle" class="navtoggle" hidden />
+    <label for="navtoggle" class="navbtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="Primary">
+      {site.nav.map((item) => (
+        <a href={item.href} class:list={['site-nav__link', { 'is-active': isActive(item.href) }]}>
+          {item.label}
+        </a>
+      ))}
+      <a href="/new-patients#request" class="btn btn--crimson site-nav__cta">Request Appointment</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(251, 247, 240, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .site-header__inner { display: flex; align-items: center; gap: 20px; padding-block: 12px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand__text { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand__text strong { font-family: var(--font-head); color: var(--forest); font-size: 1.18rem; font-weight: 600; }
+  .brand__text em { font-style: normal; font-size: .74rem; color: var(--ink-soft); letter-spacing: .02em; }
+
+  .site-nav { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+  .site-nav__link {
+    text-decoration: none; color: var(--ink); font-weight: 600; font-size: .96rem;
+    padding: 8px 12px; border-radius: 10px;
+  }
+  .site-nav__link:hover { background: var(--mist); color: var(--forest); }
+  .site-nav__link.is-active { color: var(--life); }
+  .site-nav__cta { margin-left: 8px; padding: .6rem 1.1rem; font-size: .95rem; }
+
+  .navbtn { display: none; }
+  .navbtn span { display: block; width: 26px; height: 3px; background: var(--forest); border-radius: 3px; margin: 5px 0; }
+
+  @media (max-width: 960px) {
+    .navbtn { display: block; margin-left: auto; cursor: pointer; padding: 6px; }
+    .site-nav {
+      position: fixed; inset: 64px 0 auto 0; flex-direction: column; align-items: stretch;
+      background: var(--cream); border-bottom: 1px solid var(--border); padding: 16px 22px 24px;
+      gap: 4px; margin-left: 0; box-shadow: var(--shadow); display: none;
+    }
+    .navtoggle:checked ~ .site-nav { display: flex; }
+    .site-nav__link { padding: 12px; font-size: 1.05rem; }
+    .site-nav__cta { margin: 8px 0 0; justify-content: center; }
+  }
+</style>

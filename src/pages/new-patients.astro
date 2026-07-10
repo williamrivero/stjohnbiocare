@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { branches } from '../data/branches';
+---
+<BaseLayout title="New Patients" description="Starting or transferring dialysis care at St. John Biocare — what to bring, what to expect, and how to request an appointment.">
+  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:44px">
+    <div class="container" style="max-width:780px">
+      <p class="eyebrow">New patients</p>
+      <h1>Starting with us is simpler than you fear.</h1>
+      <p class="lead">
+        Whether this is your first dialysis session or you're moving from a hospital or
+        another center, here's exactly what happens — and how to reach us.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid--2">
+      <div class="card">
+        <h2 style="font-size:1.4rem">Your first visit</h2>
+        <p class="muted">Please bring:</p>
+        <ul style="line-height:1.9">
+          <li>A valid ID</li>
+          <li>Your PhilHealth Member Data Record (MDR)</li>
+          <li>Referral and recent lab results, if any</li>
+          <li>A list of your current medicines</li>
+        </ul>
+        <p>You'll meet the nurse and doctor, we'll review your records, and we'll explain the schedule and costs before anything begins.</p>
+      </div>
+      <div class="card">
+        <h2 style="font-size:1.4rem">Transferring your care</h2>
+        <p>Moving from a hospital or another dialysis center is common and easy. Bring your latest dialysis records, lab results and medication list, and we'll take care of continuity so there's no gap in your treatment.</p>
+        <p class="muted" style="font-size:.9rem">Not sure what you have? Just send a request below — we'll guide you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INQUIRY FORM -->
+  <section id="request" class="section section--sand">
+    <div class="container" style="max-width:720px">
+      <div class="center" style="margin-bottom:26px">
+        <p class="eyebrow">Request an appointment</p>
+        <h2>Tell us a little, and a real person will reply.</h2>
+        <p class="muted">Prefer to chat? Message us on Messenger or Viber, or call your nearest center.</p>
+      </div>
+
+      <form class="card" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="grid grid--2" style="gap:0 18px">
+          <div class="form-field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="form-field">
+            <label for="contact">Phone or email</label>
+            <input id="contact" name="contact" type="text" required />
+          </div>
+        </div>
+
+        <div class="grid grid--2" style="gap:0 18px">
+          <div class="form-field">
+            <label for="branch">Preferred center</label>
+            <select id="branch" name="preferred_branch">
+              <option value="">No preference</option>
+              {branches.map((b) => <option value={b.name}>{b.name}</option>)}
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="type">Are you…</label>
+            <select id="type" name="patient_type">
+              <option value="new">A new dialysis patient</option>
+              <option value="transfer">Transferring from another center</option>
+              <option value="asking">Just asking a question</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="philhealth">Are you a PhilHealth member?</label>
+          <select id="philhealth" name="philhealth_member">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="unsure">Not sure</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="message">How can we help?</label>
+          <textarea id="message" name="message" placeholder="Tell us anything that helps us prepare for you."></textarea>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" name="consent" required />
+          <span>I agree that St. John Biocare may contact me about my inquiry and handle my
+          information in line with the Data Privacy Act of 2012 (RA&nbsp;10173).</span>
+        </label>
+
+        <div style="margin-top:18px">
+          <button type="submit" class="btn btn--crimson">Send my request</button>
+        </div>
+        <p class="muted" style="font-size:.82rem;margin-top:14px">
+          This form is not for emergencies. For urgent concerns, call your nearest center or the hospital ER.
+        </p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
