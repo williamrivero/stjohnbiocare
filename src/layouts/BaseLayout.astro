@@ -14,7 +14,7 @@ interface Props {
 const {
   title = site.name,
   description = 'A foundation-run network of hemodialysis and diagnostic centers across Metro Manila. Warm, honest, patient-first kidney care.',
-  image = '/favicon.svg',
+  image = '/og-image.png',
 } = Astro.props;
 
 const fullTitle = title === site.name ? `${site.name} — Dialysis & Kidney Care` : `${title} · ${site.name}`;
@@ -25,7 +25,8 @@ const canonical = new URL(Astro.url.pathname, site.domain).href;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -53,7 +54,7 @@ const canonical = new URL(Astro.url.pathname, site.domain).href;
       '@type': 'MedicalOrganization',
       name: site.legalName,
       url: site.domain,
-      logo: new URL('/favicon.svg', site.domain).href,
+      logo: new URL('/logo.png', site.domain).href,
       telephone: site.phone,
       medicalSpecialty: 'Nephrology',
       areaServed: 'Metro Manila, Philippines',
