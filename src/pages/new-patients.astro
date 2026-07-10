@@ -44,7 +44,11 @@ import { branches } from '../data/branches';
         <p class="muted">Prefer to chat? Message us on Messenger or Viber, or call your nearest center.</p>
       </div>
 
-      <form class="card" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="card" action="https://formspree.io/f/xlgyqkje" method="POST">
+        <!-- Email subject line + honeypot spam trap (hidden from real users) -->
+        <input type="hidden" name="_subject" value="New appointment request — stjohnbiocare.com" />
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
+               style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" />
         <div class="grid grid--2" style="gap:0 18px">
           <div class="form-field">
             <label for="name">Your name</label>
