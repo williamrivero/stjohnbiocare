@@ -73,21 +73,6 @@ export const branches: Branch[] = [
     lng: 121.0244,
   },
   {
-    slug: 'robinsons-otis',
-    name: 'Robinsons Place Otis',
-    area: 'Paco, Manila',
-    address: 'To be confirmed — Robinsons Place Otis, Paco, Manila', // TODO
-    phone: '(02) 0000 0000',                                          // TODO
-    hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
-    services: ['Hemodialysis', 'Laboratory'],
-    medicalDirector: 'To be confirmed',
-    headNurse: 'To be confirmed',
-    stations: null,
-    transit: 'To be confirmed.',
-    lat: 14.5866,
-    lng: 120.9955,
-  },
-  {
     slug: 'caloocan',
     name: 'Caloocan',
     area: 'Caloocan City',
