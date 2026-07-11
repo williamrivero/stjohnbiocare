@@ -35,7 +35,7 @@ export const branches: Branch[] = [
     name: 'Quezon Avenue',
     area: 'Quezon City',
     address: '2nd Floor, Casman Building, 1198 Quezon Avenue, Barangay Paligsahan, Quezon City 1100',
-    phone: '+63 (2) 8375 1575 · +63 917 122 6925',
+    phone: '+63 (2) 8375 1575 · +63 (2) 8921 8921 · +63 917 122 6925',
     phoneHref: 'tel:+63283751575',
     email: 'qave.sjbdc@gmail.com',
     hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
