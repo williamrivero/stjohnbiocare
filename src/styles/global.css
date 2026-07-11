@@ -177,7 +177,7 @@ textarea:focus-visible, select:focus-visible {
 }
 .form-field textarea { min-height: 120px; resize: vertical; }
 .consent { display: flex; gap: 10px; align-items: flex-start; font-size: .95rem; color: var(--ink-soft); }
-.consent input { width: auto; margin-top: 5px; }
+.consent input { width: 20px; height: 20px; flex: 0 0 auto; margin-top: 2px; accent-color: var(--life); cursor: pointer; }
 
 /* ---- Misc utilities ---- */
 .pill {
