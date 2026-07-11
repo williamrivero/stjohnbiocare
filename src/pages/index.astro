@@ -5,10 +5,21 @@ import { openBranches } from '../data/branches';
 import { site } from '../data/site';
 
 const services = [
-  { title: 'Hemodialysis', text: 'Modern machines, watchful nurses, and 5:30 AM chairs — so you can dialyze and still make a day of work.', href: '/services#hemodialysis', icon: '🩺' },
-  { title: 'Physicians on duty', text: "A doctor here every hour we're open — not on call down the hall, but in the room, watching over you.", href: '/services#physicians', icon: '👨‍⚕️' },
-  { title: 'Renal dietitians', text: 'A kidney diet built around Filipino food and your own table — advice you can actually keep.', href: '/services#dietitian', icon: '🥗' },
-  { title: 'Social workers', text: 'PhilHealth, the paperwork, the money worries — carried with you, so you carry less.', href: '/services#social', icon: '🤝' },
+  { title: 'Every dialysis modality', text: 'Low- and high-flux HD, hemodiafiltration, SLED and isolated ultrafiltration — matched to your body, never a default.', href: '/services#treatment', icon: '🩺' },
+  { title: 'A doctor always on duty', text: "In the room every hour we're open — not on call down the hall — watching over your treatment.", href: '/services#team', icon: '👨‍⚕️' },
+  { title: 'Renal dietitians', text: 'A kidney diet built around Filipino food and your own table — advice you can actually keep.', href: '/services#team', icon: '🥗' },
+  { title: 'Social workers', text: 'PhilHealth, the paperwork, the money worries — carried with you, so you carry less.', href: '/services#team', icon: '🤝' },
+  { title: 'Diagnostics & labs', text: 'Bloodwork and diagnostics coordinated with trusted partner laboratories — reliable results, on time.', href: '/services', icon: '🧪' },
+  { title: 'Care explained plainly', text: 'We put kidney health in plain language, so you and your family always understand what happens next.', href: '/kidney-health', icon: '📖' },
+];
+
+const safety = [
+  { title: 'Innovator medicines only', text: 'Original-brand erythropoietin, IV iron and Halal-certified heparin — never the cheaper copy. Your body knows the difference.' },
+  { title: 'Water purified twice', text: 'Every center runs dual-pass reverse-osmosis, cleansing the water twice over before a single drop reaches a machine.' },
+  { title: 'Maker-calibrated machines', text: 'Established brands, calibrated by no one but the original manufacturers, on a regular schedule.' },
+  { title: 'International best practice', text: "We don't just meet Philippine standards — wherever a higher bar exists, that's the one we hold ourselves to." },
+  { title: 'Infection control by protocol', text: 'Disciplined, protocol-driven reprocessing and formal infection-control practices govern every single session.' },
+  { title: 'Sundays, we work hardest', text: 'Closed to patients for wall-to-wall disinfection and full servicing of the water system. You return Monday to a center checked top to bottom.' },
 ];
 ---
 <BaseLayout image="/images/og/og-home.jpg">
@@ -59,7 +70,7 @@ const services = [
     </div>
   </section>
 
-  <!-- 4. SERVICES AT A GLANCE -->
+  <!-- 4. WHAT WE OFFER -->
   <section class="section section--sand">
     <div class="container">
       <div class="center" style="margin-bottom:32px">
@@ -67,7 +78,7 @@ const services = [
         <h2>Everything your dialysis needs — nothing you have to chase.</h2>
         <p class="lead" style="margin-inline:auto">One team, one place, every part of your care thought through — so all you have to do is show up and get well.</p>
       </div>
-      <div class="grid grid--4">
+      <div class="grid grid--3">
         {services.map((s) => (
           <a class="card" href={s.href} style="text-decoration:none;color:inherit;display:block">
             <div class="card__icon" style="font-size:1.5rem">{s.icon}</div>
@@ -80,7 +91,57 @@ const services = [
     </div>
   </section>
 
-  <!-- 5. FIND YOUR CENTER -->
+  <!-- 5. HOW WELL WE DO IT — QUALITY & SAFETY -->
+  <section class="section qs">
+    <div class="container">
+      <div style="max-width:720px">
+        <p class="eyebrow" style="color:#e6c374">Quality &amp; safety</p>
+        <h2 style="color:#fff">The safety you can't see is the safety that matters most.</h2>
+        <p style="color:#cfe6d6;font-size:1.1rem;max-width:62ch">
+          Anyone can put a chair and a machine in a room. What actually keeps you safe happens where
+          you never look — the medicines, the water, the calibration, the cleaning. We built our name
+          on refusing to cut those corners.
+        </p>
+      </div>
+      <div class="qs__grid">
+        {safety.map((s) => (
+          <div class="qs__card">
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:26px">
+        <a href="/services" class="btn btn--light">See how we care for you</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHO WE ARE — BIOCARE PROMISE -->
+  <section class="section section--mist">
+    <div class="container">
+      <div class="center" style="margin-bottom:32px">
+        <p class="eyebrow">Our promise</p>
+        <h2>The BIOCARE way.</h2>
+        <p class="lead" style="margin-inline:auto">Seven values, one for each letter — the promises we keep even when no one is watching.</p>
+      </div>
+      <BiocareValues />
+    </div>
+  </section>
+
+  <!-- 7. WHAT FAMILIES SAY -->
+  <section class="section section--sand">
+    <div class="container center" style="max-width:760px">
+      <p class="eyebrow">Patient &amp; family voices</p>
+      <blockquote class="quote">
+        “They explained everything to my mother in words she understood, and never
+        made us feel rushed. For the first time, dialysis didn't feel frightening.”
+      </blockquote>
+      <p class="muted">— A family member, Quezon City <em>(sample — real, consented quotes to be added)</em></p>
+    </div>
+  </section>
+
+  <!-- 8. WHERE — FIND YOUR CENTER -->
   <section class="section">
     <div class="container">
       <div class="center" style="margin-bottom:32px">
@@ -105,20 +166,8 @@ const services = [
     </div>
   </section>
 
-  <!-- 6. BIOCARE PROMISE -->
+  <!-- 9. WHAT IT COSTS -->
   <section class="section section--mist">
-    <div class="container">
-      <div class="center" style="margin-bottom:32px">
-        <p class="eyebrow">Our promise</p>
-        <h2>The BIOCARE way.</h2>
-        <p class="lead" style="margin-inline:auto">Seven values, one for each letter — the promises we keep even when no one is watching.</p>
-      </div>
-      <BiocareValues />
-    </div>
-  </section>
-
-  <!-- 7. COST & PHILHEALTH -->
-  <section class="section">
     <div class="container cost">
       <div>
         <p class="eyebrow">Honest about cost</p>
@@ -141,19 +190,7 @@ const services = [
     </div>
   </section>
 
-  <!-- 8. VOICES (placeholder) -->
-  <section class="section section--sand">
-    <div class="container center" style="max-width:760px">
-      <p class="eyebrow">Patient &amp; family voices</p>
-      <blockquote class="quote">
-        “They explained everything to my mother in words she understood, and never
-        made us feel rushed. For the first time, dialysis didn't feel frightening.”
-      </blockquote>
-      <p class="muted">— A family member, Quezon City <em>(sample — real, consented quotes to be added)</em></p>
-    </div>
-  </section>
-
-  <!-- 9. KIDNEY HEALTH TEASER -->
+  <!-- 10. LEARN — KIDNEY HEALTH TEASER -->
   <section class="section">
     <div class="container">
       <div class="center" style="margin-bottom:32px">
@@ -181,7 +218,7 @@ const services = [
     </div>
   </section>
 
-  <!-- 10. FOR NURSES -->
+  <!-- 11. FOR NURSES -->
   <section class="section section--forest">
     <div class="container nurses">
       <div>
@@ -200,7 +237,7 @@ const services = [
     </div>
   </section>
 
-  <!-- 11. FINAL CTA -->
+  <!-- 12. ACT — FINAL CTA -->
   <section class="section center">
     <div class="container" style="max-width:680px">
       <h2>Take the first step. We'll take it with you.</h2>
@@ -228,6 +265,13 @@ const services = [
   .hero__heart img { width: 100%; height: auto; display: block; }
   @keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
   @media (max-width: 860px) { .hero__inner { grid-template-columns: 1fr; } .hero__art { order: -1; } .hero__heart { width: 200px; } }
+
+  .qs { background: var(--forest); }
+  .qs__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.16); border-radius: 16px; overflow: hidden; margin-top: 28px; }
+  .qs__card { background: var(--forest); padding: 28px 26px; }
+  .qs__card h3 { color: #fff; font-family: var(--font-head); font-size: 1.15rem; margin: 0 0 .5rem; }
+  .qs__card p { color: #cfe6d6; margin: 0; line-height: 1.55; }
+  @media (max-width: 820px) { .qs__grid { grid-template-columns: 1fr; } }
 
   .reassure { background: var(--forest); color: var(--cream); }
   .reassure__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-block: 26px; text-align: center; }
