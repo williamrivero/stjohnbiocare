@@ -13,7 +13,7 @@ export const site = {
   headOffice: '#10 CK Building, South A Street corner Alejandro Roces Avenue, Barangay Paligsahan, Quezon City 1103 (beside Creba Center)',
 
   // Contact channels
-  phone: '8375 1575',
+  phone: '+63 (2) 8375 1575',
   phoneHref: 'tel:+63283751575',
   email: 'hello@stjohnbiocare.com',
   messenger: '',                              // TODO real page
