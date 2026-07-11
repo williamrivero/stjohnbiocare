@@ -2,6 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { openBranches } from '../data/branches';
+
+const faqs = [
+  { q: 'How do I start dialysis with you?', a: "Send an appointment request below, or call your nearest center. We'll review your records, explain the schedule and costs clearly, and get you booked — often within a few days." },
+  { q: 'Do I need a doctor’s referral first?', a: "A referral and recent labs help us start smoothly, but if you don't have them yet, send a request anyway — we'll guide you on exactly what to bring." },
+  { q: 'What should I bring to my first visit?', a: 'A valid ID, your PhilHealth Member Data Record (MDR), any referral and recent lab results, and a list of your current medicines. A trusted companion is always welcome too.' },
+  { q: 'Does PhilHealth cover my dialysis?', a: 'Yes. PhilHealth has a hemodialysis benefit, and at accredited centers a No Balance Billing policy applies for qualified members. We’re also HMO-accredited and accept various forms of payment — bring your MDR or HMO card and we’ll help you check what applies.', more: { href: '/kidney-health/philhealth-cost', label: 'PhilHealth & the cost of dialysis' } },
+  { q: 'Can I transfer from another dialysis center?', a: 'Yes, and it is entirely your right. Bring your latest dialysis records, labs and prescription, and we’ll take care of continuity so there is no gap in your treatment.', more: { href: '/kidney-health/transfer-of-care', label: 'Transferring your care' } },
+  { q: 'What happens during my first session?', a: 'You’ll meet the nurse and doctor, we’ll go over your records together, explain everything in plain language, and answer your questions before anything begins.', more: { href: '/kidney-health/starting-dialysis', label: 'Starting dialysis: what to expect' } },
+  { q: 'Is this form for emergencies?', a: 'No. This form is for appointments and questions only. If you are having a medical emergency, call your nearest center or go to the nearest hospital emergency room right away.' },
+];
 ---
 <BaseLayout title="New Patients" description="Starting or transferring dialysis care at St. John Biocare — what to bring, what to expect, and how to request an appointment." image="/images/og/og-new-patients.jpg">
   <PageHero
@@ -43,6 +53,28 @@ import { openBranches } from '../data/branches';
         communities</strong>. Dialysis is a shared journey, so we bring patients, families and staff
         together to support one another, learn, and find strength in good company. Here, you are never
         just a case — you belong.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container stack" style="max-width:760px">
+      <div class="center" style="margin-bottom:26px">
+        <p class="eyebrow">Common questions</p>
+        <h2>Starting dialysis — your questions, answered.</h2>
+      </div>
+      {faqs.map((f) => (
+        <details class="faq">
+          <summary>{f.q}</summary>
+          <div class="faq__a">
+            <p style="margin:0">{f.a}</p>
+            {f.more && <p style="margin:.5rem 0 0"><a href={f.more.href}>{f.more.label} →</a></p>}
+          </div>
+        </details>
+      ))}
+      <p class="muted" style="font-size:.9rem;margin-top:8px">
+        Still have a question? <a href="#request">Send us a message</a> — a real person will reply.
       </p>
     </div>
   </section>
@@ -119,4 +151,23 @@ import { openBranches } from '../data/branches';
       </form>
     </div>
   </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  })} />
 </BaseLayout>
+
+<style>
+  .faq { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px 22px; box-shadow: var(--shadow); }
+  .faq summary { cursor: pointer; font-weight: 700; color: var(--forest); font-family: var(--font-head); font-size: 1.1rem; padding: 16px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; color: var(--life); font-weight: 700; font-size: 1.4rem; line-height: 1; }
+  .faq[open] summary::after { content: '\2212'; }
+  .faq__a { padding: 0 0 18px; color: var(--ink-soft); }
+</style>
