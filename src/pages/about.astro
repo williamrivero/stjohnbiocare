@@ -1,18 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BiocareValues from '../components/BiocareValues.astro';
+import PageHero from '../components/PageHero.astro';
 ---
-<BaseLayout title="About Us" description="St. John Biocare is a SEC-registered foundation born from one family's experience of kidney failure — our story, mission, values and leadership.">
-  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:52px">
-    <div class="container" style="max-width:800px">
-      <p class="eyebrow">Our story</p>
-      <h1>A foundation, born from a real family story.</h1>
-      <p class="lead">
-        St. John Biocare & Dialysis Center Foundation, Inc. is not a corporate chain.
-        We are a registered foundation — and that difference is the whole point.
-      </p>
-    </div>
-  </section>
+<BaseLayout title="About Us" description="St. John Biocare is a SEC-registered foundation born from one family's experience of kidney failure — our story, mission, values and leadership." image="/images/heroes/about-hero.webp">
+  <PageHero
+    image="/images/heroes/about-hero.webp"
+    alt="An adult son resting a reassuring hand on his elderly father's shoulder, both smiling"
+    eyebrow="Our story"
+    title="A foundation, born from a real family story."
+    subtitle="St. John Biocare & Dialysis Center Foundation, Inc. is not a corporate chain. We are a registered foundation — and that difference is the whole point."
+  />
 
   <section class="section">
     <div class="container" style="max-width:760px" class:list={['stack']}>
