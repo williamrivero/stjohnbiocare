@@ -28,7 +28,9 @@ import { branches } from '../../data/branches';
             <div style="display:flex;gap:10px;flex-wrap:wrap">
               <a class="btn btn--primary" href={`/centers/${b.slug}`}>View center</a>
               <a class="btn btn--ghost" target="_blank" rel="noopener"
-                 href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${b.name} St. John Biocare, ${b.address}`)}`}>Get directions</a>
+                 href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${b.name} St. John Biocare, ${b.address}`)}`}>Google Maps</a>
+              <a class="btn btn--ghost" target="_blank" rel="noopener"
+                 href={`https://waze.com/ul?q=${encodeURIComponent(`${b.name} St. John Biocare, ${b.address}`)}&navigate=yes`}>Waze</a>
             </div>
           </div>
         ))}
