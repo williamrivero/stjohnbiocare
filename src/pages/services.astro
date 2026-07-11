@@ -3,8 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 const services = [
   { id: 'hemodialysis', title: 'Hemodialysis', text: 'Our core service. Modern machines, careful monitoring, strict infection control, and early-morning schedules built around working patients and caregivers.', img: '/images/photos/dsc_0033.webp', imgAlt: 'A dialyzer on a hemodialysis machine during a treatment session' },
+  { id: 'physicians', title: 'Physicians on duty', text: 'A physician is on duty during clinic hours, so there is always a doctor watching over your treatment and ready to respond.' },
+  { id: 'dietitian', title: 'Renal dietitians', text: 'Our renal dietitians help you build a kidney-friendly diet that fits Filipino food and your own preferences — practical guidance, not a lecture.' },
+  { id: 'social', title: 'Social workers', text: 'Our social workers are on hand to help you navigate PhilHealth, costs, and the practical worries that come with dialysis.' },
   { id: 'diagnostics', title: 'Diagnostics & Laboratory', text: 'We coordinate the bloodwork and diagnostics dialysis patients need with reputable, experienced and well-known partner laboratories — reliable results, on time, without the extra runaround.' },
-  { id: 'imaging', title: 'X-ray / Imaging', text: 'Imaging to support your dialysis care, arranged when you need it.' },
   { id: 'reuse', title: 'Dialyzer Reuse & Infection Control', text: 'Careful, protocol-driven dialyzer reprocessing and formal infection-control practices — the quiet work that keeps you safe.' },
   { id: 'education', title: 'Renal Education & Health Promotion', text: 'We explain kidney health in plain language, so you and your family understand what is happening and what to do.' },
 ];
@@ -33,8 +35,8 @@ const services = [
         </div>
       ))}
       <p class="muted" style="font-size:.92rem">
-        Confirming for launch: whether we also offer peritoneal / home dialysis, dietitian
-        counseling, telemedicine follow-up, and vascular-access services.
+        Confirming for launch: whether we also offer peritoneal / home dialysis,
+        telemedicine follow-up, and vascular-access services.
       </p>
     </div>
   </section>
