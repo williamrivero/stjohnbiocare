@@ -1,27 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 const services = [
-  { id: 'hemodialysis', title: 'Hemodialysis', text: 'Our core service. Modern machines, careful monitoring, strict infection control, and early-morning schedules built around working patients and caregivers.' },
+  { id: 'hemodialysis', title: 'Hemodialysis', text: 'Our core service. Modern machines, careful monitoring, strict infection control, and early-morning schedules built around working patients and caregivers.', img: '/images/photos/dsc_0033.webp', imgAlt: 'A dialyzer on a hemodialysis machine during a treatment session' },
   { id: 'diagnostics', title: 'Diagnostics & Laboratory', text: 'We coordinate the bloodwork and diagnostics dialysis patients need with reputable, experienced and well-known partner laboratories — reliable results, on time, without the extra runaround.' },
-  { id: 'imaging', title: 'X-ray / Imaging', text: 'On-site imaging supports your dialysis care without sending you elsewhere.' },
+  { id: 'imaging', title: 'X-ray / Imaging', text: 'Imaging to support your dialysis care, arranged when you need it.' },
   { id: 'reuse', title: 'Dialyzer Reuse & Infection Control', text: 'Careful, protocol-driven dialyzer reprocessing and formal infection-control practices — the quiet work that keeps you safe.' },
   { id: 'education', title: 'Renal Education & Health Promotion', text: 'We explain kidney health in plain language, so you and your family understand what is happening and what to do.' },
 ];
 ---
-<BaseLayout title="Services" description="Hemodialysis, in-house laboratory and imaging, dialyzer reprocessing, and renal education at St. John Biocare.">
-  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:48px">
-    <div class="container" style="max-width:760px">
-      <p class="eyebrow">Services</p>
-      <h1>Everything your dialysis care needs, under one roof.</h1>
-      <p class="lead">Careful clinical work, explained in plain terms — with the safety details we're proud of.</p>
-    </div>
-  </section>
+<BaseLayout title="Services" description="Hemodialysis, diagnostics through trusted partner laboratories, dialyzer reprocessing, and renal education at St. John Biocare." image="/images/photos/dsc_0038.webp">
+  <PageHero
+    image="/images/photos/dsc_0038.webp"
+    alt="A St. John Biocare dialysis treatment area with monitoring equipment"
+    eyebrow="Services"
+    title="Everything your dialysis care needs."
+    subtitle="Careful clinical work, explained in plain terms — with the safety details we're proud of."
+  />
   <section class="section">
     <div class="container stack" style="max-width:820px">
       {services.map((s) => (
         <div id={s.id} class="card">
           <h2 style="font-size:1.4rem">{s.title}</h2>
           <p>{s.text}</p>
+          {s.img && (
+            <figure style="margin:16px 0 0">
+              <img src={s.img} alt={s.imgAlt} loading="lazy"
+                   style="max-width:300px;width:100%;height:auto;border-radius:12px;display:block" width="1328" height="2000" />
+              <figcaption class="muted" style="font-size:.82rem;margin-top:6px">A dialyzer at work during a session — where your blood is gently cleaned.</figcaption>
+            </figure>
+          )}
         </div>
       ))}
       <p class="muted" style="font-size:.92rem">

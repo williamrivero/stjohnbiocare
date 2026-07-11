@@ -12,27 +12,23 @@ const services = [
 ];
 ---
 <BaseLayout>
-  <!-- 1. HERO -->
-  <section class="hero">
-    <div class="container hero__inner">
-      <div class="hero__copy">
-        <span class="pill">A foundation, not a chain · Since 2011</span>
-        <h1>Kidney care that sees the <span class="hl">person</span>, not just the patient.</h1>
-        <p class="lead">
-          St. John Biocare is a family-founded network of hemodialysis and diagnostic
-          centers across Metro Manila. We reduce the fear, explain the costs honestly,
-          and treat you and your family like our own.
-        </p>
-        <div class="hero__actions">
-          <a href="/new-patients#request" class="btn btn--crimson">Request an appointment</a>
-          <a href="/centers" class="btn btn--ghost">Find a center near you</a>
-        </div>
-      </div>
-      <div class="hero__art">
-        <div class="hero__heart">
-          <img src="/logo.png" alt="St. John Biocare & Dialysis Center Foundation, Inc. logo"
-               width="512" height="512" fetchpriority="high" />
-        </div>
+  <!-- 1. HERO (full-bleed) -->
+  <section class="page-hero home-hero">
+    <img class="page-hero__img" src="/images/photos/dsc_0053.webp"
+         alt="A patient resting comfortably during a hemodialysis session at St. John Biocare"
+         width="2000" height="1328" fetchpriority="high" loading="eager" style="object-position:center" />
+    <div class="page-hero__scrim"></div>
+    <div class="container page-hero__inner">
+      <span class="pill" style="margin-bottom:16px">A foundation, not a chain · Since 2011</span>
+      <h1>Kidney care that sees the <span class="hl" style="color:#ff8ba0">person</span>, not just the patient.</h1>
+      <p class="lead">
+        St. John Biocare is a family-founded network of hemodialysis and diagnostic
+        centers across Metro Manila. We reduce the fear, explain the costs honestly,
+        and treat you and your family like our own.
+      </p>
+      <div class="page-hero__actions">
+        <a href="/new-patients#request" class="btn btn--crimson">Request an appointment</a>
+        <a href="/centers" class="btn btn--light">Find a center near you</a>
       </div>
     </div>
   </section>
