@@ -61,8 +61,9 @@ const benefits = [
       <p class="muted">Nurses, cashiers, PhilHealth liaison officers, and utility / ancillary personnel — across our centers.</p>
 
       <h2 style="margin-top:28px">How to apply</h2>
-      <p>Email your application and résumé directly to our Human Resources Department. Kindly
-      address your application to <strong>Ms. Denice Maglalad, HR Head Officer</strong>.</p>
+      <p>Apply <strong>online below</strong>, or email your application and résumé directly to our Human
+      Resources Department. Kindly address your application to <strong>Ms. Denice Maglalad, HR Head
+      Officer</strong>.</p>
       <div class="grid grid--2" style="margin-top:14px">
         <div class="card">
           <h3>St. John Biocare</h3>
@@ -73,6 +74,89 @@ const benefits = [
           <p style="margin:0"><a href="mailto:st.josefrenalcare.hrmd@gmail.com?subject=Job%20Application%20%E2%80%94%20Attn:%20Ms.%20Denice%20Maglalad,%20HR%20Head%20Officer">st.josefrenalcare.hrmd@gmail.com</a></p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Online application -->
+  <section id="apply" class="section section--sand">
+    <div class="container" style="max-width:720px">
+      <div class="center" style="margin-bottom:22px">
+        <p class="eyebrow">Apply online</p>
+        <h2>Submit your application</h2>
+        <p class="muted">Fill in your details and upload your résumé and requirements. Your application goes
+        to our HR Department (Attn: Ms. Denice Maglalad, HR Head Officer).</p>
+      </div>
+
+      <form class="card" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+        <!-- Web3Forms routing (key ties delivery to the HR inbox) -->
+        <input type="hidden" name="access_key" value="YOUR_CAREERS_WEB3FORMS_KEY" />
+        <input type="hidden" name="subject" value="New job application — stjohnbiocare.com (Attn: Ms. Denice Maglalad, HR Head Officer)" />
+        <input type="hidden" name="from_name" value="St. John Biocare — Careers" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="grid grid--2" style="gap:0 18px">
+          <div class="form-field">
+            <label for="ap-name">Full name</label>
+            <input id="ap-name" name="Full name" type="text" required autocomplete="name" />
+          </div>
+          <div class="form-field">
+            <label for="ap-position">Position applying for</label>
+            <select id="ap-position" name="Position applying for">
+              <option>Nurse</option>
+              <option>Cashier / Front Desk Officer</option>
+              <option>PhilHealth Liaison Officer</option>
+              <option>Utility / Ancillary personnel</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid--2" style="gap:0 18px">
+          <div class="form-field">
+            <label for="ap-email">Email</label>
+            <input id="ap-email" name="email" type="email" required />
+          </div>
+          <div class="form-field">
+            <label for="ap-mobile">Mobile number</label>
+            <input id="ap-mobile" name="Mobile number" type="tel" required />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="ap-where">Applying to</label>
+          <select id="ap-where" name="Applying to">
+            <option>No preference</option>
+            <option>St. John Biocare</option>
+            <option>Core Renal Center</option>
+            <option>St. Josef Renal Care</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="ap-files">Upload your résumé &amp; requirements</label>
+          <input id="ap-files" name="attachment" type="file" accept="image/*,application/pdf,.doc,.docx" multiple />
+          <p class="muted" style="font-size:.82rem;margin:.3rem 0 0">
+            Select multiple files (PDF, DOC, JPG or PNG, up to ~5&nbsp;MB total) — e.g. résumé, PRC ID (if
+            applicable), NBI &amp; Police clearance. If your files are larger, attach the résumé here and
+            email the rest to HR.
+          </p>
+        </div>
+
+        <div class="form-field">
+          <label for="ap-msg">Message (optional)</label>
+          <textarea id="ap-msg" name="Message" placeholder="A short note about yourself or your experience."></textarea>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" name="Consent (Data Privacy Act)" required />
+          <span>I agree that St. John Biocare may process my information for recruitment purposes, in line
+          with the Data Privacy Act of 2012 (RA&nbsp;10173).</span>
+        </label>
+
+        <div style="margin-top:18px">
+          <button type="submit" class="btn btn--crimson">Submit application</button>
+        </div>
+      </form>
     </div>
   </section>
 </BaseLayout>
