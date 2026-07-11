@@ -6,37 +6,37 @@ const categories = [
   {
     name: 'Understanding your kidneys',
     articles: [
-      { href: '/kidney-health/understanding-kidney-disease', title: 'Understanding kidney disease & ESRD', text: 'What the kidneys do, what goes wrong, and what dialysis replaces.' },
+      { href: '/kidney-health/understanding-kidney-disease', title: 'Understanding kidney disease & ESRD', text: 'What the kidneys do, what goes wrong, and what dialysis replaces.', img: '/images/kidney-health/understanding-kidney-disease.webp' },
     ],
   },
   {
     name: 'Getting started',
     articles: [
-      { href: '/kidney-health/starting-dialysis', title: 'Starting dialysis: what to expect', text: "What to bring, who you'll meet, and what actually happens." },
-      { href: '/kidney-health/transfer-of-care', title: 'Transferring your care', text: 'Change centers safely, without missing a single session.' },
+      { href: '/kidney-health/starting-dialysis', title: 'Starting dialysis: what to expect', text: "What to bring, who you'll meet, and what actually happens.", img: '/images/kidney-health/starting-dialysis.webp' },
+      { href: '/kidney-health/transfer-of-care', title: 'Transferring your care', text: 'Change centers safely, without missing a single session.', img: '/images/kidney-health/transfer-of-care.webp' },
     ],
   },
   {
     name: 'Living well on dialysis',
     articles: [
-      { href: '/kidney-health/living-well-on-dialysis', title: 'Living well on dialysis', text: 'How dialysis works — and how to keep living your life.' },
-      { href: '/kidney-health/eating-well-on-dialysis', title: 'Eating well on dialysis', text: 'Salt, potassium and phosphorus — the three that matter most.' },
-      { href: '/kidney-health/fluid-and-weight', title: 'Fluid & weight between sessions', text: 'Why fluid builds up, and the habits that protect your heart.' },
-      { href: '/kidney-health/dialysis-access-care', title: 'Caring for your dialysis access', text: 'Protect your fistula — and know the warning signs.' },
-      { href: '/kidney-health/travelling-on-dialysis', title: 'Travelling on dialysis', text: 'Travel is possible — with the right planning.' },
+      { href: '/kidney-health/living-well-on-dialysis', title: 'Living well on dialysis', text: 'How dialysis works — and how to keep living your life.', img: '/images/kidney-health/living-well-on-dialysis.webp' },
+      { href: '/kidney-health/eating-well-on-dialysis', title: 'Eating well on dialysis', text: 'Salt, potassium and phosphorus — the three that matter most.', img: '/images/kidney-health/eating-well-on-dialysis.webp' },
+      { href: '/kidney-health/fluid-and-weight', title: 'Fluid & weight between sessions', text: 'Why fluid builds up, and the habits that protect your heart.', img: '/images/kidney-health/fluid-and-weight.webp' },
+      { href: '/kidney-health/dialysis-access-care', title: 'Caring for your dialysis access', text: 'Protect your fistula — and know the warning signs.', img: '/images/kidney-health/dialysis-access-care.webp' },
+      { href: '/kidney-health/travelling-on-dialysis', title: 'Travelling on dialysis', text: 'Travel is possible — with the right planning.', img: '/images/kidney-health/travelling-on-dialysis.webp' },
     ],
   },
   {
     name: 'For families & caregivers',
     articles: [
-      { href: '/kidney-health/caregivers-guide', title: 'A guide for caregivers', text: 'How to help, what to watch for, and caring for yourself too.' },
-      { href: '/kidney-health/faq', title: 'Frequently asked questions', text: 'The things patients and families ask us most.' },
+      { href: '/kidney-health/caregivers-guide', title: 'A guide for caregivers', text: 'How to help, what to watch for, and caring for yourself too.', img: '/images/kidney-health/caregivers-guide.webp' },
+      { href: '/kidney-health/faq', title: 'Frequently asked questions', text: 'The things patients and families ask us most.', img: '/images/photos/dsc_0027.webp' },
     ],
   },
   {
     name: 'Cost & coverage',
     articles: [
-      { href: '/kidney-health/philhealth-cost', title: 'PhilHealth & the cost of dialysis', text: 'The real numbers, what PhilHealth covers, and what to expect at a private center.' },
+      { href: '/kidney-health/philhealth-cost', title: 'PhilHealth & the cost of dialysis', text: 'The real numbers, what PhilHealth covers, and what to expect at a private center.', img: '/images/kidney-health/philhealth-cost.webp' },
     ],
   },
 ];
@@ -57,10 +57,13 @@ const categories = [
           <h2 style="font-size:1.4rem;margin-bottom:16px">{cat.name}</h2>
           <div class="grid grid--3">
             {cat.articles.map((a) => (
-              <a class="card" href={a.href} style="text-decoration:none;color:inherit">
-                <h3>{a.title}</h3>
-                <p>{a.text}</p>
-                <span class="card__link">Read</span>
+              <a class="card kh-card" href={a.href} style="text-decoration:none;color:inherit">
+                <img class="kh-thumb" src={a.img} alt={a.title} loading="lazy" width="900" height="600" />
+                <div class="kh-body">
+                  <h3>{a.title}</h3>
+                  <p>{a.text}</p>
+                  <span class="card__link">Read</span>
+                </div>
               </a>
             ))}
           </div>
@@ -73,3 +76,11 @@ const categories = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .kh-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .kh-thumb { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; background: var(--mist); }
+  .kh-body { padding: 20px 22px 22px; }
+  .kh-body h3 { margin: 0 0 .35rem; }
+  .kh-body p { margin: 0 0 .7rem; }
+</style>
