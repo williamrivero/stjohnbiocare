@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const src = 'https://renalcarematters.com/guides/caregiver-guide-ckd.html';
+---
+<BaseLayout title="A guide for caregivers" description="Caring for a loved one on dialysis — how to help, what to watch for, and why looking after yourself matters too.">
+  <article class="section">
+    <div class="container" style="max-width:720px">
+      <a href="/kidney-health" style="font-weight:700;text-decoration:none">← Kidney Health Hub</a>
+      <h1 style="margin-top:14px">A guide for caregivers</h1>
+      <p class="lead">You carry a lot. This is for the spouse, the adult child, the friend — the person beside the patient.</p>
+      <p class="muted" style="font-size:.9rem">Adapted with permission from <a href={src}>renalcarematters.com</a>.</p>
+
+      <h2>How you help most</h2>
+      <ul style="line-height:1.9">
+        <li>Help keep <strong>every session</strong> — rides, reminders, schedule. Missing sessions is the biggest avoidable risk.</li>
+        <li>Support the <strong>diet and fluid</strong> plan at home (salt, potassium, phosphorus, drinks).</li>
+        <li>Watch the <strong>access arm</strong> — no tight sleeves, blood-pressure cuffs or blood draws on that side; feel the buzz.</li>
+        <li>Keep a simple folder of <strong>records, labs and medicines</strong>, and bring it to visits.</li>
+      </ul>
+
+      <h2>Warning signs to act on</h2>
+      <p>Contact the center or seek care if you notice new swelling or breathlessness, a big weight jump, a
+      fever, an access that's red/painful or has lost its buzz, or confusion or unusual weakness — some
+      problems (like high potassium or fluid overload) build quietly between sessions.</p>
+
+      <div class="notice"><strong>Caregiver burnout is real.</strong> Looking after someone on dialysis is
+      demanding, and running yourself empty helps no one. Rest, ask for help, share the load with family,
+      and tell us if you're struggling — our social worker can point you to support.</div>
+
+      <h2>You're part of the team</h2>
+      <p>At St. John Biocare you're not a bystander — you're a partner in care, and part of a
+      <a href="/about">patient community</a> that supports one another. Ask questions freely; they help us
+      care better.</p>
+
+      <p style="margin-top:20px"><a href="/new-patients#request" class="btn btn--primary">Reach our care team</a></p>
+      <p class="muted" style="margin-top:22px;font-size:.9rem">Adapted with permission from
+        <a href={src}>renalcarematters.com</a>. Medically reviewed by a nephrologist. Educational only;
+        not a substitute for consultation.</p>
+    </div>
+  </article>
+</BaseLayout>

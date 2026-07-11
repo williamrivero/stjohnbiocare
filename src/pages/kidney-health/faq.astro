@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// `a` is plain text (used for both the visible answer and the FAQ schema).
+// `more` is an optional link shown only on the page.
+const faqs = [
+  { q: 'Does dialysis hurt?', a: 'For most people, no. You may feel a small prick when the needles are placed at the start, but the session itself is not painful. Many patients rest, read, or watch something while the machine works.' },
+  { q: 'How long is a session, and how often?', a: 'A typical hemodialysis session lasts about four hours, three times a week. Your nephrologist sets the exact schedule based on your needs.' },
+  { q: 'Does PhilHealth cover dialysis?', a: 'Yes. PhilHealth has a hemodialysis benefit package, and at accredited centers a No Balance Billing policy applies for qualified members. Bring your Member Data Record (MDR) and we will help you check what applies to you.', more: { href: '/kidney-health/philhealth-cost', label: 'PhilHealth & the cost of dialysis' } },
+  { q: 'Can I still work and travel on dialysis?', a: 'Many patients do both. Work is possible around your schedule, and travel is possible with planning and your nephrologist’s clearance.', more: { href: '/kidney-health/living-well-on-dialysis', label: 'Living well on dialysis' } },
+  { q: 'What should I eat?', a: 'The three minerals that matter most are salt (sodium), potassium and phosphorus, plus your fluid intake. Our renal dietitian builds a plan around real Filipino food and your preferences.', more: { href: '/kidney-health/eating-well-on-dialysis', label: 'Eating well on dialysis' } },
+  { q: 'What do I bring to my first visit?', a: 'A valid ID, your PhilHealth Member Data Record (MDR), any referral and recent lab results, and a list of your current medicines. A trusted companion is welcome too.', more: { href: '/new-patients', label: 'New patients' } },
+  { q: 'Can I transfer from another dialysis center?', a: 'Yes, and it is entirely your right. The safe way is planned and documented — bring your latest dialysis records, labs and prescription, and we will take care of continuity so there is no gap in treatment.', more: { href: '/kidney-health/transfer-of-care', label: 'Transferring your care' } },
+  { q: 'Is this website for emergencies?', a: 'No. This site is for information and requests only. If you are having a medical emergency, call your nearest center or go to the nearest hospital emergency room right away.' },
+];
+---
+<BaseLayout title="Frequently asked questions" description="Common questions about dialysis at St. John Biocare — pain, schedule, PhilHealth, diet, first visit, transfers and more.">
+  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:48px">
+    <div class="container" style="max-width:760px">
+      <a href="/kidney-health" style="font-weight:700;text-decoration:none">← Kidney Health Hub</a>
+      <p class="eyebrow" style="margin-top:14px">FAQs</p>
+      <h1>Your questions, answered.</h1>
+      <p class="lead">The things patients and families ask us most — in plain terms.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack" style="max-width:760px">
+      {faqs.map((f) => (
+        <details class="faq">
+          <summary>{f.q}</summary>
+          <div class="faq__a">
+            <p style="margin:0">{f.a}</p>
+            {f.more && <p style="margin:.5rem 0 0"><a href={f.more.href}>{f.more.label} →</a></p>}
+          </div>
+        </details>
+      ))}
+      <p class="muted" style="font-size:.9rem;margin-top:8px">
+        Can't find your question? <a href="/new-patients#request">Send us a message</a> — a real person will reply.
+      </p>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  })} />
+</BaseLayout>
+
+<style>
+  .faq { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px 22px; box-shadow: var(--shadow); }
+  .faq summary { cursor: pointer; font-weight: 700; color: var(--forest); font-family: var(--font-head); font-size: 1.1rem; padding: 16px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; color: var(--life); font-weight: 700; font-size: 1.4rem; line-height: 1; }
+  .faq[open] summary::after { content: '\2212'; }
+  .faq__a { padding: 0 0 18px; color: var(--ink-soft); }
+</style>

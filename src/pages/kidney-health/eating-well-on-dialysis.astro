@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const sodiumSrc = 'https://renalcarematters.com/guides/sodium-salt-reduction-ckd.html';
+const potSrc = 'https://renalcarematters.com/guides/potassium-hyperkalemia-ckd.html';
+const phosSrc = 'https://renalcarematters.com/guides/phosphorus-ckd.html';
+---
+<BaseLayout title="Eating well on dialysis" description="The three minerals that matter most on dialysis — salt, potassium and phosphorus — explained in plain language, with practical Filipino-food tips.">
+  <article class="section">
+    <div class="container" style="max-width:720px">
+      <a href="/kidney-health" style="font-weight:700;text-decoration:none">← Kidney Health Hub</a>
+      <h1 style="margin-top:14px">Eating well on dialysis</h1>
+      <p class="lead">Food is one of the biggest levers you control. Three minerals matter most — here's how to handle them.</p>
+      <p class="muted" style="font-size:.9rem">Adapted with permission from <a href={potSrc}>renalcarematters.com</a>.</p>
+
+      <h2>1. Salt (sodium) — cut this first</h2>
+      <p>The average Filipino eats <strong>5–6 grams of sodium a day</strong> — more than double the kidney
+      target. Cutting salt is the single most effective diet change: it lowers your blood pressure, and it
+      lowers your <strong>thirst</strong>, which makes your fluid limit far easier to keep. Go easy on
+      patis, toyo, bagoong, instant noodles, processed and canned foods, and chips.
+      (<a href={sodiumSrc}>More on salt →</a>)</p>
+
+      <h2>2. Potassium — the dangerous one</h2>
+      <p>Your heart needs potassium to beat, but only within a narrow range. On dialysis, potassium can
+      build up between sessions — and when it climbs too high it can disturb the heart's rhythm
+      <strong>without any warning</strong>. It rises most over the long weekend gap, so diet discipline on
+      Saturday and Sunday matters most. Your team will advise which high-potassium foods (some fruits,
+      vegetables and juices) to <strong>limit or prepare differently</strong>. (<a href={potSrc}>More on potassium →</a>)</p>
+
+      <h2>3. Phosphorus — the hidden one</h2>
+      <p>Extra phosphorus can't be cleared well on dialysis, and over time it <strong>weakens bones and
+      hardens blood vessels</strong>. It hides in processed foods, colas and some dairy. Two habits help:
+      choose fewer processed/“additive” foods, and — if you're prescribed <strong>phosphate binders</strong>
+      — take them <em>with</em> your meals as directed. (<a href={phosSrc}>More on phosphorus →</a>)</p>
+
+      <div class="notice"><strong>And fluid.</strong> What you drink counts too — see
+      <a href="/kidney-health/fluid-and-weight">Fluid &amp; weight between sessions</a>.</div>
+
+      <h2>You don't have to figure this out alone</h2>
+      <p>Our <strong>renal dietitians</strong> build a plan around real Filipino food and your own
+      preferences — practical guidance, not a lecture. Bring your questions to your next session.</p>
+
+      <p style="margin-top:20px"><a href="/new-patients#request" class="btn btn--primary">Talk to our dietitian</a></p>
+      <p class="muted" style="margin-top:22px;font-size:.9rem">Adapted with permission from
+        renalcarematters.com (<a href={sodiumSrc}>sodium</a>, <a href={potSrc}>potassium</a>,
+        <a href={phosSrc}>phosphorus</a>). Medically reviewed by a nephrologist. Educational only; not a
+        substitute for consultation or a dietitian's advice.</p>
+    </div>
+  </article>
+</BaseLayout>
