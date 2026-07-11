@@ -1,25 +1,53 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+const src = 'https://renalcarematters.com/guides/understanding-ckd.html';
 ---
-<BaseLayout title="Understanding kidney disease & ESRD" description="What the kidneys do, what happens when they fail, and what dialysis replaces — in plain language.">
+<BaseLayout title="Understanding kidney disease & ESRD" description="What your kidneys do, what chronic kidney disease and ESRD mean, and what dialysis replaces — in plain language.">
   <article class="section">
     <div class="container" style="max-width:720px">
       <a href="/kidney-health" style="font-weight:700;text-decoration:none">← Kidney Health Hub</a>
       <h1 style="margin-top:14px">Understanding kidney disease &amp; ESRD</h1>
-      <p class="lead">A gentle overview for patients and families who've just heard the words “kidney failure.”</p>
+      <p class="lead">A gentle overview for patients and families who've just heard the words “kidney disease.”</p>
+      <p class="muted" style="font-size:.9rem">Adapted with permission from
+        <a href={src}>renalcarematters.com</a>.</p>
 
       <h2>What your kidneys do</h2>
-      <p>Your two kidneys quietly clean your blood — removing waste and extra fluid, balancing salts, and helping control blood pressure. When they work, you never notice them. That's the point.</p>
+      <p>Your two kidneys quietly filter about <strong>200 litres of blood every day</strong> — removing
+      waste and extra fluid, balancing salts, helping control your blood pressure, and making hormones
+      that support your blood and your bones. When they work, you never notice them. That's the point.</p>
 
       <h2>What “chronic kidney disease” means</h2>
-      <p>Chronic kidney disease (CKD) is a slow loss of that cleaning ability, often over years. It's measured in stages. In the later stages the kidneys can no longer keep up, and waste and fluid build up in the body.</p>
+      <p>Chronic kidney disease (CKD) means that filtering ability is slowly — and often silently —
+      declining, over three months or more. It's found through <strong>blood tests, urine tests and
+      imaging</strong>, not by how you feel: many people with early CKD feel completely normal. Unlike a
+      sudden kidney injury, which can recover, CKD usually reflects lasting change, so the goal is to
+      <strong>slow it down</strong> and protect what you have.</p>
+
+      <h2>Knowing your stage (eGFR)</h2>
+      <p>The key number is your <strong>eGFR</strong> — think of it as the percentage of your kidneys'
+      filtering capacity still working. A healthy eGFR is above 90. CKD is grouped into five stages based
+      on this number. The encouraging part: with early, steady treatment, <strong>many people stay in the
+      earlier stages for decades</strong>.</p>
+
+      <h2>Why it happens — and the heart link</h2>
+      <p>About <strong>1 in 10 Filipinos</strong> has CKD, and most cases are driven by
+      <strong>diabetes and high blood pressure</strong>, which slowly damage the kidneys' tiny filters.
+      Kidney and heart health are closely tied — which is why your doctor watches your blood pressure,
+      blood sugar and heart together, not in isolation.</p>
 
       <h2>What ESRD and dialysis are</h2>
-      <p>End-stage renal disease (ESRD) is the point where the kidneys can no longer do enough on their own. Dialysis is a treatment that does part of the kidneys' job for them — cleaning the blood and removing extra fluid — usually a few times each week.</p>
+      <p>End-stage renal disease (ESRD) is the point where the kidneys can no longer do enough on their
+      own. <strong>Dialysis</strong> is a treatment that does part of their job — cleaning the blood and
+      removing extra fluid — usually a few times each week.</p>
 
-      <div class="notice"><strong>The reassuring part:</strong> many people live active, meaningful lives on dialysis — working, traveling, and spending time with family. Care is about routine, not fear.</div>
+      <div class="notice"><strong>The reassuring part:</strong> many people live active, meaningful lives
+      on dialysis — working, travelling and spending time with family. With good care, treatment becomes
+      a routine, not a fear.</div>
 
-      <p class="muted" style="margin-top:24px;font-size:.9rem">Medically reviewed by a nephrologist. Last updated: 2026. This guide is educational and not a substitute for consultation.</p>
+      <p style="margin-top:20px"><a href="/new-patients#request" class="btn btn--primary">Talk to us about your kidneys</a></p>
+      <p class="muted" style="margin-top:22px;font-size:.9rem">
+        Adapted with permission from <a href={src}>renalcarematters.com</a>. Medically reviewed by a
+        nephrologist. This guide is educational and not a substitute for consultation.</p>
     </div>
   </article>
 </BaseLayout>
