@@ -30,7 +30,7 @@ const safety = [
          width="1536" height="1024" fetchpriority="high" loading="eager" style="object-position:center" />
     <div class="page-hero__scrim"></div>
     <div class="container page-hero__inner">
-      <span class="pill" style="margin-bottom:16px">A foundation, not a chain · Since 2011</span>
+      <span class="pill" style="margin-bottom:16px">A foundation, not a chain · Pioneering dialysis since 2011</span>
       <h1><span class="hl" style="color:#ff8ba0">Excellent</span> dialysis, for every family — not just a few.</h1>
       <p class="lead">
         We're a family-run foundation, not a corporate chain — and it shows most in the parts
@@ -48,6 +48,7 @@ const safety = [
   <!-- 2. REASSURANCE STRIP -->
   <section class="reassure">
     <div class="container reassure__grid">
+      <div><strong>15 years</strong><span>among the country's dialysis pioneers</span></div>
       <div><strong>{openBranches.length} centers</strong><span>and growing, across Metro Manila &amp; Bulacan</span></div>
       <div><strong>Open 5:30&nbsp;AM</strong><span>dialyze before work, Monday to Saturday</span></div>
       <div><strong>PhilHealth &amp; HMO</strong><span>we help you make sense of every peso</span></div>
@@ -64,7 +65,9 @@ const safety = [
         saw what truly excellent care can do — and refused to accept that dialysis had to feel
         as cold as what he found elsewhere. So he set out to prove it could be done better. We
         were built as a <strong>foundation</strong>, which means putting the patient first isn't
-        a slogan here. It's who we answer to.
+        a slogan here. It's who we answer to. Fifteen years on, St. John Biocare stands among the
+        <strong>pioneers of free-standing dialysis care in the Philippines</strong> — and the promise
+        that started it all has never wavered.
       </p>
       <p><a href="/about" class="btn btn--ghost" style="margin-top:8px">Read our story</a></p>
     </div>
@@ -274,11 +277,12 @@ const safety = [
   @media (max-width: 820px) { .qs__grid { grid-template-columns: 1fr; } }
 
   .reassure { background: var(--forest); color: var(--cream); }
-  .reassure__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-block: 26px; text-align: center; }
+  .reassure__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-block: 26px; text-align: center; }
   .reassure__grid div { display: flex; flex-direction: column; }
   .reassure__grid strong { font-family: var(--font-head); font-size: 1.4rem; color: #fff; }
   .reassure__grid span { color: #cfe6d6; font-size: .95rem; }
-  @media (max-width: 620px) { .reassure__grid { grid-template-columns: 1fr; gap: 12px; } }
+  @media (max-width: 900px) { .reassure__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .reassure__grid { grid-template-columns: 1fr; gap: 12px; } }
 
   .cost { display: grid; grid-template-columns: 1.3fr .7fr; gap: 34px; align-items: center; }
   @media (max-width: 820px) { .cost { grid-template-columns: 1fr; } }
