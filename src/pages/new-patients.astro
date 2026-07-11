@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import { branches } from '../data/branches';
+import { openBranches } from '../data/branches';
 ---
 <BaseLayout title="New Patients" description="Starting or transferring dialysis care at St. John Biocare — what to bring, what to expect, and how to request an appointment." image="/images/heroes/new-patients-hero.webp">
   <PageHero
@@ -63,7 +63,7 @@ import { branches } from '../data/branches';
             <label for="branch">Preferred center</label>
             <select id="branch" name="Preferred center">
               <option value="">No preference</option>
-              {branches.map((b) => <option value={b.name}>{b.name}</option>)}
+              {openBranches.map((b) => <option value={`${b.foundation} — ${b.name}`}>{b.foundation} — {b.name}</option>)}
             </select>
           </div>
           <div class="form-field">

@@ -5,7 +5,9 @@ import { site } from '../../data/site';
 
 // One page is generated for each branch in src/data/branches.ts
 export function getStaticPaths() {
-  return branches.map((b) => ({ params: { slug: b.slug }, props: { branch: b } }));
+  return branches
+    .filter((b) => !b.underConstruction)
+    .map((b) => ({ params: { slug: b.slug }, props: { branch: b } }));
 }
 
 const { branch } = Astro.props;

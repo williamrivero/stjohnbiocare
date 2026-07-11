@@ -1,30 +1,34 @@
 // ---------------------------------------------------------------------------
-// BRANCHES — the single source of truth for the dialysis centers, including
-// sister-foundation (St. Josef Renal Care) centers.
+// BRANCHES — the single source of truth for all centers across the three
+// foundations (St. John Biocare, Core Renal Center, St. Josef Renal Care).
 //
-// To add or edit a center, change ONE object below. Everything (the locator
-// list, each branch page, the footer, contact page and appointment form)
-// updates automatically.
+// `underConstruction: true` marks a center that is opening this year — it is
+// shown on the Centers page with an "Opening this year" badge, but has no
+// dedicated page, directions, or appointment slot yet.
+//
+// Edit ONE object below to update a center everywhere it appears.
 // ---------------------------------------------------------------------------
 
 export interface Branch {
-  slug: string;          // used in the web address, e.g. /centers/marikina
-  foundation: string;    // which foundation runs it (shown as a small label)
-  name: string;          // display name
-  area: string;          // city / district, for filtering
-  address: string;       // full street address
-  phone: string;         // branch phone(s), display form
-  phoneHref: string;     // primary number as a tel: link
-  email: string;         // branch email
-  hours: string;         // operating hours
-  services: string[];    // on-site services
+  slug: string;
+  foundation: string;    // St. John Biocare | Core Renal Center | St. Josef Renal Care Foundation
+  name: string;
+  area: string;
+  address: string;
+  phone: string;
+  phoneHref: string;
+  email: string;
+  hours: string;
+  services: string[];
   medicalDirector: string;
   headNurse: string;
-  stations: string | null; // number of dialysis stations/machines
-  transit: string;       // public-transport notes
+  stations: string | null;
+  transit: string;
+  underConstruction?: boolean;
 }
 
 export const branches: Branch[] = [
+  // ---- St. John Biocare ----
   {
     slug: 'quezon-avenue',
     foundation: 'St. John Biocare',
@@ -40,22 +44,6 @@ export const branches: Branch[] = [
     headNurse: 'To be confirmed',
     stations: null,
     transit: 'Along Quezon Avenue; accessible by bus and jeepney routes and near the MRT-3 Quezon Avenue station.',
-  },
-  {
-    slug: 'makati',
-    foundation: 'St. John Biocare',
-    name: 'Core Renal Center (Makati)',
-    area: 'Makati City',
-    address: 'Ground Floor, EMF Building, M. Santillan Street, Pio del Pilar, Makati City 1230',
-    phone: '8844 2686 · 8844 2693 · 8772 8350',
-    phoneHref: 'tel:+63288442686',
-    email: 'sjbd.corerenalcenter@gmail.com',
-    hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
-    services: ['Hemodialysis'],
-    medicalDirector: 'To be confirmed',
-    headNurse: 'To be confirmed',
-    stations: null,
-    transit: 'In Pio del Pilar, Makati; accessible from Osmeña Highway and South Avenue routes.',
   },
   {
     slug: 'caloocan',
@@ -74,9 +62,9 @@ export const branches: Branch[] = [
     transit: 'Inside Araneta Square Mall on Samson Road; near the Monumento transport hub and LRT-1 Monumento station.',
   },
   {
-    slug: 'marikina',
+    slug: 'marikina-san-roque',
     foundation: 'St. John Biocare',
-    name: 'Marikina',
+    name: 'Marikina (San Roque)',
     area: 'Marikina City',
     address: '2F WRCC Building 2, #33 Dragon Street corner Gil Fernando Avenue, San Roque, Marikina City 1801',
     phone: '8633 5404 · 0917 877 9920',
@@ -89,6 +77,38 @@ export const branches: Branch[] = [
     stations: null,
     transit: 'Along Gil Fernando Avenue, San Roque; accessible by jeepney and tricycle routes.',
   },
+
+  // ---- Core Renal Center ----
+  {
+    slug: 'core-renal-santillan',
+    foundation: 'Core Renal Center',
+    name: 'Santillan (Makati)',
+    area: 'Makati City',
+    address: '7426 Santillan Street, Ground Floor, EMF Building, Pio del Pilar, Makati City',
+    phone: '8844 2693 · 8844 2696 · 8772 8350 · 0916 702 3502',
+    phoneHref: 'tel:+63288442693',
+    email: 'sjbd.corerenalcenter@gmail.com',
+    hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
+    services: ['Hemodialysis'],
+    medicalDirector: 'To be confirmed',
+    headNurse: 'To be confirmed',
+    stations: null,
+    transit: 'In Pio del Pilar, Makati; accessible from Osmeña Highway and South Avenue routes.',
+  },
+  {
+    slug: 'core-renal-buendia',
+    foundation: 'Core Renal Center',
+    name: 'Buendia (Makati)',
+    area: 'Makati City',
+    address: 'Buendia, Makati City — opening this year',
+    phone: '', phoneHref: '', email: '',
+    hours: 'Opening this year',
+    services: [],
+    medicalDirector: '', headNurse: '', stations: null, transit: '',
+    underConstruction: true,
+  },
+
+  // ---- St. Josef Renal Care Foundation ----
   {
     slug: 'st-josef-marikina',
     foundation: 'St. Josef Renal Care Foundation',
@@ -121,6 +141,40 @@ export const branches: Branch[] = [
     stations: null,
     transit: 'Along the NLEX Road in Barangay Patubig, Marilao; accessible from the NLEX Marilao exit.',
   },
+  {
+    slug: 'st-josef-cainta',
+    foundation: 'St. Josef Renal Care Foundation',
+    name: 'Cainta, Rizal',
+    area: 'Cainta, Rizal',
+    address: 'Cainta, Rizal — opening this year',
+    phone: '', phoneHref: '', email: '',
+    hours: 'Opening this year',
+    services: [],
+    medicalDirector: '', headNurse: '', stations: null, transit: '',
+    underConstruction: true,
+  },
+  {
+    slug: 'st-josef-maypajo',
+    foundation: 'St. Josef Renal Care Foundation',
+    name: 'Maypajo, Caloocan',
+    area: 'Caloocan City',
+    address: 'Maypajo, Caloocan City — opening this year',
+    phone: '', phoneHref: '', email: '',
+    hours: 'Opening this year',
+    services: [],
+    medicalDirector: '', headNurse: '', stations: null, transit: '',
+    underConstruction: true,
+  },
+];
+
+// Centers that are open now (have a page, directions, and take appointments).
+export const openBranches = branches.filter((b) => !b.underConstruction);
+
+// The foundations, in display order.
+export const foundations = [
+  'St. John Biocare',
+  'Core Renal Center',
+  'St. Josef Renal Care Foundation',
 ];
 
 export function getBranch(slug: string): Branch | undefined {

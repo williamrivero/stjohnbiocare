@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BiocareValues from '../components/BiocareValues.astro';
-import { branches } from '../data/branches';
+import { openBranches } from '../data/branches';
 import { site } from '../data/site';
 
 const services = [
@@ -36,7 +36,7 @@ const services = [
   <!-- 2. REASSURANCE STRIP -->
   <section class="reassure">
     <div class="container reassure__grid">
-      <div><strong>{branches.length} centers</strong><span>across Metro Manila &amp; Bulacan</span></div>
+      <div><strong>{openBranches.length} centers</strong><span>across Metro Manila &amp; Bulacan</span></div>
       <div><strong>Open 5:30&nbsp;AM</strong><span>Mon–Sat, early for working patients</span></div>
       <div><strong>PhilHealth</strong><span>we help you understand your coverage</span></div>
     </div>
@@ -86,9 +86,10 @@ const services = [
         <p class="lead" style="margin-inline:auto">Centers across Metro Manila, each open six days a week from early morning.</p>
       </div>
       <div class="grid grid--3">
-        {branches.map((b) => (
+        {openBranches.map((b) => (
           <a class="card" href={`/centers/${b.slug}`} style="text-decoration:none;color:inherit;display:block">
             <span class="pill" style="margin-bottom:10px">{b.area}</span>
+            <p class="eyebrow" style="margin:0 0 2px">{b.foundation}</p>
             <h3>{b.name}</h3>
             <p>{b.hours}</p>
             <span class="card__link">View this center</span>

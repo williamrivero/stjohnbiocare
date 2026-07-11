@@ -1,6 +1,6 @@
 ---
 import { site } from '../data/site';
-import { branches } from '../data/branches';
+import { openBranches } from '../data/branches';
 const year = 2026;
 ---
 <footer class="footer">
@@ -33,7 +33,7 @@ const year = 2026;
       <div>
         <h4>Our Centers</h4>
         <ul style="list-style:none;padding:0;margin:0;line-height:2">
-          {branches.map((b) => (
+          {openBranches.map((b) => (
             <li><a href={`/centers/${b.slug}`}>{b.name}</a></li>
           ))}
         </ul>

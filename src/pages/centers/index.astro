@@ -1,46 +1,62 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { branches } from '../../data/branches';
+import { branches, foundations } from '../../data/branches';
+const mapsUrl = (b) => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${b.foundation} ${b.name}, ${b.address}`)}`;
+const wazeUrl = (b) => `https://waze.com/ul?q=${encodeURIComponent(`${b.foundation} ${b.name}, ${b.address}`)}&navigate=yes`;
+const openCount = branches.filter((b) => !b.underConstruction).length;
+const soonCount = branches.filter((b) => b.underConstruction).length;
 ---
-<BaseLayout title="Our Centers" description="St. John Biocare and St. Josef Renal Care hemodialysis centers across Metro Manila and Bulacan — addresses, hours, teams and directions.">
+<BaseLayout title="Our Centers" description="St. John Biocare, Core Renal Center and St. Josef Renal Care hemodialysis centers across Metro Manila, Rizal and Bulacan — addresses, hours and directions.">
   <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream))">
-    <div class="container center" style="max-width:760px">
+    <div class="container center" style="max-width:780px">
       <p class="eyebrow">Our centers</p>
       <h1>Our centers across Metro Manila &amp; Bulacan.</h1>
       <p class="lead" style="margin-inline:auto">
-        Our network — St. John Biocare and our sister foundation St. Josef Renal Care — spans
-        Metro Manila and Bulacan. Each center is open six days a week from 5:30&nbsp;AM. Choose one
-        below for its address, hours, team and directions.
+        Our growing network — <strong>St. John Biocare</strong>, <strong>Core Renal Center</strong> and
+        our sister foundation <strong>St. Josef Renal Care</strong> — has {openCount} centers open now,
+        with {soonCount} more opening this year. Each center runs six days a week from 5:30&nbsp;AM.
       </p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="grid grid--2">
-        {branches.map((b) => (
-          <div class="card">
-            <span class="pill" style="margin-bottom:10px">{b.area}</span>
-            <p class="eyebrow" style="margin:0 0 2px">{b.foundation}</p>
-            <h2 style="font-size:1.45rem;margin-bottom:.3rem">{b.name}</h2>
-            <p class="muted" style="margin-bottom:.5rem">{b.address}</p>
-            <p style="margin-bottom:.3rem"><strong>Hours:</strong> {b.hours}</p>
-            <p style="margin-bottom:.3rem"><strong>Phone:</strong> {b.phone}</p>
-            <p style="margin-bottom:1rem"><strong>On site:</strong> {b.services.join(' · ')}</p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn btn--primary" href={`/centers/${b.slug}`}>View center</a>
-              <a class="btn btn--ghost" target="_blank" rel="noopener"
-                 href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${b.foundation} ${b.name}, ${b.address}`)}`}>Google Maps</a>
-              <a class="btn btn--ghost" target="_blank" rel="noopener"
-                 href={`https://waze.com/ul?q=${encodeURIComponent(`${b.foundation} ${b.name}, ${b.address}`)}&navigate=yes`}>Waze</a>
+      {foundations.map((foundation) => {
+        const group = branches.filter((b) => b.foundation === foundation);
+        if (!group.length) return null;
+        return (
+          <div style="margin-bottom:44px">
+            <h2 style="font-size:1.5rem;margin-bottom:16px">{foundation}</h2>
+            <div class="grid grid--2">
+              {group.map((b) => (
+                <div class="card">
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px">
+                    <span class="pill">{b.area}</span>
+                    {b.underConstruction && (
+                      <span class="pill" style="background:#fff2d9;color:#9a6a00">Opening this year</span>
+                    )}
+                  </div>
+                  <h3 style="font-size:1.35rem;margin-bottom:.3rem">{b.name}</h3>
+                  {b.underConstruction ? (
+                    <p class="muted" style="margin:0">A new center is under construction here and will open this year. Watch this space.</p>
+                  ) : (
+                    <>
+                      <p class="muted" style="margin-bottom:.5rem">{b.address}</p>
+                      <p style="margin-bottom:.3rem"><strong>Hours:</strong> {b.hours}</p>
+                      <p style="margin-bottom:1rem"><strong>Phone:</strong> {b.phone}</p>
+                      <div style="display:flex;gap:10px;flex-wrap:wrap">
+                        <a class="btn btn--primary" href={`/centers/${b.slug}`}>View center</a>
+                        <a class="btn btn--ghost" target="_blank" rel="noopener" href={mapsUrl(b)}>Google Maps</a>
+                        <a class="btn btn--ghost" target="_blank" rel="noopener" href={wazeUrl(b)}>Waze</a>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-      <p class="muted center" style="margin-top:26px;font-size:.95rem">
-        We also have sister companies and <strong>more centers under construction</strong> —
-        watch this space as the St. John Biocare network grows.
-      </p>
+        );
+      })}
     </div>
   </section>
 </BaseLayout>

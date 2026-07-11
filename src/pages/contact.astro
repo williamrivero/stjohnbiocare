@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
-import { branches } from '../data/branches';
+import { openBranches } from '../data/branches';
 ---
 <BaseLayout title="Contact" description="Reach St. John Biocare — head office and all five center contacts across Metro Manila.">
   <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:48px">
@@ -32,7 +32,7 @@ import { branches } from '../data/branches';
     <div class="container" style="margin-top:30px">
       <h2 style="font-size:1.35rem">All centers</h2>
       <div class="grid grid--2" style="margin-top:14px">
-        {branches.map((b) => (
+        {openBranches.map((b) => (
           <div class="card">
             <p class="eyebrow" style="margin:0 0 2px">{b.foundation}</p>
             <h3>{b.name}</h3>
