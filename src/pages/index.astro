@@ -5,10 +5,10 @@ import { openBranches } from '../data/branches';
 import { site } from '../data/site';
 
 const services = [
-  { title: 'Hemodialysis', text: 'Modern machines, watchful nurses, and early-morning schedules built around real working lives.', href: '/services#hemodialysis', icon: '🩺' },
-  { title: 'Physicians on duty', text: "A doctor on duty every hour we're open — watching over your treatment, ready to act.", href: '/services#physicians', icon: '👨‍⚕️' },
-  { title: 'Renal dietitians', text: 'A kidney diet built around Filipino food and your own table — advice you can actually live with.', href: '/services#dietitian', icon: '🥗' },
-  { title: 'Social workers', text: 'PhilHealth, costs, and the worries nobody warns you about — carried with you, not left to you.', href: '/services#social', icon: '🤝' },
+  { title: 'Hemodialysis', text: 'Modern machines, watchful nurses, and 5:30 AM chairs — so you can dialyze and still make a day of work.', href: '/services#hemodialysis', icon: '🩺' },
+  { title: 'Physicians on duty', text: "A doctor here every hour we're open — not on call down the hall, but in the room, watching over you.", href: '/services#physicians', icon: '👨‍⚕️' },
+  { title: 'Renal dietitians', text: 'A kidney diet built around Filipino food and your own table — advice you can actually keep.', href: '/services#dietitian', icon: '🥗' },
+  { title: 'Social workers', text: 'PhilHealth, the paperwork, the money worries — carried with you, so you carry less.', href: '/services#social', icon: '🤝' },
 ];
 ---
 <BaseLayout image="/images/og/og-home.jpg">
@@ -22,10 +22,10 @@ const services = [
       <span class="pill" style="margin-bottom:16px">A foundation, not a chain · Since 2011</span>
       <h1><span class="hl" style="color:#ff8ba0">Excellent</span> dialysis, for every family — not just a few.</h1>
       <p class="lead">
-        St. John Biocare is a family-founded network of hemodialysis and diagnostic centers
-        across Metro Manila — born from one son's promise to his mother. We see the person in
-        the chair, not just the patient: we take the fear out of dialysis, we're honest about
-        cost, and we hold to a standard we would want for our own.
+        We're a family-run foundation, not a corporate chain — and it shows most in the parts
+        you can't see. Three times a week, for years, you place your life in our hands. We built
+        every center to be worthy of that: warm enough to feel like family, honest about every
+        peso, and relentless about the safety no patient should have to think about.
       </p>
       <div class="page-hero__actions">
         <a href="/new-patients#request" class="btn btn--crimson">Request an appointment</a>
@@ -37,9 +37,9 @@ const services = [
   <!-- 2. REASSURANCE STRIP -->
   <section class="reassure">
     <div class="container reassure__grid">
-      <div><strong>{openBranches.length} centers</strong><span>across Metro Manila &amp; Bulacan</span></div>
-      <div><strong>Open 5:30&nbsp;AM</strong><span>Mon–Sat, early for working patients</span></div>
-      <div><strong>PhilHealth</strong><span>we help you understand your coverage</span></div>
+      <div><strong>{openBranches.length} centers</strong><span>and growing, across Metro Manila &amp; Bulacan</span></div>
+      <div><strong>Open 5:30&nbsp;AM</strong><span>dialyze before work, Monday to Saturday</span></div>
+      <div><strong>PhilHealth &amp; HMO</strong><span>we help you make sense of every peso</span></div>
     </div>
   </section>
 
@@ -65,6 +65,7 @@ const services = [
       <div class="center" style="margin-bottom:32px">
         <p class="eyebrow">Complete care</p>
         <h2>Everything your dialysis needs — nothing you have to chase.</h2>
+        <p class="lead" style="margin-inline:auto">One team, one place, every part of your care thought through — so all you have to do is show up and get well.</p>
       </div>
       <div class="grid grid--4">
         {services.map((s) => (
@@ -158,6 +159,7 @@ const services = [
       <div class="center" style="margin-bottom:32px">
         <p class="eyebrow">Kidney Health Hub</p>
         <h2>Understand your kidneys, in plain Filipino-English.</h2>
+        <p class="lead" style="margin-inline:auto">Free, honest guides — because a patient who understands what's happening is a patient who does better.</p>
       </div>
       <div class="grid grid--3">
         <a class="card" href="/kidney-health/understanding-kidney-disease" style="text-decoration:none;color:inherit">
@@ -201,10 +203,10 @@ const services = [
   <!-- 11. FINAL CTA -->
   <section class="section center">
     <div class="container" style="max-width:680px">
-      <h2>Not sure where to start? Talk to us.</h2>
+      <h2>Take the first step. We'll take it with you.</h2>
       <p class="lead" style="margin-inline:auto">
-        Call, message, or send a short request — a real person will answer, and help you
-        take the next step.
+        Call, message, or send a short request — a real person answers, and helps you work out
+        what's next. No pressure. No runaround. Just a straight answer from someone who cares.
       </p>
       <div class="hero__actions" style="justify-content:center">
         <a href={site.phoneHref} class="btn btn--primary">Call {site.phone}</a>
