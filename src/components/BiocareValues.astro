@@ -2,8 +2,8 @@
 import { site } from '../data/site';
 ---
 <div class="biocare">
-  {site.biocare.map((v) => (
-    <div class="biocare__item">
+  {site.biocare.map((v, i) => (
+    <div class="biocare__item" style={`--i:${i}`}>
       <div class="biocare__letter" aria-hidden="true">{v.letter}</div>
       <div>
         <h3 class="biocare__title">{v.title}</h3>
@@ -21,6 +21,19 @@ import { site } from '../data/site';
     background: var(--white); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 20px 22px;
   }
+  /* staggered stacking reveal — enabled by JS (cards visible without JS).
+     Cards deal in one by one in DOM order: B → I → O → C → A → R → E */
+  .biocare.js-anim .biocare__item {
+    opacity: 0;
+    transform: translateY(26px) scale(.97);
+    transition: opacity .5s ease, transform .55s cubic-bezier(.2,.75,.2,1);
+    transition-delay: calc(var(--i, 0) * 95ms);
+    will-change: opacity, transform;
+  }
+  .biocare.js-anim.is-in .biocare__item { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .biocare.js-anim .biocare__item { opacity: 1; transform: none; transition: none; }
+  }
   .biocare__letter {
     flex: 0 0 auto; width: 52px; height: 52px; border-radius: 14px;
     display: grid; place-items: center;
@@ -30,3 +43,23 @@ import { site } from '../data/site';
   .biocare__title { margin: 2px 0 .2rem; font-size: 1.12rem; }
   .biocare__text { margin: 0; color: var(--ink-soft); font-size: .98rem; }
 </style>
+
+<script>
+  // Reveal each BIOCARE card in sequence when the block scrolls into view.
+  const reveal = () => {
+    const blocks = document.querySelectorAll('.biocare');
+    blocks.forEach((b) => b.classList.add('js-anim'));
+    if (!('IntersectionObserver' in window)) {
+      blocks.forEach((b) => b.classList.add('is-in'));
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); obs.unobserve(e.target); }
+      }
+    }, { threshold: 0.2 });
+    blocks.forEach((b) => obs.observe(b));
+  };
+  reveal();
+  document.addEventListener('astro:page-load', reveal);
+</script>
