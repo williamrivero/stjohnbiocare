@@ -11,8 +11,8 @@ const team = [
 ---
 <BaseLayout title="Services" description="Hemodialysis matched to you, a full team around your chair, and the invisible safety work — innovator medicines, maker-calibrated machines, dual-pass RO water — that keeps you safe at St. John Biocare." image="/images/og/og-services.jpg">
   <PageHero
-    image="/images/photos/dsc_0038.webp"
-    alt="A St. John Biocare dialysis treatment area with monitoring equipment"
+    image="/images/heroes/services-hero.webp"
+    alt="A St. John Biocare nurse and a family member at the side of an older patient resting comfortably during dialysis"
     eyebrow="Services"
     title="Everything your dialysis care needs."
     subtitle="The machines, the medicines, the water, the people — every detail that keeps you safe, in the hands of a team that has done this for fifteen years."
@@ -44,6 +44,15 @@ const team = [
       days your body is fragile, and <strong>isolated ultrafiltration (UF)</strong> when the problem is
       excess fluid, not toxins. Your prescription is a medical decision, revisited as you change. Never a
       default left on the machine.</p>
+
+      <figure style="margin:24px 0 0">
+        <picture>
+          <source srcset="/images/photos/services-treatment.webp" type="image/webp" />
+          <img src="/images/photos/services-treatment.jpg" width="1400" height="933" loading="lazy"
+               alt="A St. John Biocare nurse setting the controls on a modern hemodialysis machine beside a resting patient"
+               style="width:100%;height:auto;border-radius:14px;box-shadow:var(--shadow);display:block" />
+        </picture>
+      </figure>
     </div>
   </section>
 
@@ -55,6 +64,15 @@ const team = [
       is wrapped in a whole team — and we take the time to explain everything in plain language, because a
       patient who understands what is happening is a patient who does better. When you know your treatment,
       you become part of it.</p>
+
+      <figure style="margin:24px 0 0">
+        <picture>
+          <source srcset="/images/photos/services-team.webp" type="image/webp" />
+          <img src="/images/photos/services-team.jpg" width="1400" height="933" loading="lazy"
+               alt="A St. John Biocare care team — nurse, physician and dietitian — around a patient and their family member"
+               style="width:100%;height:auto;border-radius:14px;box-shadow:var(--shadow);display:block" />
+        </picture>
+      </figure>
 
       <div class="grid grid--2" style="margin-top:22px">
         {team.map((m) => (
@@ -75,6 +93,25 @@ const team = [
       never look — in the medicines, the water, the calibration, the cleaning. These are the corners that
       can be cut where no patient would ever notice. We built our name on refusing to cut them — not
       because someone is watching, but because excellence is the whole reason we exist.</p>
+
+      <div class="grid grid--2" style="margin-top:22px">
+        <figure style="margin:0">
+          <picture>
+            <source srcset="/images/photos/services-safety.webp" type="image/webp" />
+            <img src="/images/photos/services-safety.jpg" width="1400" height="939" loading="lazy"
+                 alt="A technician inspecting the stainless-steel reverse-osmosis water treatment system"
+                 style="width:100%;height:auto;border-radius:14px;box-shadow:var(--shadow);display:block" />
+          </picture>
+        </figure>
+        <figure style="margin:0">
+          <picture>
+            <source srcset="/images/photos/services-infection-control.webp" type="image/webp" />
+            <img src="/images/photos/services-infection-control.jpg" width="1400" height="933" loading="lazy"
+                 alt="A nurse handling sterile, individually packaged dialysis supplies under strict infection-control practices"
+                 style="width:100%;height:auto;border-radius:14px;box-shadow:var(--shadow);display:block" />
+          </picture>
+        </figure>
+      </div>
 
       <div class="grid grid--2" style="margin-top:22px">
         <div class="card">

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
 import { branches, foundations } from '../../data/branches';
 const mapsUrl = (b) => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${b.foundation} ${b.name}, ${b.address}`)}`;
 const wazeUrl = (b) => `https://waze.com/ul?q=${encodeURIComponent(`${b.foundation} ${b.name}, ${b.address}`)}&navigate=yes`;
@@ -7,17 +8,13 @@ const openCount = branches.filter((b) => !b.underConstruction).length;
 const soonCount = branches.filter((b) => b.underConstruction).length;
 ---
 <BaseLayout title="Our Centers" description="St. John Biocare, Core Renal Center and St. Josef Renal Care hemodialysis centers across Metro Manila, Rizal and Bulacan — addresses, hours and directions." image="/images/og/og-centers.jpg">
-  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream))">
-    <div class="container center" style="max-width:780px">
-      <p class="eyebrow">Our centers</p>
-      <h1>Our centers across Metro Manila &amp; Bulacan.</h1>
-      <p class="lead" style="margin-inline:auto">
-        Our growing network — <strong>St. John Biocare</strong>, <strong>Core Renal Center</strong> and
-        our sister foundation <strong>St. Josef Renal Care</strong> — has {openCount} centers open now,
-        with {soonCount} more opening this year. Each center runs six days a week from 5:30&nbsp;AM.
-      </p>
-    </div>
-  </section>
+  <PageHero
+    image="/images/heroes/centers-hero.webp"
+    alt="A bright, welcoming St. John Biocare dialysis floor with a nurse attending to a patient"
+    eyebrow="Our centers"
+    title="Our centers across Metro Manila & Bulacan."
+    subtitle={`Our growing network — St. John Biocare, Core Renal Center and our sister foundation St. Josef Renal Care — has ${openCount} centers open now, with ${soonCount} more opening this year. Each runs six days a week from 5:30 AM.`}
+  />
 
   <section class="section">
     <div class="container">
