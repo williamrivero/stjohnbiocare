@@ -3,49 +3,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
 const team = [
-  { title: 'Physicians on duty', text: 'A doctor is on duty throughout clinic hours — watching over each treatment, ready to adjust the prescription or respond the moment anything changes.' },
-  { title: 'Renal dietitians', text: 'Our dietitians build a kidney-friendly plan around real Filipino food and your own preferences. Practical guidance you can actually live with, not a lecture.' },
-  { title: 'Social workers', text: 'Dialysis brings worries beyond the medical. Our social workers help you navigate PhilHealth, costs and the paperwork, so you can focus on getting better.' },
-  { title: 'Diagnostics & laboratory', text: 'We coordinate the bloodwork and diagnostics dialysis patients need with reputable, well-known partner laboratories — reliable results, on time, without the extra runaround.' },
+  { title: 'A doctor, always watching', text: 'A physician is on duty every hour we are open — not on call, not down the hall, but here, watching your treatment and ready to act the moment anything changes.' },
+  { title: 'Dietitians who speak Filipino food', text: 'A kidney diet you can actually live with, built around sinigang and rice and the food on your own table — not a printout of things you will never eat.' },
+  { title: 'Social workers in your corner', text: 'PhilHealth, the paperwork, the money worries — the parts of dialysis nobody warns you about. Our social workers carry them with you, so you can carry less.' },
+  { title: 'Diagnostics without the runaround', text: 'We coordinate your bloodwork and labs with trusted, well-known partner laboratories. Reliable results, on time, without you chasing them across the city.' },
 ];
 ---
-<BaseLayout title="Services" description="Hemodialysis and a full range of modalities, wrap-around clinical support, and the quiet safety work behind every session at St. John Biocare." image="/images/og/og-services.jpg">
+<BaseLayout title="Services" description="Hemodialysis matched to you, a full team around your chair, and the invisible safety work — innovator medicines, maker-calibrated machines, dual-pass RO water — that keeps you safe at St. John Biocare." image="/images/og/og-services.jpg">
   <PageHero
     image="/images/photos/dsc_0038.webp"
     alt="A St. John Biocare dialysis treatment area with monitoring equipment"
     eyebrow="Services"
     title="Everything your dialysis care needs."
-    subtitle="The clinical care, the people around your chair, and the safety work behind every session — explained plainly."
+    subtitle="The machines, the medicines, the water, the people — every detail that keeps you safe, in the hands of a team that has done this for fifteen years."
   />
 
   <section class="section">
     <div class="container stack" style="max-width:760px">
-      <p class="lead">Good dialysis is rarely one thing done well. It is a hundred small things done
-      right — session after session, year after year. After more than fifteen years caring for Filipinos
-      with kidney disease, we have built our centers around that idea. What follows is what your care
-      includes, and the standards behind it.</p>
+      <p class="lead">Kidney failure asks something enormous of you: to hand your life to strangers, three
+      times a week, for years. We never forget that. So we built this place around a single promise — that
+      you can walk in, sit down, and simply be cared for, while we quietly carry the thousand details you
+      should never have to think about.</p>
+      <p>Here is what your care includes — and, just as important, the standards behind it that you will
+      never see from your chair.</p>
     </div>
   </section>
 
   <section class="section section--mist">
     <div class="container" style="max-width:820px">
       <p class="eyebrow">The treatment</p>
-      <h2>Hemodialysis, matched to you.</h2>
-      <p>At the center of everything we do is hemodialysis — modern machines, careful monitoring, strict
-      infection control, and early-morning schedules built around patients and caregivers who still have
-      work and family to get to. But no two patients are the same, and neither is the right treatment.</p>
-      <p>So we offer a full range of modalities and choose with you: <strong>low-flux</strong> and
+      <h2>There is no standard patient. So we don't run standard sessions.</h2>
+      <p>Hemodialysis is the heart of what we do — modern machines, close monitoring, strict infection
+      control, and early-morning schedules built for people who still have work to get to and families to
+      go home to. But two people can carry the same diagnosis and need very different treatment. Yours
+      should fit <em>you</em>.</p>
+      <p>That is why we offer the full range, and choose it with you: <strong>low-flux</strong> and
       <strong>high-flux hemodialysis</strong>, <strong>hemodiafiltration (HDF)</strong> at select branches
-      for more thorough clearance, <strong>SLED (sustained low-efficiency dialysis)</strong> for patients
-      who need a gentler, slower session, and <strong>isolated ultrafiltration (UF)</strong> when the goal
-      is simply to remove excess fluid. The prescription is a clinical decision, revisited as your needs
-      change — not a fixed setting.</p>
+      when you need more thorough clearance, <strong>SLED</strong> — a gentler, slower session — for the
+      days your body is fragile, and <strong>isolated ultrafiltration (UF)</strong> when the problem is
+      excess fluid, not toxins. Your prescription is a medical decision, revisited as you change. Never a
+      default left on the machine.</p>
 
       <figure style="margin:22px 0 0">
         <img src="/images/photos/dsc_0033.webp"
              alt="A dialyzer on a hemodialysis machine during a treatment session" loading="lazy"
              style="max-width:300px;width:100%;height:auto;border-radius:12px;display:block" width="1328" height="2000" />
-        <figcaption class="muted" style="font-size:.82rem;margin-top:6px">A dialyzer at work during a session — where your blood is gently cleaned.</figcaption>
+        <figcaption class="muted" style="font-size:.82rem;margin-top:6px">A dialyzer at work — where your blood is gently cleaned, drop by drop.</figcaption>
       </figure>
     </div>
   </section>
@@ -53,10 +56,10 @@ const team = [
   <section class="section">
     <div class="container" style="max-width:820px">
       <p class="eyebrow">The team around your chair</p>
-      <h2>A team, not just a machine.</h2>
-      <p>A dialysis machine is only as good as the people watching over it. That is why your care here is
-      wrapped in a whole team — and why we take the time to explain kidney health in plain language, so you
-      and your family understand what is happening and what to do next. When you understand your treatment,
+      <h2>A machine cleans your blood. People keep you well.</h2>
+      <p>The best equipment in the world is only as good as the people watching over it. So your care here
+      is wrapped in a whole team — and we take the time to explain everything in plain language, because a
+      patient who understands what is happening is a patient who does better. When you know your treatment,
       you become part of it.</p>
 
       <div class="grid grid--2" style="margin-top:22px">
@@ -73,46 +76,58 @@ const team = [
   <section class="section section--mist">
     <div class="container" style="max-width:820px">
       <p class="eyebrow">Quality &amp; safety</p>
-      <h2>The safety work you don't always see.</h2>
-      <p>Much of what keeps dialysis safe happens quietly, between your sessions and behind the scenes.
-      These are the standards we hold ourselves to, without being asked and without cutting corners.</p>
+      <h2>The safety you can't see is the safety that matters most.</h2>
+      <p>Anyone can put a chair and a machine in a room. What actually keeps you safe happens where you
+      never look — in the medicines, the water, the calibration, the cleaning. This is where we refuse to
+      cut a single corner.</p>
 
       <div class="grid grid--2" style="margin-top:22px">
         <div class="card">
-          <h3 style="font-size:1.15rem">Innovator-brand medicines</h3>
-          <p style="margin:0">We use well-established, proven <strong>innovator (original-brand)</strong>
-          pharmaceutical products — the original manufacturers' own, not substitutes — for your
-          erythropoietin, intravenous iron and <strong>halal-certified heparin</strong>, and for all our
-          materials and chemicals.</p>
+          <h3 style="font-size:1.15rem">Innovator medicines — never the substitute</h3>
+          <p style="margin:0">The medicines that go into your line are <strong>innovator (original-brand)
+          products</strong> — the original manufacturers' own erythropoietin, intravenous iron and
+          <strong>halal-certified heparin</strong>, and the same standard for every material and chemical
+          we use. The cheaper copy may share a name. Your body knows the difference.</p>
         </div>
         <div class="card">
-          <h3 style="font-size:1.15rem">Trusted machines, maker-calibrated</h3>
+          <h3 style="font-size:1.15rem">Trusted machines, tuned by their makers</h3>
           <p style="margin:0">Every center runs hemodialysis machines from <strong>well-known, established
-          brands — locally and internationally</strong>, calibrated regularly by their
-          <strong>original manufacturers</strong>, so the equipment caring for you performs exactly as it
-          should.</p>
+          brands — locally and internationally</strong>, and we let no one but the <strong>original
+          manufacturers</strong> calibrate them, on a regular schedule. The equipment caring for you
+          performs exactly as it was built to.</p>
         </div>
         <div class="card">
-          <h3 style="font-size:1.15rem">Dual-pass RO water, in every center</h3>
-          <p style="margin:0">The water used in dialysis has to be exceptionally pure. Every center's
-          treatment system uses a <strong>dual-pass reverse-osmosis (RO)</strong> setup — the water is
-          purified twice before it ever reaches a machine — so high water-quality standards are met
-          across the network.</p>
+          <h3 style="font-size:1.15rem">Water purified twice, before it ever reaches you</h3>
+          <p style="margin:0">The water in dialysis meets your bloodstream — so it must be
+          extraordinarily pure. Every center treats its water through a <strong>dual-pass reverse-osmosis
+          (RO)</strong> system, cleansing it twice over before a single drop reaches a machine. That is a
+          standard we hold across the entire network.</p>
         </div>
         <div class="card">
-          <h3 style="font-size:1.15rem">Dialyzer reprocessing &amp; infection control</h3>
+          <h3 style="font-size:1.15rem">Infection control, by protocol not by luck</h3>
           <p style="margin:0">Careful, protocol-driven dialyzer reprocessing and formal infection-control
-          practices govern every session — the disciplined, unglamorous work that quietly keeps you
-          safe.</p>
+          practices govern every session. It is disciplined, unglamorous, repetitive work — and it is
+          exactly the work that keeps you safe, session after session.</p>
         </div>
         <div class="card">
-          <h3 style="font-size:1.15rem">Closed Sundays — the work never stops</h3>
-          <p style="margin:0">We close to patients on <strong>Sundays</strong>, and that is precisely when
-          the deeper work happens: <strong>wall-to-wall clinic disinfection</strong> and full servicing of
-          the <strong>water treatment system</strong> — disinfection, calibration, resetting and
-          maintenance. You return to a center cleaned and checked from top to bottom.</p>
+          <h3 style="font-size:1.15rem">On the day we close, we work hardest</h3>
+          <p style="margin:0">We shut our doors to patients on <strong>Sundays</strong> — and that is when
+          the deepest work begins: <strong>wall-to-wall clinic disinfection</strong> and full servicing of
+          the <strong>water treatment system</strong>, from disinfection and calibration to resetting and
+          maintenance. You come back Monday to a center cleaned and checked from top to bottom.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section section--forest">
+    <div class="container center" style="max-width:720px">
+      <p class="eyebrow">Come see for yourself</p>
+      <h2>This is what it means to be cared for here.</h2>
+      <p style="color:#e5f3e9;font-size:1.15rem">Nothing left to chance. Nothing you have to chase. Just
+      good, careful dialysis — and people who treat your safety as their own. Visit a center, meet the
+      team, and let us show you the difference in person.</p>
+      <p style="margin-top:22px"><a href="/new-patients#request" class="btn btn--light">Request an appointment</a></p>
     </div>
   </section>
 
