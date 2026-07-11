@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 const services = [
   { id: 'hemodialysis', title: 'Hemodialysis', text: 'Our core service. Modern machines, careful monitoring, strict infection control, and early-morning schedules built around working patients and caregivers.', img: '/images/photos/dsc_0033.webp', imgAlt: 'A dialyzer on a hemodialysis machine during a treatment session' },
+  { id: 'modalities', title: 'A full range of dialysis modalities', text: 'Beyond standard sessions, we offer low-flux and high-flux hemodialysis, hemodiafiltration (HDF) at select branches, SLED (sustained low-efficiency dialysis) for more fragile patients, and isolated ultrafiltration (UF) for fluid removal — so your treatment can be matched to what your body needs.' },
   { id: 'physicians', title: 'Physicians on duty', text: 'A physician is on duty during clinic hours, so there is always a doctor watching over your treatment and ready to respond.' },
   { id: 'dietitian', title: 'Renal dietitians', text: 'Our renal dietitians help you build a kidney-friendly diet that fits Filipino food and your own preferences — practical guidance, not a lecture.' },
   { id: 'social', title: 'Social workers', text: 'Our social workers are on hand to help you navigate PhilHealth, costs, and the practical worries that come with dialysis.' },
@@ -62,14 +63,19 @@ const services = [
           calibrated regularly by their <strong>original manufacturers</strong> — so the equipment caring
           for you performs exactly as it should.</p>
         </div>
-      </div>
-
-      <div class="card" style="margin-top:18px">
-        <h3 style="font-size:1.15rem">Closed Sundays — but the work never stops</h3>
-        <p style="margin:0">We close to patients on <strong>Sundays</strong>, and that's precisely when
-        the behind-the-scenes work happens: <strong>wall-to-wall clinic disinfection</strong> and full
-        servicing of our <strong>water treatment system</strong> — disinfection, calibration, resetting
-        and maintenance. You come back to a center that has been cleaned and checked from top to bottom.</p>
+        <div class="card">
+          <h3 style="font-size:1.15rem">Dual-pass RO water, in every center</h3>
+          <p style="margin:0">All our water treatment systems use a <strong>dual-pass reverse-osmosis
+          (RO)</strong> setup — the water is purified twice before it's used — so the water behind every
+          session meets high purity standards across all our centers.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.15rem">Closed Sundays — but the work never stops</h3>
+          <p style="margin:0">We close to patients on <strong>Sundays</strong>, and that's precisely when
+          the behind-the-scenes work happens: <strong>wall-to-wall clinic disinfection</strong> and full
+          servicing of our <strong>water treatment system</strong> — disinfection, calibration, resetting
+          and maintenance. You come back to a center that has been cleaned and checked from top to bottom.</p>
+        </div>
       </div>
     </div>
   </section>
