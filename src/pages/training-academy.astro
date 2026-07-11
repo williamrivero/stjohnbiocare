@@ -1,17 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 ---
-<BaseLayout title="Training Academy" description="The St. John Biocare Hemodialysis Nurses Training Program — building renal nursing skill from the ground up.">
-  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:48px">
-    <div class="container" style="max-width:780px">
-      <p class="eyebrow">Training Academy</p>
-      <h1>We train the nurses others hire.</h1>
-      <p class="lead">
-        The Hemodialysis Nurses Training Program builds competent, confident renal nurses —
-        theory and supervised clinical practice, led by our nephrology and nursing leadership.
-      </p>
-    </div>
-  </section>
+<BaseLayout title="Training Academy" description="The St. John Biocare Hemodialysis Nurses Training Program — building renal nursing skill from the ground up." image="/images/photos/dsc_0026.webp">
+  <PageHero
+    image="/images/photos/dsc_0026.webp"
+    alt="A St. John Biocare senior nurse reviewing a patient chart with two trainee nurses"
+    eyebrow="Training Academy"
+    title="We train the nurses others hire."
+    subtitle="The Hemodialysis Nurses Training Program builds competent, confident renal nurses — theory and supervised clinical practice, led by our nephrology and nursing leadership."
+  />
+
 
   <section class="section">
     <div class="container grid grid--2" style="max-width:900px">

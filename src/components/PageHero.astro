@@ -1,0 +1,24 @@
+---
+// Full-bleed photographic page hero — St. John Biocare's signature hero
+// (deliberately distinct from renalcarematters' circular vignette).
+interface Props {
+  image: string;
+  alt: string;
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  position?: string; // object-position, e.g. "center", "right"
+}
+const { image, alt, eyebrow, title, subtitle, position = 'center' } = Astro.props;
+---
+<section class="page-hero">
+  <img class="page-hero__img" src={image} alt={alt} width="2000" height="1328"
+       fetchpriority="high" loading="eager" style={`object-position:${position}`} />
+  <div class="page-hero__scrim"></div>
+  <div class="container page-hero__inner">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    {subtitle && <p class="lead">{subtitle}</p>}
+    <slot />
+  </div>
+</section>

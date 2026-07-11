@@ -27,6 +27,15 @@ skills must be overridden** with:
 > education* (this is where the mechanism/algorithm/figure skills shine).
 > Keep the two registers distinct but united by palette + type.
 
+> **⚠️ Distinct from renalcarematters.** renalcarematters' signature hero is the
+> **circular vignette**. To keep St. John Biocare its own brand, we do **NOT**
+> use circular-vignette heroes here. Marketing heroes are **FULL-BLEED
+> photographic** — a warm human photo spans the hero, with the HTML headline
+> set over a soft forest-green gradient scrim (left third). The
+> `hero-vignette` skill is therefore **not used** for heroes on this site;
+> heroes are authored in the `infographic-skill` **editorial-photo register**
+> (wordless landscape photo, left text-safe zone).
+
 ---
 
 ## 1. The pipeline (how the skills fit together)
