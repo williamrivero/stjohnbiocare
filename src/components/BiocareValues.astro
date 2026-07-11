@@ -14,8 +14,8 @@ import { site } from '../data/site';
 </div>
 
 <style>
-  .biocare { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  @media (max-width: 720px) { .biocare { grid-template-columns: 1fr; } }
+  /* Single descending column so the B-I-O-C-A-R-E letters read vertically. */
+  .biocare { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 660px; margin-inline: auto; }
   .biocare__item {
     display: flex; gap: 16px; align-items: flex-start;
     background: var(--white); border: 1px solid var(--border);
