@@ -114,8 +114,94 @@ const requirements = [
         <a href="tel:+63283751575">+63 (2) 8375 1575</a> or
         <a href="tel:+63289218921">+63 (2) 8921 8921</a>, message us on
         <a href="https://www.facebook.com/sjbdc" target="_blank" rel="noopener">facebook.com/sjbdc</a>, or
-        <a href="/new-patients#request">send us a message</a>. Thank you for your continuous support.
+        <a href="#register">register below</a>. Thank you for your continuous support.
       </div>
+    </div>
+  </section>
+
+  <!-- Registration -->
+  <section id="register" class="section">
+    <div class="container" style="max-width:720px">
+      <div class="center" style="margin-bottom:22px">
+        <p class="eyebrow">Register</p>
+        <h2>Apply for the HD Nurse Training Program</h2>
+        <p class="muted">Fill in your details and upload your bank deposit slip. Your registration goes
+        straight to our Nursing Director &amp; Head Faculty, <strong>Ms. Mercy J. Alhambra</strong>.</p>
+      </div>
+
+      <form class="card" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+        <!-- Web3Forms routing (key ties delivery to Ms. Alhambra's inbox) -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <input type="hidden" name="subject" value="New HD Nurse Training registration — stjohnbiocare.com" />
+        <input type="hidden" name="from_name" value="St. John Biocare — HD Training" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="grid grid--2" style="gap:0 18px">
+          <div class="form-field">
+            <label for="rn-name">Full name</label>
+            <input id="rn-name" name="Full name" type="text" required autocomplete="name" />
+          </div>
+          <div class="form-field">
+            <label for="rn-prc">PRC license no.</label>
+            <input id="rn-prc" name="PRC license number" type="text" required />
+          </div>
+        </div>
+
+        <div class="grid grid--2" style="gap:0 18px">
+          <div class="form-field">
+            <label for="rn-email">Email</label>
+            <input id="rn-email" name="email" type="email" required />
+          </div>
+          <div class="form-field">
+            <label for="rn-mobile">Mobile number</label>
+            <input id="rn-mobile" name="Mobile number" type="tel" required />
+          </div>
+        </div>
+
+        <div class="grid grid--2" style="gap:0 18px">
+          <div class="form-field">
+            <label for="rn-batch">Training batch</label>
+            <input id="rn-batch" name="Training batch" type="text" value="July 20 – August 28, 2026" />
+          </div>
+          <div class="form-field">
+            <label for="rn-pay">Payment option</label>
+            <select id="rn-pay" name="Payment option">
+              <option>Bank transfer (deposit slip attached)</option>
+              <option>Will pay at the cashier</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="rn-files">Upload your documents</label>
+          <input id="rn-files" name="attachment" type="file" accept="image/*,application/pdf" multiple />
+          <p class="muted" style="font-size:.82rem;margin:.3rem 0 0">
+            Select multiple files (JPG, PNG or PDF, up to ~5&nbsp;MB total): <strong>bank deposit slip</strong>,
+            updated <strong>résumé</strong>, <strong>PRC ID</strong>, <strong>Hepatitis profile</strong>
+            result, and <strong>vaccination records</strong>. If your files are larger than 5&nbsp;MB, upload
+            the deposit slip here and bring the rest on your first day.
+          </p>
+        </div>
+
+        <div class="form-field">
+          <label for="rn-msg">Message (optional)</label>
+          <textarea id="rn-msg" name="Message" placeholder="Anything you'd like us to know."></textarea>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" name="Consent (Data Privacy Act)" required />
+          <span>I agree that St. John Biocare may process my information for this training registration,
+          in line with the Data Privacy Act of 2012 (RA&nbsp;10173).</span>
+        </label>
+
+        <div style="margin-top:18px">
+          <button type="submit" class="btn btn--crimson">Submit registration</button>
+        </div>
+        <p class="muted" style="font-size:.82rem;margin-top:12px">
+          Please also bring your original requirements — résumé, PRC ID, Hepatitis profile and vaccination
+          records — on your first day.
+        </p>
+      </form>
     </div>
   </section>
 </BaseLayout>
