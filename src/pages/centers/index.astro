@@ -2,14 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { branches } from '../../data/branches';
 ---
-<BaseLayout title="Our Centers" description="Five St. John Biocare hemodialysis and diagnostic centers across Metro Manila — addresses, hours, teams and directions.">
+<BaseLayout title="Our Centers" description="St. John Biocare and St. Josef Renal Care hemodialysis centers across Metro Manila and Bulacan — addresses, hours, teams and directions.">
   <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream))">
     <div class="container center" style="max-width:760px">
       <p class="eyebrow">Our centers</p>
-      <h1>Our centers across Metro Manila.</h1>
+      <h1>Our centers across Metro Manila &amp; Bulacan.</h1>
       <p class="lead" style="margin-inline:auto">
-        Each center is open six days a week from 5:30&nbsp;AM. Choose one below for its
-        address, hours, team, on-site services and directions.
+        Our network — St. John Biocare and our sister foundation St. Josef Renal Care — spans
+        Metro Manila and Bulacan. Each center is open six days a week from 5:30&nbsp;AM. Choose one
+        below for its address, hours, team and directions.
       </p>
     </div>
   </section>
@@ -20,6 +21,7 @@ import { branches } from '../../data/branches';
         {branches.map((b) => (
           <div class="card">
             <span class="pill" style="margin-bottom:10px">{b.area}</span>
+            <p class="eyebrow" style="margin:0 0 2px">{b.foundation}</p>
             <h2 style="font-size:1.45rem;margin-bottom:.3rem">{b.name}</h2>
             <p class="muted" style="margin-bottom:.5rem">{b.address}</p>
             <p style="margin-bottom:.3rem"><strong>Hours:</strong> {b.hours}</p>
@@ -28,9 +30,9 @@ import { branches } from '../../data/branches';
             <div style="display:flex;gap:10px;flex-wrap:wrap">
               <a class="btn btn--primary" href={`/centers/${b.slug}`}>View center</a>
               <a class="btn btn--ghost" target="_blank" rel="noopener"
-                 href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${b.name} St. John Biocare, ${b.address}`)}`}>Google Maps</a>
+                 href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${b.foundation} ${b.name}, ${b.address}`)}`}>Google Maps</a>
               <a class="btn btn--ghost" target="_blank" rel="noopener"
-                 href={`https://waze.com/ul?q=${encodeURIComponent(`${b.name} St. John Biocare, ${b.address}`)}&navigate=yes`}>Waze</a>
+                 href={`https://waze.com/ul?q=${encodeURIComponent(`${b.foundation} ${b.name}, ${b.address}`)}&navigate=yes`}>Waze</a>
             </div>
           </div>
         ))}

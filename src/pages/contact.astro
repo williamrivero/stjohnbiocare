@@ -34,6 +34,7 @@ import { branches } from '../data/branches';
       <div class="grid grid--2" style="margin-top:14px">
         {branches.map((b) => (
           <div class="card">
+            <p class="eyebrow" style="margin:0 0 2px">{b.foundation}</p>
             <h3>{b.name}</h3>
             <p class="muted" style="margin:0 0 .4rem">{b.address}</p>
             <p style="margin:0 0 .2rem"><strong>Phone:</strong> {b.phone}</p>

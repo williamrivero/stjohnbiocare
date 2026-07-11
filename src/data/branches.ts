@@ -1,5 +1,6 @@
 // ---------------------------------------------------------------------------
-// BRANCHES — the single source of truth for the dialysis centers.
+// BRANCHES — the single source of truth for the dialysis centers, including
+// sister-foundation (St. Josef Renal Care) centers.
 //
 // To add or edit a center, change ONE object below. Everything (the locator
 // list, each branch page, the footer, contact page and appointment form)
@@ -8,6 +9,7 @@
 
 export interface Branch {
   slug: string;          // used in the web address, e.g. /centers/marikina
+  foundation: string;    // which foundation runs it (shown as a small label)
   name: string;          // display name
   area: string;          // city / district, for filtering
   address: string;       // full street address
@@ -25,6 +27,7 @@ export interface Branch {
 export const branches: Branch[] = [
   {
     slug: 'quezon-avenue',
+    foundation: 'St. John Biocare',
     name: 'Quezon Avenue',
     area: 'Quezon City',
     address: '2nd Floor, Casman Building, 1198 Quezon Avenue, Barangay Paligsahan, Quezon City 1100',
@@ -40,6 +43,7 @@ export const branches: Branch[] = [
   },
   {
     slug: 'makati',
+    foundation: 'St. John Biocare',
     name: 'Core Renal Center (Makati)',
     area: 'Makati City',
     address: 'Ground Floor, EMF Building, M. Santillan Street, Pio del Pilar, Makati City 1230',
@@ -55,6 +59,7 @@ export const branches: Branch[] = [
   },
   {
     slug: 'caloocan',
+    foundation: 'St. John Biocare',
     name: 'Caloocan',
     area: 'Caloocan City',
     address: '4th Floor, Araneta Square Mall, Samson Road corner Rizal Avenue, Bonifacio, Caloocan City',
@@ -70,6 +75,7 @@ export const branches: Branch[] = [
   },
   {
     slug: 'marikina',
+    foundation: 'St. John Biocare',
     name: 'Marikina',
     area: 'Marikina City',
     address: '2F WRCC Building 2, #33 Dragon Street corner Gil Fernando Avenue, San Roque, Marikina City 1801',
@@ -82,6 +88,38 @@ export const branches: Branch[] = [
     headNurse: 'To be confirmed',
     stations: null,
     transit: 'Along Gil Fernando Avenue, San Roque; accessible by jeepney and tricycle routes.',
+  },
+  {
+    slug: 'st-josef-marikina',
+    foundation: 'St. Josef Renal Care Foundation',
+    name: 'Marikina (Concepcion)',
+    area: 'Marikina City',
+    address: '#24 Bayan Bayanan Avenue, Concepcion Uno, Marikina City',
+    phone: '8253 5790 · 0917 155 9317',
+    phoneHref: 'tel:+63282535790',
+    email: 'sjrcf2019@gmail.com',
+    hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
+    services: ['Hemodialysis'],
+    medicalDirector: 'To be confirmed',
+    headNurse: 'To be confirmed',
+    stations: null,
+    transit: 'Along Bayan Bayanan Avenue, Concepcion Uno; accessible by jeepney and tricycle routes.',
+  },
+  {
+    slug: 'st-josef-marilao',
+    foundation: 'St. Josef Renal Care Foundation',
+    name: 'Marilao, Bulacan',
+    area: 'Marilao, Bulacan',
+    address: '2nd Floor, JJB Beaufort Building, 3019 NLEX Road, Barangay Patubig, Marilao, Bulacan (Region 3)',
+    phone: '8471 9329 · 8462 6150 · 0995 910 1171 · 0960 309 6116',
+    phoneHref: 'tel:+63284719329',
+    email: 'sjrcmarilao@gmail.com',
+    hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
+    services: ['Hemodialysis'],
+    medicalDirector: 'To be confirmed',
+    headNurse: 'To be confirmed',
+    stations: null,
+    transit: 'Along the NLEX Road in Barangay Patubig, Marilao; accessible from the NLEX Marilao exit.',
   },
 ];
 
