@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const src = 'https://renalcarematters.com/guides/dialysis-access-care.html';
+---
+<BaseLayout title="Caring for your dialysis access" description="Your fistula or catheter is your lifeline. How the types of access differ, how to care for yours at home, and the warning signs to act on.">
+  <article class="section">
+    <div class="container" style="max-width:720px">
+      <a href="/kidney-health" style="font-weight:700;text-decoration:none">← Kidney Health Hub</a>
+      <h1 style="margin-top:14px">Caring for your dialysis access</h1>
+      <p class="lead">Your access is your lifeline for every session — protecting it protects you.</p>
+      <p class="muted" style="font-size:.9rem">Adapted with permission from <a href={src}>renalcarematters.com</a>.</p>
+
+      <h2>Why it matters</h2>
+      <p>Hemodialysis needs a fast blood flow — about 300–500 mL per minute — that ordinary veins can't
+      provide. Your <strong>access</strong> is the connection between your body and the machine. Without a
+      working access, dialysis can't happen, so caring for it is one of the most important things you can do.</p>
+
+      <h2>The three types</h2>
+      <ul style="line-height:1.9">
+        <li><strong>AV fistula</strong> — an artery joined to a vein; the safest, longest-lasting option, and the goal for most patients.</li>
+        <li><strong>AV graft</strong> — a soft tube joining artery to vein; used when veins aren't suitable for a fistula.</li>
+        <li><strong>Catheter</strong> — a tube into a large vein; useful early on, but the highest risk of infection and clotting, so it's removed once a fistula or graft is ready.</li>
+      </ul>
+
+      <h2>Caring for a fistula at home</h2>
+      <ul style="line-height:1.9">
+        <li>Keep it clean, and wash the arm before each session.</li>
+        <li>Feel for the gentle buzz (the “thrill”) each day — it tells you it's flowing.</li>
+        <li>On that arm: <strong>no</strong> blood-pressure cuffs, no blood draws, no tight sleeves or watches, and avoid heavy lifting or sleeping on it.</li>
+      </ul>
+
+      <div class="notice"><strong>Call your center right away if:</strong> you can't feel the thrill; the area
+      is red, painful, warm or swollen; you have a fever; or there's bleeding that won't stop.</div>
+
+      <p style="margin-top:20px"><a href="/new-patients#request" class="btn btn--primary">Ask us about your access</a></p>
+      <p class="muted" style="margin-top:22px;font-size:.9rem">Adapted with permission from
+        <a href={src}>renalcarematters.com</a>. Medically reviewed by a nephrologist. Educational only;
+        not a substitute for consultation.</p>
+    </div>
+  </article>
+</BaseLayout>

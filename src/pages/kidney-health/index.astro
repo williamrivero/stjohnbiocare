@@ -1,29 +1,67 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const articles = [
-  { href: '/kidney-health/understanding-kidney-disease', title: 'Understanding kidney disease & ESRD', text: 'What the kidneys do, what goes wrong, and what dialysis replaces.' },
-  { href: '/kidney-health/starting-dialysis', title: 'Starting dialysis: what to expect', text: 'Your first sessions, step by step — with the fear taken out.' },
-  { href: '/kidney-health/philhealth-cost', title: 'PhilHealth & the cost of dialysis', text: 'The most-searched, least-answered question — answered honestly.' },
+
+const categories = [
+  {
+    name: 'Understanding your kidneys',
+    articles: [
+      { href: '/kidney-health/understanding-kidney-disease', title: 'Understanding kidney disease & ESRD', text: 'What the kidneys do, what goes wrong, and what dialysis replaces.' },
+    ],
+  },
+  {
+    name: 'Getting started',
+    articles: [
+      { href: '/kidney-health/starting-dialysis', title: 'Starting dialysis: what to expect', text: "What to bring, who you'll meet, and what actually happens." },
+      { href: '/kidney-health/transfer-of-care', title: 'Transferring your care', text: 'Change centers safely, without missing a single session.' },
+    ],
+  },
+  {
+    name: 'Living well on dialysis',
+    articles: [
+      { href: '/kidney-health/living-well-on-dialysis', title: 'Living well on dialysis', text: 'How dialysis works — and how to keep living your life.' },
+      { href: '/kidney-health/fluid-and-weight', title: 'Fluid & weight between sessions', text: 'Why fluid builds up, and the habits that protect your heart.' },
+      { href: '/kidney-health/dialysis-access-care', title: 'Caring for your dialysis access', text: 'Protect your fistula — and know the warning signs.' },
+      { href: '/kidney-health/travelling-on-dialysis', title: 'Travelling on dialysis', text: 'Travel is possible — with the right planning.' },
+    ],
+  },
+  {
+    name: 'Cost & coverage',
+    articles: [
+      { href: '/kidney-health/philhealth-cost', title: 'PhilHealth & the cost of dialysis', text: 'The real numbers, No Balance Billing, and what to expect.' },
+    ],
+  },
 ];
 ---
-<BaseLayout title="Kidney Health Hub" description="Plain-language, nephrologist-reviewed guides to kidney disease, dialysis, and living well — for patients and families.">
+<BaseLayout title="Kidney Health Hub" description="Plain-language, nephrologist-reviewed guides to kidney disease, dialysis, living well, and cost — for patients and families.">
   <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:48px">
     <div class="container" style="max-width:780px">
       <p class="eyebrow">Kidney Health Hub</p>
       <h1>Understand your kidneys, in plain Filipino-English.</h1>
-      <p class="lead">Warm, accurate guides written for worried patients and the families caring for them.</p>
+      <p class="lead">Warm, accurate guides written for worried patients and the families caring for them —
+      reviewed by a nephrologist.</p>
     </div>
   </section>
+
   <section class="section">
-    <div class="container grid grid--3">
-      {articles.map((a) => (
-        <a class="card" href={a.href} style="text-decoration:none;color:inherit">
-          <h3>{a.title}</h3>
-          <p>{a.text}</p>
-          <span class="card__link">Read</span>
-        </a>
+    <div class="container">
+      {categories.map((cat) => (
+        <div style="margin-bottom:40px">
+          <h2 style="font-size:1.4rem;margin-bottom:16px">{cat.name}</h2>
+          <div class="grid grid--3">
+            {cat.articles.map((a) => (
+              <a class="card" href={a.href} style="text-decoration:none;color:inherit">
+                <h3>{a.title}</h3>
+                <p>{a.text}</p>
+                <span class="card__link">Read</span>
+              </a>
+            ))}
+          </div>
+        </div>
       ))}
+      <p class="container muted" style="margin-top:8px;font-size:.9rem">
+        More guides — diet & potassium, caregivers, and a full FAQ — are on the way. Guides adapted with
+        permission from <a href="https://renalcarematters.com">renalcarematters.com</a>.
+      </p>
     </div>
-    <p class="container muted" style="margin-top:20px;font-size:.9rem">More guides — living well on dialysis, diet, work and travel, and FAQs — are on the way.</p>
   </section>
 </BaseLayout>
