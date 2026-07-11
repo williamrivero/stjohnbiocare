@@ -1,11 +1,9 @@
 // ---------------------------------------------------------------------------
-// BRANCHES — the single source of truth for the 5 dialysis centers.
+// BRANCHES — the single source of truth for the dialysis centers.
 //
 // To add or edit a center, change ONE object below. Everything (the locator
-// map, the centers list, and each branch page) updates automatically.
-//
-// Fields marked  // TODO  hold placeholder values drawn from the handbook and
-// still need Dr. Rivero to confirm the exact details before launch.
+// list, each branch page, the footer, contact page and appointment form)
+// updates automatically.
 // ---------------------------------------------------------------------------
 
 export interface Branch {
@@ -13,79 +11,77 @@ export interface Branch {
   name: string;          // display name
   area: string;          // city / district, for filtering
   address: string;       // full street address
-  phone: string;         // branch phone
+  phone: string;         // branch phone(s), display form
+  phoneHref: string;     // primary number as a tel: link
+  email: string;         // branch email
   hours: string;         // operating hours
   services: string[];    // on-site services
   medicalDirector: string;
   headNurse: string;
   stations: string | null; // number of dialysis stations/machines
   transit: string;       // public-transport notes
-  // Map coordinates (approximate — refine when confirmed). Used for the
-  // "Get directions" link and the embedded map.
-  lat: number;
-  lng: number;
 }
 
 export const branches: Branch[] = [
   {
     slug: 'quezon-avenue',
-    name: 'Quezon Avenue (Head Office)',
+    name: 'Quezon Avenue',
     area: 'Quezon City',
-    address: '1st & 2nd Floor Casman Building, 1198 Quezon Avenue, Barangay Paligsahan, District 4, Quezon City', // from handbook
-    phone: '(02) 0000 0000',       // TODO confirm branch phone
+    address: '2nd Floor, Casman Building, 1198 Quezon Avenue, Barangay Paligsahan, Quezon City 1100',
+    phone: '8375 1575 · 0917 122 6925',
+    phoneHref: 'tel:+63283751575',
+    email: 'qave.sjbdc@gmail.com',
     hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
-    services: ['Hemodialysis', 'Laboratory', 'X-ray / Imaging', 'Dialyzer reprocessing'],
-    medicalDirector: 'To be confirmed',   // TODO
-    headNurse: 'To be confirmed',          // TODO
-    stations: null,                        // TODO number of stations
-    transit: 'Along Quezon Avenue, accessible by bus and jeepney routes; near the MRT-3 Quezon Avenue station.', // TODO confirm
-    lat: 14.6339,
-    lng: 121.0223,
-  },
-  {
-    slug: 'marikina',
-    name: 'Marikina',
-    area: 'Marikina City',
-    address: 'To be confirmed — Marikina City',   // TODO full address
-    phone: '(02) 0000 0000',                        // TODO
-    hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
-    services: ['Hemodialysis', 'Laboratory'],       // TODO confirm on-site services
+    services: ['Hemodialysis'],
     medicalDirector: 'To be confirmed',
     headNurse: 'To be confirmed',
     stations: null,
-    transit: 'To be confirmed.',
-    lat: 14.6507,
-    lng: 121.1029,
+    transit: 'Along Quezon Avenue; accessible by bus and jeepney routes and near the MRT-3 Quezon Avenue station.',
   },
   {
     slug: 'makati',
-    name: 'Makati',
+    name: 'Core Renal Center (Makati)',
     area: 'Makati City',
-    address: 'To be confirmed — Makati City',       // TODO
-    phone: '(02) 0000 0000',                         // TODO
+    address: 'Ground Floor, EMF Building, M. Santillan Street, Pio del Pilar, Makati City 1230',
+    phone: '8844 2686 · 8844 2693 · 8772 8350',
+    phoneHref: 'tel:+63288442686',
+    email: 'sjbd.corerenalcenter@gmail.com',
     hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
-    services: ['Hemodialysis', 'Laboratory'],
+    services: ['Hemodialysis'],
     medicalDirector: 'To be confirmed',
     headNurse: 'To be confirmed',
     stations: null,
-    transit: 'To be confirmed.',
-    lat: 14.5547,
-    lng: 121.0244,
+    transit: 'In Pio del Pilar, Makati; accessible from Osmeña Highway and South Avenue routes.',
   },
   {
     slug: 'caloocan',
     name: 'Caloocan',
     area: 'Caloocan City',
-    address: 'To be confirmed — Caloocan City',      // TODO
-    phone: '(02) 0000 0000',                          // TODO
+    address: '4th Floor, Araneta Square Mall, Samson Road corner Rizal Avenue, Bonifacio, Caloocan City',
+    phone: '8962 0011 · 0906 219 8578',
+    phoneHref: 'tel:+63289620011',
+    email: 'sjbdc.caloocan@gmail.com',
     hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
-    services: ['Hemodialysis', 'Laboratory'],
+    services: ['Hemodialysis'],
     medicalDirector: 'To be confirmed',
     headNurse: 'To be confirmed',
     stations: null,
-    transit: 'To be confirmed.',
-    lat: 14.6577,
-    lng: 120.9838,
+    transit: 'Inside Araneta Square Mall on Samson Road; near the Monumento transport hub and LRT-1 Monumento station.',
+  },
+  {
+    slug: 'marikina',
+    name: 'Marikina',
+    area: 'Marikina City',
+    address: '2F WRCC Building 2, #33 Dragon Street corner Gil Fernando Avenue, San Roque, Marikina City 1801',
+    phone: '8633 5404 · 0917 877 9920',
+    phoneHref: 'tel:+63286335404',
+    email: 'sjbdc_marikina@yahoo.com',
+    hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
+    services: ['Hemodialysis'],
+    medicalDirector: 'To be confirmed',
+    headNurse: 'To be confirmed',
+    stations: null,
+    transit: 'Along Gil Fernando Avenue, San Roque; accessible by jeepney and tricycle routes.',
   },
 ];
 

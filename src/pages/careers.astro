@@ -1,19 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 const benefits = [
   'SSS, PhilHealth & Pag-IBIG', '13th-month pay', 'Hazard pay', 'HMO card',
   'Free annual physical + hepatitis vaccination', '15 days annual leave',
   'Company loans', 'Staff service discounts',
 ];
 ---
-<BaseLayout title="Careers" description="Join a foundation that invests in its people — strong benefits, real mentorship, and an empowerment culture.">
-  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:48px">
-    <div class="container" style="max-width:780px">
-      <p class="eyebrow">Careers</p>
-      <h1>Work somewhere that invests in you.</h1>
-      <p class="lead">We're a foundation, so our people come first too — with an unusually strong benefits story and a culture of empowerment.</p>
-    </div>
-  </section>
+<BaseLayout title="Careers" description="Join a foundation that invests in its people — strong benefits, real mentorship, and an empowerment culture." image="/images/photos/dsc_0040.webp">
+  <PageHero
+    image="/images/photos/dsc_0040.webp"
+    alt="A St. John Biocare care team working together at a patient's bedside"
+    eyebrow="Careers"
+    title="Work somewhere that invests in you."
+    subtitle="We're a foundation, so our people come first too — with an unusually strong benefits story and a culture of empowerment."
+  />
 
   <section class="section">
     <div class="container" style="max-width:860px">

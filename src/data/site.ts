@@ -9,11 +9,14 @@ export const site = {
   tagline: 'Kidney care that sees the person, not just the patient.',
   domain: 'https://stjohnbiocare.com',
 
-  // Contact channels — TODO confirm real numbers/links before launch
-  phone: '(02) 0000 0000',
-  phoneHref: 'tel:+6320000000',
+  // Head office (administrative)
+  headOffice: '#10 CK Building, South A Street corner Alejandro Roces Avenue, Barangay Paligsahan, Quezon City 1103 (beside Creba Center)',
+
+  // Contact channels
+  phone: '8375 1575',
+  phoneHref: 'tel:+63283751575',
   email: 'hello@stjohnbiocare.com',
-  messenger: 'https://m.me/stjohnbiocare',   // TODO real page
+  messenger: '',                              // TODO real page
   viber: '',                                  // TODO if used
   facebook: '',                               // TODO
 

@@ -18,7 +18,7 @@ import { branches } from '../data/branches';
         <h2 style="font-size:1.35rem">Head office</h2>
         <p style="margin:0 0 .3rem"><strong>Phone:</strong> <a href={site.phoneHref}>{site.phone}</a></p>
         <p style="margin:0 0 .3rem"><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
-        <p style="margin:0">1st &amp; 2nd Floor Casman Building, 1198 Quezon Avenue, Barangay Paligsahan, District 4, Quezon City</p>
+        <p style="margin:0">{site.headOffice}</p>
       </div>
       <div class="notice">
         <strong>Not for emergencies</strong>
@@ -36,7 +36,9 @@ import { branches } from '../data/branches';
           <div class="card">
             <h3>{b.name}</h3>
             <p class="muted" style="margin:0 0 .4rem">{b.address}</p>
-            <p style="margin:0"><strong>Phone:</strong> {b.phone} · <a href={`/centers/${b.slug}`}>Center page →</a></p>
+            <p style="margin:0 0 .2rem"><strong>Phone:</strong> {b.phone}</p>
+            <p style="margin:0 0 .2rem"><strong>Email:</strong> <a href={`mailto:${b.email}`}>{b.email}</a></p>
+            <p style="margin:0"><a href={`/centers/${b.slug}`}>Center page →</a></p>
           </div>
         ))}
       </div>

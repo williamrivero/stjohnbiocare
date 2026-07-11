@@ -9,8 +9,9 @@ export function getStaticPaths() {
 }
 
 const { branch } = Astro.props;
-const mapSrc = `https://maps.google.com/maps?q=${branch.lat},${branch.lng}&z=15&output=embed`;
-const directions = `https://www.google.com/maps/dir/?api=1&destination=${branch.lat},${branch.lng}`;
+const q = encodeURIComponent(`${branch.name} St. John Biocare, ${branch.address}`);
+const mapSrc = `https://maps.google.com/maps?q=${q}&z=16&output=embed`;
+const directions = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
 ---
 <BaseLayout
   title={`${branch.name} Center`}
@@ -25,7 +26,7 @@ const directions = `https://www.google.com/maps/dir/?api=1&destination=${branch.
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
         <a class="btn btn--crimson" href="/new-patients#request">Request an appointment</a>
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={directions}>Get directions</a>
-        <a class="btn btn--ghost" href={site.phoneHref}>Call {branch.phone}</a>
+        <a class="btn btn--ghost" href={branch.phoneHref}>Call the center</a>
       </div>
     </div>
   </section>
@@ -65,8 +66,8 @@ const directions = `https://www.google.com/maps/dir/?api=1&destination=${branch.
         </div>
         <div class="card">
           <h3>Contact</h3>
-          <p style="margin:0 0 .3rem"><strong>Phone:</strong> <a href={site.phoneHref}>{branch.phone}</a></p>
-          <p style="margin:0"><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p style="margin:0 0 .3rem"><strong>Phone:</strong> <a href={branch.phoneHref}>{branch.phone}</a></p>
+          <p style="margin:0"><strong>Email:</strong> <a href={`mailto:${branch.email}`}>{branch.email}</a></p>
         </div>
         <div class="card">
           <h3>Care team</h3>
