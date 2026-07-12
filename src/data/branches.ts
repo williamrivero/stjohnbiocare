@@ -25,6 +25,7 @@ export interface Branch {
   stations: string | null;
   transit: string;
   underConstruction?: boolean;
+  inquiriesVia?: string;  // slug of the open center that handles inquiries while this one is under construction
 }
 
 export const branches: Branch[] = [
@@ -106,6 +107,7 @@ export const branches: Branch[] = [
     services: [],
     medicalDirector: '', headNurse: '', stations: null, transit: '',
     underConstruction: true,
+    inquiriesVia: 'core-renal-santillan',
   },
 
   // ---- St. Josef Renal Care Foundation ----

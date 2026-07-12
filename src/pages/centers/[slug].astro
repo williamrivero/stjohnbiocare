@@ -5,15 +5,20 @@ import { site } from '../../data/site';
 import { centerKeys } from '../../data/centerKeys';
 import QRCode from 'qrcode';
 
-// One page is generated for each branch in src/data/branches.ts
+// A page is generated for every open center, plus any under-construction center
+// that already has a real street address (so it can show a precise map).
 export function getStaticPaths() {
   return branches
-    .filter((b) => !b.underConstruction)
+    .filter((b) => !b.underConstruction || !/opening this year/i.test(b.address))
     .map((b) => ({ params: { slug: b.slug }, props: { branch: b } }));
 }
 
 const { branch } = Astro.props;
+const uc = !!branch.underConstruction;
 const centerKey = centerKeys[branch.slug];
+// While a center is under construction, its inquiries are handled by a nearby open center.
+const inquiryBranch = uc && branch.inquiriesVia ? branches.find((b) => b.slug === branch.inquiriesVia) : null;
+const inquiryKey = inquiryBranch ? centerKeys[inquiryBranch.slug] : null;
 const q = encodeURIComponent(`${branch.foundation} ${branch.name}, ${branch.address}`);
 
 // Build a vCard for this center and render it as a scannable QR (contact card).
@@ -48,25 +53,106 @@ const foundationLogo = {
 <BaseLayout
   title={`${branch.name} Center`}
   description={`${branch.foundation} — ${branch.name}, ${branch.address}. Hours, team, services and directions.`}
-  image={`/images/og/centers/${branch.slug}.jpg`}
+  image={uc ? '/images/og/og-centers.jpg' : `/images/og/centers/${branch.slug}.jpg`}
 >
   <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:44px">
     <div class="container">
       <a href="/centers" style="font-weight:700;text-decoration:none">← All centers</a>
-      <span class="pill" style="margin:14px 0 8px;display:inline-flex">{branch.area}</span>
+      <div style="margin:14px 0 8px">
+        <span class="pill" style="display:inline-flex">{branch.area}</span>
+        {uc && <span class="pill" style="background:#fff2d9;color:#9a6a00;margin-left:8px;display:inline-flex">Opening this year</span>}
+      </div>
       <p class="eyebrow" style="margin:0 0 2px">{branch.foundation}</p>
       <h1>{branch.name}</h1>
       <p class="lead">{branch.address}</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
-        <a class="btn btn--crimson" href="/new-patients#request">Request an appointment</a>
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={directions}>Google Maps</a>
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={waze}>Waze</a>
-        <a class="btn btn--ghost" href={branch.phoneHref}>Call the center</a>
-        {centerKey && <a class="btn btn--ghost" href="#message">Message this center</a>}
+        {!uc && <a class="btn btn--crimson" href="/new-patients#request">Request an appointment</a>}
+        {!uc && <a class="btn btn--ghost" href={branch.phoneHref}>Call the center</a>}
+        {!uc && centerKey && <a class="btn btn--ghost" href="#message">Message this center</a>}
+        {uc && <a class="btn btn--primary" href="/centers">See open centers</a>}
       </div>
     </div>
   </section>
 
+  {uc && (
+    <>
+    <section class="section">
+      <div class="container" style="max-width:860px">
+        <div class="map-frame">
+          <iframe
+            src={mapSrc}
+            title={`Map to ${branch.name}`}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            style="border:0;width:100%;height:100%"></iframe>
+        </div>
+        <div class="notice" style="margin-top:22px">
+          <strong>Opening this year.</strong> Our new {branch.foundation} branch at {branch.address} is
+          under construction and will open soon.{inquiryBranch && <> In the meantime, inquiries for this
+          branch are warmly handled by our nearby <strong>{inquiryBranch.name}</strong> center.</>}
+        </div>
+        <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn--primary" href="/centers">See open centers</a>
+          <a class="btn btn--ghost" href="/new-patients#request">Request an appointment</a>
+        </div>
+      </div>
+    </section>
+
+    {inquiryBranch && (
+      <section id="message" class="section section--sand">
+        <div class="container" style="max-width:640px">
+          <div class="center" style="margin-bottom:20px">
+            <p class="eyebrow">Have a question already?</p>
+            <h2>Ask us about {branch.name}.</h2>
+            <p class="muted">While this branch is being built, our <strong>{inquiryBranch.name}</strong>
+            team is happy to help — call <a href={inquiryBranch.phoneHref}>{inquiryBranch.phone}</a> or
+            email <a href={`mailto:${inquiryBranch.email}`}>{inquiryBranch.email}</a>, or send a message below.</p>
+          </div>
+          {inquiryKey && (
+            <form class="card" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="access_key" value={inquiryKey} />
+              <input type="hidden" name="subject" value={`New inquiry — ${branch.foundation}, ${branch.name} [upcoming] (stjohnbiocare.com)`} />
+              <input type="hidden" name="from_name" value="St. John Biocare — Center inquiry" />
+              <input type="hidden" name="Center" value={`${branch.foundation} — ${branch.name} (upcoming)`} />
+              <input type="hidden" name="Handled by" value={`${inquiryBranch.foundation} — ${inquiryBranch.name}`} />
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+              <div class="grid grid--2" style="gap:0 18px">
+                <div class="form-field">
+                  <label for="mc-name">Your name</label>
+                  <input id="mc-name" name="Name" type="text" required autocomplete="name" />
+                </div>
+                <div class="form-field">
+                  <label for="mc-contact">Phone or email</label>
+                  <input id="mc-contact" name="Contact (phone or email)" type="text" required />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="mc-msg">Your message</label>
+                <textarea id="mc-msg" name="Message" required placeholder={`Ask about ${branch.name} — opening date, schedules, requirements…`}></textarea>
+              </div>
+              <label class="consent">
+                <input type="checkbox" name="Consent (Data Privacy Act)" required />
+                <span>I agree that St. John Biocare may contact me about my message and handle my
+                information in line with the Data Privacy Act of 2012 (RA&nbsp;10173).</span>
+              </label>
+              <div style="margin-top:18px">
+                <button type="submit" class="btn btn--crimson">Send message</button>
+              </div>
+              <p class="muted" style="font-size:.82rem;margin-top:12px">
+                Not for emergencies. For urgent concerns, call the center or the nearest hospital ER.
+              </p>
+            </form>
+          )}
+        </div>
+      </section>
+    )}
+    </>
+  )}
+
+  {!uc && (
+    <>
   <!-- BUSINESS CARD -->
   <section class="section" style="padding-top:34px;padding-bottom:0">
     <div class="container" style="max-width:860px">
@@ -208,6 +294,8 @@ const foundationLogo = {
       <a href="/new-patients#request" class="btn btn--light" style="margin-top:8px">Request an appointment</a>
     </div>
   </section>
+    </>
+  )}
 </BaseLayout>
 
 <style>
