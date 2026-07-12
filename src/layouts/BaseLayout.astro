@@ -9,12 +9,15 @@ interface Props {
   description?: string;
   /** Set false on legal/utility pages to keep them out of rich previews if wanted */
   image?: string;
+  /** Keep utility/confirmation pages (e.g. form thank-you) out of search results */
+  noindex?: boolean;
 }
 
 const {
   title = site.name,
   description = 'A foundation-run network of hemodialysis and diagnostic centers across Metro Manila. Warm, honest, patient-first kidney care.',
   image = '/og-image.png',
+  noindex = false,
 } = Astro.props;
 
 const fullTitle = title === site.name ? `${site.name} — Dialysis & Kidney Care` : `${title} · ${site.name}`;
@@ -29,6 +32,7 @@ const canonical = new URL(Astro.url.pathname, site.domain).href;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph / social -->

@@ -6,5 +6,11 @@ import sitemap from '@astrojs/sitemap';
 // canonical URLs. When the custom domain is connected this is already correct.
 export default defineConfig({
   site: 'https://stjohnbiocare.com',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Keep utility/confirmation pages (form thank-you) out of the sitemap —
+      // they carry <meta robots="noindex">, so listing them sends a mixed signal.
+      filter: (page) => !/\/thank-you\/?$/.test(page),
+    }),
+  ],
 });

@@ -115,6 +115,7 @@ const foundationLogo = {
               <input type="hidden" name="access_key" value={inquiryKey} />
               <input type="hidden" name="subject" value={`New inquiry — ${branch.foundation}, ${branch.name} [upcoming] (stjohnbiocare.com)`} />
               <input type="hidden" name="from_name" value="St. John Biocare — Center inquiry" />
+              <input type="hidden" name="redirect" value="https://stjohnbiocare.com/thank-you/" />
               <input type="hidden" name="Center" value={`${branch.foundation} — ${branch.name} (upcoming)`} />
               <input type="hidden" name="Handled by" value={`${inquiryBranch.foundation} — ${inquiryBranch.name}`} />
               <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
@@ -248,6 +249,7 @@ const foundationLogo = {
           <input type="hidden" name="access_key" value={centerKey} />
           <input type="hidden" name="subject" value={`New message — ${branch.foundation}, ${branch.name} (stjohnbiocare.com)`} />
           <input type="hidden" name="from_name" value="St. John Biocare — Center message" />
+          <input type="hidden" name="redirect" value="https://stjohnbiocare.com/thank-you/" />
           <input type="hidden" name="Center" value={`${branch.foundation} — ${branch.name}`} />
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="grid grid--2" style="gap:0 18px">
