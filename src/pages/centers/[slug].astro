@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { branches } from '../../data/branches';
 import { site } from '../../data/site';
 import { centerKeys } from '../../data/centerKeys';
+import QRCode from 'qrcode';
 
 // One page is generated for each branch in src/data/branches.ts
 export function getStaticPaths() {
@@ -14,6 +15,26 @@ export function getStaticPaths() {
 const { branch } = Astro.props;
 const centerKey = centerKeys[branch.slug];
 const q = encodeURIComponent(`${branch.foundation} ${branch.name}, ${branch.address}`);
+
+// Build a vCard for this center and render it as a scannable QR (contact card).
+const tel = branch.phoneHref.replace('tel:', '');
+const vcard = [
+  'BEGIN:VCARD',
+  'VERSION:3.0',
+  `FN:${branch.foundation} — ${branch.name}`,
+  `ORG:${branch.foundation}`,
+  `TEL;TYPE=WORK,VOICE:${tel}`,
+  branch.email ? `EMAIL;TYPE=WORK:${branch.email}` : '',
+  `ADR;TYPE=WORK:;;${branch.address.replace(/,/g, ' ')};;;;Philippines`,
+  `URL:https://stjohnbiocare.com/centers/${branch.slug}`,
+  'END:VCARD',
+].filter(Boolean).join('\n');
+const qrSvg = await QRCode.toString(vcard, {
+  type: 'svg',
+  margin: 1,
+  errorCorrectionLevel: 'M',
+  color: { dark: '#006028', light: '#ffffff' },
+});
 const mapSrc = `https://maps.google.com/maps?q=${q}&z=16&output=embed`;
 const directions = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
 const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
@@ -80,6 +101,13 @@ const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
           <h3>Contact</h3>
           <p style="margin:0 0 .3rem"><strong>Phone:</strong> <a href={branch.phoneHref}>{branch.phone}</a></p>
           <p style="margin:0"><strong>Email:</strong> <a href={`mailto:${branch.email}`}>{branch.email}</a></p>
+        </div>
+        <div class="card center">
+          <h3 style="text-align:left">Save our contact</h3>
+          <div class="qr" set:html={qrSvg}></div>
+          <p class="muted" style="font-size:.82rem;margin:10px 0 0">
+            Scan to save {branch.name}'s phone, email and address to your phone.
+          </p>
         </div>
         <div class="card">
           <h3>Care team</h3>
@@ -157,4 +185,6 @@ const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
   @media (max-width: 860px) { .branch { grid-template-columns: 1fr; } }
   .map-frame { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); height: 340px; background: var(--sand); }
   .branch h3 { font-size: 1.15rem; margin-bottom: .4rem; }
+  .qr { max-width: 176px; margin: 6px auto 0; }
+  .qr svg { width: 100%; height: auto; display: block; }
 </style>
