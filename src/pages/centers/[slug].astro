@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { branches } from '../../data/branches';
 import { site } from '../../data/site';
+import { centerKeys } from '../../data/centerKeys';
 
 // One page is generated for each branch in src/data/branches.ts
 export function getStaticPaths() {
@@ -11,6 +12,7 @@ export function getStaticPaths() {
 }
 
 const { branch } = Astro.props;
+const centerKey = centerKeys[branch.slug];
 const q = encodeURIComponent(`${branch.foundation} ${branch.name}, ${branch.address}`);
 const mapSrc = `https://maps.google.com/maps?q=${q}&z=16&output=embed`;
 const directions = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
@@ -32,6 +34,7 @@ const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={directions}>Google Maps</a>
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={waze}>Waze</a>
         <a class="btn btn--ghost" href={branch.phoneHref}>Call the center</a>
+        {centerKey && <a class="btn btn--ghost" href="#message">Message this center</a>}
       </div>
     </div>
   </section>
@@ -87,6 +90,51 @@ const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
       </aside>
     </div>
   </section>
+
+  {centerKey && (
+    <section id="message" class="section section--sand">
+      <div class="container" style="max-width:640px">
+        <div class="center" style="margin-bottom:20px">
+          <p class="eyebrow">Message this center</p>
+          <h2>Send {branch.name} a message.</h2>
+          <p class="muted">Your message goes <strong>straight to the {branch.name} team</strong>. For a full
+          appointment request, use the <a href="/new-patients#request">appointment form</a>.</p>
+        </div>
+        <form class="card" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value={centerKey} />
+          <input type="hidden" name="subject" value={`New message — ${branch.foundation}, ${branch.name} (stjohnbiocare.com)`} />
+          <input type="hidden" name="from_name" value="St. John Biocare — Center message" />
+          <input type="hidden" name="Center" value={`${branch.foundation} — ${branch.name}`} />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+          <div class="grid grid--2" style="gap:0 18px">
+            <div class="form-field">
+              <label for="mc-name">Your name</label>
+              <input id="mc-name" name="Name" type="text" required autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label for="mc-contact">Phone or email</label>
+              <input id="mc-contact" name="Contact (phone or email)" type="text" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="mc-msg">Your message</label>
+            <textarea id="mc-msg" name="Message" required placeholder={`Ask ${branch.name} anything — schedules, requirements, coverage…`}></textarea>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="Consent (Data Privacy Act)" required />
+            <span>I agree that St. John Biocare may contact me about my message and handle my information in
+            line with the Data Privacy Act of 2012 (RA&nbsp;10173).</span>
+          </label>
+          <div style="margin-top:18px">
+            <button type="submit" class="btn btn--crimson">Send message</button>
+          </div>
+          <p class="muted" style="font-size:.82rem;margin-top:12px">
+            Not for emergencies. For urgent concerns, call the center or the nearest hospital ER.
+          </p>
+        </form>
+      </div>
+    </section>
+  )}
 
   <section class="section section--forest center">
     <div class="container" style="max-width:640px">

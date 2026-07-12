@@ -2,17 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { openBranches } from '../data/branches';
-
-// Per-center Web3Forms access keys (public) — each routes to that center's own inbox.
-const centerKeys = {
-  'quezon-avenue': 'ab23c509-ccc9-4ac1-b9ba-ab1aee59dc3a',
-  'caloocan': 'a3dd7329-ed2b-4526-bea4-c7b009975028',
-  'marikina-san-roque': '6c9fc480-fc47-48fe-89b0-990ed8ad2cfd',
-  'core-renal-santillan': 'd2e9e3d1-de1a-4d2f-b875-0d3984164e44',
-  'st-josef-marikina': '7f307721-a06b-4325-909e-8f563dfc788d',
-  'st-josef-marilao': '5d3e4ab9-3897-4dfc-916b-f0650f7356d5',
-};
-const DEFAULT_KEY = centerKeys['quezon-avenue']; // "No preference" -> Quezon Avenue main branch
+import { centerKeys, DEFAULT_CENTER_KEY as DEFAULT_KEY } from '../data/centerKeys';
 
 const faqs = [
   { q: 'How do I start dialysis with you?', a: "Send an appointment request below, or call your nearest center. We'll review your records, explain the schedule and costs clearly, and get you booked — often within a few days." },
