@@ -6,6 +6,11 @@ const mapsUrl = (b) => `https://www.google.com/maps/dir/?api=1&destination=${enc
 const wazeUrl = (b) => `https://waze.com/ul?q=${encodeURIComponent(`${b.foundation} ${b.name}, ${b.address}`)}&navigate=yes`;
 const openCount = branches.filter((b) => !b.underConstruction).length;
 const soonCount = branches.filter((b) => b.underConstruction).length;
+const foundationLogo = {
+  'St. John Biocare': '/images/logos/logo-sjbdc.webp',
+  'Core Renal Center': '/images/logos/corerenalcare-logo.webp',
+  'St. Josef Renal Care Foundation': '/images/logos/stjosef-logo.webp',
+};
 ---
 <BaseLayout title="Our Centers" description="St. John Biocare, Core Renal Center and St. Josef Renal Care hemodialysis centers across Metro Manila, Rizal and Bulacan — addresses, hours and directions." image="/images/og/og-centers.jpg">
   <PageHero
@@ -23,12 +28,18 @@ const soonCount = branches.filter((b) => b.underConstruction).length;
         if (!group.length) return null;
         return (
           <div style="margin-bottom:44px">
-            <h2 style="font-size:1.5rem;margin-bottom:16px">{foundation}</h2>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+              {foundationLogo[foundation] && <img src={foundationLogo[foundation]} alt={`${foundation} logo`} width="44" height="44" style="width:44px;height:44px;object-fit:contain" loading="lazy" />}
+              <h2 style="font-size:1.5rem;margin:0">{foundation}</h2>
+            </div>
             <div class="grid grid--2">
               {group.map((b) => (
                 <div class="card">
                   <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px">
-                    <span class="pill">{b.area}</span>
+                    <div style="display:flex;align-items:center;gap:10px">
+                      {foundationLogo[b.foundation] && <img src={foundationLogo[b.foundation]} alt={`${b.foundation} logo`} width="34" height="34" style="width:34px;height:34px;object-fit:contain;flex:0 0 auto" loading="lazy" />}
+                      <span class="pill">{b.area}</span>
+                    </div>
                     {b.underConstruction && (
                       <span class="pill" style="background:#fff2d9;color:#9a6a00">Opening this year</span>
                     )}
