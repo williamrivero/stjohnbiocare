@@ -2,6 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BiocareValues from '../components/BiocareValues.astro';
 import PageHero from '../components/PageHero.astro';
+import { branches, openBranches, foundations } from '../data/branches';
+
+const openCount = openBranches.length;
+const soonCount = branches.filter((b) => b.underConstruction).length;
+const foundationBlurb = {
+  'St. John Biocare': 'Where it all began in 2011 — our founding foundation, anchored at the Quezon Avenue main center.',
+  'Core Renal Center': 'Our sister center, bringing the same standard of dialysis to Makati.',
+  'St. Josef Renal Care Foundation': 'Our sister foundation, extending care into Marikina, Bulacan and beyond.',
+};
 ---
 <BaseLayout title="About Us" description="St. John Biocare is a SEC-registered foundation born from one family's experience of kidney failure — our story, mission, values and leadership." image="/images/og/og-about.jpg">
   <PageHero
@@ -53,6 +62,106 @@ import PageHero from '../components/PageHero.astro';
     </div>
   </section>
 
+  <!-- BY THE NUMBERS -->
+  <section class="section stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div><strong>15 years</strong><span>of dialysis care since 2011</span></div>
+        <div><strong>{openCount} centers</strong><span>open across Metro Manila &amp; Bulacan</span></div>
+        <div><strong>{soonCount} more</strong><span>under construction, opening this year</span></div>
+        <div><strong>{foundations.length} foundations</strong><span>one growing family of care</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR JOURNEY -->
+  <section class="section">
+    <div class="container" style="max-width:760px">
+      <p class="eyebrow">Our journey</p>
+      <h2 style="margin-bottom:26px">From one clinic to a growing network.</h2>
+      <ol class="timeline">
+        <li>
+          <p class="yr">June 2011</p>
+          <h3>Registered as a foundation</h3>
+          <p>On June 28, 2011, St. John Biocare was registered with the SEC as a <strong>non-stock,
+          non-profit foundation</strong> — built to answer to a mission, not to shareholders.</p>
+        </li>
+        <li>
+          <p class="yr">October 2011</p>
+          <h3>The first center opens</h3>
+          <p>Our very first dialysis clinic opened its doors in Quezon City on October 16, 2011, on
+          Quezon Avenue — still our main center today.</p>
+        </li>
+        <li>
+          <p class="yr">The years since</p>
+          <h3>Growing into a network</h3>
+          <p>Center by center, the promise spread across Metro Manila — and our sister foundations,
+          <strong>Core Renal Center</strong> and <strong>St. Josef Renal Care</strong>, joined the family.</p>
+        </li>
+        <li>
+          <p class="yr">Today</p>
+          <h3>Fifteen years, and counting</h3>
+          <p>Fifteen years on, <strong>{openCount} centers</strong> are open across Metro Manila and
+          Bulacan, with <strong>{soonCount} more</strong> under construction — among the country's pioneers
+          of free-standing dialysis care.</p>
+        </li>
+        <li>
+          <p class="yr">Ahead</p>
+          <h3>Only getting started</h3>
+          <p>The mission has not changed: excellent, honest dialysis for every family. We are only
+          getting started.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- OUR NETWORK -->
+  <section class="section section--sand">
+    <div class="container">
+      <div class="center" style="margin-bottom:30px;max-width:720px;margin-inline:auto">
+        <p class="eyebrow">Our network</p>
+        <h2>Three foundations, one family of care.</h2>
+        <p class="lead" style="margin-inline:auto">St. John Biocare grew into a network of sister
+        foundations — each independent, all holding to the same standard.</p>
+      </div>
+      <div class="grid grid--3">
+        {foundations.map((f) => {
+          const open = openBranches.filter((b) => b.foundation === f);
+          const soon = branches.filter((b) => b.foundation === f && b.underConstruction);
+          return (
+            <div class="card">
+              <h3 style="font-size:1.2rem">{f}</h3>
+              <p class="muted" style="margin:.2rem 0 .8rem">{foundationBlurb[f]}</p>
+              <ul style="margin:0;padding-left:1.1rem;line-height:1.7">
+                {open.map((b) => <li>{b.name} <span class="muted" style="font-size:.85rem">· {b.area}</span></li>)}
+              </ul>
+              {soon.length > 0 && (
+                <p class="muted" style="font-size:.85rem;margin:.7rem 0 0">+ {soon.length} more opening this year</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <div class="center" style="margin-top:26px">
+        <a href="/centers" class="btn btn--primary">See all our centers</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT MAKES US DIFFERENT -->
+  <section class="section section--mist">
+    <div class="container" style="max-width:760px">
+      <p class="eyebrow">What makes us different</p>
+      <h2>Being a foundation means the patient always wins.</h2>
+      <p>Because we answer to a mission and not to shareholders, every peso goes back into care — and into
+      the standards others quietly skip. Well-established medicines, water purified twice by <strong>dual-pass
+      reverse osmosis</strong>, machines calibrated by their own makers, and a bar set by both Philippine
+      <strong>and international best practice</strong>. Excellence is not our marketing. It is the whole
+      reason we exist.</p>
+      <p style="margin-top:18px"><a href="/services" class="btn btn--primary">See the standards we hold</a></p>
+    </div>
+  </section>
+
   <section class="section section--sand">
     <div class="container" style="max-width:820px">
       <div class="grid grid--2">
@@ -81,3 +190,20 @@ import PageHero from '../components/PageHero.astro';
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .stats { background: var(--forest); }
+  .stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+  .stats__grid strong { display: block; font-family: var(--font-head); font-size: 2rem; color: #fff; line-height: 1.1; }
+  .stats__grid span { color: #cfe6d6; font-size: .95rem; }
+  @media (max-width: 820px) { .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; } }
+
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
+  .timeline li { position: relative; padding: 0 0 26px 40px; }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li::before { content: ''; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--life); box-shadow: 0 0 0 4px var(--cream); }
+  .timeline .yr { font-family: var(--font-head); font-weight: 700; color: var(--forest); font-size: .9rem; margin: 0; text-transform: uppercase; letter-spacing: .04em; }
+  .timeline h3 { margin: .1rem 0 .35rem; font-size: 1.15rem; }
+  .timeline li > p:last-child { margin: 0; color: var(--ink-soft); }
+</style>
