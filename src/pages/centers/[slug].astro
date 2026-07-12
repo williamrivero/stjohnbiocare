@@ -100,7 +100,7 @@ const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
           <p class="muted">Your message goes <strong>straight to the {branch.name} team</strong>. For a full
           appointment request, use the <a href="/new-patients#request">appointment form</a>.</p>
         </div>
-        <form class="card" action="https://api.web3forms.com/submit" method="POST">
+        <form class="card" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="access_key" value={centerKey} />
           <input type="hidden" name="subject" value={`New message — ${branch.foundation}, ${branch.name} (stjohnbiocare.com)`} />
           <input type="hidden" name="from_name" value="St. John Biocare — Center message" />
@@ -119,6 +119,13 @@ const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
           <div class="form-field">
             <label for="mc-msg">Your message</label>
             <textarea id="mc-msg" name="Message" required placeholder={`Ask ${branch.name} anything — schedules, requirements, coverage…`}></textarea>
+          </div>
+          <div class="form-field">
+            <label for="mc-file">Attach a file <span class="muted" style="font-weight:400">(optional)</span></label>
+            <input id="mc-file" name="attachment" type="file" accept="image/*,application/pdf,.doc,.docx" />
+            <p class="muted" style="font-size:.82rem;margin:.3rem 0 0">
+              Optional — e.g. a photo of your lab results, referral or PhilHealth MDR (JPG, PNG or PDF, up to ~5&nbsp;MB).
+            </p>
           </div>
           <label class="consent">
             <input type="checkbox" name="Consent (Data Privacy Act)" required />
