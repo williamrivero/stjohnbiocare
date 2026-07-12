@@ -90,7 +90,7 @@ const faqs = [
         <p class="muted">Prefer to chat? Message us on Messenger or Viber, or call your nearest center.</p>
       </div>
 
-      <form id="appt-form" class="card" action="https://api.web3forms.com/submit" method="POST">
+      <form id="appt-form" class="card" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
         <!-- Web3Forms routing — access_key is swapped to the chosen center by JS (defaults to Quezon Avenue). -->
         <input type="hidden" id="appt-access-key" name="access_key" value={DEFAULT_KEY} data-default={DEFAULT_KEY} />
         <input type="hidden" name="subject" value="New appointment request — stjohnbiocare.com" />
@@ -137,6 +137,14 @@ const faqs = [
         <div class="form-field">
           <label for="message">How can we help?</label>
           <textarea id="message" name="Message" placeholder="Tell us anything that helps us prepare for you."></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="appt-file">Attach a file <span class="muted" style="font-weight:400">(optional)</span></label>
+          <input id="appt-file" name="attachment" type="file" accept="image/*,application/pdf,.doc,.docx" multiple />
+          <p class="muted" style="font-size:.82rem;margin:.3rem 0 0">
+            Optional — e.g. a photo of your lab results, referral, medication list or PhilHealth MDR (JPG, PNG or PDF).
+          </p>
         </div>
 
         <label class="consent">
