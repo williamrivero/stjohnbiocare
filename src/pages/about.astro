@@ -11,6 +11,11 @@ const foundationBlurb = {
   'Core Renal Center': 'Our sister center, bringing the same standard of dialysis to Makati.',
   'St. Josef Renal Care Foundation': 'Our sister foundation, extending care into Marikina, Bulacan and beyond.',
 };
+const foundationLogo = {
+  'St. John Biocare': '/images/logos/logo-sjbdc.webp',
+  'Core Renal Center': '/images/logos/corerenalcare-logo.webp',
+  'St. Josef Renal Care Foundation': '/images/logos/stjosef-logo.webp',
+};
 ---
 <BaseLayout title="About Us" description="St. John Biocare is a SEC-registered foundation born from one family's experience of kidney failure — our story, mission, values and leadership." image="/images/og/og-about.jpg">
   <PageHero
@@ -130,6 +135,8 @@ const foundationBlurb = {
           const soon = branches.filter((b) => b.foundation === f && b.underConstruction);
           return (
             <div class="card">
+              <img src={foundationLogo[f]} alt={`${f} logo`} width="72" height="72" loading="lazy"
+                   style="width:72px;height:72px;object-fit:contain;display:block;margin-bottom:12px" />
               <h3 style="font-size:1.2rem">{f}</h3>
               <p class="muted" style="margin:.2rem 0 .8rem">{foundationBlurb[f]}</p>
               <ul style="margin:0;padding-left:1.1rem;line-height:1.7">
