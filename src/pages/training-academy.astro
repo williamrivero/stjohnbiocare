@@ -15,6 +15,17 @@ const requirements = [
   'Updated Hepatitis profile result (Anti-HCV, Anti-HBs and HBsAg)',
   'Vaccination ID / passport (COVID-19 vaccination records)',
 ];
+
+const faqs = [
+  { q: 'Who can join the program?', a: 'The program is open to all Registered Nurses (RNs). You do not need prior dialysis experience — we build your hemodialysis skills from the ground up.' },
+  { q: 'When is the next batch, and what is the schedule?', a: 'Our next batch runs July 20 – August 28, 2026, Monday to Friday, 8:00 AM to 4:00 PM, at our Quezon Avenue main branch. It combines on-site lectures with supervised, hands-on clinical exposure.' },
+  { q: 'How much is the training fee, and how do I pay?', a: 'The fee is ₱14,000, inclusive of the HD in-house manual and consumables (gloves and N95 masks). You may pay in cash or by installment — 50% (₱7,000) down on or before the start, and the balance during the training — via bank transfer to our PBCOM account or at the cashier.' },
+  { q: 'What will I learn?', a: 'Patient care and assessment, basic hemodialysis skills, vascular-access safeguarding, and infection-control protocols — through both classroom lectures and supervised clinical practice.' },
+  { q: 'Do I receive a certificate?', a: 'Yes. On successful completion you earn a Certificate of Training that strengthens your professional credentials.' },
+  { q: 'What are the requirements to enroll?', a: 'An updated résumé, a photocopy of your PRC ID, an updated Hepatitis profile (Anti-HCV, Anti-HBs and HBsAg), and your vaccination records (COVID-19). Please bring the originals on your first day.' },
+  { q: 'Will this help me get hired?', a: 'Many of our graduates go on to join the St. John Biocare family, and the Certificate of Training strengthens your credentials wherever you choose to apply.' },
+  { q: 'How do I enroll?', a: 'Register through the form below, call +63 (2) 8375 1575 or +63 (2) 8921 8921, or message us on Facebook at facebook.com/sjbdc.' },
+];
 ---
 <BaseLayout title="Training Academy" description="The St. John Biocare Hemodialysis Nurse Training Program for Registered Nurses — 6 weeks, didactic + hands-on, with a Certificate of Training. Next batch: July 20 – August 28, 2026." image="/images/og/og-training.jpg">
   <PageHero
@@ -132,6 +143,26 @@ const requirements = [
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section section--mist">
+    <div class="container stack" style="max-width:760px">
+      <div class="center" style="margin-bottom:26px">
+        <p class="eyebrow">Common questions</p>
+        <h2>The HD Nurse Training Program — answered.</h2>
+      </div>
+      {faqs.map((f) => (
+        <details class="faq">
+          <summary>{f.q}</summary>
+          <div class="faq__a"><p style="margin:0">{f.a}</p></div>
+        </details>
+      ))}
+      <p class="muted" style="font-size:.9rem;margin-top:8px">
+        Still have a question? <a href="#register">Register below</a> or call
+        <a href="tel:+63283751575">+63 (2) 8375 1575</a>.
+      </p>
+    </div>
+  </section>
+
   <!-- Registration -->
   <section id="register" class="section">
     <div class="container" style="max-width:720px">
@@ -217,4 +248,23 @@ const requirements = [
       </form>
     </div>
   </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  })} />
 </BaseLayout>
+
+<style>
+  .faq { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px 22px; box-shadow: var(--shadow); }
+  .faq summary { cursor: pointer; font-weight: 700; color: var(--forest); font-family: var(--font-head); font-size: 1.1rem; padding: 16px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; color: var(--life); font-weight: 700; font-size: 1.4rem; line-height: 1; }
+  .faq[open] summary::after { content: '\2212'; }
+  .faq__a { padding: 0 0 18px; color: var(--ink-soft); }
+</style>
