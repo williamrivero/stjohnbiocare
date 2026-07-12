@@ -35,9 +35,15 @@ const qrSvg = await QRCode.toString(vcard, {
   errorCorrectionLevel: 'M',
   color: { dark: '#006028', light: '#ffffff' },
 });
+const vcardHref = `data:text/vcard;charset=utf-8,${encodeURIComponent(vcard)}`;
 const mapSrc = `https://maps.google.com/maps?q=${q}&z=16&output=embed`;
 const directions = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
 const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
+const foundationLogo = {
+  'St. John Biocare': '/images/logos/logo-sjbdc.webp',
+  'Core Renal Center': '/images/logos/corerenalcare-logo.webp',
+  'St. Josef Renal Care Foundation': '/images/logos/stjosef-logo.webp',
+}[branch.foundation];
 ---
 <BaseLayout
   title={`${branch.name} Center`}
@@ -56,6 +62,48 @@ const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={waze}>Waze</a>
         <a class="btn btn--ghost" href={branch.phoneHref}>Call the center</a>
         {centerKey && <a class="btn btn--ghost" href="#message">Message this center</a>}
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS CARD -->
+  <section class="section" style="padding-top:34px;padding-bottom:0">
+    <div class="container" style="max-width:860px">
+      <div class="bizcard">
+        <div class="bizcard__body">
+          <div class="bizcard__id">
+            {foundationLogo && <img class="bizcard__logo" src={foundationLogo} alt={`${branch.foundation} logo`} width="72" height="72" loading="lazy" />}
+            <div>
+              <p class="eyebrow" style="margin:0 0 2px">{branch.foundation}</p>
+              <h2 class="bizcard__name">{branch.name}</h2>
+            </div>
+          </div>
+          <dl class="bizcard__rows">
+            <div>
+              <dt>Address</dt>
+              <dd>{branch.address} · <a href={directions} target="_blank" rel="noopener">View map</a></dd>
+            </div>
+            <div>
+              <dt>Phone</dt>
+              <dd><a href={branch.phoneHref}>{branch.phone}</a></dd>
+            </div>
+            {branch.email && (
+              <div>
+                <dt>Email</dt>
+                <dd><a href={`mailto:${branch.email}`}>{branch.email}</a></dd>
+              </div>
+            )}
+            <div>
+              <dt>Hours</dt>
+              <dd>{branch.hours}<br /><span class="muted" style="font-size:.8rem">Also open on public holidays unless otherwise arranged.</span></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="bizcard__qr">
+          <div class="qr" set:html={qrSvg}></div>
+          <a class="btn btn--primary bizcard__save" href={vcardHref} download={`${branch.slug}.vcf`}>Save to contacts</a>
+          <p class="muted" style="font-size:.78rem;margin:8px 0 0">Scan the code — or tap Save.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -90,25 +138,6 @@ const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
       </div>
 
       <aside class="branch__side stack">
-        <div class="card">
-          <h3>Hours</h3>
-          <p style="margin:0">{branch.hours}</p>
-          <p class="muted" style="font-size:.85rem;margin-top:.4rem">
-            Also open on public holidays unless otherwise arranged.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Contact</h3>
-          <p style="margin:0 0 .3rem"><strong>Phone:</strong> <a href={branch.phoneHref}>{branch.phone}</a></p>
-          <p style="margin:0"><strong>Email:</strong> <a href={`mailto:${branch.email}`}>{branch.email}</a></p>
-        </div>
-        <div class="card center">
-          <h3 style="text-align:left">Save our contact</h3>
-          <div class="qr" set:html={qrSvg}></div>
-          <p class="muted" style="font-size:.82rem;margin:10px 0 0">
-            Scan to save {branch.name}'s phone, email and address to your phone.
-          </p>
-        </div>
         <div class="card">
           <h3>Care team</h3>
           <p style="margin:0 0 .3rem"><strong>Medical Director:</strong> {branch.medicalDirector}</p>
@@ -185,6 +214,27 @@ const waze = `https://waze.com/ul?q=${q}&navigate=yes`;
   @media (max-width: 860px) { .branch { grid-template-columns: 1fr; } }
   .map-frame { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); height: 340px; background: var(--sand); }
   .branch h3 { font-size: 1.15rem; margin-bottom: .4rem; }
-  .qr { max-width: 176px; margin: 6px auto 0; }
   .qr svg { width: 100%; height: auto; display: block; }
+
+  .bizcard {
+    display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+    padding: 30px 32px; border-radius: 20px; border: 1px solid var(--border);
+    border-top: 5px solid var(--forest); box-shadow: var(--shadow);
+    background: linear-gradient(135deg, #ffffff, var(--mist));
+  }
+  .bizcard__id { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; }
+  .bizcard__logo { width: 72px; height: 72px; object-fit: contain; flex: 0 0 auto; }
+  .bizcard__name { font-size: 1.55rem; margin: 0; line-height: 1.1; }
+  .bizcard__rows { margin: 0; display: grid; gap: 11px; }
+  .bizcard__rows > div { display: grid; grid-template-columns: 84px 1fr; gap: 12px; align-items: baseline; }
+  .bizcard__rows dt { font-family: var(--font-head); font-weight: 700; color: var(--forest); font-size: .9rem; }
+  .bizcard__rows dd { margin: 0; color: var(--ink-soft); }
+  .bizcard__qr { text-align: center; flex: 0 0 auto; }
+  .bizcard__qr .qr { width: 152px; margin: 0 auto; }
+  .bizcard__save { margin-top: 12px; }
+  @media (max-width: 720px) {
+    .bizcard { grid-template-columns: 1fr; gap: 24px; }
+    .bizcard__qr { justify-self: center; }
+    .bizcard__rows > div { grid-template-columns: 76px 1fr; }
+  }
 </style>
