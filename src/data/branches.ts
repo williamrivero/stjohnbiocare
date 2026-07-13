@@ -24,6 +24,7 @@ export interface Branch {
   headNurse: string;
   stations: string | null;
   transit: string;
+  opened?: string;        // ISO 'YYYY-MM-DD' the center opened/joined — powers the "years serving the community" badge
   underConstruction?: boolean;
   inquiriesVia?: string;  // slug of the open center that handles inquiries while this one is under construction
 }
@@ -45,6 +46,7 @@ export const branches: Branch[] = [
     headNurse: 'Cecilia S. Pajalla',
     stations: null,
     transit: 'Along Quezon Avenue; accessible by bus and jeepney routes and near the MRT-3 Quezon Avenue station.',
+    opened: '2011-10-16',
   },
   {
     slug: 'caloocan',
@@ -61,6 +63,7 @@ export const branches: Branch[] = [
     headNurse: 'Whimcy Marie C. Calubag & Charlon Jonel Magallanes',
     stations: null,
     transit: 'Inside Araneta Square Mall on Samson Road; near the Monumento transport hub and LRT-1 Monumento station.',
+    opened: '2015-06-30',
   },
   {
     slug: 'marikina-san-roque',
@@ -77,6 +80,7 @@ export const branches: Branch[] = [
     headNurse: 'J-cel V. Viernes',
     stations: null,
     transit: 'Along Gil Fernando Avenue, San Roque; accessible by jeepney and tricycle routes.',
+    opened: '2013-01-25',
   },
 
   // ---- Core Renal Center ----
@@ -95,6 +99,7 @@ export const branches: Branch[] = [
     headNurse: 'Emmanuel N. Salvador',
     stations: null,
     transit: 'In Pio del Pilar, Makati; accessible from Osmeña Highway and South Avenue routes.',
+    opened: '2012-10-01',
   },
   {
     slug: 'core-renal-san-isidro',
@@ -126,6 +131,7 @@ export const branches: Branch[] = [
     headNurse: 'Jasmine Sañosa',
     stations: null,
     transit: 'Along Bayan Bayanan Avenue, Concepcion Uno; accessible by jeepney and tricycle routes.',
+    opened: '2019-07-11',
   },
   {
     slug: 'st-josef-marilao',
@@ -142,6 +148,7 @@ export const branches: Branch[] = [
     headNurse: 'Michael Vicente',
     stations: null,
     transit: 'Along the NLEX Road in Barangay Patubig, Marilao; accessible from the NLEX Marilao exit.',
+    opened: '2022-11-18',
   },
   {
     slug: 'st-josef-cainta',

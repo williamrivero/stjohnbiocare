@@ -49,6 +49,11 @@ const foundationLogo = {
   'Core Renal Center': '/images/logos/corerenalcare-logo.webp',
   'St. Josef Renal Care Foundation': '/images/logos/stjosef-logo.webp',
 }[branch.foundation];
+
+// "Years serving the community" — counted the same way the brand counts its own
+// milestones ("fifteen years since 2011"): calendar-year difference from opening.
+const sinceYear = branch.opened ? Number(branch.opened.slice(0, 4)) : null;
+const yearsServing = sinceYear ? new Date().getFullYear() - sinceYear : null;
 ---
 <BaseLayout
   title={`${branch.name} Center`}
@@ -65,6 +70,13 @@ const foundationLogo = {
       <p class="eyebrow" style="margin:0 0 2px">{branch.foundation}</p>
       <h1>{branch.name}</h1>
       <p class="lead">{branch.address}</p>
+      {!uc && yearsServing && yearsServing >= 1 && (
+        <p class="serving-badge">
+          <span aria-hidden="true">🤍</span>
+          <strong>{yearsServing} {yearsServing === 1 ? 'year' : 'years'}</strong> serving the community
+          <span class="serving-since">· since {sinceYear}</span>
+        </p>
+      )}
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={directions}>Google Maps</a>
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={waze}>Waze</a>
@@ -301,6 +313,16 @@ const foundationLogo = {
 </BaseLayout>
 
 <style>
+  .serving-badge {
+    display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin: 14px 0 0; padding: 8px 16px; border-radius: 999px;
+    background: color-mix(in srgb, var(--life) 12%, #fff);
+    border: 1px solid color-mix(in srgb, var(--life) 32%, transparent);
+    color: var(--forest); font-weight: 600; font-size: 1rem; line-height: 1.2;
+  }
+  .serving-badge strong { color: var(--life); font-weight: 800; }
+  .serving-since { color: var(--ink-soft); font-weight: 600; }
+
   .branch { display: grid; grid-template-columns: 1.6fr .9fr; gap: 26px; align-items: start; }
   @media (max-width: 860px) { .branch { grid-template-columns: 1fr; } }
   .map-frame { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); height: 340px; background: var(--sand); }
