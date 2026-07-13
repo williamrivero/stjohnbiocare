@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+// ---------------------------------------------------------------------------
+// STAFF PORTAL — a front door to the private Google Shared Drive for unit
+// directors, head nurses, and admins. This page itself is PUBLIC and holds no
+// secrets; the actual security is Google's sign-in on the Shared Drive, which
+// only lets in the people you've added by email.
+//
+// TO GO LIVE: paste the Shared Drive link between the quotes below.
+// (In Google Drive: open the Shared Drive → Share → "Copy link".)
+// ---------------------------------------------------------------------------
+const PORTAL_URL = '';   // e.g. 'https://drive.google.com/drive/folders/XXXXXXXX'
+
+// Who to contact if a staff member can't get in (access is granted by email).
+const ADMIN_CONTACT = site.email;
+const ready = PORTAL_URL.length > 0;
+---
+<BaseLayout
+  title="Staff Portal"
+  description="Private resource hub for St. John Biocare unit directors, head nurses, and admins."
+  noindex={true}
+>
+  <section class="section" style="background:linear-gradient(180deg,var(--mist),var(--cream));padding-block:56px">
+    <div class="container" style="max-width:760px">
+      <span class="pill" style="display:inline-flex">Staff only</span>
+      <h1 style="margin:14px 0 6px">Staff Portal</h1>
+      <p class="lead" style="margin:0">
+        A private space for our unit directors, head nurses, and admins to share
+        protocols, the employee handbook, and internal memos.
+      </p>
+
+      <div class="card" style="margin-top:26px;text-align:center">
+        {ready ? (
+          <>
+            <p style="margin:0 0 16px;color:var(--ink-soft)">
+              Sign in with your <strong>work Google account</strong> to open the shared drive.
+            </p>
+            <a class="btn btn--crimson" href={PORTAL_URL} target="_blank" rel="noopener">
+              Open the Staff Portal →
+            </a>
+          </>
+        ) : (
+          <p style="margin:0;color:var(--ink-soft)">
+            <strong>The portal is being set up.</strong> The secure staff drive will be linked here shortly.
+          </p>
+        )}
+      </div>
+
+      <h2 style="font-size:1.25rem;margin:34px 0 12px">What's inside</h2>
+      <div class="grid grid--3" style="gap:16px">
+        <div class="card">
+          <h3 style="font-size:1.05rem;margin:0 0 .35rem">📋 Protocols</h3>
+          <p class="muted" style="margin:0">Clinical and operational protocols for the units.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.05rem;margin:0 0 .35rem">📕 Employee Handbook</h3>
+          <p class="muted" style="margin:0">Policies, conduct, and benefits for every team member.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.05rem;margin:0 0 .35rem">📨 Internal Memos</h3>
+          <p class="muted" style="margin:0">Announcements and updates from management.</p>
+        </div>
+      </div>
+
+      <div class="notice" style="margin-top:26px">
+        <strong>Can't get in?</strong>
+        <p style="margin:.4rem 0 0">
+          Access is granted per person by email. If you need access or can't sign in,
+          contact us at <a href={`mailto:${ADMIN_CONTACT}`}>{ADMIN_CONTACT}</a> and we'll add you.
+        </p>
+      </div>
+
+      <p style="margin-top:22px">
+        <a href="/" style="font-weight:700;text-decoration:none">← Back to the main site</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
