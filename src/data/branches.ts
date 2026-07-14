@@ -80,6 +80,8 @@ export const branches: Branch[] = [
         name: 'Dr. Ma. Kristina Alolod',
         hospitals: [
           { name: "St. Luke's Medical Center — Quezon City", map: 'https://maps.app.goo.gl/98Nx1RikD3w7n8fcA' },
+          { name: "Our Lady of Lourdes Hospital", map: 'https://www.google.com/maps/search/?api=1&query=Our%20Lady%20of%20Lourdes%20Hospital%2C%2046%20P.%20Sanchez%20Street%2C%20Sta.%20Mesa%2C%20Manila' },
+          { name: "Providence Hospital", map: 'https://www.google.com/maps/search/?api=1&query=Providence%20Hospital%2C%201515%20Quezon%20Avenue%2C%20Diliman%2C%20Quezon%20City' },
         ],
       },
       {
@@ -175,6 +177,20 @@ export const branches: Branch[] = [
           { name: "University of Santo Tomas Hospital", map: 'https://maps.app.goo.gl/m3ZVuFR1ftrrfvaZ9' },
         ],
       },
+      {
+        name: 'Dr. Mary Grace Gran',
+        hospitals: [
+          { name: "Marikina St. Vincent General Hospital", map: 'https://www.google.com/maps/search/?api=1&query=Marikina%20St.%20Vincent%20General%20Hospital%2C%2035%20Bayan-Bayanan%20Avenue%2C%20Marikina%20City' },
+          { name: "St. Anthony Medical Center of Marikina", map: 'https://www.google.com/maps/search/?api=1&query=St.%20Anthony%20Medical%20Center%20of%20Marikina%2C%2032%20Sta.%20Ana%20Extension%20corner%20Betelnut%20Street%2C%20San%20Roque%2C%20Marikina%20City' },
+          { name: "Metro Antipolo Hospital and Medical Center", map: 'https://www.google.com/maps/search/?api=1&query=Metro%20Antipolo%20Hospital%20and%20Medical%20Center%2C%201348%20Marikina-Infanta%20Highway%2C%20Barangay%20Mayamot%2C%20Antipolo%2C%20Rizal' },
+        ],
+      },
+      {
+        name: 'Dr. Alwyn Santos',
+        hospitals: [
+          { name: "Marikina Valley Medical Center", map: 'https://www.google.com/maps/search/?api=1&query=Marikina%20Valley%20Medical%20Center%2C%20Sumulong%20Highway%20corner%20Aguinaldo%20Street%2C%20Marikina%20City' },
+        ],
+      },
     ],
   },
 
@@ -252,6 +268,20 @@ export const branches: Branch[] = [
         name: 'Dr. Madelaine R. Cosing',
         hospitals: [
           { name: "St. Luke's Medical Center — Quezon City", map: 'https://maps.app.goo.gl/98Nx1RikD3w7n8fcA' },
+        ],
+      },
+      {
+        name: 'Dr. Mary Grace Gran',
+        hospitals: [
+          { name: "Marikina St. Vincent General Hospital", map: 'https://www.google.com/maps/search/?api=1&query=Marikina%20St.%20Vincent%20General%20Hospital%2C%2035%20Bayan-Bayanan%20Avenue%2C%20Marikina%20City' },
+          { name: "St. Anthony Medical Center of Marikina", map: 'https://www.google.com/maps/search/?api=1&query=St.%20Anthony%20Medical%20Center%20of%20Marikina%2C%2032%20Sta.%20Ana%20Extension%20corner%20Betelnut%20Street%2C%20San%20Roque%2C%20Marikina%20City' },
+          { name: "Metro Antipolo Hospital and Medical Center", map: 'https://www.google.com/maps/search/?api=1&query=Metro%20Antipolo%20Hospital%20and%20Medical%20Center%2C%201348%20Marikina-Infanta%20Highway%2C%20Barangay%20Mayamot%2C%20Antipolo%2C%20Rizal' },
+        ],
+      },
+      {
+        name: 'Dr. Alwyn Santos',
+        hospitals: [
+          { name: "Marikina Valley Medical Center", map: 'https://www.google.com/maps/search/?api=1&query=Marikina%20Valley%20Medical%20Center%2C%20Sumulong%20Highway%20corner%20Aguinaldo%20Street%2C%20Marikina%20City' },
         ],
       },
     ],
