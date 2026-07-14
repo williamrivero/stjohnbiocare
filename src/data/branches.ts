@@ -27,6 +27,31 @@ export interface Branch {
   opened?: string;        // ISO 'YYYY-MM-DD' the center opened/joined — powers the "years serving the community" badge
   underConstruction?: boolean;
   inquiriesVia?: string;  // slug of the open center that handles inquiries while this one is under construction
+  partnerHospitals?: PartnerHospital[];          // hospitals this center holds a signed MOA with
+  // Used only where no MOA is signed yet. These are hospitals near the center — NOT
+  // partners — so the page must never imply an agreement exists.
+  nearbyHospitals?: PartnerHospital[];
+  moaPending?: boolean;                          // an MOA is under negotiation
+  affiliatedNephrologists?: AffiliatedDoctor[];  // nephrologists affiliated with this center
+}
+
+// A hospital this center has a Memorandum of Agreement with, so that admission,
+// emergency transfer or specialist care can be arranged without starting over.
+export interface PartnerHospital {
+  name: string;
+  area?: string;
+  map?: string;
+  covers?: string;   // e.g. 'Admission · Emergency transfer' — leave undefined until confirmed
+}
+
+export interface AffiliatedDoctor {
+  name: string;
+  hospitals?: DoctorHospital[];  // where they admit/consult — rendered under the name
+}
+
+export interface DoctorHospital {
+  name: string;
+  map?: string;
 }
 
 export const branches: Branch[] = [
@@ -47,6 +72,41 @@ export const branches: Branch[] = [
     stations: null,
     transit: 'Along Quezon Avenue; accessible by bus and jeepney routes and near the MRT-3 Quezon Avenue station.',
     opened: '2011-10-16',
+    partnerHospitals: [
+      { name: 'Capitol Medical Center', area: 'Quezon City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/nar5okrpM3joK1MKA' },
+    ],
+    affiliatedNephrologists: [
+      {
+        name: 'Dr. Ma. Kristina Alolod',
+        hospitals: [
+          { name: "St. Luke's Medical Center — Quezon City", map: 'https://maps.app.goo.gl/98Nx1RikD3w7n8fcA' },
+        ],
+      },
+      {
+        name: 'Dr. Aina Bautista-Duque',
+        hospitals: [
+          { name: "Capitol Medical Center", map: 'https://maps.app.goo.gl/mgU3ML6UyyXR27a79' },
+        ],
+      },
+      {
+        name: 'Dr. William Gregory Rivero',
+        hospitals: [
+          { name: "Fe Del Mundo Medical Center", map: 'https://maps.app.goo.gl/sn9KWrpeQjViweZf9' },
+        ],
+      },
+      {
+        name: 'Dr. Romina Navarro-Laguesma',
+        hospitals: [
+          { name: "University of Santo Tomas Hospital", map: 'https://maps.app.goo.gl/m3ZVuFR1ftrrfvaZ9' },
+        ],
+      },
+      {
+        name: 'Dr. Madelaine Cosing-Rosales',
+        hospitals: [
+          { name: "St. Luke's Medical Center — Quezon City", map: 'https://maps.app.goo.gl/98Nx1RikD3w7n8fcA' },
+        ],
+      },
+    ],
   },
   {
     slug: 'caloocan',
@@ -64,6 +124,30 @@ export const branches: Branch[] = [
     stations: null,
     transit: 'Inside Araneta Square Mall on Samson Road; near the Monumento transport hub and LRT-1 Monumento station.',
     opened: '2015-06-30',
+    // Caloocan's MOA is still being negotiated. Until it is signed we list nearby
+    // hospitals ONLY — where this center's own nephrologists admit and consult — and
+    // the page states plainly that no agreement is in place yet.
+    moaPending: true,
+    nearbyHospitals: [
+      { name: 'MCU Hospital — Filemon D. Tanchoco Sr. Medical Foundation', area: 'Caloocan City', map: 'https://maps.app.goo.gl/UuHZr2RCVpyrvY2z8' },
+      { name: 'Fatima University Medical Center — Valenzuela', area: 'Valenzuela City', map: 'https://maps.app.goo.gl/TyHHTeSJLYbYGztX8' },
+    ],
+    affiliatedNephrologists: [
+      {
+        name: 'Dr. Reina Antonio',
+        hospitals: [
+          { name: "MCU Hospital — Filemon D. Tanchoco Sr. Medical Foundation", map: 'https://maps.app.goo.gl/UuHZr2RCVpyrvY2z8' },
+          { name: "Fatima University Medical Center — Valenzuela", map: 'https://maps.app.goo.gl/TyHHTeSJLYbYGztX8' },
+        ],
+      },
+      {
+        name: 'Dr. Vimar A. Luz',
+        hospitals: [
+          { name: "St. Luke's Medical Center — Quezon City", map: 'https://maps.app.goo.gl/98Nx1RikD3w7n8fcA' },
+          { name: "St. Luke's Medical Center — Global City", map: 'https://maps.app.goo.gl/2K1ee2Wt3Yu2hheu8' },
+        ],
+      },
+    ],
   },
   {
     slug: 'marikina-san-roque',
@@ -81,6 +165,17 @@ export const branches: Branch[] = [
     stations: null,
     transit: 'Along Gil Fernando Avenue, San Roque; accessible by jeepney and tricycle routes.',
     opened: '2013-01-25',
+    partnerHospitals: [
+      { name: 'Amang Rodriguez Memorial Medical Center', area: 'Marikina City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/PuxPgB4PjQ7qhoJHA' },
+    ],
+    affiliatedNephrologists: [
+      {
+        name: 'Dr. Romina Navarro-Laguesma',
+        hospitals: [
+          { name: "University of Santo Tomas Hospital", map: 'https://maps.app.goo.gl/m3ZVuFR1ftrrfvaZ9' },
+        ],
+      },
+    ],
   },
 
   // ---- Core Renal Center ----
@@ -100,6 +195,23 @@ export const branches: Branch[] = [
     stations: null,
     transit: 'In Pio del Pilar, Makati; accessible from Osmeña Highway and South Avenue routes.',
     opened: '2012-10-01',
+    partnerHospitals: [
+      { name: "St. Luke's Medical Center — Global City (BGC)", area: 'Taguig City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/2K1ee2Wt3Yu2hheu8' },
+    ],
+    affiliatedNephrologists: [
+      {
+        name: 'Dr. Vimar A. Luz',
+        hospitals: [
+          { name: "St. Luke's Medical Center — Global City", map: 'https://maps.app.goo.gl/2K1ee2Wt3Yu2hheu8' },
+        ],
+      },
+      {
+        name: 'Dr. Jose Protacio Marcia',
+        hospitals: [
+          { name: "St. Luke's Medical Center — Global City", map: 'https://maps.app.goo.gl/2K1ee2Wt3Yu2hheu8' },
+        ],
+      },
+    ],
   },
   {
     slug: 'core-renal-san-isidro',
@@ -132,6 +244,17 @@ export const branches: Branch[] = [
     stations: null,
     transit: 'Along Bayan Bayanan Avenue, Concepcion Uno; accessible by jeepney and tricycle routes.',
     opened: '2019-07-11',
+    partnerHospitals: [
+      { name: 'St. Josef Hospital — Concepcion', area: 'Marikina City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/gvaEYywRoT9KYxG68' },
+    ],
+    affiliatedNephrologists: [
+      {
+        name: 'Dr. Madelaine R. Cosing',
+        hospitals: [
+          { name: "St. Luke's Medical Center — Quezon City", map: 'https://maps.app.goo.gl/98Nx1RikD3w7n8fcA' },
+        ],
+      },
+    ],
   },
   {
     slug: 'st-josef-marilao',
@@ -149,6 +272,23 @@ export const branches: Branch[] = [
     stations: null,
     transit: 'Along the NLEX Road in Barangay Patubig, Marilao; accessible from the NLEX Marilao exit.',
     opened: '2022-11-18',
+    partnerHospitals: [
+      { name: 'Saint Michael Family Hospital', area: 'Marilao, Bulacan', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/4KPSm1JxCho3H2Vx9' },
+    ],
+    affiliatedNephrologists: [
+      {
+        name: 'Dr. Nemma Neron-Evangelista',
+        hospitals: [
+          { name: "Bocaue Specialists Medical Center, Inc. — Bocaue, Bulacan" },
+        ],
+      },
+      {
+        name: 'Dr. William Gregory Rivero',
+        hospitals: [
+          { name: "Fe Del Mundo Medical Center", map: 'https://maps.app.goo.gl/sn9KWrpeQjViweZf9' },
+        ],
+      },
+    ],
   },
   {
     slug: 'st-josef-cainta',

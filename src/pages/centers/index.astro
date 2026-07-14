@@ -21,6 +21,16 @@ const foundationLogo = {
     subtitle={`Our growing network — St. John Biocare, Core Renal Center and our sister foundation St. Josef Renal Care — has ${openCount} centers open now, with ${soonCount} more opening this year. Each runs six days a week from 5:30 AM.`}
   />
 
+  <section class="ah-band" data-oh-notice hidden>
+    <div class="container">
+      <p class="ah-band__eyebrow">After 5:00 PM</p>
+      <p class="ah-band__text">
+        <strong>Trying to reach a center after 5:00&nbsp;PM?</strong> Our phone lines rest for the evening —
+        open a center below and send it a message. We'll get back to you first thing in the morning.
+      </p>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       {foundations.map((foundation) => {
@@ -91,4 +101,43 @@ const foundationLogo = {
       </figure>
     </div>
   </section>
+
+  <script is:inline>
+    // Phone lines are attended Mon–Sat, 5:30 AM – 5:00 PM (Asia/Manila).
+    // Outside that window, show the notice pointing people to the message form.
+    (function () {
+      var notice = document.querySelector('[data-oh-notice]');
+      if (!notice) return;
+
+      // Preview override: ?after-hours=1 forces the notice on, ?after-hours=0 forces it off.
+      var force = new URLSearchParams(location.search).get('after-hours');
+
+      function attended() {
+        if (force === '1') return false;
+        if (force === '0') return true;
+        var now = new Date(
+          new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' })
+        );
+        var day = now.getDay();               // 0 = Sunday
+        var mins = now.getHours() * 60 + now.getMinutes();
+        return day !== 0 && mins >= 5 * 60 + 30 && mins < 17 * 60;
+      }
+
+      function update() { notice.hidden = attended(); }
+
+      update();
+      setInterval(update, 60000);
+    })();
+  </script>
 </BaseLayout>
+
+<style>
+  .ah-band { background: var(--sand); padding: 22px 0; }
+  .ah-band[hidden] { display: none; }
+  .ah-band__eyebrow {
+    margin: 0 0 6px; font-size: .72rem; font-weight: 700; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+  .ah-band__text { margin: 0; max-width: 72ch; color: var(--ink); line-height: 1.6; }
+  .ah-band__text strong { color: var(--crimson); }
+</style>

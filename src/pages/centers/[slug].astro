@@ -54,6 +54,12 @@ const foundationLogo = {
 // milestones ("fifteen years since 2011"): calendar-year difference from opening.
 const sinceYear = branch.opened ? Number(branch.opened.slice(0, 4)) : null;
 const yearsServing = sinceYear ? new Date().getFullYear() - sinceYear : null;
+
+// Hospital care: prefer signed MOA partners. Where no MOA exists yet (e.g. Caloocan,
+// still under negotiation) we fall back to nearby hospitals — clearly labelled as such,
+// never implying an agreement we don't have.
+const hasMoa = !!(branch.partnerHospitals && branch.partnerHospitals.length > 0);
+const hospitalList = hasMoa ? branch.partnerHospitals! : (branch.nearbyHospitals ?? []);
 ---
 <BaseLayout
   title={`${branch.name} Center`}
@@ -81,7 +87,7 @@ const yearsServing = sinceYear ? new Date().getFullYear() - sinceYear : null;
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={directions}>Google Maps</a>
         <a class="btn btn--ghost" target="_blank" rel="noopener" href={waze}>Waze</a>
         {!uc && <a class="btn btn--crimson" href="/new-patients#request">Request an appointment</a>}
-        {!uc && <a class="btn btn--ghost" href={branch.phoneHref}>Call the center</a>}
+        {!uc && <a class="btn btn--ghost" data-oh-call href={branch.phoneHref}>Call the center</a>}
         {!uc && centerKey && <a class="btn btn--ghost" href="#message">Message this center</a>}
         {uc && <a class="btn btn--primary" href="/centers">See open centers</a>}
       </div>
@@ -164,6 +170,44 @@ const yearsServing = sinceYear ? new Date().getFullYear() - sinceYear : null;
     </>
   )}
 
+  <script is:inline>
+    // Phone lines are attended Mon–Sat, 5:30 AM – 5:00 PM (Asia/Manila).
+    // Outside that window we hide the "Call the center" button and show a warm
+    // notice pointing to the message form, so nobody is left ringing a dead line.
+    (function () {
+      var notice = document.querySelector('[data-oh-notice]');
+      if (!notice) return;
+      var call = document.querySelector('[data-oh-call]');
+
+      // Preview override for testing at any hour:
+      //   ?after-hours=1  → force the evening notice on
+      //   ?after-hours=0  → force the daytime "Call the center" state
+      var force = new URLSearchParams(location.search).get('after-hours');
+
+      function attended() {
+        if (force === '1') return false;
+        if (force === '0') return true;
+        var now = new Date(
+          new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' })
+        );
+        var day = now.getDay();               // 0 = Sunday
+        var mins = now.getHours() * 60 + now.getMinutes();
+        var open = 5 * 60 + 30;               // 5:30 AM
+        var close = 17 * 60;                  // 5:00 PM
+        return day !== 0 && mins >= open && mins < close;
+      }
+
+      function update() {
+        var isAttended = attended();
+        notice.hidden = isAttended;
+        if (call) call.hidden = !isAttended;
+      }
+
+      update();
+      setInterval(update, 60000);
+    })();
+  </script>
+
   {!uc && (
     <>
   <!-- BUSINESS CARD -->
@@ -238,12 +282,84 @@ const yearsServing = sinceYear ? new Date().getFullYear() - sinceYear : null;
       </div>
 
       <aside class="branch__side stack">
+        {centerKey && (
+          <div class="card ahcard" data-oh-notice hidden>
+            <p class="ahcard__eyebrow">After 5:00 PM</p>
+            <p class="ahcard__text">
+              <strong>Trying to reach us after 5:00&nbsp;PM?</strong> Our phone lines rest for the evening —
+              send us a message and we'll get back to you first thing in the morning.
+            </p>
+            <a class="btn btn--crimson ahcard__cta" href="#message">
+              <span aria-hidden="true">✉</span> Send us a message
+            </a>
+          </div>
+        )}
+
+        {hospitalList.length > 0 && (
+          <div class="card">
+            <h3 class="hospcare__title">If you ever need hospital care</h3>
+            {hasMoa ? (
+              <p class="hospcare__lead">This center works under formal agreements with partner hospitals nearby,
+              so admission, emergency transfer, or specialist care can be arranged quickly — without you starting
+              from scratch.</p>
+            ) : (
+              <p class="hospcare__lead">These are the hospitals nearest this center, and where our own
+              nephrologists admit and consult. A formal partnership agreement is being arranged.</p>
+            )}
+            <ul class="hospitals">
+              {hospitalList.map((h) => (
+                <li class="hospitals__item">
+                  <strong class="hospitals__name">{h.name}</strong>
+                  {h.area && <span class="hospitals__area">{h.area}</span>}
+                  <div class="hospitals__meta">
+                    {hasMoa
+                      ? h.covers && <span class="hospitals__covers">{h.covers}</span>
+                      : <span class="hospitals__nearby">Nearby hospital</span>}
+                    <a
+                      class="hospitals__map"
+                      href={h.map ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}`}
+                      target="_blank"
+                      rel="noopener">View map</a>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            {!hasMoa && (
+              <p class="hospcare__pending">Listed for convenience only — we don't yet have a formal agreement
+              with these hospitals. Our team will still help you coordinate if you need to be admitted.</p>
+            )}
+          </div>
+        )}
+
         <div class="card">
           <h3>Care team</h3>
           <p style="margin:0 0 .3rem"><strong>Medical Director:</strong> {branch.medicalDirector}</p>
           <p style="margin:0 0 .3rem"><strong>Head Nurse:</strong> {branch.headNurse}</p>
           {branch.stations && <p style="margin:0"><strong>Dialysis stations:</strong> {branch.stations}</p>}
         </div>
+
+        {branch.affiliatedNephrologists && branch.affiliatedNephrologists.length > 0 && (
+          <div class="card">
+            <h3>Affiliated nephrologists</h3>
+            <ul class="docs">
+              {branch.affiliatedNephrologists.map((d) => (
+                <li class="docs__item">
+                  <strong class="docs__name">{d.name}</strong>
+                  {d.hospitals && d.hospitals.map((h) => (
+                    <div class="docs__hosp">
+                      <span class="docs__hospname">{h.name}</span>
+                      <a
+                        class="docs__map"
+                        href={h.map ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}`}
+                        target="_blank"
+                        rel="noopener">View map</a>
+                    </div>
+                  ))}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </aside>
     </div>
   </section>
@@ -322,6 +438,59 @@ const yearsServing = sinceYear ? new Date().getFullYear() - sinceYear : null;
   }
   .serving-badge strong { color: var(--life); font-weight: 800; }
   .serving-since { color: var(--ink-soft); font-weight: 600; }
+
+  /* AFTER-HOURS CARD — sidebar card, appears automatically once the phone lines
+     close (5:00 PM, Asia/Manila). Sand fill so it reads as a gentle aside. */
+  .ahcard { background: var(--sand); }
+  .ahcard[hidden] { display: none; }
+  .ahcard__eyebrow {
+    margin: 0 0 6px; font-size: .7rem; font-weight: 700; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+  .ahcard__text { margin: 0 0 14px; color: var(--ink); line-height: 1.55; font-size: .95rem; }
+  .ahcard__text strong { color: var(--crimson); }
+  .ahcard__cta { display: inline-flex; align-items: center; gap: 8px; }
+
+  /* PARTNER HOSPITALS (MOA) — sidebar card; rows stack in the narrow column. */
+  .hospcare__title { color: var(--crimson); }
+  .hospcare__lead { margin: 0 0 14px; color: var(--ink-soft); line-height: 1.55; font-size: .92rem; }
+
+  .hospitals { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .hospitals__item {
+    display: grid; gap: 4px; justify-items: start;
+    padding: 13px 15px; border: 1px solid var(--border); border-radius: 12px; background: #fff;
+  }
+  .hospitals__name { font-size: 1rem; color: var(--ink); font-weight: 600; line-height: 1.3; }
+  .hospitals__area { font-size: .86rem; color: var(--ink-soft); }
+  .hospitals__meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .hospitals__covers {
+    white-space: nowrap; font-size: .75rem; font-weight: 700;
+    padding: 5px 11px; border-radius: 999px;
+    background: color-mix(in srgb, var(--life) 15%, #fff); color: var(--forest);
+  }
+  .hospitals__map { font-weight: 700; text-decoration: none; white-space: nowrap; font-size: .86rem; }
+  /* Neutral pill for hospitals with no signed MOA — visually distinct from the green
+     "covered" pill so the two can never be mistaken for each other. */
+  .hospitals__nearby {
+    white-space: nowrap; font-size: .75rem; font-weight: 700;
+    padding: 5px 11px; border-radius: 999px;
+    background: #F1EFE8; color: #5F5E5A;
+  }
+  .hospcare__pending {
+    margin: 12px 0 0; font-size: .8rem; line-height: 1.5; color: var(--ink-soft);
+    padding-top: 10px; border-top: 1px solid var(--border);
+  }
+
+  /* Affiliated nephrologists — name, then hospital affiliation, then its map link. */
+  .docs { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .docs__item { display: grid; gap: 4px; }
+  .docs__name { font-size: 1rem; color: var(--ink); font-weight: 600; line-height: 1.3; }
+  .docs__hosp {
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+    font-size: .86rem; line-height: 1.45;
+  }
+  .docs__hospname { color: var(--ink-soft); }
+  .docs__map { font-weight: 700; text-decoration: none; white-space: nowrap; }
 
   .branch { display: grid; grid-template-columns: 1.6fr .9fr; gap: 26px; align-items: start; }
   @media (max-width: 860px) { .branch { grid-template-columns: 1fr; } }
