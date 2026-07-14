@@ -191,6 +191,14 @@ export const branches: Branch[] = [
           { name: "Marikina Valley Medical Center", map: 'https://www.google.com/maps/search/?api=1&query=Marikina%20Valley%20Medical%20Center%2C%20Sumulong%20Highway%20corner%20Aguinaldo%20Street%2C%20Marikina%20City' },
         ],
       },
+      {
+        name: 'Dr. Pia Gabrielle S. Hugo',
+        hospitals: [
+          { name: "Antipolo Centro De Medikal", map: 'https://www.google.com/maps/search/?api=1&query=Antipolo%20Centro%20De%20Medikal%2C%20234%20Sumulong%20Highway%2C%20Antipolo' },
+          { name: "Cornel Medical Center", map: 'https://www.google.com/maps/search/?api=1&query=Cornel%20Medical%20Center%2C%20Masinag%2C%20Marcos%20Highway%2C%20Antipolo%20City' },
+          { name: "Fatima University Medical Center — Antipolo", map: 'https://www.google.com/maps/search/?api=1&query=Fatima%20University%20Medical%20Center%2C%2023%20Sumulong%20Highway%2C%20Sta.%20Cruz%2C%20Antipolo%20City' },
+        ],
+      },
     ],
   },
 
@@ -282,6 +290,14 @@ export const branches: Branch[] = [
         name: 'Dr. Alwyn Santos',
         hospitals: [
           { name: "Marikina Valley Medical Center", map: 'https://www.google.com/maps/search/?api=1&query=Marikina%20Valley%20Medical%20Center%2C%20Sumulong%20Highway%20corner%20Aguinaldo%20Street%2C%20Marikina%20City' },
+        ],
+      },
+      {
+        name: 'Dr. Pia Gabrielle S. Hugo',
+        hospitals: [
+          { name: "Antipolo Centro De Medikal", map: 'https://www.google.com/maps/search/?api=1&query=Antipolo%20Centro%20De%20Medikal%2C%20234%20Sumulong%20Highway%2C%20Antipolo' },
+          { name: "Cornel Medical Center", map: 'https://www.google.com/maps/search/?api=1&query=Cornel%20Medical%20Center%2C%20Masinag%2C%20Marcos%20Highway%2C%20Antipolo%20City' },
+          { name: "Fatima University Medical Center — Antipolo", map: 'https://www.google.com/maps/search/?api=1&query=Fatima%20University%20Medical%20Center%2C%2023%20Sumulong%20Highway%2C%20Sta.%20Cruz%2C%20Antipolo%20City' },
         ],
       },
     ],
