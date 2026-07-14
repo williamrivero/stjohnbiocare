@@ -143,6 +143,50 @@ const faqs = [
     </div>
   </section>
 
+  <!-- INVITATION LETTER -->
+  <section id="invitation" class="section">
+    <div class="container" style="max-width:760px">
+      <div class="center" style="margin-bottom:24px">
+        <p class="eyebrow">Invitation letter</p>
+        <h2>Take an invitation with you.</h2>
+        <p class="muted">A one-page letter with the full programme details — useful for your chief nurse,
+        your HR office, or your own records. Add your name and address and we'll address it to you
+        personally; leave them blank for a general copy.</p>
+      </div>
+
+      <form class="card" id="inviteForm" novalidate>
+        <div class="grid grid--2" style="gap:0 18px">
+          <div class="form-field">
+            <label for="inv-name">Your name <span class="muted" style="font-weight:400">(optional)</span></label>
+            <input id="inv-name" type="text" autocomplete="name" placeholder="Ms. Maria Cristina D. Santos, RN" />
+          </div>
+          <div class="form-field">
+            <label for="inv-addr1">Address line 1 <span class="muted" style="font-weight:400">(optional)</span></label>
+            <input id="inv-addr1" type="text" autocomplete="address-line1" placeholder="Unit 12B, Cordillera Street" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="inv-addr2">Address line 2 <span class="muted" style="font-weight:400">(optional)</span></label>
+          <input id="inv-addr2" type="text" autocomplete="address-line2" placeholder="Quezon City 1113, Metro Manila" />
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px">
+          <button type="submit" class="btn btn--crimson" id="inv-btn">Download my invitation letter</button>
+          <a class="btn btn--ghost" href="/downloads/hd-nurse-training-invitation.pdf" download>
+            Download the general letter
+          </a>
+        </div>
+
+        <p class="muted" style="font-size:.82rem;margin-top:14px">
+          Your details are used only to write the letter — it is created on your own device and
+          nothing is sent to us. To enroll, please use the
+          <a href="#register">registration form below</a>.
+        </p>
+        <p id="inv-error" class="muted" style="font-size:.82rem;color:var(--crimson);margin-top:8px;display:none"></p>
+      </form>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="section section--mist">
     <div class="container stack" style="max-width:760px">
@@ -269,3 +313,117 @@ const faqs = [
   .faq[open] summary::after { content: '\2212'; }
   .faq__a { padding: 0 0 18px; color: var(--ink-soft); }
 </style>
+
+<script>
+  // Personalised invitation letter.
+  //
+  // The designed letter lives at /downloads/hd-nurse-training-invitation-template.pdf
+  // with a deliberately blank recipient block. We stamp the visitor's name, address
+  // and salutation onto it here, in their own browser — nothing is uploaded, and no
+  // server is involved (the site is static). Anchors below come from the generator
+  // in tools/make_invitation_letter.py; if the letter is redesigned, re-run it and
+  // copy the new letter-anchors.json values across.
+  import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
+
+  const TEMPLATE = '/downloads/hd-nurse-training-invitation-template.pdf';
+  const MM = 2.834645;
+
+  const ANCHOR = { recipTop: 685.7, salutY: 631.84, left: 45.35 };
+  const INK  = rgb(0x22 / 255, 0x2A / 255, 0x24 / 255);
+  const SOFT = rgb(0x5F / 255, 0x6B / 255, 0x60 / 255);
+
+  const form = document.getElementById('inviteForm');
+
+  if (form) {
+    const btn = document.getElementById('inv-btn');
+    const err = document.getElementById('inv-error');
+
+    const slug = (s) =>
+      s.normalize('NFD').replace(/[̀-ͯ]/g, '')
+       .replace(/[^A-Za-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 48);
+
+    // Helvetica (a standard PDF font) has no glyphs beyond Latin-1, so strip
+    // anything it cannot draw rather than letting pdf-lib throw.
+    const safe = (s) => s.replace(/[^\x20-\xFF]/g, '');
+
+    // "Ms. Maria Cristina D. Santos, RN" -> "Dear Ms. Santos,"
+    // Drop post-comma credentials, then prefer <title> + <surname>. Without a
+    // recognisable title we simply use the name as given, which is never wrong.
+    const salutationFor = (full) => {
+      if (!full) return 'Dear Colleague,';
+      const clean = full.split(',')[0].trim().replace(/\s+/g, ' ');
+      const parts = clean.split(' ').filter(Boolean);
+      const TITLES = ['mr', 'mrs', 'ms', 'miss', 'dr', 'prof'];
+      const first = (parts[0] || '').toLowerCase().replace(/\./g, '');
+      if (parts.length >= 2 && TITLES.includes(first)) {
+        return `Dear ${parts[0]} ${parts[parts.length - 1]},`;
+      }
+      return `Dear ${clean},`;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.style.display = 'none';
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Preparing your letter…';
+
+      try {
+        const name  = safe(document.getElementById('inv-name').value.trim());
+        const addr1 = safe(document.getElementById('inv-addr1').value.trim());
+        const addr2 = safe(document.getElementById('inv-addr2').value.trim());
+
+        const res = await fetch(TEMPLATE);
+        if (!res.ok) throw new Error('template ' + res.status);
+        const pdf = await PDFDocument.load(await res.arrayBuffer());
+
+        const page = pdf.getPages()[0];
+        const reg  = await pdf.embedFont(StandardFonts.Helvetica);
+        const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
+
+        const today = new Date().toLocaleDateString('en-GB', {
+          day: 'numeric', month: 'long', year: 'numeric',
+        });
+
+        let y = ANCHOR.recipTop;
+        page.drawText(today, { x: ANCHOR.left, y, size: 8.6, font: reg, color: SOFT });
+
+        if (name) {
+          y -= 4.8 * MM;
+          page.drawText(name, { x: ANCHOR.left, y, size: 9.6, font: bold, color: INK });
+          y -= 4.4 * MM;
+          for (const line of [addr1, addr2].filter(Boolean)) {
+            page.drawText(line, { x: ANCHOR.left, y, size: 8.8, font: reg, color: SOFT });
+            y -= 4.2 * MM;
+          }
+        }
+
+        page.drawText(salutationFor(name), {
+          x: ANCHOR.left, y: ANCHOR.salutY, size: 10.2, font: bold, color: INK,
+        });
+
+        pdf.setTitle('Invitation — Hemodialysis Nurse Training Program');
+        const bytes = await pdf.save();
+        const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = name
+          ? `SJB-HD-Training-Invitation-${slug(name)}.pdf`
+          : 'SJB-HD-Training-Invitation.pdf';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 4000);
+      } catch (e) {
+        // Never leave someone stuck: fall back to the plain letter.
+        err.textContent =
+          "We couldn't personalise the letter just now — the general copy is downloading instead.";
+        err.style.display = 'block';
+        window.location.href = '/downloads/hd-nurse-training-invitation.pdf';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = original;
+      }
+    });
+  }
+</script>
