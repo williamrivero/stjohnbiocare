@@ -103,7 +103,7 @@ export const branches: Branch[] = [
         ],
       },
       {
-        name: 'Dr. Madelaine Cosing-Rosales',
+        name: 'Dr. Maddie Cosing-Rosales',
         hospitals: [
           { name: "St. Luke's Medical Center — Quezon City", map: 'https://maps.app.goo.gl/98Nx1RikD3w7n8fcA' },
         ],
@@ -255,7 +255,7 @@ export const branches: Branch[] = [
     email: 'sjrcf2019@gmail.com',
     hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
     services: ['Hemodialysis'],
-    medicalDirector: 'Dr. Madelaine R. Cosing',
+    medicalDirector: 'Dr. Maddie Cosing-Rosales',
     headNurse: 'Jasmine Sañosa',
     stations: null,
     transit: 'Along Bayan Bayanan Avenue, Concepcion Uno; accessible by jeepney and tricycle routes.',
@@ -265,7 +265,7 @@ export const branches: Branch[] = [
     ],
     affiliatedNephrologists: [
       {
-        name: 'Dr. Madelaine R. Cosing',
+        name: 'Dr. Maddie Cosing-Rosales',
         hospitals: [
           { name: "St. Luke's Medical Center — Quezon City", map: 'https://maps.app.goo.gl/98Nx1RikD3w7n8fcA' },
         ],
