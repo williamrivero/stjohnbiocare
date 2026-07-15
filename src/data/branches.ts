@@ -352,14 +352,15 @@ export const branches: Branch[] = [
   {
     slug: 'st-josef-maypajo',
     foundation: 'St. Josef Renal Care Foundation',
-    name: 'Maypajo, Caloocan',
+    name: 'Maypajo (Caloocan)',
     area: 'Caloocan City',
-    address: 'Maypajo, Caloocan City — opening this year',
+    address: 'No. 56 A. Mabini Street, Barangay 32, Maypajo, Caloocan City',
     phone: '', phoneHref: '', email: '',
     hours: 'Opening this year',
     services: [],
     medicalDirector: '', headNurse: '', stations: null, transit: '',
     underConstruction: true,
+    inquiriesVia: 'caloocan',
   },
 ];
 
