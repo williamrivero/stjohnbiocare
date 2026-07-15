@@ -339,14 +339,15 @@ export const branches: Branch[] = [
   {
     slug: 'st-josef-cainta',
     foundation: 'St. Josef Renal Care Foundation',
-    name: 'Cainta, Rizal',
+    name: 'Cainta (Rizal)',
     area: 'Cainta, Rizal',
-    address: 'Cainta, Rizal — opening this year',
+    address: 'L475-A 3A & 9097 Marcos Highway, San Isidro, Cainta, Rizal',
     phone: '', phoneHref: '', email: '',
     hours: 'Opening this year',
     services: [],
     medicalDirector: '', headNurse: '', stations: null, transit: '',
     underConstruction: true,
+    inquiriesVia: 'st-josef-marikina',
   },
   {
     slug: 'st-josef-maypajo',
