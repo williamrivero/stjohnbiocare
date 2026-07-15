@@ -25,6 +25,7 @@ export interface Branch {
   stations: string | null;
   transit: string;
   opened?: string;        // ISO 'YYYY-MM-DD' the center opened/joined — powers the "years serving the community" badge
+  mapPin?: string;        // exact 'lat,lng' drop-pin (from Google Maps right-click) — overrides the address-based map
   underConstruction?: boolean;
   inquiriesVia?: string;  // slug of the open center that handles inquiries while this one is under construction
   partnerHospitals?: PartnerHospital[];          // hospitals this center holds a signed MOA with
@@ -361,6 +362,7 @@ export const branches: Branch[] = [
     medicalDirector: '', headNurse: '', stations: null, transit: '',
     underConstruction: true,
     inquiriesVia: 'caloocan',
+    mapPin: '14.6360244,120.975469',
   },
 ];
 

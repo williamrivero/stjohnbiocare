@@ -19,11 +19,15 @@ const centerKey = centerKeys[branch.slug];
 // While a center is under construction, its inquiries are handled by a nearby open center.
 const inquiryBranch = uc && branch.inquiriesVia ? branches.find((b) => b.slug === branch.inquiriesVia) : null;
 const inquiryKey = inquiryBranch ? centerKeys[inquiryBranch.slug] : null;
-// For open centers, lead with the business name so Google matches the established
-// place. For under-construction branches (not yet on Google), that would snap to the
-// nearest known same-foundation center — so pin by the street address alone instead.
+// A precise drop-pin ("lat,lng") wins when set. Otherwise: open centers lead with the
+// business name so Google matches the established place; under-construction branches
+// (not yet on Google) pin by street address so they don't snap to a same-foundation center.
 const q = encodeURIComponent(
-  branch.underConstruction ? branch.address : `${branch.foundation} ${branch.name}, ${branch.address}`
+  branch.mapPin
+    ? branch.mapPin
+    : branch.underConstruction
+      ? branch.address
+      : `${branch.foundation} ${branch.name}, ${branch.address}`
 );
 
 // Build a vCard for this center and render it as a scannable QR (contact card).
