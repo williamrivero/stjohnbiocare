@@ -69,6 +69,29 @@ const categories = [
           </div>
         </div>
       ))}
+      <div style="margin-bottom:40px">
+        <h2 style="font-size:1.4rem;margin-bottom:16px">Printable food guides (PDF)</h2>
+        <div class="grid grid--3">
+          <a class="card kh-dl" href="/downloads/wgmr-phosphorus-food-guide.pdf" download>
+            <div class="kh-body">
+              <span class="kh-dl-tag">PDF · Printable</span>
+              <h3>Phosphorus Food Guide</h3>
+              <p>A Filipino-food phosphorus heat-map, the phosphate binders available here and how to take them,
+              label-reading tips, and cooking tricks that lower phosphorus.</p>
+              <span class="card__link">⬇ Download</span>
+            </div>
+          </a>
+          <a class="card kh-dl" href="/downloads/wgmr-potassium-food-guide.pdf" download>
+            <div class="kh-body">
+              <span class="kh-dl-tag">PDF · Printable</span>
+              <h3>Potassium Food Guide</h3>
+              <p>High, moderate and low-potassium Filipino foods by CKD stage, the warning signs of hyperkalemia,
+              and safe cooking (leaching) tips.</p>
+              <span class="card__link">⬇ Download</span>
+            </div>
+          </a>
+        </div>
+      </div>
       <p class="container muted" style="margin-top:8px;font-size:.9rem">
         Guides adapted with permission from
         <a href="https://renalcarematters.com">renalcarematters.com</a>.
@@ -83,4 +106,6 @@ const categories = [
   .kh-body { padding: 20px 22px 22px; }
   .kh-body h3 { margin: 0 0 .35rem; }
   .kh-body p { margin: 0 0 .7rem; }
+  .kh-dl { border-top: 3px solid var(--life); }
+  .kh-dl-tag { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--forest); background: var(--mist); padding: 3px 9px; border-radius: 999px; margin-bottom: 10px; }
 </style>
