@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Eating Smart with Diabetes — Filipino Food GI Guide · St. John Biocare</title>
+<style>
+/* ============================================================================
+   stjohnbiocare.com — Companion PDF House Style
+   Single source of truth for every downloadable patient companion PDF.
+   Canonical reference layout: wgmr-diabetic-diet-guide.html
+   Render to PDF with WeasyPrint via build_companion_pdfs.py
+   ----------------------------------------------------------------------------
+   Page anatomy (in order):
+     .top-strip   light grey eyebrow band: doc title (left) + credentials (right)
+     .hero        navy masthead: red pill tag, big title w/ yellow <em>, dr badge
+     .kn-band     yellow knowledge band: 3 headline stats
+     .sec         numbered content sections (circular .sec-num badge + .sec-title)
+     .page-hdr    navy running header for continuation pages (2..n)
+     .doc-ftr     footer: disclaimer + references (left) + url + page (right)
+   Do NOT hand-edit per-PDF colours; adjust here so all companions stay uniform.
+   ========================================================================== */
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:9pt;}
+body{font-family:'Figtree','Noto Sans','Segoe UI',Arial,sans-serif;color:#222A24;background:#fff;line-height:1.35;}
+@page{size:A4;margin:0;}
+
+.page{width:210mm;background:#fff;page-break-after:always;}
+.page:last-child{page-break-after:auto;}
+.pad{padding:0 14mm;}
+
+/* ---------- shared table reset ---------- */
+table{border-collapse:collapse;width:100%;}
+td,th{vertical-align:top;}
+
+/* ---------- top strip ---------- */
+.top-strip{background:#e8ecf2;color:#4b5563;font-size:7.5pt;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 14mm;}
+.top-strip table td:last-child{text-align:right;opacity:.65;font-weight:400;text-transform:none;letter-spacing:0;}
+
+/* ---------- hero ---------- */
+.hero{background:#006028;color:#fff;padding:7px 14mm;}
+.hero-tag{display:inline-block;background:#089838;color:#fff;font-size:6.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-bottom:6px;}
+.hero-tag.teal{background:#089838;}
+.hero-tag.green{background:#16a34a;}
+.hero-tag.blue{background:#1a6b9e;}
+.hero-tag.amber{background:#d97706;}
+.hero-tag.purple{background:#089838;}
+.hero-title{font-size:16pt;font-weight:800;line-height:1.04;letter-spacing:-.02em;margin-bottom:6px;}
+.hero-title em{color:#f4c842;font-style:normal;}
+.hero-sub{font-size:8pt;opacity:.9;line-height:1.35;}
+.hero-sub em{color:#f4c842;font-style:normal;font-weight:700;}
+.hero-right{width:120px;text-align:center;}
+.dr-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:8px 10px;}
+.dr-circle{width:40px;height:40px;background:#f0b429;border-radius:50%;margin:0 auto 5px;font-size:18pt;line-height:40px;text-align:center;}
+.dr-name{font-size:7pt;font-weight:700;color:#fff;line-height:1.3;}
+.dr-cred{font-size:6.5pt;opacity:.65;color:#fff;margin-top:2px;}
+.hero-url{margin-top:5px;font-size:6pt;opacity:.5;color:#fff;}
+
+/* ---------- knowledge band ---------- */
+.kn-band{background:#f4c842;padding:4px 14mm;}
+.kn-band td{text-align:center;width:33.33%;padding:0 8px;}
+.kn-band td+td{border-left:1px solid rgba(0,0,0,.15);}
+.kn-num{font-size:13pt;font-weight:800;color:#222A24;line-height:1.1;}
+.kn-label{font-size:7pt;color:#3b2800;font-weight:600;margin-top:2px;}
+/* 4-stat variant */
+.kn-band.four td{width:25%;}
+
+/* ---------- sections ---------- */
+.sec{padding:2px 14mm 0;}
+.sec-head{margin-bottom:3px;}
+.sec-num{display:inline-block;width:18px;height:18px;background:#089838;color:#fff;border-radius:50%;font-size:8pt;font-weight:800;text-align:center;line-height:18px;vertical-align:middle;margin-right:6px;}
+.sec-num.blue{background:#1a6b9e;}
+.sec-num.green{background:#16a34a;}
+.sec-num.amber{background:#d97706;}
+.sec-num.teal{background:#089838;}
+.sec-num.purple{background:#089838;}
+.sec-title{display:inline;font-size:10pt;font-weight:800;color:#222A24;vertical-align:middle;}
+.sec-title em{color:#089838;font-style:normal;}
+p.body{font-size:7.5pt;color:#374151;line-height:1.4;margin-top:4px;}
+.divider{border-top:1px solid #e5e9ef;}
+
+/* ---------- generic 3-up info tiles ---------- */
+.tile-tbl{margin-top:3px;}
+.tile-tbl td{width:33.33%;padding:3px;}
+.tile{border-radius:6px;padding:6px;text-align:center;height:100%;}
+.tile.green{background:#f0fdf4;border:1px solid #86efac;}
+.tile.amber{background:#fffbeb;border:1px solid #fcd34d;}
+.tile.red{background:#fdf0f3;border:1px solid #fca5a5;}
+.tile.blue{background:#eff6ff;border:1px solid #93c5fd;}
+.tile.teal{background:#e1f5f0;border:1px solid #5ec4c9;}
+.tile .ic{font-size:15pt;line-height:1;}
+.tile .it{font-size:8pt;font-weight:800;color:#222A24;margin:3px 0 2px;}
+.tile .iv{font-size:7pt;color:#166534;font-weight:600;line-height:1.3;}
+.tile.amber .iv{color:#92400e;}
+.tile.red .iv{color:#b81339;}
+.tile.blue .iv{color:#1e40af;}
+.tile.teal .iv{color:#0f5b61;}
+
+/* ---------- 3-up category boxes (plate / portion / class) ---------- */
+.plate-tbl td{width:33.33%;padding:3px;}
+.plate-box{border-radius:6px;padding:6px 7px;height:100%;}
+.plate-box.veg{background:#f0fdf4;border:2px solid #16a34a;}
+.plate-box.pro{background:#eff6ff;border:2px solid #3b82f6;}
+.plate-box.carb{background:#fffbeb;border:2px solid #d97706;}
+.plate-box.red{background:#fdf0f3;border:2px solid #E02048;}
+.plate-box.teal{background:#e1f5f0;border:2px solid #089838;}
+.plate-frac{font-size:14pt;font-weight:800;line-height:1;}
+.plate-box.veg .plate-frac{color:#166534;}
+.plate-box.pro .plate-frac{color:#1e40af;}
+.plate-box.carb .plate-frac{color:#92400e;}
+.plate-box.red .plate-frac{color:#b81339;}
+.plate-box.teal .plate-frac{color:#0f5b61;}
+.plate-sub{font-size:7pt;font-weight:700;color:#374151;letter-spacing:.04em;margin:3px 0 4px;}
+.plate-box ul{padding-left:12px;font-size:7pt;color:#374151;line-height:1.4;}
+
+/* ---------- numbered / pill tip rows ---------- */
+.tip-tbl td{padding:1px 0;font-size:7.5pt;line-height:1.3;}
+.tip-tbl td.tag{width:42px;padding-right:7px;}
+.tip-pill{display:inline-block;color:#fff;font-weight:800;font-size:6.5pt;padding:2px 6px;border-radius:3px;white-space:nowrap;}
+.tip-pill.g{background:#16a34a;}
+.tip-pill.b{background:#1a6b9e;}
+.tip-pill.r{background:#E02048;}
+.tip-pill.a{background:#d97706;}
+.tip-pill.t{background:#089838;}
+
+/* ---------- sequencing / flow steps ---------- */
+.seq-tbl{margin-top:4px;}
+.seq-tbl td{text-align:center;padding:0 3px;vertical-align:middle;}
+.seq-tbl td.arrow{width:18px;font-size:15pt;color:#222A24;opacity:.4;font-weight:900;padding:0;}
+.seq-box{border-radius:6px;padding:6px 4px;}
+.seq-box.veg{background:#dcfce7;border:1px solid #86efac;}
+.seq-box.pro{background:#dbeafe;border:1px solid #93c5fd;}
+.seq-box.carb{background:#fef9c3;border:1px solid #fde047;}
+.seq-box .sb-icon{font-size:14pt;line-height:1;}
+.seq-box .sb-label{font-size:7pt;font-weight:800;color:#222A24;margin-top:2px;}
+.seq-box .sb-ex{font-size:6.5pt;color:#4b5563;margin-top:1px;line-height:1.3;}
+.seq-result{background:#f0fdf4;border:1px solid #86efac;border-radius:6px;padding:6px 4px;}
+.seq-result .sr-num{font-size:13pt;font-weight:800;color:#166534;line-height:1;}
+.seq-result .sr-label{font-size:6.5pt;color:#166534;font-weight:600;margin-top:2px;line-height:1.3;}
+
+/* ---------- dark target / numbers box ---------- */
+.targets{background:#222A24;color:#fff;border-radius:8px;padding:6px 9px;margin-top:3px;}
+.targets h3{font-size:8pt;font-weight:700;margin-bottom:4px;color:#f4c842;}
+.tg-tbl td{width:33.33%;padding:3px;}
+.tg-card{background:rgba(255,255,255,.08);border-radius:5px;padding:2px 6px;text-align:center;}
+.tg-name{font-size:6.5pt;font-weight:600;opacity:.75;margin-bottom:2px;}
+.tg-val{font-size:11pt;font-weight:800;color:#f4c842;line-height:1;}
+.tg-unit{font-size:6pt;opacity:.6;margin-top:2px;}
+.tg-note{font-size:6.5pt;opacity:.7;margin-top:5px;text-align:center;font-style:italic;}
+
+/* ---------- remove / use-instead swaps ---------- */
+.swap-tbl td{padding:1px 6px;font-size:7.5pt;vertical-align:middle;}
+.swap-tbl tr+tr td{border-top:1px solid #eef1f5;}
+.swap-tbl .remove{color:#374151;width:42%;}
+.swap-tbl .arrow{text-align:center;color:#222A24;font-size:11pt;width:16px;}
+.swap-tbl .use{color:#166534;font-weight:600;width:42%;}
+.swap-hdr td{font-weight:700;font-size:7pt;text-transform:uppercase;letter-spacing:.04em;border-top:none!important;}
+.swap-hdr .remove{color:#b81339;}
+.swap-hdr .use{color:#166534;}
+
+/* ---------- legend band ---------- */
+.legend-band{background:#f0f4f8;padding:4px 14mm;border-top:2px solid #dde3ea;font-size:7pt;}
+.legend-band b{color:#222A24;}
+.leg-swatch{display:inline-block;width:22px;height:10px;border-radius:2px;vertical-align:middle;margin-right:4px;}
+.leg-swatch.avoid{background:#E02048;}
+.leg-swatch.limit{background:#d97706;}
+.leg-swatch.good{background:#16a34a;}
+.leg-item{display:inline-block;margin-right:14px;line-height:1.6;}
+
+/* ---------- footer ---------- */
+.doc-ftr{padding:4px 14mm;border-top:1px solid #dde3ea;font-size:5.5pt;color:#6b7280;line-height:1.35;}
+.doc-ftr td:last-child{text-align:right;white-space:nowrap;padding-left:14px;}
+.doc-ftr .url{font-weight:700;color:#1a6b9e;font-size:6.5pt;}
+
+/* ---------- running page header (continuation pages) ---------- */
+.page-hdr{background:#222A24;color:#fff;padding:7px 14mm;}
+.page-hdr-title{font-size:10pt;font-weight:700;}
+.page-hdr-sub{font-size:7pt;opacity:.65;margin-top:1px;}
+.page-hdr td:last-child{text-align:right;font-size:7.5pt;opacity:.55;vertical-align:middle;white-space:nowrap;}
+
+/* ---------- heat-map / data tables ---------- */
+.hm-wrap{padding:4px 14mm;}
+.hm-table{font-size:7pt;}
+.hm-table th{background:#006028;color:#fff;padding:4px 5px;font-size:7pt;font-weight:700;text-align:center;}
+.hm-table th.l{text-align:left;}
+.hm-cat td{padding:3px 8px;font-size:7.5pt;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#fff;}
+.hm-cat-neutral td{background:#222A24;}
+.hm-cat-good td{background:#166534;}
+.hm-cat-bad td{background:#b81339;}
+.hm-table tbody td{padding:2px 5px;border-bottom:1px solid #eef1f5;}
+.hm-table td.food{font-weight:600;font-size:7pt;}
+.hm-table td.serv{font-size:7pt;color:#4b5563;}
+.hm-table td.ctr{text-align:center;}
+.note{font-size:6pt;color:#4b5563;font-style:italic;line-height:1.25;}
+.r-avoid{background:#fdf0f3;}
+.r-limit{background:#fffcf0;}
+.r-good{background:#f6fdf8;}
+.hc{display:inline-block;font-size:6.5pt;font-weight:700;padding:1px 4px;border-radius:3px;min-width:22px;text-align:center;}
+.hc-h{background:#fca5a5;color:#7f1d1d;}
+.hc-m{background:#fcd34d;color:#78350f;}
+.hc-l{background:#86efac;color:#14532d;}
+.rb{display:inline-block;font-size:6.5pt;font-weight:700;padding:1px 6px;border-radius:3px;color:#fff;white-space:nowrap;}
+.rb-avoid{background:#E02048;}
+.rb-limit{background:#d97706;}
+.rb-good{background:#16a34a;}
+
+/* ---------- block titles / structured blocks ---------- */
+.blk-title{font-size:9pt;font-weight:700;color:#222A24;margin-bottom:5px;padding-bottom:3px;border-bottom:2px solid #222A24;}
+.mp-tbl{font-size:7pt;}
+.mp-tbl th{background:#006028;color:#fff;padding:4px 6px;text-align:left;font-weight:700;}
+.mp-tbl td{padding:4px 6px;border-bottom:1px solid #eef1f5;line-height:1.35;}
+.mp-tbl td.day{font-weight:700;width:7%;}
+.mp-tbl tr:nth-child(odd) td{background:#f6fdf8;}
+
+.two-col td{width:50%;vertical-align:top;padding:0;}
+.two-col td:first-child{padding-right:7px;}
+.two-col td:last-child{padding-left:7px;}
+
+.drug-tbl{font-size:7pt;}
+.drug-tbl td{padding:4px 6px;border-bottom:1px solid #eef1f5;line-height:1.4;}
+.drug-tbl td.name{font-weight:700;width:32%;}
+.drug-tbl tr:nth-child(odd) td{background:#f0f4f8;}
+.drug-sub{font-weight:400;font-size:6pt;color:#6b7280;}
+
+.ls-tbl td{width:50%;padding:3px;}
+.ls-tile{background:#f5f7fa;border-radius:6px;padding:6px 8px;height:100%;}
+.ls-tile .lh{font-size:8pt;font-weight:700;color:#222A24;}
+.ls-tile .lv{font-size:7pt;color:#16a34a;font-weight:700;margin:2px 0;}
+.ls-tile p{font-size:6.5pt;color:#374151;line-height:1.4;}
+
+/* ---------- callout / alert boxes ---------- */
+.alert{border-radius:6px;padding:7px 9px;margin-top:7px;}
+.alert.amber{background:#fffbeb;border-left:3px solid #d97706;}
+.alert.red{background:#fdf0f3;border-left:3px solid #E02048;}
+.alert.green{background:#f0fdf4;border-left:3px solid #16a34a;}
+.alert.teal{background:#e1f5f0;border-left:3px solid #089838;}
+.alert.blue{background:#eff6ff;border-left:3px solid #1a6b9e;}
+.alert h4{font-size:8pt;font-weight:700;color:#222A24;margin-bottom:3px;}
+.alert p{font-size:7pt;color:#374151;line-height:1.4;}
+.alert ul{padding-left:14px;font-size:7pt;color:#374151;line-height:1.4;}
+
+/* ============================================================
+   CODE BLUE RECORDING FLOWSHEET (clinician fill-in form)
+   Namespaced .fs-* classes + an A4-landscape named page.
+   Used only by downloads/wgmr-code-blue-recording-flowsheet.html;
+   does not affect the portrait patient companions above.
+   ============================================================ */
+@page fslandscape{size:A4 landscape;margin:0;}
+.fs-page{width:297mm;min-height:210mm;background:#fff;page-break-after:always;page:fslandscape;}
+.fs-page:last-child{page-break-after:auto;}
+
+/* header info grid (date / room / times / patient label) */
+.fs-meta{font-size:7pt;margin:6px 14mm 0;}
+.fs-meta td{border:1px solid #c7cfda;padding:4px 7px;line-height:1.5;}
+.fs-meta .lbl{font-weight:700;color:#006028;text-transform:uppercase;letter-spacing:.04em;font-size:6.5pt;white-space:nowrap;}
+.fs-meta .label-cell{background:#f0f4f8;font-weight:700;color:#006028;text-transform:uppercase;letter-spacing:.06em;text-align:center;width:150px;}
+
+/* dose legend strip */
+.fs-legend{font-size:6pt;color:#4b5563;margin:5px 14mm 0;line-height:1.5;}
+.fs-legend strong{color:#006028;}
+.fs-legend .pipe{color:#c7cfda;padding:0 4px;}
+
+/* the timed recording grid */
+.fs-gridwrap{margin:5px 14mm 0;}
+.fs-grid{font-size:6pt;table-layout:fixed;}
+.fs-grid th{background:#006028;color:#fff;font-weight:700;text-transform:uppercase;letter-spacing:.02em;
+  font-size:5.5pt;padding:4px 2px;border:1px solid #0d2746;text-align:center;line-height:1.1;}
+.fs-grid th .sub{display:block;font-weight:400;opacity:.7;font-size:4.8pt;letter-spacing:0;}
+.fs-grid td{border:1px solid #c7cfda;height:20px;padding:0 3px;}
+.fs-grid tr:nth-child(even) td{background:#f6f8fb;}
+.fs-grid .c{text-align:center;}
+
+/* event-conclusion + personnel block */
+.fs-concl{margin:7px 14mm 0;font-size:7pt;}
+.fs-concl .blk{border:1px solid #c7cfda;padding:6px 9px;}
+.fs-concl .blk-h{font-size:7pt;font-weight:800;color:#006028;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+.fs-chk{font-size:7pt;color:#1e2a38;line-height:1.7;}
+.fs-chk .box{font-size:9pt;color:#006028;margin-right:3px;}
+.fs-line{display:inline-block;border-bottom:1px solid #6b7280;min-width:90px;height:11px;}
+.fs-sign td{padding:5px 7px 2px;font-size:7pt;}
+.fs-sign .nm{display:block;border-bottom:1px solid #6b7280;height:13px;margin-bottom:1px;}
+.fs-sign .role{font-size:5.8pt;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;}
+/* ---------- appended full-page figure / reference pages ---------- */
+/* One large figure lifted from the parent web guide, centred on its own A4
+   page. Orientation-robust: max-width AND max-height keep portrait, square, or
+   landscape art inside the printable area. Keeps one .page-fig = one PDF page. */
+.page-fig{height:297mm;display:flex;flex-direction:column;overflow:hidden;}
+.fig-head{padding:13px 14mm 0 14mm;}
+.fig-title{font-size:13pt;font-weight:800;color:#006028;line-height:1.05;letter-spacing:-.01em;}
+.fig-title em{color:#089838;font-style:normal;}
+.fig-sub{font-size:8pt;color:#6b7280;margin-top:2px;}
+.fig-grow{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:10px 14mm;}
+.fig-img{display:block;max-width:182mm;max-height:222mm;width:auto;height:auto;border:1px solid #dde3ea;border-radius:8px;box-shadow:0 2px 9px rgba(15,30,50,.12);}
+.fig-cap{font-size:7pt;color:#9ca3af;text-align:center;margin-top:8px;line-height:1.35;max-width:182mm;}
+
+/* ============================================================
+   ACLS MANAGEMENT ALGORITHMS (flat-flowchart reference pages)
+   Appended to the Code Blue Recording Flowsheet companion only.
+   Namespaced .alg-* classes; landscape (reuses @page fslandscape).
+   ============================================================ */
+.alg-page{width:297mm;min-height:210mm;background:#fff;page-break-after:always;page:fslandscape;}
+.alg-page:last-child{page-break-after:auto;}
+.alg-hd{background:#006028;color:#fff;padding:6px 14mm;}
+.alg-hd-title{font-size:11pt;font-weight:800;letter-spacing:-.01em;}
+.alg-hd-title em{color:#f4c842;font-style:normal;}
+.alg-hd-sub{font-size:7pt;opacity:.7;margin-top:1px;}
+.alg-body{padding:7px 14mm 0;}
+.alg-tbl{width:100%;}
+.alg-tbl>tbody>tr>td{vertical-align:top;padding:0 6px;}
+.alg-lane-h{font-size:8pt;font-weight:800;text-transform:uppercase;letter-spacing:.04em;text-align:center;color:#fff;border-radius:5px;padding:3px;margin-bottom:4px;}
+.alg-lane-h.shock{background:#E02048;}
+.alg-lane-h.nonshock{background:#006028;}
+.alg-lane-h.teal{background:#089838;}
+.alg-lane-h.amber{background:#b45309;}
+.alg-box{border:1px solid #c7cfda;border-left:4px solid #089838;border-radius:5px;padding:4px 7px;margin:0 0 3px;font-size:7pt;line-height:1.32;background:#fff;}
+.alg-box .bt{font-weight:800;color:#222A24;}
+.alg-box.start{border-left-color:#006028;background:#eef2f8;}
+.alg-box.crit{border-left-color:#E02048;background:#fdf0f3;}
+.alg-box.dec{border-left-color:#d97706;background:#fffbeb;}
+.alg-box.drug{border-left-color:#089838;background:#faf5ff;}
+.alg-box.good{border-left-color:#16a34a;background:#f0fdf4;}
+.alg-arrow{text-align:center;font-size:9pt;color:#006028;line-height:1;margin:0 0 3px;font-weight:900;}
+.alg-note{font-size:6.5pt;color:#4b5563;line-height:1.32;margin-top:3px;border-top:1px dashed #dde3ea;padding-top:3px;}
+.alg-note .bt{color:#006028;font-weight:800;}
+.alg-tag{display:inline-block;font-size:5.5pt;font-weight:700;color:#fff;background:#089838;border-radius:3px;padding:1px 4px;margin-right:3px;vertical-align:middle;}
+.alg-tag.r{background:#E02048;}
+.alg-tag.a{background:#d97706;}
+.alg-tag.p{background:#089838;}
+.alg-tag.g{background:#16a34a;}
+
+/* ============================================================
+   ACLS CARDIAC RHYTHM RECOGNITION CHEAT SHEET (standalone)
+   downloads/wgmr-acls-rhythm-recognition-cheatsheet.html
+   Vector ECG strips (inline SVG); landscape; namespaced .rhy-*
+   ============================================================ */
+.rhy-page{width:297mm;min-height:210mm;background:#fff;page-break-after:always;page:fslandscape;}
+.rhy-page:last-child{page-break-after:auto;}
+.rhy-hd{background:#006028;color:#fff;padding:6px 14mm;}
+.rhy-hd-title{font-size:11pt;font-weight:800;letter-spacing:-.01em;}
+.rhy-hd-title em{color:#f4c842;font-style:normal;}
+.rhy-hd-sub{font-size:7pt;opacity:.7;margin-top:1px;}
+.rhy-body{padding:6px 14mm 0;}
+.rhy-cols td{width:50%;vertical-align:top;}
+.rhy-cols td:first-child{padding-right:7px;}
+.rhy-cols td:last-child{padding-left:7px;}
+.rhy-band{background:#089838;color:#fff;font-size:7.5pt;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:4px;margin:0 0 3px;}
+.rhy-band.v{background:#089838;}
+.rhy-tbl{width:100%;margin-bottom:6px;}
+.rhy-tbl td{border-bottom:1px solid #eef1f5;padding:2px 4px;vertical-align:middle;}
+.rhy-tbl tr:last-child td{border-bottom:none;}
+.rhy-name{font-size:7pt;font-weight:800;color:#222A24;line-height:1.15;}
+.rhy-name .cue{display:block;font-weight:400;font-size:6pt;color:#6b7280;margin-top:1px;line-height:1.2;}
+.rhy-strip svg{display:block;width:100%;height:10.5mm;}
+.rhy-tag{width:1%;white-space:nowrap;text-align:right;}
+.rhy-tag span{display:inline-block;font-size:5.3pt;font-weight:700;color:#fff;border-radius:3px;padding:1px 4px;}
+.rhy-tag .shock{background:#E02048;}
+.rhy-tag .non{background:#6b7280;}
+.rhy-tag .peri{background:#d97706;}
+.rhy-rx{font-size:6.3pt;color:#374151;line-height:1.3;}
+.rhy-rx .bt{font-weight:800;color:#006028;}
+.rhy-colhdr td{font-size:5.6pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9aa3af;border-bottom:1px solid #dde3ea;padding:1px 4px;}
+.rhy-legend{font-size:6pt;color:#4b5563;margin:4px 14mm 0;}
+.rhy-legend span{display:inline-block;color:#fff;border-radius:3px;padding:1px 5px;margin-right:4px;font-weight:700;}
+.rhy-legend .shock{background:#E02048;} .rhy-legend .non{background:#6b7280;} .rhy-legend .peri{background:#d97706;}
+
+/* ============================================================
+   MONTHLY QAPI DATA-PACK WORKBOOK (clinician/quality-officer fill-in form)
+   downloads/wgmr-qapi-data-pack-workbook.html — portrait, reuses the shared
+   .page/.sec/.fs-chk/.fs-line/.fs-sign/.alert system above; adds only the
+   fill-in field table + domain-flag chips a data-collection workbook needs.
+   ============================================================ */
+.wb-field-tbl{width:100%;margin-top:3px;font-size:7.5pt;}
+.wb-field-tbl th{background:#006028;color:#fff;padding:5px 7px;text-align:left;font-weight:700;font-size:6.7pt;text-transform:uppercase;letter-spacing:.04em;}
+.wb-field-tbl td{padding:7px 7px;border-bottom:1px solid #eef1f5;vertical-align:middle;}
+.wb-field-tbl tr:nth-child(odd) td{background:#f8fafc;}
+.wb-field-tbl td.wb-metric{font-weight:600;color:#222A24;}
+.wb-field-tbl td.wb-val{text-align:center;white-space:nowrap;}
+.wb-field-tbl td.wb-target{color:#6b7280;font-size:7pt;}
+.wb-fill{display:inline-block;border-bottom:1.3px solid #6b7280;min-width:46px;height:12px;}
+.wb-fill.wide{min-width:80px;}
+.wb-tall td{padding:12px 7px;}
+.wb-hardred{display:inline-block;font-size:5.8pt;font-weight:700;color:#fff;background:#b81339;border-radius:3px;padding:1px 5px;margin-left:5px;white-space:nowrap;vertical-align:middle;}
+.wb-doh{display:inline-block;font-size:5.8pt;font-weight:700;color:#fff;background:#0f5b61;border-radius:3px;padding:1px 5px;margin-left:5px;white-space:nowrap;vertical-align:middle;}
+.wb-checklist .fs-chk{display:block;margin:5px 0;}
+.wb-cover-fields{font-size:7.5pt;margin-top:8px;}
+.wb-cover-fields td{border:1px solid #c7cfda;padding:5px 8px;}
+.wb-cover-fields .lbl{font-weight:700;color:#006028;text-transform:uppercase;letter-spacing:.04em;font-size:6.5pt;display:block;margin-bottom:2px;}
+
+/* ---------- ruled write-in lines (shared: survey comments, log notes) ---------- */
+.write-lines{margin-top:5px;}
+.write-lines .ln{border-bottom:1px solid #c7cfda;height:14px;margin-bottom:6px;}
+
+/* ============================================================
+   PATIENT EXPERIENCE SURVEY (ICH-CAHPS-type, fill-in instrument)
+   downloads/wgmr-ich-cahps-patient-experience-survey.html — portrait,
+   reuses .page/.sec/.fs-chk/.fs-sign/.alert/.write-lines above; adds only
+   the Likert-scale question grid and the 0–10 global-rating strip.
+   ============================================================ */
+.pe-tbl{width:100%;margin-top:3px;font-size:7.2pt;}
+.pe-tbl th{background:#006028;color:#fff;padding:5px 3px;font-weight:700;font-size:6.1pt;text-transform:uppercase;letter-spacing:.03em;text-align:center;line-height:1.2;}
+.pe-tbl th.q{text-align:left;padding-left:7px;}
+.pe-tbl td{padding:6px 3px;border-bottom:1px solid #eef1f5;text-align:center;vertical-align:middle;}
+.pe-tbl td.q{text-align:left;padding-left:7px;font-weight:600;color:#222A24;font-size:7.3pt;}
+.pe-tbl tr:nth-child(odd) td{background:#f8fafc;}
+.pe-box{font-size:9.5pt;color:#006028;line-height:1;}
+.pe-nps{width:100%;margin-top:4px;table-layout:fixed;}
+.pe-nps td{border:1px solid #c7cfda;text-align:center;padding:5px 0;font-size:7.5pt;font-weight:700;color:#006028;background:#f5f7fa;}
+.pe-nps-lbl{font-size:6.3pt;color:#6b7280;display:flex;justify-content:space-between;margin-top:2px;}
+.pe-scale-key{font-size:6.3pt;color:#4b5563;margin-top:3px;line-height:1.5;}
+.pe-scale-key b{color:#222A24;}
+
+/* ============================================================
+   GRIEVANCE / COMPLAINT LOG (QAPI patient-experience workflow form)
+   downloads/wgmr-qapi-grievance-complaint-log.html — portrait, reuses
+   .page/.sec/.fs-chk/.fs-sign/.alert/.wb-field-tbl/.write-lines above;
+   adds only category pills and the severity/status chip variants.
+   ============================================================ */
+.gv-cat{display:inline-block;font-size:6.3pt;font-weight:700;color:#fff;padding:2px 7px;border-radius:3px;margin:0 4px 4px 0;white-space:nowrap;}
+.gv-cat.c1{background:#1a6b9e;} .gv-cat.c2{background:#d97706;} .gv-cat.c3{background:#089838;}
+.gv-cat.c4{background:#16a34a;} .gv-cat.c5{background:#E02048;} .gv-cat.c6{background:#089838;} .gv-cat.c7{background:#6b7280;}
+.gv-sev{display:inline-block;font-size:6.5pt;font-weight:700;padding:1px 6px;border-radius:3px;min-width:44px;text-align:center;}
+.gv-sev.low{background:#86efac;color:#14532d;}
+.gv-sev.med{background:#fcd34d;color:#78350f;}
+.gv-sev.high{background:#fca5a5;color:#7f1d1d;}
+
+/* SJB overrides */
+.hero-title,.sec-title,.kn-num,.fig-title,.page-hdr-title,.blk-title,.hm-cat td,.tg-val{font-family:'Noto Sans','Figtree',sans-serif;}
+.hero-tag{background:#E02048 !important;}
+.page-hdr{background:#006028 !important;}
+.hero-right{width:176px !important;}
+.logo-card{background:#fff;border:1px solid rgba(255,255,255,.5);border-radius:10px;padding:8px 7px 5px;}
+.logo-card .logos{display:flex;gap:5px;justify-content:center;align-items:center;}
+.logo-card .logos img{width:47px;height:47px;object-fit:contain;display:block;}
+.logo-card .lc-cap{font-size:5.3pt;color:#006028;font-weight:700;letter-spacing:.02em;margin-top:4px;line-height:1.25;text-transform:uppercase;}
+
+</style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1 — Overview ===================== -->
+<div class="page">
+
+<div class="top-strip">
+  <table><tr>
+    <td>Eating Smart with Diabetes &mdash; Filipino Food GI Guide</td>
+    <td>W.G.M. Rivero MD · FPCP · DPSN ·  · stjohnbiocare.com · 2026</td>
+  </tr></table>
+</div>
+
+<div class="hero">
+  <table><tr>
+    <td>
+      <div class="hero-tag">A Patient Guide · Diabetes &amp; Nutrition</div>
+      <div class="hero-title">Eating Smart with <em>Diabetes:</em><br>The Filipino Guide</div>
+      <div class="hero-sub">Which carbs spike blood sugar, which ones don't,<br>and how to <em>protect your kidneys &amp; heart</em></div>
+    </td>
+    <td class="hero-right">
+      <div class="logo-card">
+        <div class="logos">
+          <img src="images/logos/logo-sjbdc.png" alt="St. John Biocare & Dialysis Center Foundation">
+          <img src="images/logos/stjosef-logo.png" alt="St. Josef Renal Care Foundation">
+          <img src="images/logos/corerenalcare-logo.png" alt="Core Renal Center">
+        </div>
+        <div class="lc-cap">St. John Biocare · St. Josef Renal Care · Core Renal Center</div>
+      </div>
+      <div class="hero-url">stjohnbiocare.com</div>
+    </td>
+  </tr></table>
+</div>
+
+<div class="kn-band">
+  <table><tr>
+    <td><div class="kn-num">1 in 3</div><div class="kn-label">Filipinos has diabetes or prediabetes</div></td>
+    <td><div class="kn-num">&lt;7%</div><div class="kn-label">HbA1c target for most patients</div></td>
+    <td><div class="kn-num">30–40%</div><div class="kn-label">Glucose spike cut by eating order alone</div></td>
+  </tr></table>
+</div>
+
+<!-- SECTION 1 -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-num">1</span><span class="sec-title">What is the <em>Glycemic Index (GI)</em> — and Why It Matters for Filipinos</span></div>
+  <table class="tile-tbl"><tr>
+    <td><div class="tile green"><div class="ic">🟢</div><div class="it">Low GI &lt; 55</div><div class="iv">Slow, steady glucose rise — Eat freely · GOOD</div></div></td>
+    <td><div class="tile amber"><div class="ic">🟡</div><div class="it">Medium GI 56–70</div><div class="iv">Moderate glucose spike — Eat carefully · LIMIT</div></div></td>
+    <td><div class="tile red"><div class="ic">🔴</div><div class="it">High GI &gt; 70</div><div class="iv">Fast, sharp glucose spike — Limit or avoid</div></div></td>
+  </tr></table>
+  <p class="body"><strong>GL (Glycemic Load)</strong> = GI × grams of carbs per serving ÷ 100. It is more practical than GI alone because it accounts for portion size. <strong>GL &lt;10</strong> = Low · <strong>GL 11–19</strong> = Medium · <strong>GL ≥20</strong> = High. Pages 2–3 show both GI and GL for each food.</p>
+</div>
+
+<!-- SECTION 2 -->
+<div class="sec divider" style="margin-top:1px;">
+  <div class="sec-head"><span class="sec-num blue">2</span><span class="sec-title">The Filipino <em>Diabetes Plate</em></span></div>
+  <table class="plate-tbl"><tr>
+    <td><div class="plate-box veg"><span class="plate-frac">½</span><div class="plate-sub">NON-STARCHY VEG</div><ul><li>Ampalaya / okra</li><li>Kangkong / sitaw</li><li>Talong / kamatis</li><li>Malunggay / labanos</li></ul></div></td>
+    <td><div class="plate-box pro"><span class="plate-frac">¼</span><div class="plate-sub">LEAN PROTEIN</div><ul><li>Grilled isda / tilapia</li><li>Chicken breast</li><li>Tokwa / monggo</li><li>Boiled egg (1 pc)</li></ul></div></td>
+    <td><div class="plate-box carb"><span class="plate-frac">¼</span><div class="plate-sub">QUALITY CARBS</div><ul><li>½ cup brown/basmati rice</li><li>Boiled kamote</li><li>Rolled oats</li></ul></div></td>
+  </tr></table>
+</div>
+
+<!-- SECTION 3 -->
+<div class="sec divider" style="margin-top:1px;">
+  <div class="sec-head"><span class="sec-num">3</span><span class="sec-title"><em>Rice Strategies</em> — Lower the GI Without Giving It Up</span></div>
+  <table class="tip-tbl">
+    <tr><td class="tag"><span class="tip-pill g">TIP 1</span></td><td><strong>Cool overnight in fridge</strong> → resistant starch forms → lowers GI by ~20–30%. Reheat before eating.</td></tr>
+    <tr><td class="tag"><span class="tip-pill g">TIP 2</span></td><td><strong>Add 1 tsp calamansi juice or vinegar</strong> to the rice → acid slows starch digestion, lowers GI ~20%.</td></tr>
+    <tr><td class="tag"><span class="tip-pill g">TIP 3</span></td><td><strong>Eat rice LAST</strong> after vegetables and protein → blunts the post-meal glucose spike by 30–40%.</td></tr>
+    <tr><td class="tag"><span class="tip-pill b">TIP 4</span></td><td><strong>Switch to basmati or brown rice</strong> (GI 58–68) and keep portions to ½ cup cooked per meal.</td></tr>
+    <tr><td class="tag"><span class="tip-pill b">TIP 5</span></td><td><strong>Mix with monggo or add okra</strong> — soluble fiber slows absorption and drops the meal's overall GI.</td></tr>
+  </table>
+</div>
+
+<!-- SECTION 4 -->
+<div class="sec divider" style="margin-top:1px;">
+  <div class="sec-head"><span class="sec-num green">4</span><span class="sec-title">Eat in the <em>Right Order</em> — Meal Sequencing Cuts the Spike</span></div>
+  <table class="seq-tbl"><tr>
+    <td><div class="seq-box veg"><div class="sb-icon">🥦</div><div class="sb-label">1st: Vegetables</div><div class="sb-ex">Ampalaya, okra, sitaw, pinakbet first</div></div></td>
+    <td class="arrow">→</td>
+    <td><div class="seq-box pro"><div class="sb-icon">🐟</div><div class="sb-label">2nd: Protein</div><div class="sb-ex">Grilled isda, tinola chicken, tokwa, egg</div></div></td>
+    <td class="arrow">→</td>
+    <td><div class="seq-box carb"><div class="sb-icon">🍚</div><div class="sb-label">3rd: Carbs Last</div><div class="sb-ex">Rice, kamote or oats — smaller portion</div></div></td>
+    <td class="arrow">→</td>
+    <td><div class="seq-result"><div class="sr-num">↓30–40%</div><div class="sr-label">Post-meal spike vs. rice first</div></div></td>
+  </tr></table>
+</div>
+
+<!-- SECTION 5 -->
+<div class="sec divider" style="margin-top:1px;">
+  <div class="sec-head"><span class="sec-num amber">5</span><span class="sec-title">Your Blood Glucose <em>Target Numbers</em></span></div>
+  <div class="targets">
+    <h3>Know Your Numbers (ADA 2025)</h3>
+    <table class="tg-tbl">
+      <tr>
+        <td><div class="tg-card"><div class="tg-name">Fasting Glucose</div><div class="tg-val">80–130</div><div class="tg-unit">mg/dL</div></div></td>
+        <td><div class="tg-card"><div class="tg-name">2-Hour Post-Meal</div><div class="tg-val">&lt;180</div><div class="tg-unit">mg/dL</div></div></td>
+        <td><div class="tg-card"><div class="tg-name">HbA1c (most patients)</div><div class="tg-val">&lt;7%</div><div class="tg-unit">every 3–6 months</div></div></td>
+      </tr>
+      <tr>
+        <td><div class="tg-card"><div class="tg-name">HbA1c (elderly/frail)</div><div class="tg-val">&lt;8%</div><div class="tg-unit">less strict target</div></div></td>
+        <td><div class="tg-card"><div class="tg-name">Hypoglycemia Alert</div><div class="tg-val">&lt;70</div><div class="tg-unit">mg/dL — treat now</div></div></td>
+        <td><div class="tg-card"><div class="tg-name">BP Target (w/ DM)</div><div class="tg-val">&lt;130/80</div><div class="tg-unit">mmHg</div></div></td>
+      </tr>
+    </table>
+    <div class="tg-note">Targets are individualized — ask your doctor if you are elderly, pregnant, or have CKD or frequent hypoglycemia.</div>
+  </div>
+</div>
+
+<!-- SECTION 6 -->
+<div class="sec divider" style="margin-top:5px;padding-bottom:7px;">
+  <div class="sec-head"><span class="sec-num green">6</span><span class="sec-title">Simple <em>Filipino Kitchen Swaps</em> for Diabetes</span></div>
+  <table class="swap-tbl">
+    <tr class="swap-hdr"><td class="remove">Remove</td><td class="arrow"></td><td class="use">Use Instead</td></tr>
+    <tr><td class="remove">White rice (3+ cups/day)</td><td class="arrow">→</td><td class="use">½ cup cold/basmati rice + boiled kamote</td></tr>
+    <tr><td class="remove">3-in-1 coffee / softdrinks</td><td class="arrow">→</td><td class="use">Black barako coffee or salabat (no sugar)</td></tr>
+    <tr><td class="remove">Instant pancit canton / lugaw</td><td class="arrow">→</td><td class="use">Sotanghon soup with vegetables (GI 35)</td></tr>
+    <tr><td class="remove">Puto / kakanin merienda</td><td class="arrow">→</td><td class="use">1 boiled egg + 1 guava or green mango</td></tr>
+    <tr><td class="remove">Sweetened juice drinks (Tang, Royal)</td><td class="arrow">→</td><td class="use">Fresh calamansi juice (unsweetened) + water</td></tr>
+    <tr><td class="remove">Ripe mango (whole fruit)</td><td class="arrow">→</td><td class="use">Bayabas/guava or ½ green mango (GI 31–41)</td></tr>
+    <tr><td class="remove">Fried banana cue / turon</td><td class="arrow">→</td><td class="use">Boiled unripe saba (GI 52) — no sugar added</td></tr>
+  </table>
+</div>
+
+<div class="legend-band">
+  <b style="margin-right:10px;">HOW TO READ PAGES 2–3:</b>
+  <span class="leg-item"><span class="leg-swatch avoid"></span><b>AVOID</b> = High GI &gt;70 or High GL ≥20</span>
+  <span class="leg-item"><span class="leg-swatch limit"></span><b>LIMIT</b> = Medium GI 56–70 or GL 11–19</span>
+  <span class="leg-item"><span class="leg-swatch good"></span><b>GOOD</b> = Low GI &lt;55 and Low GL ≤10</span>
+  <span class="leg-item"><span class="hc hc-h">73</span> = GI value &nbsp; <span class="hc hc-h">33</span> = GL value</span>
+</div>
+
+<div class="doc-ftr">
+  <table><tr>
+    <td><strong>For educational use only.</strong> This guide does not replace individualized dietary advice. Targets and restrictions vary with kidney function, medication, and individual risk. References: ADA Standards of Care 2025 · Atkinson et al., Glycemic Index Tables, Am J Clin Nutr 2021 · FNRI Philippine Food Composition Tables.</td>
+    <td><span class="url">stjohnbiocare.com</span><br>Page 1 of 8 · stjohnbiocare.com</td>
+  </tr></table>
+</div>
+
+</div><!-- /page 1 -->
+
+
+<!-- ===================== PAGE 2 — Grains, Bread, Root Crops, Fruits ===================== -->
+<div class="page">
+
+<div class="page-hdr">
+  <table><tr>
+    <td><div class="page-hdr-title">Filipino Food GI Heat Map — Grains, Bread, Root Crops &amp; Fruits</div><div class="page-hdr-sub">Rice &amp; Grains · Bread &amp; Noodles · Root Crops · Fruits</div></td>
+    <td>Page 2 of 8 · stjohnbiocare.com</td>
+  </tr></table>
+</div>
+
+<div class="hm-wrap">
+<table class="hm-table">
+  <thead>
+  <tr>
+    <th class="l" style="width:32%;">Food Item (Filipino Name)</th>
+    <th class="l" style="width:13%;">Typical Serving</th>
+    <th style="width:7%;">GI</th>
+    <th style="width:7%;">GL</th>
+    <th style="width:10%;">Rating</th>
+    <th class="l">Key Note</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="hm-cat hm-cat-neutral"><td colspan="6">🍚 A · BIGAS AT BUTIL — Rice &amp; Staple Grains</td></tr>
+  <tr class="r-avoid"><td class="food">White rice, steamed (kanin)</td><td class="serv">1 cup cooked</td><td class="ctr"><span class="hc hc-h">73</span></td><td class="ctr"><span class="hc hc-h">33</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Biggest blood sugar spike in the Filipino diet; replace with ½ cup brown/basmati rice + kamote</td></tr>
+  <tr class="r-avoid"><td class="food">Glutinous rice / malagkit (biko)</td><td class="serv">½ cup cooked</td><td class="ctr"><span class="hc hc-h">98</span></td><td class="ctr"><span class="hc hc-h">34</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Highest GI staple in Filipino cuisine; near-pure amylopectin starch — rapid glucose release</td></tr>
+  <tr class="r-avoid"><td class="food">Lugaw / arroz caldo (rice porridge)</td><td class="serv">1 bowl 300 mL</td><td class="ctr"><span class="hc hc-h">78</span></td><td class="ctr"><span class="hc hc-h">20</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Over-cooking breaks starch into simple glucose; spikes faster than steamed rice; try oatmeal instead</td></tr>
+  <tr class="r-limit"><td class="food">Brown rice (pilit na kayumanggi)</td><td class="serv">1 cup cooked</td><td class="ctr"><span class="hc hc-m">68</span></td><td class="ctr"><span class="hc hc-h">31</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Only slightly lower GI than white; main benefit is fiber and micronutrients; still needs portion control</td></tr>
+  <tr class="r-limit"><td class="food">Basmati rice (aged, cooked)</td><td class="serv">1 cup cooked</td><td class="ctr"><span class="hc hc-m">58</span></td><td class="ctr"><span class="hc hc-h">26</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Best rice variety for diabetes; long-chain amylose digests more slowly — keep to ½ cup per meal</td></tr>
+  <tr class="r-good"><td class="food">Rolled oats, soaked overnight</td><td class="serv">½ cup dry</td><td class="ctr"><span class="hc hc-l">42</span></td><td class="ctr"><span class="hc hc-m">11</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Best breakfast carb; beta-glucan soluble fiber blunts glucose rise; do NOT add condensed milk</td></tr>
+  <tr class="r-good"><td class="food">Monggo / green mung bean (boiled)</td><td class="serv">1 cup cooked</td><td class="ctr"><span class="hc hc-l">31</span></td><td class="ctr"><span class="hc hc-m">11</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Excellent low-GI protein + fiber staple; sauté with malunggay in canola oil for a diabetes-friendly meal</td></tr>
+  <tr class="r-good"><td class="food">Red kidney beans / munggo pula</td><td class="serv">1 cup cooked</td><td class="ctr"><span class="hc hc-l">24</span></td><td class="ctr"><span class="hc hc-l">8</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Very low GI; high in resistant starch and protein; use in soups as a rice replacement</td></tr>
+
+  <tr class="hm-cat hm-cat-neutral"><td colspan="6">🍞 B · TINAPAY AT MIE — Bread, Pasta &amp; Noodles</td></tr>
+  <tr class="r-avoid"><td class="food">White bread (Gardenia, Bimbo)</td><td class="serv">2 slices</td><td class="ctr"><span class="hc hc-h">71</span></td><td class="ctr"><span class="hc hc-h">20</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Digested almost as fast as white rice; refined flour → rapid glucose spike; choose whole grain instead</td></tr>
+  <tr class="r-avoid"><td class="food">Instant noodles (Pancit Canton)</td><td class="serv">1 pack</td><td class="ctr"><span class="hc hc-h">72</span></td><td class="ctr"><span class="hc hc-h">28</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Palm-oil fried noodles + very high sodium + MSG; double hit of high GI + high GL; worst noodle choice</td></tr>
+  <tr class="r-avoid"><td class="food">Puto (steamed white rice cake)</td><td class="serv">3 pieces</td><td class="ctr"><span class="hc hc-h">75</span></td><td class="ctr"><span class="hc hc-h">22</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Refined rice starch, rapidly digested; popular merienda but spikes blood sugar quickly</td></tr>
+  <tr class="r-limit"><td class="food">Whole wheat bread (fibrous)</td><td class="serv">2 slices</td><td class="ctr"><span class="hc hc-m">69</span></td><td class="ctr"><span class="hc hc-m">16</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Marginally better than white; check label — "wheat flour" ≠ whole grain; look for "whole wheat" first</td></tr>
+  <tr class="r-limit"><td class="food">Pasta / spaghetti (al dente, plain)</td><td class="serv">1 cup cooked</td><td class="ctr"><span class="hc hc-m">57</span></td><td class="ctr"><span class="hc hc-h">22</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Al dente = lower GI; overcooking raises GI; avoid sweet Filipino-style spaghetti sauce</td></tr>
+  <tr class="r-good"><td class="food">Sotanghon / glass noodles</td><td class="serv">½ cup cooked</td><td class="ctr"><span class="hc hc-l">35</span></td><td class="ctr"><span class="hc hc-l">10</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Best noodle for diabetes; mung bean starch is naturally low GI; use in soup with vegetables and chicken</td></tr>
+  <tr class="r-good"><td class="food">Bihon rice noodles (steamed)</td><td class="serv">½ cup cooked</td><td class="ctr"><span class="hc hc-l">40</span></td><td class="ctr"><span class="hc hc-l">12</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Lower GI than wheat pasta; avoid stir-fried pancit with sweet soy sauce — adds sugar fast</td></tr>
+
+  <tr class="hm-cat hm-cat-neutral"><td colspan="6">🍠 C · ROOT CROPS AT STARCHY VEG — Root Crops &amp; Starchy Vegetables</td></tr>
+  <tr class="r-avoid"><td class="food">Kalabasa / pumpkin (boiled)</td><td class="serv">1 cup</td><td class="ctr"><span class="hc hc-h">75</span></td><td class="ctr"><span class="hc hc-m">13</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Very high GI despite low GL; eat only small portions combined with protein to blunt spike</td></tr>
+  <tr class="r-limit"><td class="food">Cassava / kamoteng kahoy (boiled)</td><td class="serv">½ cup</td><td class="ctr"><span class="hc hc-m">65</span></td><td class="ctr"><span class="hc hc-m">15</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Medium GI; avoid processed cassava (cassava cake, nilupak with sugar) — GI becomes very high</td></tr>
+  <tr class="r-limit"><td class="food">Corn on the cob / mais (boiled)</td><td class="serv">1 medium cob</td><td class="ctr"><span class="hc hc-m">59</span></td><td class="ctr"><span class="hc hc-m">12</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Whole corn better than cornstarch; fiber intact; avoid corn syrup products; good occasional merienda</td></tr>
+  <tr class="r-good"><td class="food">Kamote / sweet potato (boiled)</td><td class="serv">1 medium 150g</td><td class="ctr"><span class="hc hc-l">44</span></td><td class="ctr"><span class="hc hc-m">12</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Best root crop for diabetes; boiling is key — baking raises GI to 94; rich in fiber and potassium</td></tr>
+  <tr class="r-good"><td class="food">Gabi / taro (boiled, plain)</td><td class="serv">½ cup</td><td class="ctr"><span class="hc hc-l">54</span></td><td class="ctr"><span class="hc hc-l">8</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Good low-GI root crop; use in sinigang instead of potato; avoid gabi desserts with sugar or coconut cream</td></tr>
+
+  <tr class="hm-cat hm-cat-neutral"><td colspan="6">🍎 D · PRUTAS — Fruits</td></tr>
+  <tr class="r-avoid"><td class="food">Watermelon (pakwan)</td><td class="serv">2 cups cubed</td><td class="ctr"><span class="hc hc-h">80</span></td><td class="ctr"><span class="hc hc-l">8</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Very high GI despite low GL; fast glucose release; choose guava or green mango instead</td></tr>
+  <tr class="r-avoid"><td class="food">Very ripe mango / hinog na mangga</td><td class="serv">1 medium</td><td class="ctr"><span class="hc hc-h">73</span></td><td class="ctr"><span class="hc hc-m">17</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">The riper, the higher the GI; at peak ripeness fructose and glucose spike blood sugar fast</td></tr>
+  <tr class="r-avoid"><td class="food">Lanzones, lychee, rambutan</td><td class="serv">10 pieces</td><td class="ctr"><span class="hc hc-h">72</span></td><td class="ctr"><span class="hc hc-m">15</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">High simple sugar content; easy to over-eat; limit to 5 pieces maximum if eaten with protein</td></tr>
+  <tr class="r-limit"><td class="food">Ripe mango (firm), half portion</td><td class="serv">½ small mango</td><td class="ctr"><span class="hc hc-m">60</span></td><td class="ctr"><span class="hc hc-m">14</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">High fructose even at medium GI; limit to ½ small mango; eat with protein to slow absorption</td></tr>
+  <tr class="r-limit"><td class="food">Papaya (ripe, hinog na papaya)</td><td class="serv">1 cup cubed</td><td class="ctr"><span class="hc hc-m">59</span></td><td class="ctr"><span class="hc hc-l">8</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Moderate GI but low GL; reasonable in portions; enzyme papain may modestly aid glucose metabolism</td></tr>
+  <tr class="r-limit"><td class="food">Pineapple / pinya (fresh)</td><td class="serv">½ cup</td><td class="ctr"><span class="hc hc-m">66</span></td><td class="ctr"><span class="hc hc-l">9</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Higher GI than expected; bromelain enzyme may have modest benefits; limit to small portions</td></tr>
+  <tr class="r-good"><td class="food">Bayabas / guava (green-yellow)</td><td class="serv">1 medium</td><td class="ctr"><span class="hc hc-l">31</span></td><td class="ctr"><span class="hc hc-l">4</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Highest fiber of all Philippine fruits; excellent for blood sugar control; eat 1–2 daily as merienda</td></tr>
+  <tr class="r-good"><td class="food">Green mango / hilaw na mangga</td><td class="serv">1 small</td><td class="ctr"><span class="hc hc-l">41</span></td><td class="ctr"><span class="hc hc-l">5</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Same fruit as ripe mango — but low GI when unripe; very popular and diabetes-friendly</td></tr>
+  <tr class="r-good"><td class="food">Avocado / abokado</td><td class="serv">½ medium</td><td class="ctr"><span class="hc hc-l">15</span></td><td class="ctr"><span class="hc hc-l">1</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Near-zero carb; rich in heart-healthy monounsaturated fat; pairs well with rice to lower overall GI</td></tr>
+  <tr class="r-good"><td class="food">Dalandan / ponkan / suha (citrus)</td><td class="serv">1 medium</td><td class="ctr"><span class="hc hc-l">38</span></td><td class="ctr"><span class="hc hc-l">5</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Slow-releasing fructose + vitamin C; eat whole fruit — juice removes fiber and concentrates sugars</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="doc-ftr">
+  <table><tr>
+    <td>GI = Glycemic Index · GL = Glycemic Load per serving · High GI &gt;70 · Medium 56–70 · Low &lt;55 · High GL ≥20 · Medium 11–19 · Low ≤10 &nbsp;|&nbsp; <strong>Educational use only.</strong></td>
+    <td><span class="url">stjohnbiocare.com</span> · Page 2 of 8</td>
+  </tr></table>
+</div>
+
+</div><!-- /page 2 -->
+
+
+<!-- ===================== PAGE 3 — Vegetables, Proteins, Beverages, Sweets ===================== -->
+<div class="page">
+
+<div class="page-hdr">
+  <table><tr>
+    <td><div class="page-hdr-title">Filipino Food GI Heat Map — Vegetables, Proteins, Beverages &amp; Sweets</div><div class="page-hdr-sub">Non-Starchy Vegetables · Proteins &amp; Legumes · Beverages · Sweets &amp; Kakanin</div></td>
+    <td>Page 3 of 8 · stjohnbiocare.com</td>
+  </tr></table>
+</div>
+
+<div class="hm-wrap">
+<table class="hm-table">
+  <thead>
+  <tr>
+    <th class="l" style="width:32%;">Food Item (Filipino Name)</th>
+    <th class="l" style="width:13%;">Typical Serving</th>
+    <th style="width:7%;">GI</th>
+    <th style="width:7%;">GL</th>
+    <th style="width:10%;">Rating</th>
+    <th class="l">Key Note</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="hm-cat hm-cat-good"><td colspan="6">🥦 E · GULAY — Non-Starchy Vegetables · Eat Freely · Low GI Always</td></tr>
+  <tr class="r-good"><td class="food">Ampalaya / bitter melon</td><td class="serv">1 cup</td><td class="ctr"><span class="hc hc-l">17</span></td><td class="ctr"><span class="hc hc-l">1</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Traditional diabetes superfood; charantin and polypeptide-p have documented glucose-lowering effects</td></tr>
+  <tr class="r-good"><td class="food">Okra (steamed or in sinigang)</td><td class="serv">1 cup</td><td class="ctr"><span class="hc hc-l">20</span></td><td class="ctr"><span class="hc hc-l">2</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Viscous mucilage fiber slows glucose absorption in the gut; eat daily — best vegetable for diabetes</td></tr>
+  <tr class="r-good"><td class="food">Malunggay / moringa (leaves)</td><td class="serv">½ cup</td><td class="ctr"><span class="hc hc-l">20</span></td><td class="ctr"><span class="hc hc-l">1</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Rich in quercetin and chlorogenic acid; modestly lowers blood sugar; add to tinola, sinigang, or monggo</td></tr>
+  <tr class="r-good"><td class="food">Kangkong / water spinach (ginisa)</td><td class="serv">1 cup</td><td class="ctr"><span class="hc hc-l">15</span></td><td class="ctr"><span class="hc hc-l">1</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Abundant and affordable; sauté in canola oil + garlic; excellent iron and vitamin source</td></tr>
+  <tr class="r-good"><td class="food">Sitaw · talong · labanos</td><td class="serv">1 cup</td><td class="ctr"><span class="hc hc-l">28</span></td><td class="ctr"><span class="hc hc-l">3</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">All low-GI vegetables; fill half the plate with these before eating rice; no quantity restriction</td></tr>
+  <tr class="r-good"><td class="food">Pinakbet (canola oil, no bagoong)</td><td class="serv">1 cup</td><td class="ctr"><span class="hc hc-l">22</span></td><td class="ctr"><span class="hc hc-l">3</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Ideal Filipino diabetes dish; okra + ampalaya + talong; skip bagoong (sodium) and lard</td></tr>
+  <tr class="r-limit"><td class="food">Kalabasa / pumpkin (in sinigang)</td><td class="serv">½ cup</td><td class="ctr"><span class="hc hc-h">75</span></td><td class="ctr"><span class="hc hc-l">7</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">High GI but very low GL in normal portion; always eat with protein in a full meal to blunt impact</td></tr>
+
+  <tr class="hm-cat hm-cat-neutral"><td colspan="6">🐟 F · PROTINA AT LEGUMES — Proteins &amp; Legumes</td></tr>
+  <tr class="r-good"><td class="food">Galunggong / round scad (grilled)</td><td class="serv">2–3 pieces</td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Best budget omega-3 fish in PH; no glycemic impact; grill or steam — avoid frying in coconut oil</td></tr>
+  <tr class="r-good"><td class="food">Tilapia / bangus (grilled/steamed)</td><td class="serv">1 medium</td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Zero GI; lean protein that slows glucose absorption when eaten before carbs; eat daily</td></tr>
+  <tr class="r-good"><td class="food">Sardinas sa kamatis (canned)</td><td class="serv">1 can</td><td class="ctr"><span class="hc hc-l">5</span></td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Affordable omega-3; zero glycemic load; choose tomato sauce — NOT oil; watch sodium in CKD</td></tr>
+  <tr class="r-good"><td class="food">Chicken breast, grilled (no skin)</td><td class="serv">1 piece</td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Zero GI; the quarter-plate protein; tinola with malunggay is one of the best diabetic Filipino meals</td></tr>
+  <tr class="r-good"><td class="food">Tokwa / firm tofu (steamed)</td><td class="serv">½ block</td><td class="ctr"><span class="hc hc-l">15</span></td><td class="ctr"><span class="hc hc-l">1</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Plant protein; replaces pork in adobo and scrambles; soy protein modestly improves insulin sensitivity</td></tr>
+  <tr class="r-good"><td class="food">Boiled egg (itlog)</td><td class="serv">1 large</td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Zero carbs; excellent merienda protein; limit to 1/day if LDL is also elevated</td></tr>
+  <tr class="r-limit"><td class="food">Longganisa / tocino (sweet-cured)</td><td class="serv">2 links</td><td class="ctr"><span class="hc hc-m">45</span></td><td class="ctr"><span class="hc hc-l">5</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Added sugar in cure raises GI for a "protein" food; high sat fat + sodium compound cardiovascular risk</td></tr>
+  <tr class="r-avoid"><td class="food">Lechon / chicharon / pork skin</td><td class="serv">100g</td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">GI is zero but saturated fat impairs insulin sensitivity over time; worsens CKD and cardiovascular risk</td></tr>
+
+  <tr class="hm-cat hm-cat-neutral"><td colspan="6">🥤 G · INUMIN — Beverages</td></tr>
+  <tr class="r-avoid"><td class="food">Softdrinks (Coke, Sprite, Royal)</td><td class="serv">1 can 330 mL</td><td class="ctr"><span class="hc hc-h">65</span></td><td class="ctr"><span class="hc hc-h">26</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">35–40g sugar per can; liquid glucose has almost no delay — one can ≈ nearly 3 tsp of sugar direct</td></tr>
+  <tr class="r-avoid"><td class="food">3-in-1 coffee (Nescafe, Kopiko)</td><td class="serv">1 sachet</td><td class="ctr"><span class="hc hc-h">70</span></td><td class="ctr"><span class="hc hc-m">18</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Non-dairy creamer (palm-oil fat) + sugar = simultaneous fat + carb spike; switch to black brewed barako</td></tr>
+  <tr class="r-avoid"><td class="food">Powdered juice (Tang, Zesto)</td><td class="serv">1 glass 250 mL</td><td class="ctr"><span class="hc hc-h">68</span></td><td class="ctr"><span class="hc hc-h">22</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Pure sugar + artificial color + no nutrients; one of the largest contributors to diabetes in Filipino diet</td></tr>
+  <tr class="r-avoid"><td class="food">Commercial fruit juice (Minute Maid)</td><td class="serv">1 glass 250 mL</td><td class="ctr"><span class="hc hc-m">68</span></td><td class="ctr"><span class="hc hc-m">19</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Fiber removed; fructose concentrated; spikes blood sugar almost like sweetened drinks despite "fruit" label</td></tr>
+  <tr class="r-limit"><td class="food">Milo / Ovaltine (2 tsp powder)</td><td class="serv">1 cup</td><td class="ctr"><span class="hc hc-m">55</span></td><td class="ctr"><span class="hc hc-m">14</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Moderate sugar; use only 1 tsp powder with skim milk; never add condensed milk; limit to once/day</td></tr>
+  <tr class="r-limit"><td class="food">Buko / coconut juice (no sugar)</td><td class="serv">1 coconut</td><td class="ctr"><span class="hc hc-m">55</span></td><td class="ctr"><span class="hc hc-m">11</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Natural sugars; potassium-rich; acceptable if renal function is normal; avoid bottled sweetened versions</td></tr>
+  <tr class="r-good"><td class="food">Black coffee / barako (no sugar)</td><td class="serv">1–2 cups</td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Zero GI; chlorogenic acid improves insulin sensitivity; 2 cups/day associated with lower T2DM risk</td></tr>
+  <tr class="r-good"><td class="food">Salabat / ginger tea (no arnibal)</td><td class="serv">1 cup</td><td class="ctr"><span class="hc hc-l">5</span></td><td class="ctr"><span class="hc hc-l">0</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Gingerol improves insulin signaling; ideal post-meal drink; anti-inflammatory; traditional remedy</td></tr>
+  <tr class="r-good"><td class="food">Unsweetened calamansi juice</td><td class="serv">1 glass + water</td><td class="ctr"><span class="hc hc-l">30</span></td><td class="ctr"><span class="hc hc-l">2</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Vitamin C; low sugar when no arnibal added; also lowers GI of rice when added directly to cooked rice</td></tr>
+
+  <tr class="hm-cat hm-cat-neutral"><td colspan="6">🍡 H · KAKANIN AT MATAMIS — Filipino Sweets &amp; Desserts</td></tr>
+  <tr class="r-avoid"><td class="food">Biko / sinukmani (malagkit + gata)</td><td class="serv">1 piece</td><td class="ctr"><span class="hc hc-h">95</span></td><td class="ctr"><span class="hc hc-h">48</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Highest GI and GL of all Filipino sweets; malagkit + coconut cream + brown sugar = triple spike trigger</td></tr>
+  <tr class="r-avoid"><td class="food">Leche flan</td><td class="serv">1 slice 100g</td><td class="ctr"><span class="hc hc-m">62</span></td><td class="ctr"><span class="hc hc-h">30</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Egg yolk + condensed milk + sugar = very high GL per slice; spikes blood sugar quickly</td></tr>
+  <tr class="r-avoid"><td class="food">Halo-halo (full serving)</td><td class="serv">1 large glass</td><td class="ctr"><span class="hc hc-h">80</span></td><td class="ctr"><span class="hc hc-h">36</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Condensed milk + ube ice cream + arnibal + sweetened beans = multiple sugar layers; worst dessert for DM</td></tr>
+  <tr class="r-avoid"><td class="food">Maja blanca / bibingka / champorado</td><td class="serv">1 serving</td><td class="ctr"><span class="hc hc-h">72</span></td><td class="ctr"><span class="hc hc-h">24</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">All high-GI, high-GL Filipino desserts; refined carb + sugar + coconut cream combination to avoid</td></tr>
+  <tr class="r-avoid"><td class="food">White sugar / arnibal / condensed milk</td><td class="serv">1 tsp / 2 tbsp</td><td class="ctr"><span class="hc hc-h">65+</span></td><td class="ctr"><span class="hc hc-h">14+</span></td><td class="ctr"><span class="rb rb-avoid">AVOID</span></td><td class="note">Pure glucose/fructose; remove from drinks, rice, condiments; stevia or monk fruit are zero-GI alternatives</td></tr>
+  <tr class="r-limit"><td class="food">Boiled saba banana (unripe)</td><td class="serv">2 pieces</td><td class="ctr"><span class="hc hc-m">52</span></td><td class="ctr"><span class="hc hc-m">14</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Resistant starch when slightly unripe; do NOT fry or add sugar; eat as merienda with 1 boiled egg</td></tr>
+  <tr class="r-limit"><td class="food">Puto (plain, small)</td><td class="serv">2 pieces</td><td class="ctr"><span class="hc hc-m">68</span></td><td class="ctr"><span class="hc hc-m">15</span></td><td class="ctr"><span class="rb rb-limit">LIMIT</span></td><td class="note">Lower fat than most kakanin but still high refined carb; if eaten, pair with protein, keep to 2 small pieces</td></tr>
+  <tr class="r-good"><td class="food">Bayabas / guava (fresh, as dessert)</td><td class="serv">1–2 medium</td><td class="ctr"><span class="hc hc-l">31</span></td><td class="ctr"><span class="hc hc-l">4</span></td><td class="ctr"><span class="rb rb-good">GOOD</span></td><td class="note">Best dessert after any Filipino meal; high fiber, high vitamin C, very low GL; eat instead of kakanin</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="doc-ftr">
+  <table><tr>
+    <td>GI = Glycemic Index · GL = Glycemic Load per Serving · H=High · M=Moderate · L=Low &nbsp;|&nbsp; <strong>Educational use only.</strong> Consult your physician for individualized targets.</td>
+    <td><span class="url">stjohnbiocare.com</span> · Page 3 of 8</td>
+  </tr></table>
+</div>
+
+</div><!-- /page 3 -->
+
+
+<!-- ===================== PAGE 4 — Meal Plan, Medications, Lifestyle ===================== -->
+<div class="page">
+
+<div class="page-hdr">
+  <table><tr>
+    <td><div class="page-hdr-title">Filipino Diabetic Diet — 7-Day Meal Plan · Medications · Lifestyle</div><div class="page-hdr-sub">Sample Weekly Plan · Drug-Diet Interactions · Lifestyle Changes That Lower HbA1c</div></td>
+    <td>Page 4 of 8 · stjohnbiocare.com</td>
+  </tr></table>
+</div>
+
+<div class="hm-wrap">
+
+<div class="blk-title">🍽 7-Day Filipino Diabetes Meal Plan — ½ Veg · ¼ Protein · ¼ Carbs · Eat in Order</div>
+<table class="mp-tbl">
+  <thead><tr><th style="width:7%;">Day</th><th style="width:30%;">Breakfast</th><th style="width:30%;">Lunch</th><th style="width:14%;">Merienda</th><th>Dinner</th></tr></thead>
+  <tbody>
+    <tr><td class="day">Mon</td><td>Quaker oatmeal + boiled egg + black barako coffee</td><td>Sinigang na tilapia + ½ cup cold rice + pinakbet (okra + talong)</td><td>1 guava + 1 boiled egg</td><td>Monggo guisado with malunggay + boiled kamote (no rice)</td></tr>
+    <tr><td class="day">Tue</td><td>Ginisang ampalaya at itlog + ½ cup brown rice + salabat</td><td>Tinolang manok (breast, no skin, with malunggay) + ½ cup rice</td><td>Green mango + 30g pili nuts</td><td>Inihaw na bangus (no skin) + ginisang kangkong + ½ cup basmati rice</td></tr>
+    <tr><td class="day">Wed</td><td>Overnight oats (calamansi, no sugar) + dalandan</td><td>Sardinas sa kamatis + sitaw at kalabasa guisado + ½ cup cold rice</td><td>2 boiled saba (unripe) + salabat</td><td>Chicken adobo sa puti (breast, no skin) + steamed labanos + ½ cup rice</td></tr>
+    <tr><td class="day">Thu</td><td>Scrambled tokwa + tomato + black coffee (no sugar)</td><td>Grilled galunggong + pinakbet (canola oil, no bagoong) + ½ cup rice</td><td>1–2 guavas fresh</td><td>Monggo at dilis + kangkong + boiled kamote instead of rice</td></tr>
+    <tr><td class="day">Fri</td><td>Oatmeal + 1 boiled egg + calamansi juice (unsweetened)</td><td>Sinigang na bangus sa sampalok + okra + talong + ½ cup rice</td><td>½ avocado + water</td><td>Steamed tilapia + malunggay soup + sotanghon guisado (no sugar)</td></tr>
+    <tr><td class="day">Sat</td><td>Scrambled egg + tomato + brown rice (½ cup) + black coffee</td><td>Paksiw na bangus (light vinegar, no pork) + sitaw + ½ cup cold rice</td><td>Ponkan + 1 boiled egg</td><td>Lumpiang sariwa (fresh, not fried) + tokwa filling + ½ cup rice</td></tr>
+    <tr><td class="day">Sun</td><td>Overnight oats + sliced green mango (no sugar) + salabat</td><td>Nilagang manok (breast only) + malunggay + boiled kamote (no rice)</td><td>1 guava + water</td><td>Sardinas + ampalaya con huevo (1 egg) + ½ cup basmati rice</td></tr>
+  </tbody>
+</table>
+
+<table class="two-col" style="margin-top:10px;"><tr>
+  <td>
+    <div class="blk-title">💊 Diabetes Medications &amp; Food Interactions</div>
+    <table class="drug-tbl">
+      <tr><td class="name">Metformin</td><td>Take WITH meals to avoid nausea. Long-term use depletes Vitamin B12 — check B12 yearly. No food causes a dangerous interaction.</td></tr>
+      <tr><td class="name" style="color:#b81339;">Sulfonylureas<span class="drug-sub"> (glibenclamide, glipizide)</span></td><td>MUST eat within 30 min of taking the tablet. Skipping or delaying meals → hypoglycemia risk. Keep sugar (3 pcs candy) on hand.</td></tr>
+      <tr><td class="name" style="color:#1e40af;">SGLT2 Inhibitors<span class="drug-sub"> (empagliflozin, dapagliflozin)</span></td><td>Drink 6–8 glasses water/day (glucose lost via urine → dehydration risk). Reduce rice and sugar for best effect. Avoid if UTI active.</td></tr>
+      <tr><td class="name" style="color:#166534;">GLP-1 Agonists<span class="drug-sub"> (semaglutide, dulaglutide)</span></td><td>Nausea worsens with high-fat meals (lechon, gata). Eat small, low-fat meals. Avoid large rice portions — delays gastric emptying further.</td></tr>
+      <tr><td class="name">Insulin</td><td>Keep carb intake consistent at each meal (same rice amount daily). Skipping or late meals → hypo/hyperglycemia. Never skip a meal after rapid insulin.</td></tr>
+    </table>
+  </td>
+  <td>
+    <div class="blk-title">⚡ Lifestyle Changes That Lower HbA1c</div>
+    <table class="ls-tbl">
+      <tr>
+        <td><div class="ls-tile"><div class="lh">🚶 Walk After Meals</div><div class="lv">↓ Post-meal glucose 10–15%</div><p>Even 10 minutes of brisk walking after eating significantly lowers the 2-hour glucose spike. Do it after lunch and dinner.</p></div></td>
+        <td><div class="ls-tile"><div class="lh">⚖ Lose 5–7% Body Weight</div><div class="lv">↓ HbA1c 0.5–1%</div><p>In prediabetes, 5–7% weight loss prevents progression to diabetes in 58% of cases. Focus on rice portions first.</p></div></td>
+      </tr>
+      <tr>
+        <td><div class="ls-tile"><div class="lh">🌾 Cut Rice in Half</div><div class="lv">Fastest HbA1c drop</div><p>Reducing white rice from 3 cups to 1 cup/day is often the single most impactful diet change for Filipino patients.</p></div></td>
+        <td><div class="ls-tile"><div class="lh">😴 Sleep 7–8 Hours</div><div class="lv">Improves insulin sensitivity</div><p>Sleep deprivation raises cortisol and glucose. Poor sleep can raise fasting glucose by 10–15 mg/dL.</p></div></td>
+      </tr>
+    </table>
+    <div class="alert amber">
+      <h4>⚠ Special Situations</h4>
+      <p><strong>Fasting (religious):</strong> Consult your doctor first. Sulfonylurea/insulin doses must be adjusted. Eat suhur with low-GI foods (oatmeal, monggo). Break fast with dates + water, then protein before carbs.</p>
+      <p style="margin-top:4px;"><strong>Sick day:</strong> Never skip diabetes medications when ill. Monitor glucose every 4–6 hours. Drink clear fluids. Contact your doctor if glucose &gt;300 mg/dL or you cannot eat.</p>
+    </div>
+  </td>
+</tr></table>
+
+</div>
+
+<div class="doc-ftr">
+  <table><tr>
+    <td><strong>For educational use only.</strong> This guide does not replace your physician's or dietitian's advice. Glycemic targets and medication adjustments are individualized. References: ADA Standards of Care 2025 · Atkinson et al. Am J Clin Nutr 2021 (GI Tables) · KDIGO 2024 · FNRI Philippine Food Composition Tables 2023.</td>
+    <td><span class="url">stjohnbiocare.com</span><br>Page 4 of 8 · stjohnbiocare.com</td>
+  </tr></table>
+</div>
+
+</div><!-- /page 4 -->
+
+
+<!-- ===================== PAGE 5 — Visual Reference: Glycemic Plate ===================== -->
+<div class="page page-fig">
+  <div class="fig-head">
+    <div class="fig-title">The Filipino <em>Glycemic Plate</em></div>
+    <div class="fig-sub">A simple plate to build every meal the right way for better blood sugar control.</div>
+  </div>
+  <div class="fig-grow">
+    <img class="fig-img" src="images/filipino-glycemic-plate-diagram-pdf.jpg" alt="The Filipino glycemic plate: half non-starchy vegetables, one quarter protein, one quarter low-GI carbohydrates, with water as the drink">
+    <div class="fig-cap">Fill half your plate with non-starchy vegetables, a quarter with protein, and a quarter with low-GI carbohydrates &mdash; and choose water as your drink.</div>
+  </div>
+  <div class="doc-ftr">
+    <table><tr>
+      <td><strong>For educational use only.</strong> This reference does not replace individualized dietary advice. Targets vary with kidney function, medication, and individual risk. References: ADA Standards of Care 2025 &middot; FNRI Philippine Food Composition Tables.</td>
+      <td><span class="url">stjohnbiocare.com</span><br>Page 5 of 8 · stjohnbiocare.com</td>
+    </tr></table>
+  </div>
+</div><!-- /page 5 -->
+
+
+<!-- ===================== PAGE 6 — Visual Reference: Food GI Master Chart ===================== -->
+<div class="page page-fig">
+  <div class="fig-head">
+    <div class="fig-title">Filipino Food <em>Glycemic Index</em> Master Chart</div>
+    <div class="fig-sub">The glycemic index of common Filipino foods at a glance &mdash; lower is gentler on blood sugar.</div>
+  </div>
+  <div class="fig-grow">
+    <img class="fig-img" src="images/filipino-food-gi-master-chart-pdf.jpg" alt="Master chart of the glycemic index of common Filipino foods grouped by category">
+    <div class="fig-cap">Favor low-GI choices (&lt;55), limit medium-GI foods (56&ndash;70), and minimize high-GI foods (&gt;70) &mdash; especially in large portions.</div>
+  </div>
+  <div class="doc-ftr">
+    <table><tr>
+      <td><strong>For educational use only.</strong> This reference does not replace individualized dietary advice. References: Atkinson et al., Glycemic Index Tables, Am J Clin Nutr 2021 &middot; FNRI Philippine Food Composition Tables.</td>
+      <td><span class="url">stjohnbiocare.com</span><br>Page 6 of 8 · stjohnbiocare.com</td>
+    </tr></table>
+  </div>
+</div><!-- /page 6 -->
+
+
+<!-- ===================== PAGE 7 — Visual Reference: Dishes Modify vs Limit ===================== -->
+<div class="page page-fig">
+  <div class="fig-head">
+    <div class="fig-title">Filipino Dishes: <em>Modify vs Limit</em></div>
+    <div class="fig-sub">You don't have to give up Filipino food &mdash; make smart changes, and limit when needed.</div>
+  </div>
+  <div class="fig-grow">
+    <img class="fig-img" src="images/filipino-dishes-modify-vs-limit-pdf.jpg" alt="Filipino dishes to modify for better blood sugar versus dishes to limit, with portion guidance">
+    <div class="fig-cap">Small changes today, big impact tomorrow &mdash; better food choices, better blood sugar control.</div>
+  </div>
+  <div class="doc-ftr">
+    <table><tr>
+      <td><strong>For educational use only.</strong> This reference does not replace individualized dietary advice. Targets and restrictions vary with kidney function and medication. References: ADA Standards of Care 2025 &middot; FNRI Philippine Food Composition Tables.</td>
+      <td><span class="url">stjohnbiocare.com</span><br>Page 7 of 8 · stjohnbiocare.com</td>
+    </tr></table>
+  </div>
+</div><!-- /page 7 -->
+
+
+<!-- ===================== PAGE 8 — Visual Reference: 7-Day Meal Plan ===================== -->
+<div class="page page-fig">
+  <div class="fig-head">
+    <div class="fig-title">Your <em>7-Day</em> Filipino Diabetic Meal Plan</div>
+    <div class="fig-sub">A full week of balanced, blood-sugar-friendly Filipino meals from breakfast to dinner.</div>
+  </div>
+  <div class="fig-grow">
+    <img class="fig-img" src="images/7-day-diabetic-meal-plan-filipino-pdf.jpg" alt="A seven-day Filipino diabetic meal plan covering breakfast, lunch, snack, and dinner">
+    <div class="fig-cap">A practical template &mdash; adjust portions to your own calorie, kidney, and medication needs as advised by your physician.</div>
+  </div>
+  <div class="doc-ftr">
+    <table><tr>
+      <td><strong>For educational use only.</strong> This reference does not replace individualized dietary advice. Targets vary with kidney function, medication, and individual risk. References: ADA Standards of Care 2025 &middot; FNRI Philippine Food Composition Tables.</td>
+      <td><span class="url">stjohnbiocare.com</span><br>Page 8 of 8 · stjohnbiocare.com</td>
+    </tr></table>
+  </div>
+</div><!-- /page 8 -->
+
+</body>
+</html>
