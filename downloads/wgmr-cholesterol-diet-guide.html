@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cholesterol in Filipino Foods — Infographic Overview · St. John Biocare</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:9pt;}
+body{font-family:'Figtree','Noto Sans','Segoe UI',Arial,sans-serif;color:#222A24;background:#fff;line-height:1.35;}
+.hero-title,.sec-title,.page-hdr-title,.kn-num,.fig-title,.hm-cat td{font-family:'Noto Sans','Figtree',sans-serif;}
+@page{size:A4;margin:0;}
+@media print{.pb{page-break-before:always;}.no-break{page-break-inside:avoid;}}
+
+/* ── PAGE SHELL ── */
+/* Each .page is exactly A4 = 210mm × 297mm; overflow:hidden clips anything that doesn't fit */
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;background:#fff;display:flex;flex-direction:column;}
+.inner{padding:0 14mm 6mm;flex:1;overflow:hidden;}
+
+/* ══════════════════════════════
+   UNIVERSAL HEADER STRIP
+   ══════════════════════════════ */
+.top-strip{background:#e8ecf2;color:#4b5563;font-size:7.5pt;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 14mm;display:flex;justify-content:space-between;}
+.top-strip span:last-child{opacity:.65;font-weight:400;}
+
+/* ══════════════════════════════
+   PAGE 1 HERO
+   ══════════════════════════════ */
+.hero{background:linear-gradient(135deg,#006028 0%,#089838 55%,#089838 100%);color:#fff;padding:10px 14mm 10px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.hero-left{flex:1;}
+.hero-tag{display:inline-block;background:#089838;color:#fff;font-size:6.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-bottom:5px;}
+.hero-title{font-size:18pt;font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:4px;}
+.hero-title em{color:#f4c842;font-style:normal;}
+.hero-sub{font-size:8.5pt;opacity:.85;max-width:320px;line-height:1.35;}
+.hero-sub em{color:#f4c842;font-style:normal;font-weight:700;}
+.hero-right{text-align:right;flex-shrink:0;}
+.dr-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:7px 10px;text-align:center;min-width:100px;}
+.dr-circle{width:38px;height:38px;background:linear-gradient(135deg,#f4c842,#e09b00);border-radius:50%;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:17pt;}
+.dr-name{font-size:6.5pt;font-weight:700;color:#fff;line-height:1.3;}
+.dr-cred{font-size:6pt;opacity:.6;color:#fff;}
+.hero-url{margin-top:4px;font-size:6pt;opacity:.55;color:#fff;}
+.logo-card{background:#fff;border:1px solid rgba(255,255,255,.5);border-radius:10px;padding:8px 7px 5px;}
+.logo-card .logos{display:flex;gap:5px;justify-content:center;align-items:center;}
+.logo-card .logos img{width:46px;height:46px;object-fit:contain;display:block;}
+.logo-card .lc-cap{font-size:5.2pt;color:#006028;font-weight:700;letter-spacing:.02em;margin-top:4px;line-height:1.25;text-transform:uppercase;max-width:150px;}
+
+/* ══════════════════════════════
+   KEY NUMBERS BAND
+   ══════════════════════════════ */
+.kn-band{background:#f4c842;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;padding:5px 14mm;}
+.kn-item{}
+.kn-num{font-size:14pt;font-weight:800;color:#222A24;line-height:1;}
+.kn-label{font-size:6.5pt;color:#3b2800;font-weight:600;margin-top:1px;}
+.kn-divider{border-left:1px solid rgba(0,0,0,.15);}
+
+/* ══════════════════════════════
+   SECTION LAYOUT
+   ══════════════════════════════ */
+.sections{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0 14mm;}
+.sec-full{grid-column:1/-1;}
+.sec{padding:6px 8px 5px 0;}
+.sec-right{padding:6px 0 5px 12px;border-left:1px solid #e5e9ef;}
+.sec-num{display:inline-flex;width:19px;height:19px;background:#089838;color:#fff;border-radius:50%;font-size:7.5pt;font-weight:800;align-items:center;justify-content:center;margin-bottom:4px;flex-shrink:0;}
+.sec-num.blue{background:#1a6b9e;}
+.sec-num.green{background:#16a34a;}
+.sec-num.amber{background:#d97706;}
+.sec-title{font-size:9.5pt;font-weight:800;color:#222A24;line-height:1.2;margin-bottom:4px;}
+.sec-title em{color:#089838;font-style:normal;}
+p.body{font-size:7.5pt;color:#374151;line-height:1.4;margin-bottom:4px;}
+
+/* ── ICON GRID ── */
+.icon-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-top:4px;}
+.icon-tile{background:#f5f7fa;border-radius:5px;padding:5px 5px 4px;text-align:center;}
+.icon-tile .ic{font-size:13pt;line-height:1;margin-bottom:2px;}
+.icon-tile .it{font-size:6.5pt;font-weight:700;color:#222A24;line-height:1.25;}
+.icon-tile .iv{font-size:6.5pt;color:#16a34a;font-weight:700;}
+.icon-tile .iv.red{color:#E02048;}
+.icon-tile .iv.amber{color:#d97706;}
+
+/* ── LDL vs HDL COMPARE ── */
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:5px;align-items:center;margin-top:4px;}
+.compare-box{border-radius:6px;padding:6px 8px;}
+.compare-box.bad{background:#fef2f2;border:2px solid #E02048;}
+.compare-box.good{background:#f0fdf4;border:2px solid #16a34a;}
+.compare-box .cb-head{font-size:9pt;font-weight:800;}
+.compare-box.bad .cb-head{color:#b81339;}
+.compare-box.good .cb-head{color:#166534;}
+.compare-box .cb-sub{font-size:6.5pt;color:#4b5563;font-weight:600;margin-bottom:2px;}
+.compare-box ul{padding-left:11px;font-size:6.5pt;color:#374151;}
+.compare-box li{margin-bottom:1px;}
+.vs-circle{width:24px;height:24px;background:#222A24;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:6.5pt;font-weight:800;flex-shrink:0;margin:0 auto;}
+
+/* ── FAT VISUAL TABLE ── */
+.fat-vis{width:100%;border-collapse:collapse;font-size:7pt;margin-top:4px;}
+.fat-vis th{background:#222A24;color:#fff;padding:3px 5px;text-align:left;font-size:6.5pt;}
+.fat-vis td{padding:2.5px 5px;border-bottom:1px solid #e8ecf0;vertical-align:middle;}
+.fat-vis tr:nth-child(even) td{background:#f9fafb;}
+.fat-vis td:first-child{font-weight:600;}
+.arr-up-red{color:#E02048;font-weight:800;}
+.arr-up-big{color:#E02048;font-size:10pt;font-weight:800;}
+.arr-dn-grn{color:#166534;font-weight:800;}
+.arr-dn-big{color:#166534;font-size:10pt;font-weight:800;}
+.arr-nt{color:#9ca3af;}
+
+/* ── LIPID TARGETS BOX ── */
+.targets{background:#222A24;color:#fff;border-radius:7px;padding:7px 10px;margin-top:4px;}
+.targets h3{font-size:8pt;font-weight:700;margin-bottom:5px;color:#f4c842;}
+.tg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+.tg-card{background:rgba(255,255,255,.08);border-radius:4px;padding:4px 6px;text-align:center;}
+.tg-name{font-size:6pt;font-weight:600;opacity:.7;margin-bottom:2px;}
+.tg-val{font-size:9.5pt;font-weight:800;color:#f4c842;line-height:1;}
+.tg-unit{font-size:5.5pt;opacity:.55;margin-top:1px;}
+.tg-note{font-size:6pt;opacity:.65;margin-top:3px;text-align:center;font-style:italic;}
+
+/* ── ALERT BOX ── */
+.alert{border-radius:5px;padding:5px 8px;margin-top:4px;}
+.alert.red{background:#fef2f2;border-left:3px solid #E02048;}
+.alert.green{background:#f0fdf4;border-left:3px solid #16a34a;}
+.alert.amber{background:#fffbeb;border-left:3px solid #d97706;}
+.alert.navy{background:#f0f4f8;border-left:3px solid #222A24;}
+.alert h4{font-size:7.5pt;font-weight:700;color:#222A24;margin-bottom:2px;}
+.alert p{font-size:7pt;color:#374151;line-height:1.35;}
+.alert ul{padding-left:12px;font-size:7pt;color:#374151;}
+.alert li{margin-bottom:1px;}
+
+/* ── LEGEND FOR P2-P3 ── */
+.legend-band{background:#f0f4f8;padding:5px 14mm;display:flex;gap:14px;align-items:center;flex-wrap:wrap;border-top:2px solid #dde3ea;}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:7pt;}
+.leg-swatch{width:40px;height:12px;border-radius:3px;display:inline-block;}
+.leg-swatch.avoid{background:#E02048;}
+.leg-swatch.limit{background:#d97706;}
+.leg-swatch.good{background:#16a34a;}
+.leg-cells{display:flex;gap:4px;align-items:center;font-size:6.5pt;}
+
+/* ── PAGE FOOTER ── */
+.doc-ftr{padding:4px 14mm;border-top:1px solid #dde3ea;display:flex;justify-content:space-between;align-items:flex-end;font-size:6pt;color:#6b7280;}
+.doc-ftr .url{font-weight:700;color:#1a6b9e;font-size:6.5pt;}
+
+/* ══════════════════════════════
+   PAGES 2-3 HEAT-MAP TABLES
+   ══════════════════════════════ */
+.page-hdr{background:#006028;color:#fff;padding:5px 14mm;display:flex;justify-content:space-between;align-items:center;}
+.page-hdr-title{font-size:9.5pt;font-weight:700;}
+.page-hdr-sub{font-size:7pt;opacity:.6;}
+.page-hdr-pg{font-size:7.5pt;opacity:.5;}
+
+.hm-wrap{padding:0 14mm 4mm;}
+
+.hm-table{width:100%;border-collapse:collapse;font-size:7pt;margin-bottom:6px;}
+.hm-colhdr th{background:#1e3a5f;color:#fff;padding:4px 4px;text-align:center;font-size:6.5pt;font-weight:700;}
+.hm-colhdr th:first-child{text-align:left;padding-left:7px;}
+.hm-colhdr th:nth-child(2){text-align:left;}
+
+.hm-cat td{padding:4px 7px;font-size:7.5pt;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;}
+.hm-cat-avoid{background:#991b1b;}
+.hm-cat-limit{background:#92400e;}
+.hm-cat-good{background:#166534;}
+.hm-cat-neutral{background:#222A24;}
+
+.hm-table td{padding:2.5px 4px;border-bottom:1px solid rgba(0,0,0,.05);vertical-align:middle;}
+.hm-table td:first-child{padding-left:7px;font-weight:600;font-size:7pt;}
+.hm-table td:nth-child(2){font-size:6.5pt;color:#4b5563;}
+.note{font-size:6.5pt;color:#374151;font-style:italic;}
+
+.r-avoid{background:#fff5f5;}
+.r-limit{background:#fffcf0;}
+.r-good{background:#f6fdf8;}
+
+.hc{display:inline-block;font-size:6pt;font-weight:700;padding:1px 4px;border-radius:3px;min-width:20px;text-align:center;}
+.hc-h{background:#fca5a5;color:#7f1d1d;}
+.hc-m{background:#fcd34d;color:#78350f;}
+.hc-l{background:#86efac;color:#14532d;}
+
+.rb{display:inline-block;font-size:6pt;font-weight:700;padding:1px 6px;border-radius:3px;color:#fff;white-space:nowrap;}
+.rb-avoid{background:#E02048;}
+.rb-limit{background:#d97706;}
+.rb-good{background:#16a34a;}
+
+/* ── LIFESTYLE GRID P3 ── */
+.ls-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:4px 0;}
+.ls-tile{background:#f5f7fa;border-radius:5px;padding:5px 7px;}
+.ls-tile .lh{font-size:7.5pt;font-weight:700;color:#222A24;margin-bottom:1px;}
+.ls-tile .lv{font-size:6.5pt;color:#16a34a;font-weight:700;margin-bottom:1px;}
+.ls-tile .lv.red{color:#E02048;}
+.ls-tile p{font-size:6.5pt;color:#374151;}
+
+.meal-row{display:flex;gap:5px;margin-bottom:2px;}
+.ml{min-width:52px;font-weight:700;font-size:7pt;color:#222A24;padding-top:1px;flex-shrink:0;}
+.mt{font-size:7pt;color:#1e2a38;line-height:1.35;}
+
+/* ── OVERVIEW SECTIONS (WeasyPrint-safe, table-based columns) ── */
+.ovw{padding:6px 14mm 0;}
+.sec-block{padding:7px 0 6px;}
+.sec-head{display:flex;gap:8px;align-items:flex-start;}
+.sec-head>div{flex:1;}
+.sec-head>.sec-num{flex:0 0 auto;}
+.sec-table{width:100%;border-collapse:collapse;margin-top:2px;}
+.sec-table td{vertical-align:top;padding:0;}
+.sec-cell-l{padding:8px 14px 4px 0;border-right:1px solid #e5e9ef;}
+.sec-cell-r{padding:8px 0 4px 14px;}
+.swap-table{width:100%;border-collapse:collapse;font-size:7.5pt;margin-top:4px;}
+.swap-table td{padding:2.5px 4px;vertical-align:middle;line-height:1.35;}
+.swap-table td.swap-arr{color:#222A24;font-size:10pt;text-align:center;font-weight:700;width:14px;}
+.swap-rm{font-size:7.5pt;color:#374151;}
+.swap-use{font-size:7.5pt;color:#166534;font-weight:600;}
+.swap-tag-rm{background:#fef2f2;color:#b81339;font-weight:700;font-size:7pt;padding:2px 6px;border-radius:3px;white-space:nowrap;}
+.swap-tag-use{background:#f0fdf4;color:#166534;font-weight:700;font-size:7pt;padding:2px 6px;border-radius:3px;}
+
+/* ---------- appended full-page figure / reference pages ---------- */
+.fig-head{padding:16px 14mm 0 14mm;}
+.fig-title{font-size:13pt;font-weight:800;color:#006028;line-height:1.05;letter-spacing:-.01em;}
+.fig-title em{color:#1a6b72;font-style:normal;}
+.fig-sub{font-size:8pt;color:#6b7280;margin-top:2px;}
+.fig-grow{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;padding:10px 14mm;}
+.fig-img{display:block;width:100%;max-width:184mm;height:auto;margin:0 auto;border:1px solid #dde3ea;border-radius:8px;box-shadow:0 2px 9px rgba(15,30,50,.12);}
+.fig-cap{font-size:7pt;color:#9ca3af;text-align:center;margin-top:8px;line-height:1.35;}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     PAGE 1 — Infographic Overview
+     ══════════════════════════════════════════ -->
+<div class="page">
+
+<div class="top-strip">
+  <span>Cholesterol in Filipino Foods &mdash; Infographic Overview</span>
+  <span>W.G.M. Rivero MD · FPCP · DPSN ·  · stjohnbiocare.com · 2026</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">A Patient Guide · Cardiology &amp; Nutrition</div>
+    <div class="hero-title">Cholesterol:<br><em>The Silent Risk</em><br>in Filipinos</div>
+    <div class="hero-sub">Why it matters, what to eat,<br>and how to <em>protect your heart</em></div>
+  </div>
+  <div class="hero-right">
+    <div class="logo-card">
+      <div class="logos">
+        <img src="images/logos/logo-sjbdc.png" alt="St. John Biocare & Dialysis Center Foundation">
+        <img src="images/logos/stjosef-logo.png" alt="St. Josef Renal Care Foundation">
+        <img src="images/logos/corerenalcare-logo.png" alt="Core Renal Center">
+      </div>
+      <div class="lc-cap">St. John Biocare · St. Josef Renal Care · Core Renal Center</div>
+    </div>
+    <div class="hero-url">stjohnbiocare.com</div>
+  </div>
+</div>
+
+<!-- KEY NUMBERS BAND -->
+<div class="kn-band">
+  <div class="kn-item">
+    <div class="kn-num">&lt;200</div>
+    <div class="kn-label">mg/dL Total Cholesterol Goal</div>
+  </div>
+  <div class="kn-item kn-divider">
+    <div class="kn-num">&lt;100</div>
+    <div class="kn-label">mg/dL LDL Target (most patients)</div>
+  </div>
+  <div class="kn-item kn-divider">
+    <div class="kn-num">&ge;60</div>
+    <div class="kn-label">mg/dL HDL Goal (protective)</div>
+  </div>
+</div>
+
+<!-- ── OVERVIEW (rebuilt: WeasyPrint-safe table columns) ── -->
+<div class="ovw">
+
+  <!-- SECTION 1: WHY LOWER (full width) -->
+  <div class="sec-block" style="border-bottom:1px solid #e5e9ef;padding-top:9px;">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
+      <div>
+        <div class="sec-title">Why Lower Your <em>Cholesterol?</em></div>
+        <div class="icon-grid" style="grid-template-columns:repeat(6,1fr);">
+          <div class="icon-tile"><div class="ic">&#129521;</div><div class="it">Prevents Artery Plaque</div><div class="iv">Less heart attack risk</div></div>
+          <div class="icon-tile"><div class="ic">&#129504;</div><div class="it">Protects the Brain</div><div class="iv">Lowers stroke risk</div></div>
+          <div class="icon-tile"><div class="ic">&#129728;</div><div class="it">Protects the Heart</div><div class="iv">Less chest pain</div></div>
+          <div class="icon-tile"><div class="ic">&#129463;</div><div class="it">Slows CKD Damage</div><div class="iv">Kidneys need clean vessels</div></div>
+          <div class="icon-tile"><div class="ic">&#128138;</div><div class="it">May Reduce Meds</div><div class="iv">Diet can lower statin dose</div></div>
+          <div class="icon-tile"><div class="ic">&#9889;</div><div class="it">More Energy</div><div class="iv">Better blood flow</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTIONS 2 + 3 (two columns) -->
+  <table class="sec-table"><tr>
+    <td class="sec-cell-l" style="width:50%;">
+      <div class="sec-head">
+        <div class="sec-num blue">2</div>
+        <div>
+          <div class="sec-title">LDL vs HDL &mdash; Know the Difference</div>
+          <div class="compare">
+            <div class="compare-box bad">
+              <div class="cb-head">LDL &uarr;</div>
+              <div class="cb-sub">"BAD" &mdash; Lower is Better</div>
+              <ul>
+                <li>Builds plaque in arteries</li>
+                <li>Raised by sat fat &amp; trans fat</li>
+                <li>Target: &lt;100 mg/dL</li>
+                <li>High risk: &lt;55&ndash;70 mg/dL</li>
+              </ul>
+            </div>
+            <div class="vs-circle">VS</div>
+            <div class="compare-box good">
+              <div class="cb-head">HDL &uarr;</div>
+              <div class="cb-sub">"GOOD" &mdash; Higher is Better</div>
+              <ul>
+                <li>Removes cholesterol from vessels</li>
+                <li>Raised by exercise &amp; omega-3</li>
+                <li>Target: &ge;60 mg/dL</li>
+                <li>&lt;40 M / &lt;50 F = high risk</li>
+              </ul>
+            </div>
+          </div>
+          <div class="alert amber" style="margin-top:6px;">
+            <h4>&#9888; Triglycerides (TG) &mdash; The Hidden Danger in Filipino Diets</h4>
+            <p>Normal: &lt;150 mg/dL. Raised mainly by <strong>white rice, softdrinks, sugary drinks, alcohol, and instant noodles</strong> &mdash; the staples of many Filipino diets. High TG raises cardiovascular risk even when LDL looks "normal."</p>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td class="sec-cell-r" style="width:50%;">
+      <div class="sec-head">
+        <div class="sec-num">3</div>
+        <div>
+          <div class="sec-title"><em>Top Cholesterol Threats</em> in Filipino Cooking</div>
+          <div class="icon-grid" style="grid-template-columns:1fr 1fr;">
+            <div class="icon-tile" style="background:#fff5f5;border:1px solid #fca5a5;"><div class="ic">&#129362;</div><div class="it">Coconut Oil &amp; Gata</div><div class="iv red">92% Saturated Fat</div></div>
+            <div class="icon-tile" style="background:#fff5f5;border:1px solid #fca5a5;"><div class="ic">&#128055;</div><div class="it">Pork Skin / Lard / Chicharon</div><div class="iv red">Highest LDL-raisers</div></div>
+            <div class="icon-tile" style="background:#fff5f5;border:1px solid #fca5a5;"><div class="ic">&#129705;</div><div class="it">Processed Meats</div><div class="iv red">Spam, Hotdog, CDO, Tocino</div></div>
+            <div class="icon-tile" style="background:#fffbeb;border:1px solid #fcd34d;"><div class="ic">&#127834;</div><div class="it">Large White Rice Portions</div><div class="iv amber">Biggest TG-raiser</div></div>
+            <div class="icon-tile" style="background:#fffbeb;border:1px solid #fcd34d;"><div class="ic">&#129380;</div><div class="it">Softdrinks &amp; Juice Drinks</div><div class="iv amber">35&ndash;40g sugar &rarr; TG spike</div></div>
+            <div class="icon-tile" style="background:#fffbeb;border:1px solid #fcd34d;"><div class="ic">&#127866;</div><div class="it">Beer &amp; Gin</div><div class="iv amber">Alcohol raises TG fast</div></div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr></table>
+
+</div><!-- /ovw -->
+
+<div class="doc-ftr">
+  <div class="dis"><strong>For educational use only.</strong> This infographic does not replace individualized medical advice. Consult your physician for your LDL target based on your cardiovascular risk profile. References: ACC/AHA 2025 Lipid Guidelines &middot; AHA 2021 Dietary Fats Advisory &middot; KDIGO 2024 Lipids in CKD.</div>
+  <div class="url">stjohnbiocare.com<br><span style="font-size:6pt;font-weight:400;color:#9ca3af;">Page 1 of 9 &middot; Full guide: stjohnbiocare.com</span></div>
+</div>
+
+</div><!-- /page 1 -->
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 2 — Infographic Overview (continued)
+     ══════════════════════════════════════════ -->
+<div class="pb"></div>
+<div class="page">
+
+<div class="top-strip">
+  <span>Cholesterol in Filipino Foods &mdash; Infographic Overview</span>
+  <span>W.G.M. Rivero MD &middot; FPCP &middot; DPSN &middot;  &middot; stjohnbiocare.com &middot; 2026</span>
+</div>
+
+<div class="page-hdr">
+  <div>
+    <div class="page-hdr-title">Infographic Overview &mdash; continued</div>
+    <div class="page-hdr-sub">How Fats Move Your Lipids &middot; Target Numbers &middot; Kitchen Swaps</div>
+  </div>
+  <div class="page-hdr-pg">Page 2 of 9 &middot; stjohnbiocare.com</div>
+</div>
+
+<div class="ovw">
+
+  <!-- SECTION 4: FAT EFFECTS TABLE (full width) -->
+  <div class="sec-block" style="border-bottom:1px solid #e5e9ef;padding-top:8px;">
+    <div class="sec-head">
+      <div class="sec-num green">4</div>
+      <div>
+        <div class="sec-title">How Different Fats <em>Move Your Lipid Panel</em></div>
+        <table class="fat-vis no-break">
+          <thead><tr><th style="width:18%">Fat Type</th><th style="width:8%;text-align:center;">LDL</th><th style="width:8%;text-align:center;">HDL</th><th style="width:8%;text-align:center;">TG</th><th>Common Philippine Sources</th></tr></thead>
+          <tbody>
+            <tr><td>Saturated Fat (SFA)</td><td style="text-align:center;" class="arr-up-big">&uarr;&uarr;</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td>Coconut oil (VCO, Minola), lard, butter, gata, chicharon, lechon, fatty pork, full-fat cheese</td></tr>
+            <tr><td>Trans Fat (TFA) <strong>worst</strong></td><td style="text-align:center;" class="arr-up-big">&uarr;&uarr;</td><td style="text-align:center;" class="arr-up-red">&darr;&darr;</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td>Partially hydrogenated margarine, commercial fried food &mdash; <strong>avoid entirely</strong></td></tr>
+            <tr><td>Monounsaturated (MUFA)</td><td style="text-align:center;" class="arr-dn-big">&darr;</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td>Canola oil, olive oil, avocado, pili nuts, cashews, almonds</td></tr>
+            <tr><td>Omega-3 PUFA (EPA/DHA)</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td style="text-align:center;" class="arr-dn-grn">&uarr;</td><td style="text-align:center;" class="arr-dn-big">&darr;&darr;</td><td>Sardinas (lata), galunggong, bangus, salmon &mdash; aim for 2 servings/week</td></tr>
+            <tr><td>Soluble Fiber</td><td style="text-align:center;" class="arr-dn-big">&darr;</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td>Oatmeal, monggo, okra, kamote &mdash; 5&ndash;10 g/day lowers LDL ~5&ndash;11 mg/dL</td></tr>
+            <tr><td>Sugar &amp; Refined Carbs</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td style="text-align:center;" class="arr-up-red">&darr;</td><td style="text-align:center;" class="arr-up-big">&uarr;&uarr;</td><td>White rice (large portions), softdrinks, instant noodles, white bread &mdash; biggest TG driver in Filipino diet</td></tr>
+            <tr><td>Alcohol</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td style="text-align:center;" class="arr-nt">&mdash;</td><td style="text-align:center;" class="arr-up-big">&uarr;&uarr;</td><td>Beer, gin, lambanog &mdash; even moderate use raises TG; stopping often drops TG 30&ndash;50% in weeks</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTIONS 5 + 6 (two columns) -->
+  <table class="sec-table"><tr>
+    <td class="sec-cell-l" style="width:42%;">
+      <div class="sec-head">
+        <div class="sec-num amber">5</div>
+        <div>
+          <div class="sec-title">Your Lipid <em>Target Numbers</em></div>
+          <div class="targets">
+            <h3>Know Your Numbers</h3>
+            <div class="tg-grid" style="grid-template-columns:repeat(2,1fr);">
+              <div class="tg-card"><div class="tg-name">Total Cholesterol</div><div class="tg-val">&lt;200</div><div class="tg-unit">mg/dL</div></div>
+              <div class="tg-card"><div class="tg-name">LDL-C (bad)</div><div class="tg-val">&lt;100</div><div class="tg-unit">mg/dL</div></div>
+              <div class="tg-card"><div class="tg-name">HDL-C (good)</div><div class="tg-val">&ge;60</div><div class="tg-unit">mg/dL</div></div>
+              <div class="tg-card"><div class="tg-name">Triglycerides</div><div class="tg-val">&lt;150</div><div class="tg-unit">mg/dL</div></div>
+              <div class="tg-card"><div class="tg-name">Non-HDL-C</div><div class="tg-val">&lt;130</div><div class="tg-unit">mg/dL</div></div>
+              <div class="tg-card"><div class="tg-name">TG/HDL Ratio</div><div class="tg-val">&lt;3.5</div><div class="tg-unit">ratio</div></div>
+            </div>
+            <div class="tg-note">High-risk patients (CKD, diabetes, prior heart attack): LDL target may be &lt;55&ndash;70 mg/dL &mdash; ask your doctor</div>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td class="sec-cell-r" style="width:58%;">
+      <div class="sec-head">
+        <div class="sec-num green">6</div>
+        <div>
+          <div class="sec-title">Simple <em>Kitchen Swaps</em> That Work</div>
+          <table class="swap-table">
+            <tr>
+              <td><span class="swap-tag-rm">REMOVE</span></td>
+              <td class="swap-arr">&rarr;</td>
+              <td><span class="swap-tag-use">USE INSTEAD</span></td>
+            </tr>
+            <tr><td class="swap-rm">Coconut oil / lard</td><td class="swap-arr">&rarr;</td><td class="swap-use">Canola oil or olive oil</td></tr>
+            <tr><td class="swap-rm">Pork belly (liempo)</td><td class="swap-arr">&rarr;</td><td class="swap-use">Chicken breast or pork loin (kasim)</td></tr>
+            <tr><td class="swap-rm">Lechon / chicharon snack</td><td class="swap-arr">&rarr;</td><td class="swap-use">30g pili nuts or fresh fruit</td></tr>
+            <tr><td class="swap-rm">Gata-heavy laing / Bicol express</td><td class="swap-arr">&rarr;</td><td class="swap-use">Tinola or pinakbet (canola oil)</td></tr>
+            <tr><td class="swap-rm">White rice (3+ cups/day)</td><td class="swap-arr">&rarr;</td><td class="swap-use">Half brown rice + smaller portions</td></tr>
+            <tr><td class="swap-rm">3-in-1 coffee / softdrinks</td><td class="swap-arr">&rarr;</td><td class="swap-use">Black barako coffee / salabat / water</td></tr>
+            <tr><td class="swap-rm">Spam / hotdog / processed meat</td><td class="swap-arr">&rarr;</td><td class="swap-use">Sardinas (lata) or fresh tilapia</td></tr>
+            <tr><td class="swap-rm">Leche flan / halo-halo</td><td class="swap-arr">&rarr;</td><td class="swap-use">Fresh papaya or boiled saba banana</td></tr>
+          </table>
+        </div>
+      </div>
+    </td>
+  </tr></table>
+
+</div><!-- /ovw -->
+
+<!-- LEGEND BAND -->
+<div class="legend-band">
+  <div style="font-size:7.5pt;font-weight:700;color:#222A24;margin-right:4px;">HOW TO READ PAGES 3&ndash;5:</div>
+  <div class="leg-item"><span class="leg-swatch avoid"></span><strong>AVOID</strong> = high cardiovascular risk</div>
+  <div class="leg-item"><span class="leg-swatch limit"></span><strong>LIMIT</strong> = occasional, small portion</div>
+  <div class="leg-item"><span class="leg-swatch good"></span><strong>GOOD</strong> = eat freely, heart-healthy</div>
+  <div class="leg-cells">
+    <span class="hc hc-h">H</span> High &nbsp;
+    <span class="hc hc-m">M</span> Moderate &nbsp;
+    <span class="hc hc-l">L</span> Low
+    &nbsp;&mdash;&nbsp; <strong>SF</strong>=Saturated Fat &nbsp; <strong>SUG</strong>=Sugar/Refined Carbs (TG driver) &nbsp; <strong>CHOL</strong>=Dietary Cholesterol
+  </div>
+</div>
+
+<div class="doc-ftr">
+  <div class="dis"><strong>For educational use only.</strong> This infographic does not replace individualized medical advice. Consult your physician for your LDL target based on your cardiovascular risk profile. References: ACC/AHA 2025 Lipid Guidelines &middot; AHA 2021 Dietary Fats Advisory &middot; KDIGO 2024 Lipids in CKD.</div>
+  <div class="url">stjohnbiocare.com<br><span style="font-size:6pt;font-weight:400;color:#9ca3af;">Page 2 of 9 &middot; Full guide: stjohnbiocare.com</span></div>
+</div>
+
+</div><!-- /page 2 -->
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 2 — A · B · C · D  (Home Cooking · Fish · Vegetables · Street Food)
+     ══════════════════════════════════════════ -->
+<div class="pb"></div>
+<div class="page">
+
+<div class="page-hdr">
+  <div>
+    <div class="page-hdr-title">Cholesterol in Filipino Foods — Heat Map</div>
+    <div class="page-hdr-sub">Home Cooking · Fish &amp; Seafood · Vegetables · Street Food</div>
+  </div>
+  <div class="page-hdr-pg">Page 3 of 9 · stjohnbiocare.com</div>
+</div>
+
+<div class="hm-wrap">
+<table class="hm-table">
+
+  <tr class="hm-colhdr">
+    <th style="width:31%;text-align:left;">Food Item (Filipino Name)</th>
+    <th style="width:12%;text-align:left;">Typical Serving</th>
+    <th style="width:6%;text-align:center;">SF</th>
+    <th style="width:6%;text-align:center;">SUG</th>
+    <th style="width:6%;text-align:center;">CHOL</th>
+    <th style="width:10%;text-align:center;">Rating</th>
+    <th style="text-align:left;">Key Note</th>
+  </tr>
+
+  <!-- ═══════════ A: LUTONG-BAHAY PORK/BEEF ═══════════ -->
+  <tr class="hm-cat"><td colspan="7" class="hm-cat-neutral">🍖 A · LUTONG-BAHAY — Pork &amp; Beef Dishes</td></tr>
+
+  <tr class="r-avoid"><td>Lechon baboy (whole roasted pig)</td><td>1 slice 100g</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Skin = pure saturated fat; organ stuffing raises dietary cholesterol further</td></tr>
+  <tr class="r-avoid"><td>Crispy pata (deep-fried pork knuckle)</td><td>1 piece 150g</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Pork skin + knuckle = very high saturated fat and dietary cholesterol</td></tr>
+  <tr class="r-avoid"><td>Chicharon bulaklak (pork mesentery, fried)</td><td>50 g</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Organ membrane deep-fried in lard; among the highest sat-fat snacks in Filipino cuisine</td></tr>
+  <tr class="r-avoid"><td>Dinuguan (pork blood stew)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Pork blood + innards in pork fat broth; very high in cholesterol and sat fat</td></tr>
+  <tr class="r-avoid"><td>Laing (taro leaves in coconut cream)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Coconut cream = 15–25 g saturated fat per serving; reduce to minimal light gata</td></tr>
+  <tr class="r-avoid"><td>Bicol express (pork + gata + chili)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Double fat load: pork belly + thick coconut cream; use light gata + pork loin to modify</td></tr>
+  <tr class="r-avoid"><td>Kare-kare + bagoong (peanut oxtail stew)</td><td>1 bowl</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Peanut sauce + oxtail fat; bagoong adds very high sodium — also risky for CKD</td></tr>
+  <tr class="r-avoid"><td>Longganisa Vigan / sweet (cured fatty pork)</td><td>2 links 80g</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">High sat fat + high sodium + sugar; nitrite preservatives compound cardiovascular risk</td></tr>
+  <tr class="r-avoid"><td>Paksiw na lechon / lechon sauce</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Lechon fat recooked in liver-rich sauce; double cholesterol hit — liver is very high in CHOL</td></tr>
+
+  <tr class="r-limit"><td>Adobo (pork belly, with skin)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Use pork loin instead of belly; remove skin; drain fat before serving to reduce sat fat ~40%</td></tr>
+  <tr class="r-limit"><td>Bulalo (bone marrow beef soup)</td><td>1 bowl</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Bone marrow = very high cholesterol; eat lean meat only; discard fatty broth and marrow</td></tr>
+  <tr class="r-limit"><td>Sinigang na baboy (pork)</td><td>1 bowl</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Use lean pork (kasim); sinigang na isda is a far better swap with more omega-3</td></tr>
+  <tr class="r-limit"><td>Menudo / Afritada / Caldereta (pork)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Use lean pork; liver spread in caldereta adds dietary cholesterol — reduce amount or omit</td></tr>
+  <tr class="r-limit"><td>Tocino (sweet-cured pork belly)</td><td>2 slices 80g</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">High sat fat + added sugar; prefer homemade lean pork versions; occasional treat only</td></tr>
+  <tr class="r-limit"><td>Arroz caldo (pork or chicken rice porridge)</td><td>1 bowl</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Low fat but high refined carbs (TG risk); use brown rice; top with tokwa instead of pork</td></tr>
+
+  <tr class="r-good"><td>Tinola (chicken + malunggay / sayote)</td><td>1 bowl</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Remove skin; eat chicken + vegetables; excellent everyday meal — best home-cooked option</td></tr>
+  <tr class="r-good"><td>Chicken adobo sa puti (no skin, no liver)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Lean chicken breast adobo; vinegar-based cooking preserves flavor without extra fat</td></tr>
+  <tr class="r-good"><td>Nilagang manok (boiled chicken)</td><td>1 bowl</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Excellent — remove skin; eat meat and vegetables; discard broth to reduce sodium</td></tr>
+
+  <!-- ═══════════ B: FISH & SEAFOOD ═══════════ -->
+  <tr class="hm-cat"><td colspan="7" class="hm-cat-neutral">🐟 B · ISDA AT PAGKAIN SA DAGAT — Fish &amp; Seafood</td></tr>
+
+  <tr class="r-avoid"><td>Crispy fried bangus (whole, with skin)</td><td>1 small</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Frying in coconut oil or lard adds large sat fat load; eat grilled or steamed instead</td></tr>
+  <tr class="r-limit"><td>Sugpo / hipon (shrimp)</td><td>8 pcs medium</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Low sat fat but high dietary cholesterol (~150mg/serving); limit to 1–2x/week</td></tr>
+  <tr class="r-limit"><td>Pusit (squid, grilled or adobo)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Moderate dietary cholesterol; avoid deep-fried tempura version</td></tr>
+  <tr class="r-limit"><td>Talaba (oysters, raw or grilled)</td><td>6 pieces</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Rich in zinc and omega-3; moderate cholesterol; avoid fried versions</td></tr>
+  <tr class="r-good"><td>Sinigang na bangus / tilapia / labahita</td><td>1 bowl</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Best Filipino soup — fish + vegetables + tamarind; limit broth intake for sodium</td></tr>
+  <tr class="r-good"><td>Inihaw na bangus (grilled milkfish, no skin)</td><td>1 medium</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Excellent omega-3 source; remove skin to cut sat fat further</td></tr>
+  <tr class="r-good"><td>Inihaw na galunggong (round scad, grilled)</td><td>2–3 pieces</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Best budget omega-3 fish in PH markets; grill or steam; avoid frying in coconut oil</td></tr>
+  <tr class="r-good"><td>Sardinas sa kamatis (canned, tomato sauce)</td><td>1 can</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Affordable EPA/DHA omega-3; choose tomato sauce or water — NOT oil-packed</td></tr>
+  <tr class="r-good"><td>Tilapia (steamed or grilled)</td><td>1 medium</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Lean white fish; mild omega-3; very affordable; cook without coconut oil</td></tr>
+  <tr class="r-good"><td>Tuyo (dried herring, grilled not fried)</td><td>2 pieces</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Good omega-3; very high sodium — limit to 1–2x/week; do NOT fry in extra oil</td></tr>
+
+  <!-- ═══════════ C: VEGETABLES & LEGUMES ═══════════ -->
+  <tr class="hm-cat"><td colspan="7" class="hm-cat-good">🥦 C · GULAY AT LEGUMES — Vegetables &amp; Legumes · Eat Freely</td></tr>
+
+  <tr class="r-good"><td>Monggo guisado (mung bean stew)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Best soluble fiber staple; LDL-lowering; use canola oil, not lard, for sautéing</td></tr>
+  <tr class="r-good"><td>Pinakbet (no bagoong, canola oil)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Okra, ampalaya, eggplant — fiber-rich, LDL-lowering; skip the bagoong and lard</td></tr>
+  <tr class="r-good"><td>Ginisang kangkong (sautéed water spinach)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Use canola oil + garlic; add tokwa for protein; affordable heart-healthy staple</td></tr>
+  <tr class="r-good"><td>Ampalaya con huevo (bitter melon + egg)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Ampalaya lowers LDL and blood sugar; egg adds moderate dietary cholesterol — limit to 1 egg</td></tr>
+  <tr class="r-good"><td>Lumpiang sariwa (fresh spring rolls)</td><td>2 rolls</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Excellent — vegetables + tokwa wrapped in rice paper; avoid the fried lumpia version</td></tr>
+  <tr class="r-good"><td>Okra (steamed or in sinigang)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Highest soluble fiber vegetable in PH; viscous mucilage binds cholesterol in the gut</td></tr>
+
+  <!-- ═══════════ D: STREET FOOD ═══════════ -->
+  <tr class="hm-cat"><td colspan="7" class="hm-cat-neutral">🛵 D · STREET FOOD — Pagkain sa Kalye</td></tr>
+
+  <tr class="r-avoid"><td>Chicharon (pork rinds, bagged)</td><td>1 bag 40g</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">12–15 g sat fat per small bag; most popular but among the worst snacks for LDL</td></tr>
+  <tr class="r-avoid"><td>Tokneneng / kwek-kwek (battered fried eggs)</td><td>3 pieces</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Egg yolk cholesterol + deep-fried batter in reused street food oil = double hit</td></tr>
+  <tr class="r-avoid"><td>Balut (duck embryo)</td><td>1 piece</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">~600mg dietary cholesterol from developing embryo yolk; limit strictly if LDL is elevated</td></tr>
+  <tr class="r-avoid"><td>Isaw (grilled pig/chicken intestines)</td><td>5 sticks</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Organ meat high in sat fat and cholesterol; grilling does not reduce fat content</td></tr>
+  <tr class="r-avoid"><td>Betamax (coagulated pork/chicken blood)</td><td>3 cubes</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Blood products high in dietary cholesterol; frequently grilled in lard basting</td></tr>
+  <tr class="r-limit"><td>Fishball (commercial, deep-fried)</td><td>5 pieces</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Processed fish with fillers; fried in reused oil; sweet sauce adds extra sugar</td></tr>
+  <tr class="r-limit"><td>Kikiam (Chinese sausage roll, fried)</td><td>3 pieces</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Processed meat product; avoid dipping in bagoong-based sauce</td></tr>
+  <tr class="r-limit"><td>Banana cue (fried saba + brown sugar)</td><td>3 pieces</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Low fat but high sugar → raises TG; try boiled saba instead (same banana, no frying)</td></tr>
+  <tr class="r-limit"><td>Turon (fried banana + jackfruit roll)</td><td>2 pieces</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Sugar + lard frying wrapper; baked turon is a better option</td></tr>
+  <tr class="r-limit"><td>Pork siomai (steamed)</td><td>4 pieces</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Steamed is better than fried; moderate fat from ground pork; limit soy-calamansi dip</td></tr>
+  <tr class="r-good"><td>Boiled mais (corn on cob, no butter)</td><td>1 piece</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Whole grain fiber; filling snack; do NOT add butter or margarine</td></tr>
+  <tr class="r-good"><td>Boiled kamote (sweet potato, no sugar)</td><td>1 medium</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Soluble fiber + low glycemic index; replaces white rice snack; excellent LDL-lowering</td></tr>
+
+</table>
+</div><!-- /hm-wrap -->
+
+<div class="doc-ftr">
+  <div class="dis">SF=Saturated Fat · SUG=Sugar/Refined Carb (TG driver) · CHOL=Dietary Cholesterol · H=High · M=Moderate · L=Low &nbsp;|&nbsp; <strong>Educational use only.</strong> Consult your physician for individual dietary targets.</div>
+  <div class="url">stjohnbiocare.com &nbsp;·&nbsp; Page 3 of 9</div>
+</div>
+
+</div><!-- /page 2 -->
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 3 — E · F · G  (Filipino Sweets · Fast Food · Grocery)
+     ══════════════════════════════════════════ -->
+<div class="pb"></div>
+<div class="page">
+
+<div class="page-hdr">
+  <div>
+    <div class="page-hdr-title">Cholesterol in Filipino Foods — Heat Map</div>
+    <div class="page-hdr-sub">Filipino Sweets &amp; Desserts · Fast Food · Grocery &amp; Packaged Foods</div>
+  </div>
+  <div class="page-hdr-pg">Page 4 of 9 · stjohnbiocare.com</div>
+</div>
+
+<div class="hm-wrap">
+<table class="hm-table">
+
+  <tr class="hm-colhdr">
+    <th style="width:31%;text-align:left;">Food Item (Filipino Name / Brand)</th>
+    <th style="width:12%;text-align:left;">Typical Serving</th>
+    <th style="width:6%;text-align:center;">SF</th>
+    <th style="width:6%;text-align:center;">SUG</th>
+    <th style="width:6%;text-align:center;">CHOL</th>
+    <th style="width:10%;text-align:center;">Rating</th>
+    <th style="text-align:left;">Key Note</th>
+  </tr>
+
+  <!-- ═══════════ E: KAKANIN & SWEETS ═══════════ -->
+  <tr class="hm-cat"><td colspan="7" class="hm-cat-neutral">🍡 E · KAKANIN AT MATAMIS — Filipino Sweets &amp; Desserts</td></tr>
+
+  <tr class="r-avoid"><td>Leche flan</td><td>1 slice 100g</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Triple threat: egg yolks (cholesterol) + condensed milk (sat fat + sugar) — all three cells red</td></tr>
+  <tr class="r-avoid"><td>Biko / sinukmani (glutinous rice + gata)</td><td>1 piece</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Coconut cream + refined glutinous rice + sugar = high sat fat AND high TG together</td></tr>
+  <tr class="r-avoid"><td>Maja blanca (coconut milk pudding)</td><td>1 square</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Thick coconut cream + condensed milk + cornstarch; high sat fat and sugar</td></tr>
+  <tr class="r-avoid"><td>Polvoron (lard shortbread)</td><td>2 pieces</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Traditionally made with lard + condensed milk; check label for vegetable shortening versions</td></tr>
+  <tr class="r-avoid"><td>Ensaymada (butter + cream cheese topping)</td><td>1 large</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Butter filling + cream cheese topping = high sat fat; check for partially hydrogenated margarine</td></tr>
+  <tr class="r-avoid"><td>Halo-halo (full serving)</td><td>1 large glass</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Coconut cream + condensed milk + ube ice cream + multiple sugary toppings</td></tr>
+  <tr class="r-avoid"><td>Yema (egg yolk + condensed milk candy)</td><td>4 pieces</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Pure egg yolk + condensed milk = concentrated cholesterol and saturated fat in one candy</td></tr>
+  <tr class="r-limit"><td>Bibingka (plain, no extra butter topping)</td><td>1 medium</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Rice flour + egg + coconut milk; moderate in all; avoid extra butter topping</td></tr>
+  <tr class="r-limit"><td>Champorado (chocolate rice porridge)</td><td>1 bowl</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">High refined carb + sugar → raises TG; skip condensed milk topping; use low-fat milk</td></tr>
+  <tr class="r-limit"><td>Puto (plain, steamed rice cake)</td><td>3 pieces</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Lower fat than most kakanin; refined rice starch raises TG if eaten in large amounts</td></tr>
+  <tr class="r-good"><td>Fresh papaya, melon, watermelon</td><td>1 cup cubed</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">High fiber; natural sweetness without TG spike; best dessert choice after any meal</td></tr>
+  <tr class="r-good"><td>Boiled saba banana (no sugar)</td><td>2 pieces</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Resistant starch + fiber; healthy snack; do NOT fry or add sugar</td></tr>
+
+  <!-- ═══════════ F: FAST FOOD ═══════════ -->
+  <tr class="hm-cat"><td colspan="7" class="hm-cat-neutral">🍔 F · FAST FOOD — Jollibee · Mang Inasal · KFC · McDonald's · Chowking</td></tr>
+
+  <tr class="r-avoid"><td>Jollibee Chickenjoy (with skin + gravy)</td><td>1 piece</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Skin + batter = high sat fat; gravy adds sodium + starch thickeners + phosphate additives</td></tr>
+  <tr class="r-avoid"><td>KFC Original Recipe (with skin)</td><td>1 piece</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">11-herb batter seals high sat fat in; skin contains most of the phosphate additives</td></tr>
+  <tr class="r-avoid"><td>Jolly Hotdog Classic (with cheese)</td><td>1 sandwich</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Hotdog = high sat fat + sodium phosphate; cheese adds more sat fat</td></tr>
+  <tr class="r-avoid"><td>Jollibee Jolly Spaghetti</td><td>1 regular</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Sweet banana ketchup sauce = high sugar → TG↑↑; hotdog slices add sat fat</td></tr>
+  <tr class="r-avoid"><td>McD McSpicy / McCrispy (with skin)</td><td>1 sandwich</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">High sat fat from breading + palm oil frying; remove breading and skin to reduce impact</td></tr>
+  <tr class="r-avoid"><td>Burger King Whopper / McD Big Mac</td><td>1 burger</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Double beef patty + cheese + mayo = ~20g sat fat per burger; worst fast food choice</td></tr>
+  <tr class="r-avoid"><td>Chowking Lauriat (fried chicken + pork)</td><td>1 set</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Fried protein + sweet sauce + white rice combo = high sat fat + high TG</td></tr>
+  <tr class="r-avoid"><td>Mang Inasal Liempo (grilled pork belly)</td><td>1 slab</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Even grilled, pork belly fat remains; avoid the marinade-basted skin portions</td></tr>
+  <tr class="r-limit"><td>Jollibee Chickenjoy (skin removed, no gravy)</td><td>1 piece</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Removing skin cuts sat fat by ~40%; no gravy reduces sodium and thickeners significantly</td></tr>
+  <tr class="r-limit"><td>Mang Inasal Paa (thigh, with skin)</td><td>1 piece</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Grilled &gt; fried; remove skin; use vinegar dip instead of chicken oil</td></tr>
+  <tr class="r-limit"><td>McDo Filet-O-Fish</td><td>1 sandwich</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Better than beef/chicken options; tartar sauce adds sat fat — ask for less sauce</td></tr>
+  <tr class="r-limit"><td>Chowking Congee / Arroz caldo</td><td>1 bowl</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Low fat but refined carb-heavy → TG↑; filling; avoid extra toppings</td></tr>
+  <tr class="r-good"><td>Mang Inasal Pecho (breast, no skin, vinegar dip)</td><td>1 piece</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Best fast food order in PH; grilled chicken breast + vinegar dip; skip chicken oil and unlimited rice</td></tr>
+  <tr class="r-good"><td>Chowking Tofu Sisig</td><td>1 serving</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Plant protein; low sat fat and cholesterol; watch sodium in sauce</td></tr>
+  <tr class="r-good"><td>McDo side corn / side salad (no dressing)</td><td>1 side</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Best side dish choices; request no dressing or use lemon wedge instead</td></tr>
+
+  <!-- ═══════════ G: GROCERY / PACKAGED ═══════════ -->
+  <tr class="hm-cat"><td colspan="7" class="hm-cat-neutral">🛒 G · GROCERY &amp; PACKAGED FOODS — Lata · Naka-pack · Supermarket</td></tr>
+
+  <tr class="r-avoid"><td>Spam Original (Hormel)</td><td>2 slices 57g</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">10g sat fat per serving + very high sodium; most popular processed meat in PH</td></tr>
+  <tr class="r-avoid"><td>Purefoods / CDO Hotdog (regular)</td><td>2 pieces</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">High sat fat + sodium phosphate additives (100% absorbed); check label for "phosphate"</td></tr>
+  <tr class="r-avoid"><td>Argentina / CDO Corned Beef</td><td>½ can</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">High sat fat + very high sodium; carrageenan filler in lower-grade brands</td></tr>
+  <tr class="r-avoid"><td>Ligo / CDO Vienna Sausage</td><td>1 can</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Processed pork + high sodium + phosphate preservatives; no nutritional benefit</td></tr>
+  <tr class="r-avoid"><td>Coconut cream / gata (Kara, Aroy-D)</td><td>½ cup</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">~20g sat fat per ½ cup; most common hidden cholesterol-raiser in Filipino home cooking</td></tr>
+  <tr class="r-avoid"><td>Condensed milk (Alaska, Magnolia, Nestlé)</td><td>2 tbsp</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Very high sugar + sat fat; used in coffee, kakanin, and leche flan</td></tr>
+  <tr class="r-avoid"><td>Lucky Me Instant Pancit Canton / cup noodles</td><td>1 pack</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Palm-oil fried noodles + very high sodium + MSG; regular use raises TG and LDL</td></tr>
+  <tr class="r-avoid"><td>Eden / Quickmelt / Kraft Cheese</td><td>1 slice</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Processed cheese = high sat fat + sodium; Philippine processed cheese brands among highest in sat fat</td></tr>
+  <tr class="r-limit"><td>Whole egg (native or commercial)</td><td>1 large</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">1 egg/day acceptable for most; hyper-responders (25% of people) should limit to 4/week</td></tr>
+  <tr class="r-limit"><td>Whole fresh milk (Anchor, Alaska, Bear Brand)</td><td>1 glass 250mL</td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Replace with low-fat (1%) or skim milk; or switch to Vitasoy soy milk</td></tr>
+  <tr class="r-limit"><td>Canned tuna in oil (Century, Mega)</td><td>1 can</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Tuna itself is healthy; oil-packed adds unnecessary fat — choose water-packed version</td></tr>
+  <tr class="r-good"><td>Sardines in tomato sauce (555, Ligo, San Marino)</td><td>1 can</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Affordable omega-3; LDL and TG lowering; eat 3–4x/week; NOT in oil or cream sauce</td></tr>
+  <tr class="r-good"><td>Canned tuna in water (Century, Mega)</td><td>1 can</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Lean protein + omega-3; versatile; watch sodium in flavored variants</td></tr>
+  <tr class="r-good"><td>Quaker Rolled Oats (plain)</td><td>½ cup dry</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">β-glucan fiber lowers LDL 5–8%; best breakfast; do NOT add condensed milk or sugar</td></tr>
+  <tr class="r-good"><td>Canola oil (Baguio Gold, Mazola Canola)</td><td>1 tbsp</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Best all-purpose cooking oil in PH: high MUFA, low SFA; replaces lard and coconut oil</td></tr>
+  <tr class="r-good"><td>Tokwa / firm tofu (fresh or packed)</td><td>½ block</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Plant protein; replaces pork in adobo, menudo, scrambles; soy protein modestly lowers LDL</td></tr>
+  <tr class="r-good"><td>Pili nuts (Bicolano native nut)</td><td>30g handful</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Native PH nut high in MUFA + PUFA; cardioprotective; best snack alternative to chicharon</td></tr>
+
+</table>
+</div><!-- /hm-wrap -->
+
+<div class="doc-ftr">
+  <div class="dis">SF=Saturated Fat · SUG=Sugar/Refined Carb (TG driver) · CHOL=Dietary Cholesterol · H=High · M=Moderate · L=Low &nbsp;|&nbsp; <strong>Educational use only.</strong> Consult your physician for individual dietary targets.</div>
+  <div class="url">stjohnbiocare.com &nbsp;·&nbsp; Page 4 of 9</div>
+</div>
+
+</div><!-- /page 3 -->
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 4 — H · I · Lifestyle · Sample Day  (Oils · Drinks · Lifestyle)
+     ══════════════════════════════════════════ -->
+<div class="pb"></div>
+<div class="page">
+
+<div class="page-hdr">
+  <div>
+    <div class="page-hdr-title">Cholesterol in Filipino Foods — Heat Map</div>
+    <div class="page-hdr-sub">Cooking Oils &amp; Fats · Drinks &amp; Beverages · Lifestyle Changes · Sample Day</div>
+  </div>
+  <div class="page-hdr-pg">Page 5 of 9 · stjohnbiocare.com</div>
+</div>
+
+<div class="hm-wrap">
+<table class="hm-table">
+
+  <tr class="hm-colhdr">
+    <th style="width:31%;text-align:left;">Food Item (Filipino Name / Brand)</th>
+    <th style="width:12%;text-align:left;">Typical Serving</th>
+    <th style="width:6%;text-align:center;">SF</th>
+    <th style="width:6%;text-align:center;">SUG</th>
+    <th style="width:6%;text-align:center;">CHOL</th>
+    <th style="width:10%;text-align:center;">Rating</th>
+    <th style="text-align:left;">Key Note</th>
+  </tr>
+
+  <!-- ═══════════ H: COOKING OILS ═══════════ -->
+  <tr class="hm-cat"><td colspan="7" class="hm-cat-neutral">🫙 H · COOKING OILS &amp; FATS — Mantika at Taba</td></tr>
+
+  <tr class="r-avoid"><td>Coconut oil (VCO, Minola, Natura)</td><td>1 tbsp</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">92% saturated fat — highest of any oil; consistent LDL-raiser in clinical trials</td></tr>
+  <tr class="r-avoid"><td>Lard / baboy fat (mantika ng baboy)</td><td>1 tbsp</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Still standard in many Filipino kitchens and carinderia; replace entirely with canola oil</td></tr>
+  <tr class="r-avoid"><td>Palm oil / palm shortening</td><td>1 tbsp</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">50% sat fat; used in commercial frying, instant noodles, and many biscuit brands</td></tr>
+  <tr class="r-avoid"><td>Partially hydrogenated margarine (trans fat)</td><td>1 tbsp</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Raises LDL AND lowers HDL simultaneously — worst fat for the heart; check label for "hydrogenated"</td></tr>
+  <tr class="r-limit"><td>Butter (Anchor, Gold Ribbon)</td><td>1 tbsp</td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">7g sat fat per tbsp; use sparingly; replace with canola oil for cooking</td></tr>
+  <tr class="r-good"><td>Canola oil (Baguio Gold, Mazola)</td><td>1 tbsp</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Best for high-heat sautéing and frying; high MUFA, very low SFA; neutral taste</td></tr>
+  <tr class="r-good"><td>Extra virgin olive oil</td><td>1 tbsp</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Best for dressings and low-heat cooking; polyphenols add anti-inflammatory benefit</td></tr>
+
+  <!-- ═══════════ I: DRINKS ═══════════ -->
+  <tr class="hm-cat"><td colspan="7" class="hm-cat-neutral">🥤 I · INUMIN — Drinks &amp; Beverages</td></tr>
+
+  <tr class="r-avoid"><td>Softdrinks (Coke, Sprite, Pepsi, Royal)</td><td>1 can 330mL</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">35–40g sugar per can → TG↑↑; habitual intake is one of the fastest ways to raise triglycerides</td></tr>
+  <tr class="r-avoid"><td>Red Horse / San Miguel Beer</td><td>1 bottle 330mL</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Alcohol directly raises TG; stopping beer often drops TG 30–50% within weeks</td></tr>
+  <tr class="r-avoid"><td>Ginebra gin / Tanduay rum</td><td>1 shot + mixer</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Alcohol metabolism generates fat; spirits + juice/cola = compounded TG risk</td></tr>
+  <tr class="r-avoid"><td>3-in-1 coffee (Nescafe, Great Taste)</td><td>1 sachet</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Non-dairy creamer (palm oil) + sugar = high TG driver; switch to black brewed coffee</td></tr>
+  <tr class="r-avoid"><td>Sago't gulaman / buko pandan (sweetened)</td><td>1 large glass</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Arnibal (sugar syrup) + coconut cream = high sugar + sat fat; beloved but very high TG</td></tr>
+  <tr class="r-avoid"><td>Powdered juice drinks (Tang, 8 O'Clock, Zesto)</td><td>1 glass</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-h">H</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-avoid">AVOID</span></td><td class="note">Almost pure sugar + artificial flavoring; no nutritional value; major TG raiser in Filipino diet</td></tr>
+  <tr class="r-limit"><td>Milo / Ovaltine (hot or iced)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Moderate sugar; use less powder than directed; prepare with skim or low-fat milk</td></tr>
+  <tr class="r-limit"><td>Fresh buko (coconut) juice, no sugar added</td><td>1 coconut</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-m">M</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-limit">LIMIT</span></td><td class="note">Natural sugars; refreshing; acceptable if not diabetic; avoid bottled sweetened versions</td></tr>
+  <tr class="r-good"><td>Black coffee (barako, brewed, no sugar)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Paper-filtered is best; unfiltered (French press, boiled barako) may raise LDL slightly</td></tr>
+  <tr class="r-good"><td>Salabat (fresh ginger tea, no sugar)</td><td>1 cup</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Anti-inflammatory; traditional Filipino tea; small LDL-lowering effect; ideal post-meal drink</td></tr>
+  <tr class="r-good"><td>Unsweetened calamansi juice (fresh)</td><td>1 glass</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Vitamin C; very low sugar if no arnibal added; excellent with grilled fish</td></tr>
+  <tr class="r-good"><td>Plain water / mineral water</td><td>Any amount</td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="hc hc-l">L</span></td><td style="text-align:center;"><span class="rb rb-good">GOOD</span></td><td class="note">Best beverage; aim for 6–8 glasses/day; add calamansi slices for flavor</td></tr>
+
+</table>
+
+<!-- LIFESTYLE QUICKREF -->
+<div style="margin-top:4px;">
+  <div style="font-size:8pt;font-weight:700;color:#222A24;margin-bottom:5px;padding-bottom:3px;border-bottom:2px solid #222A24;">⚡ Lifestyle Changes That Move Your Lipid Panel</div>
+  <div class="ls-grid">
+    <div class="ls-tile"><div class="lh">🏃 Aerobic Exercise</div><div class="lv">↑ HDL 3–9% · ↓ TG 10–20%</div><p>150 min/week brisk walking, swimming, or cycling. Shifts LDL particles to larger, less dangerous type.</p></div>
+    <div class="ls-tile"><div class="lh">⚖ Weight Loss (5–10%)</div><div class="lv">↓ TG 20–30% · ↑ HDL 5–8%</div><p>Even partial weight loss measurably improves all lipid values — every kilogram matters.</p></div>
+    <div class="ls-tile"><div class="lh">🌾 Reduce White Rice</div><div class="lv">↓ TG fast · ↓ TG/HDL ratio</div><p>Liver converts excess refined carbs to VLDL fat. Smaller portions + brown rice.</p></div>
+    <div class="ls-tile"><div class="lh">🚭 Quit Smoking</div><div class="lv">↑ HDL within weeks</div><p>Smoking lowers HDL 4–6 mg/dL. Quitting is the single most impactful cardiovascular intervention.</p></div>
+    <div class="ls-tile"><div class="lh">🍺 Stop Alcohol</div><div class="lv">↓ TG 30–50% in weeks</div><p>If TG is elevated, stopping Red Horse and gin is often faster than any dietary change.</p></div>
+    <div class="ls-tile"><div class="lh">😴 Sleep 7–8 Hours</div><div class="lv">Modest lipid benefit</div><p>Poor sleep raises LDL and TG independently. Stress raises cortisol → more VLDL secretion.</p></div>
+  </div>
+</div>
+
+<!-- SAMPLE DAY -->
+<div class="alert green no-break" style="margin-top:6px;">
+  <h4>✅ Sample Heart-Healthy Filipino Day</h4>
+  <div class="meal-row"><div class="ml">Breakfast</div><div class="mt">Quaker oatmeal + sliced banana + 1 boiled egg (or tokwa scramble) + black barako coffee (never 3-in-1)</div></div>
+  <div class="meal-row"><div class="ml">Lunch</div><div class="mt">½ cup brown rice + monggo guisado with malunggay + inihaw na galunggong + tomato-onion ensalada + unsweetened calamansi juice</div></div>
+  <div class="meal-row"><div class="ml">Snack</div><div class="mt">30g pili nuts or cashews + fresh papaya or melon slices (eat the whole fruit — NOT juice)</div></div>
+  <div class="meal-row"><div class="ml">Dinner</div><div class="mt">Sardines in tomato sauce (lata) + steamed kangkong with garlic in canola oil + small brown rice portion + salabat</div></div>
+</div>
+
+</div><!-- /hm-wrap -->
+
+<div class="doc-ftr">
+  <div class="dis">SF=Saturated Fat · SUG=Sugar/Refined Carb · CHOL=Dietary Cholesterol · H=High · M=Moderate · L=Low &nbsp;|&nbsp; <strong>For educational use only.</strong> This guide does not replace your physician's advice. LDL targets depend on individual cardiovascular risk. References: ACC/AHA 2025 · AHA 2021 Dietary Fats · KDIGO 2024 Lipids in CKD.</div>
+  <div class="url">stjohnbiocare.com<br><span style="font-size:6pt;font-weight:400;color:#9ca3af;">Page 5 of 9 · Full guide: stjohnbiocare.com</span></div>
+</div>
+
+</div><!-- /page 4 -->
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 6 — Visual Reference: Lipid Panel
+     ══════════════════════════════════════════ -->
+<div class="page page-fig">
+  <div class="top-strip">
+    <span>Cholesterol in Filipino Foods &mdash; Visual Reference</span>
+    <span>W.G.M. Rivero MD · FPCP · DPSN ·  · stjohnbiocare.com · 2026</span>
+  </div>
+  <div class="fig-head">
+    <div class="fig-title">Your Lipid Panel: <em>What It Means</em></div>
+    <div class="fig-sub">Know your numbers &mdash; the targets, borderline ranges, and risk categories at a glance.</div>
+  </div>
+  <div class="fig-grow">
+    <img class="fig-img" src="images/lipid-panel-reference-card-pdf.jpg" alt="Lipid panel reference card showing desirable, borderline, and high ranges for Total Cholesterol, LDL, HDL, Triglycerides, and Non-HDL, with LDL-based risk categories and testing tips">
+    <div class="fig-cap">Discuss your own results with your physician &mdash; your personal LDL target depends on your overall cardiovascular and kidney risk.</div>
+  </div>
+  <div class="doc-ftr">
+    <div class="dis"><strong>For educational use only.</strong> This reference does not replace individualized medical advice. References: ACC/AHA 2025 Lipid Guidelines &middot; KDIGO 2024 Lipids in CKD.</div>
+    <div class="url">stjohnbiocare.com<br><span style="font-size:6pt;font-weight:400;color:#9ca3af;">Page 6 of 9 &middot; Full guide: stjohnbiocare.com</span></div>
+  </div>
+</div><!-- /page 6 -->
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 7 — Visual Reference: Foods Limit vs Embrace
+     ══════════════════════════════════════════ -->
+<div class="page page-fig">
+  <div class="top-strip">
+    <span>Cholesterol in Filipino Foods &mdash; Visual Reference</span>
+    <span>W.G.M. Rivero MD · FPCP · DPSN ·  · stjohnbiocare.com · 2026</span>
+  </div>
+  <div class="fig-head">
+    <div class="fig-title">Filipino Foods: <em>Choices That Protect Your Heart</em></div>
+    <div class="fig-sub">Small changes in everyday meals &mdash; what to limit, what to embrace, and how to cook smarter.</div>
+  </div>
+  <div class="fig-grow">
+    <img class="fig-img" src="images/filipino-foods-avoid-vs-embrace-pdf.jpg" alt="Filipino foods to limit versus foods to embrace for heart health, with heart-healthy cooking tips">
+    <div class="fig-cap">Balance, variety, portion control, and movement &mdash; together with regular exercise, these habits are the best recipe for a healthy heart.</div>
+  </div>
+  <div class="doc-ftr">
+    <div class="dis"><strong>For educational use only.</strong> This reference does not replace individualized medical advice. References: AHA 2021 Dietary Fats Advisory &middot; ACC/AHA 2025 Lipid Guidelines.</div>
+    <div class="url">stjohnbiocare.com<br><span style="font-size:6pt;font-weight:400;color:#9ca3af;">Page 7 of 9 &middot; Full guide: stjohnbiocare.com</span></div>
+  </div>
+</div><!-- /page 7 -->
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 8 — Visual Reference: Dietary Fats
+     ══════════════════════════════════════════ -->
+<div class="page page-fig">
+  <div class="top-strip">
+    <span>Cholesterol in Filipino Foods &mdash; Visual Reference</span>
+    <span>W.G.M. Rivero MD · FPCP · DPSN ·  · stjohnbiocare.com · 2026</span>
+  </div>
+  <div class="fig-head">
+    <div class="fig-title">Dietary Fats: <em>The Good, the Bad, and the Worst</em></div>
+    <div class="fig-sub">How saturated, unsaturated, and trans fats each affect your cholesterol.</div>
+  </div>
+  <div class="fig-grow">
+    <img class="fig-img" src="images/dietary-fats-comparison-pdf.jpg" alt="Comparison of saturated, unsaturated, and trans fats and their effects on LDL and HDL cholesterol">
+    <div class="fig-cap">Replace saturated and trans fats with unsaturated fats (fish, nuts, olive/canola oil) to lower LDL without lowering protective HDL.</div>
+  </div>
+  <div class="doc-ftr">
+    <div class="dis"><strong>For educational use only.</strong> This reference does not replace individualized medical advice. References: AHA 2021 Dietary Fats Advisory &middot; ACC/AHA 2025 Lipid Guidelines.</div>
+    <div class="url">stjohnbiocare.com<br><span style="font-size:6pt;font-weight:400;color:#9ca3af;">Page 8 of 9 &middot; Full guide: stjohnbiocare.com</span></div>
+  </div>
+</div><!-- /page 8 -->
+
+
+<!-- ══════════════════════════════════════════
+     PAGE 9 — Visual Reference: Heart-Healthy Day
+     ══════════════════════════════════════════ -->
+<div class="page page-fig">
+  <div class="top-strip">
+    <span>Cholesterol in Filipino Foods &mdash; Visual Reference</span>
+    <span>W.G.M. Rivero MD · FPCP · DPSN ·  · stjohnbiocare.com · 2026</span>
+  </div>
+  <div class="fig-head">
+    <div class="fig-title">A <em>Heart-Healthy Filipino Day</em></div>
+    <div class="fig-sub">A sample full day of heart- and kidney-friendly Filipino meals.</div>
+  </div>
+  <div class="fig-grow">
+    <img class="fig-img" src="images/heart-healthy-filipino-day-pdf.jpg" alt="A sample heart-healthy Filipino day of meals from breakfast to dinner">
+    <div class="fig-cap">A practical template &mdash; adjust portions to your own calorie, sodium, and potassium targets as advised by your physician.</div>
+  </div>
+  <div class="doc-ftr">
+    <div class="dis"><strong>For educational use only.</strong> This reference does not replace individualized medical advice. References: AHA 2021 Dietary Fats Advisory &middot; KDIGO 2024 Lipids in CKD.</div>
+    <div class="url">stjohnbiocare.com<br><span style="font-size:6pt;font-weight:400;color:#9ca3af;">Page 9 of 9 &middot; Full guide: stjohnbiocare.com</span></div>
+  </div>
+</div><!-- /page 9 -->
+
+</body>
+</html>
