@@ -137,11 +137,37 @@ const safety = [
   <section class="section section--sand">
     <div class="container center" style="max-width:760px">
       <p class="eyebrow">Patient &amp; family voices</p>
-      <blockquote class="quote">
-        “They explained everything to my mother in words she understood, and never
-        made us feel rushed. For the first time, dialysis didn't feel frightening.”
-      </blockquote>
-      <p class="muted">— A family member, Quezon City</p>
+      <div class="voices" data-voices>
+        <div class="voices__stage">
+          <blockquote class="voices__slide is-active">
+            <p class="quote">“They explained everything to my mother in words she understood, and never made us feel rushed. For the first time, dialysis didn't feel frightening.”</p>
+            <p class="muted">— A family member, Quezon City</p>
+          </blockquote>
+          <blockquote class="voices__slide">
+            <p class="quote">“The staff are nice, helpful, respectful, and caring to all patients. We appreciate the clean center, the pleasant environment, and the family-like relationship we've built here. Keep it up and continue doing your best.”</p>
+            <p class="muted">— Patients of St. Josef Renal Care – Concepcion</p>
+          </blockquote>
+          <blockquote class="voices__slide">
+            <p class="quote">“The staff are friendly, professional, and caring — they take good care of the patients and are very attentive to their needs. The equipment is well-maintained, the service is fast, and the environment is comfortable and relaxing. I like how everyone is helpful, especially for those of us who are new to dialysis. The nurses and staff treat you like family and always consider your needs. As one patient shared: even in my first month, my dialysis three times a week has gone well, the nurses are wonderful to be with, and I'm truly grateful for how they care for my spouse. We're glad we chose this center — keep up the good work!”</p>
+            <p class="muted">— Patients of St. John Biocare – Marikina</p>
+          </blockquote>
+          <blockquote class="voices__slide">
+            <p class="quote">“Very accommodating with quality service. I like all the staff — they're hardworking, very friendly, professional, and God-fearing people. The doctors and nurses are truly caring and attentive; they're the reason I won't transfer to another provider even though I'm from Bulacan. Overall, everything is okay and I have nothing to suggest — just continue your good work.”</p>
+            <p class="muted">— Patients of St. John Biocare – Caloocan</p>
+          </blockquote>
+          <blockquote class="voices__slide">
+            <p class="quote">“All of the staff are friendly, nice, and caring. The nurses especially help, assist, and treat patients with care, compassion, and empathy. A clean facility with good nurses.”</p>
+            <p class="muted">— Patients of St. Josef Renal Care – Marilao</p>
+          </blockquote>
+        </div>
+        <div class="voices__dots" aria-label="Patient voices">
+          <button class="voices__dot is-active" type="button" aria-label="Voice 1"></button>
+          <button class="voices__dot" type="button" aria-label="Voice 2"></button>
+          <button class="voices__dot" type="button" aria-label="Voice 3"></button>
+          <button class="voices__dot" type="button" aria-label="Voice 4"></button>
+          <button class="voices__dot" type="button" aria-label="Voice 5"></button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -293,4 +319,44 @@ const safety = [
   .nurses { display: grid; grid-template-columns: 1.4fr .6fr; gap: 30px; align-items: center; }
   .nurses__actions { display: flex; flex-direction: column; gap: 12px; }
   @media (max-width: 820px) { .nurses { grid-template-columns: 1fr; } .nurses__actions { flex-direction: row; flex-wrap: wrap; } }
+
+  /* Patient & family voices — fade-to-next auto-rotating testimonials. */
+  .voices__stage { display: grid; margin-top: 6px; }
+  .voices__slide { grid-area: 1 / 1; margin: 0; display: flex; flex-direction: column; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity .7s ease; }
+  .voices__slide.is-active { opacity: 1; pointer-events: auto; }
+  .voices__slide .quote { font-size: clamp(1.1rem, 2.3vw, 1.5rem); line-height: 1.5; margin: 0 0 14px; }
+  .voices__dots { display: flex; gap: 9px; justify-content: center; margin-top: 24px; }
+  .voices__dot { width: 9px; height: 9px; padding: 0; border: none; border-radius: 50%; cursor: pointer;
+    background: color-mix(in srgb, var(--forest) 24%, transparent); transition: background .2s, transform .2s; }
+  .voices__dot.is-active { background: var(--forest); transform: scale(1.25); }
+  @media (prefers-reduced-motion: reduce) { .voices__slide { transition: none; } }
 </style>
+
+<script>
+  function initVoices() {
+    const root = document.querySelector('[data-voices]');
+    if (!root) return;
+    const slides = Array.from(root.querySelectorAll('.voices__slide'));
+    const dots = Array.from(root.querySelectorAll('.voices__dot'));
+    if (slides.length < 2) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = Math.max(0, slides.findIndex((s) => s.classList.contains('is-active')));
+    let timer = null;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => { const a = k === i; s.classList.toggle('is-active', a); s.setAttribute('aria-hidden', String(!a)); });
+      dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+    }
+    function start() { if (reduce) return; stop(); timer = window.setInterval(() => show(i + 1), 7000); }
+    function stop() { if (timer) { window.clearInterval(timer); timer = null; } }
+    dots.forEach((d, k) => d.addEventListener('click', () => { show(k); start(); }));
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+    show(i); start();
+  }
+  initVoices();
+  document.addEventListener('astro:page-load', initVoices);
+</script>
