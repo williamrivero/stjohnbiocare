@@ -64,11 +64,11 @@ const foundationLogo = {
 const sinceYear = branch.opened ? Number(branch.opened.slice(0, 4)) : null;
 const yearsServing = sinceYear ? new Date().getFullYear() - sinceYear : null;
 
-// Hospital care: prefer signed MOA partners. Where no MOA exists yet (e.g. Caloocan,
-// still under negotiation) we fall back to nearby hospitals — clearly labelled as such,
-// never implying an agreement we don't have.
-const hasMoa = !!(branch.partnerHospitals && branch.partnerHospitals.length > 0);
-const hospitalList = hasMoa ? branch.partnerHospitals! : (branch.nearbyHospitals ?? []);
+// Hospital care: a center may have signed MOA partner hospital(s) AND a list of nearby
+// tertiary hospitals for emergencies (no agreement — clearly labelled, never implying one).
+const partners = branch.partnerHospitals ?? [];
+const nearby = branch.nearbyHospitals ?? [];
+const hasAnyHospital = partners.length > 0 || nearby.length > 0;
 ---
 <BaseLayout
   title={`${branch.name} Center`}
@@ -304,38 +304,53 @@ const hospitalList = hasMoa ? branch.partnerHospitals! : (branch.nearbyHospitals
           </div>
         )}
 
-        {hospitalList.length > 0 && (
+        {hasAnyHospital && (
           <div class="card">
             <h3 class="hospcare__title">If you ever need hospital care</h3>
-            {hasMoa ? (
-              <p class="hospcare__lead">This center works under formal agreements with partner hospitals nearby,
-              so admission, emergency transfer, or specialist care can be arranged quickly — without you starting
-              from scratch.</p>
-            ) : (
-              <p class="hospcare__lead">These are the hospitals nearest this center, and where our own
-              nephrologists admit and consult. A formal partnership agreement is being arranged.</p>
+            <p class="hospcare__emergency">
+              <strong>In a medical emergency, call 911</strong> or go straight to the nearest emergency
+              room. The hospitals below are options near this center — call ahead when you can.
+            </p>
+
+            {partners.length > 0 && (
+              <>
+                <p class="hospcare__sub">Partner hospital{partners.length > 1 ? 's' : ''} — formal agreement (MOA)</p>
+                <ul class="hospitals">
+                  {partners.map((h) => (
+                    <li class="hospitals__item">
+                      <strong class="hospitals__name">{h.name}</strong>
+                      {h.area && <span class="hospitals__area">{h.area}</span>}
+                      <div class="hospitals__meta">
+                        {h.covers && <span class="hospitals__covers">{h.covers}</span>}
+                        {h.phone && <a class="hospitals__phone" href={`tel:${h.phoneHref ?? h.phone.replace(/[^0-9+]/g, '')}`}>📞 {h.phone}</a>}
+                        <a class="hospitals__map" href={h.map ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}`} target="_blank" rel="noopener">View map</a>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </>
             )}
-            <ul class="hospitals">
-              {hospitalList.map((h) => (
-                <li class="hospitals__item">
-                  <strong class="hospitals__name">{h.name}</strong>
-                  {h.area && <span class="hospitals__area">{h.area}</span>}
-                  <div class="hospitals__meta">
-                    {hasMoa
-                      ? h.covers && <span class="hospitals__covers">{h.covers}</span>
-                      : <span class="hospitals__nearby">Nearby hospital</span>}
-                    <a
-                      class="hospitals__map"
-                      href={h.map ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}`}
-                      target="_blank"
-                      rel="noopener">View map</a>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            {!hasMoa && (
-              <p class="hospcare__pending">Listed for convenience only — we don't yet have a formal agreement
-              with these hospitals. Our team will still help you coordinate if you need to be admitted.</p>
+
+            {nearby.length > 0 && (
+              <>
+                <p class="hospcare__sub">Nearby tertiary hospitals — for emergencies</p>
+                <ul class="hospitals">
+                  {nearby.map((h) => (
+                    <li class="hospitals__item">
+                      <strong class="hospitals__name">{h.name}</strong>
+                      {h.area && <span class="hospitals__area">{h.area}</span>}
+                      <div class="hospitals__meta">
+                        <span class="hospitals__nearby">Nearby hospital</span>
+                        {h.phone && <a class="hospitals__phone" href={`tel:${h.phoneHref ?? h.phone.replace(/[^0-9+]/g, '')}`}>📞 {h.phone}</a>}
+                        <a class="hospitals__map" href={h.map ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}`} target="_blank" rel="noopener">View map</a>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <p class="hospcare__pending">These are major hospitals near this center for emergencies. We
+                don't have a formal agreement with them — listed for your convenience. Numbers are the hospitals'
+                published trunklines; please confirm the current line when you call.</p>
+              </>
             )}
           </div>
         )}
@@ -463,6 +478,18 @@ const hospitalList = hasMoa ? branch.partnerHospitals! : (branch.nearbyHospitals
   /* PARTNER HOSPITALS (MOA) — sidebar card; rows stack in the narrow column. */
   .hospcare__title { color: var(--crimson); }
   .hospcare__lead { margin: 0 0 14px; color: var(--ink-soft); line-height: 1.55; font-size: .92rem; }
+  .hospcare__emergency {
+    margin: 0 0 16px; padding: 11px 14px; border-radius: 10px; font-size: .92rem; line-height: 1.5;
+    background: color-mix(in srgb, var(--crimson) 8%, #fff);
+    border: 1px solid color-mix(in srgb, var(--crimson) 28%, transparent); color: var(--ink);
+  }
+  .hospcare__emergency strong { color: var(--crimson); }
+  .hospcare__sub {
+    margin: 0 0 8px; font-family: var(--font-head); font-weight: 700; font-size: .82rem;
+    text-transform: uppercase; letter-spacing: .04em; color: var(--forest);
+  }
+  .hospitals + .hospcare__sub { margin-top: 18px; }
+  .hospitals__phone { font-weight: 700; text-decoration: none; white-space: nowrap; font-size: .86rem; color: var(--forest); }
 
   .hospitals { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .hospitals__item {

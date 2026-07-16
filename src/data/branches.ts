@@ -43,6 +43,8 @@ export interface PartnerHospital {
   area?: string;
   map?: string;
   covers?: string;   // e.g. 'Admission · Emergency transfer' — leave undefined until confirmed
+  phone?: string;    // published trunkline (human-readable), e.g. '(02) 8372-3825'
+  phoneHref?: string; // tel: href, e.g. '+63283723825'
 }
 
 export interface AffiliatedDoctor {
@@ -74,7 +76,12 @@ export const branches: Branch[] = [
     transit: 'Along Quezon Avenue; accessible by bus and jeepney routes and near the MRT-3 Quezon Avenue station.',
     opened: '2011-10-16',
     partnerHospitals: [
-      { name: 'Capitol Medical Center', area: 'Quezon City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/nar5okrpM3joK1MKA' },
+      { name: 'Capitol Medical Center', area: 'Quezon City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/nar5okrpM3joK1MKA', phone: '(02) 8372-3825', phoneHref: '+63283723825' },
+    ],
+    nearbyHospitals: [
+      { name: "St. Luke's Medical Center — Quezon City", area: 'E. Rodriguez, Quezon City', phone: '(02) 8723-0101', phoneHref: '+63287230101', map: 'https://www.google.com/maps/search/?api=1&query=St.%20Luke%27s%20Medical%20Center%20%E2%80%94%20Quezon%20City%2C%20E.%20Rodriguez%2C%20Quezon%20City' },
+      { name: 'National Kidney and Transplant Institute (NKTI)', area: 'East Avenue, Quezon City', phone: '(02) 8981-0300', phoneHref: '+63289810300', map: 'https://www.google.com/maps/search/?api=1&query=National%20Kidney%20and%20Transplant%20Institute%20%28NKTI%29%2C%20East%20Avenue%2C%20Quezon%20City' },
+      { name: 'Philippine Heart Center', area: 'East Avenue, Quezon City', phone: '(02) 8925-2401', phoneHref: '+63289252401', map: 'https://www.google.com/maps/search/?api=1&query=Philippine%20Heart%20Center%2C%20East%20Avenue%2C%20Quezon%20City' },
     ],
     affiliatedNephrologists: [
       {
@@ -132,8 +139,10 @@ export const branches: Branch[] = [
     // the page states plainly that no agreement is in place yet.
     moaPending: true,
     nearbyHospitals: [
-      { name: 'MCU Hospital — Filemon D. Tanchoco Sr. Medical Foundation', area: 'Caloocan City', map: 'https://maps.app.goo.gl/UuHZr2RCVpyrvY2z8' },
-      { name: 'Fatima University Medical Center — Valenzuela', area: 'Valenzuela City', map: 'https://maps.app.goo.gl/TyHHTeSJLYbYGztX8' },
+      { name: 'MCU Hospital — Filemon D. Tanchoco Sr. Medical Foundation', area: 'Caloocan City', map: 'https://maps.app.goo.gl/UuHZr2RCVpyrvY2z8', phone: '(02) 8367-2245', phoneHref: '+63283672245' },
+      { name: 'Fatima University Medical Center — Valenzuela', area: 'Valenzuela City', map: 'https://maps.app.goo.gl/TyHHTeSJLYbYGztX8', phone: '(02) 8291-6538', phoneHref: '+63282916538' },
+      { name: 'Jose R. Reyes Memorial Medical Center', area: 'Rizal Ave., Sta. Cruz, Manila', phone: '(02) 8711-9491', phoneHref: '+63287119491', map: 'https://www.google.com/maps/search/?api=1&query=Jose%20R.%20Reyes%20Memorial%20Medical%20Center%2C%20Rizal%20Ave.%2C%20Sta.%20Cruz%2C%20Manila' },
+      { name: 'Chinese General Hospital and Medical Center', area: 'Blumentritt, Sta. Cruz, Manila', phone: '(02) 8711-4141', phoneHref: '+63287114141', map: 'https://www.google.com/maps/search/?api=1&query=Chinese%20General%20Hospital%20and%20Medical%20Center%2C%20Blumentritt%2C%20Sta.%20Cruz%2C%20Manila' },
     ],
     affiliatedNephrologists: [
       {
@@ -169,7 +178,11 @@ export const branches: Branch[] = [
     transit: 'Along Gil Fernando Avenue, San Roque; accessible by jeepney and tricycle routes.',
     opened: '2013-01-25',
     partnerHospitals: [
-      { name: 'Amang Rodriguez Memorial Medical Center', area: 'Marikina City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/PuxPgB4PjQ7qhoJHA' },
+      { name: 'Amang Rodriguez Memorial Medical Center', area: 'Marikina City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/PuxPgB4PjQ7qhoJHA', phone: '(02) 8941-6289', phoneHref: '+63289416289' },
+    ],
+    nearbyHospitals: [
+      { name: 'The Medical City', area: 'Ortigas Avenue, Pasig City', phone: '(02) 8988-1000', phoneHref: '+63289881000', map: 'https://www.google.com/maps/search/?api=1&query=The%20Medical%20City%2C%20Ortigas%20Avenue%2C%20Pasig%20City' },
+      { name: 'Marikina Valley Medical Center', area: 'Sumulong Highway, Marikina City', phone: '(02) 8682-2222', phoneHref: '+63286822222', map: 'https://www.google.com/maps/search/?api=1&query=Marikina%20Valley%20Medical%20Center%2C%20Sumulong%20Highway%2C%20Marikina%20City' },
     ],
     affiliatedNephrologists: [
       {
@@ -221,7 +234,11 @@ export const branches: Branch[] = [
     transit: 'In Pio del Pilar, Makati; accessible from Osmeña Highway and South Avenue routes.',
     opened: '2012-10-01',
     partnerHospitals: [
-      { name: "St. Luke's Medical Center — Global City (BGC)", area: 'Taguig City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/2K1ee2Wt3Yu2hheu8' },
+      { name: "St. Luke's Medical Center — Global City (BGC)", area: 'Taguig City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/2K1ee2Wt3Yu2hheu8', phone: '(02) 8789-7700', phoneHref: '+63287897700' },
+    ],
+    nearbyHospitals: [
+      { name: 'Makati Medical Center', area: 'Legaspi Village, Makati City', phone: '(02) 8888-8999', phoneHref: '+63288888999', map: 'https://www.google.com/maps/search/?api=1&query=Makati%20Medical%20Center%2C%20Legaspi%20Village%2C%20Makati%20City' },
+      { name: 'Ospital ng Makati', area: 'Sampaguita St., Makati City', phone: '(02) 8928-0611', phoneHref: '+63289280611', map: 'https://www.google.com/maps/search/?api=1&query=Ospital%20ng%20Makati%2C%20Sampaguita%20St.%2C%20Makati%20City' },
     ],
     affiliatedNephrologists: [
       {
@@ -278,6 +295,10 @@ export const branches: Branch[] = [
     partnerHospitals: [
       { name: 'St. Josef Hospital — Concepcion', area: 'Marikina City', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/gvaEYywRoT9KYxG68' },
     ],
+    nearbyHospitals: [
+      { name: 'Amang Rodriguez Memorial Medical Center', area: 'Marikina City', phone: '(02) 8941-6289', phoneHref: '+63289416289', map: 'https://www.google.com/maps/search/?api=1&query=Amang%20Rodriguez%20Memorial%20Medical%20Center%2C%20Marikina%20City' },
+      { name: 'The Medical City', area: 'Ortigas Avenue, Pasig City', phone: '(02) 8988-1000', phoneHref: '+63289881000', map: 'https://www.google.com/maps/search/?api=1&query=The%20Medical%20City%2C%20Ortigas%20Avenue%2C%20Pasig%20City' },
+    ],
     affiliatedNephrologists: [
       {
         name: 'Dr. Maddie Cosing-Rosales',
@@ -326,7 +347,11 @@ export const branches: Branch[] = [
     transit: 'Along the NLEX Road in Barangay Patubig, Marilao; accessible from the NLEX Marilao exit.',
     opened: '2022-11-18',
     partnerHospitals: [
-      { name: 'Saint Michael Family Hospital', area: 'Marilao, Bulacan', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/4KPSm1JxCho3H2Vx9' },
+      { name: 'Saint Michael Family Hospital', area: 'Marilao, Bulacan', covers: 'Emergency · Specialist referral', map: 'https://maps.app.goo.gl/4KPSm1JxCho3H2Vx9', phone: '(044) 769-9012', phoneHref: '+63447699012' },
+    ],
+    nearbyHospitals: [
+      { name: 'Bulacan Medical Center', area: 'Malolos City, Bulacan', phone: '(044) 791-0630', phoneHref: '+63447910630', map: 'https://www.google.com/maps/search/?api=1&query=Bulacan%20Medical%20Center%2C%20Malolos%20City%2C%20Bulacan' },
+      { name: 'Fatima University Medical Center — Valenzuela', area: 'Valenzuela City', phone: '(02) 8291-6538', phoneHref: '+63282916538', map: 'https://www.google.com/maps/search/?api=1&query=Fatima%20University%20Medical%20Center%20%E2%80%94%20Valenzuela%2C%20Valenzuela%20City' },
     ],
     affiliatedNephrologists: [
       {
