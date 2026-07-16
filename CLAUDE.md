@@ -34,3 +34,15 @@ Pages via GitHub Actions on every push to `main`.
 - Clinical-role qualifications and duties come from `docs/psn-hd-personnel-guidelines.md`
   (the PSN recommendations). House requirements (e.g. "no derogatory record", NBI/Police
   clearance) are St. John Biocare additions layered on top — keep them clearly ours.
+
+## Claims & compliance
+
+- **ISO status: NOT YET CERTIFIED (pursuing ISO 9001 in future).** The mission and values
+  are deliberately *aligned* with ISO 9001 principles (commitment to meeting applicable
+  standards + continual improvement) but must **never state or imply certification**. Do
+  NOT add "ISO 9001 certified", a certificate number, a certifying body, or any ISO badge
+  anywhere until Dr. Rivero explicitly confirms certification has been achieved. A false
+  certification claim is a serious compliance/legal risk.
+- **No "diagnostics" service line.** The foundation does not run a diagnostics facility.
+  Lab work is described as "lab coordination" with partner laboratories — never
+  "diagnostics". Keep the site free of the word "diagnostic(s)".
