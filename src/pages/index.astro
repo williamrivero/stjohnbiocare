@@ -336,7 +336,13 @@ const safety = [
   @media (max-width: 820px) { .nurses { grid-template-columns: 1fr; } .nurses__actions { flex-direction: row; flex-wrap: wrap; } }
 
   /* Patient & family voices — fade-to-next auto-rotating testimonials. */
-  .voices-section { position: relative; overflow: hidden; }
+  .voices-section {
+    position: relative; overflow: hidden;
+    background-image:
+      radial-gradient(ellipse 92% 86% at 50% 48%, rgba(251,247,240,.86) 0%, rgba(251,247,240,.74) 46%, rgba(251,247,240,.55) 100%),
+      url('/images/voices-bg.webp');
+    background-size: cover; background-position: center; background-repeat: no-repeat;
+  }
   .voices-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
   .vb {
     --vb-color: color-mix(in srgb, var(--life) 20%, transparent);
