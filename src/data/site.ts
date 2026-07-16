@@ -25,10 +25,10 @@ export const site = {
     { letter: 'B', title: 'Best-quality & ethical care', text: 'Exemplary clinical care as our first promise, and unwavering integrity as the standard beneath it: informed consent, fair treatment, and honesty with every patient, every time.' },
     { letter: 'I', title: 'Innovative technology', text: 'State-of-the-art, modern hemodialysis equipment and continuously improving clinical protocols.' },
     { letter: 'O', title: 'Outstanding service', text: 'Service that goes beyond the expected, every visit.' },
-    { letter: 'C', title: 'Compassionate & competent staff', text: 'Skilled people who treat you like family.' },
+    { letter: 'C', title: 'Compassionate, competent & professional', text: 'Skilled people who treat you like family, and who hold themselves to a professional standard at every station, every shift.' },
     { letter: 'A', title: 'Affordable & accountable', text: 'Honest, accessible dialysis care, and honest answers about every peso it costs.' },
     { letter: 'R', title: 'Responsive & adaptive', text: 'We answer the real needs of every client-patient.' },
-    { letter: 'E', title: 'Expertise in renal education', text: 'We teach patients and families to understand their care, and we train the hemodialysis staff who will carry that standard into the next generation.' },
+    { letter: 'E', title: 'Expertise in renal education', text: 'We teach patients and families to understand their care, and we train the hemodialysis care teams who will carry that standard into the next generation.' },
   ],
 
   // Primary navigation (header)
