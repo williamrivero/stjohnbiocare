@@ -236,6 +236,12 @@ export const branches: Branch[] = [
           { name: "St. Luke's Medical Center — Global City", map: 'https://maps.app.goo.gl/2K1ee2Wt3Yu2hheu8' },
         ],
       },
+      {
+        name: 'Dr. Christine Pascual',
+        hospitals: [
+          { name: "Makati Medical Center", map: 'https://www.google.com/maps/search/?api=1&query=Makati%20Medical%20Center%2C%202%20Amorsolo%20Street%2C%20Legaspi%20Village%2C%20Makati%20City' },
+        ],
+      },
     ],
   },
   {
