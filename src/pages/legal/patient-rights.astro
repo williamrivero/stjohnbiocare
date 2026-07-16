@@ -1,25 +1,168 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const rights = [
+  ['Considerate and Respectful Care', 'You will be treated with dignity, courtesy, and compassion at all times, regardless of your age, sex, religion, culture, socioeconomic status, disability, or medical condition. Your personal values and beliefs will be respected.'],
+  ['Safe and Quality Treatment', 'You have the right to receive competent care that meets accepted clinical and safety standards, delivered in a clean, well-maintained, and properly equipped facility.'],
+  ['Information and Understanding', 'You have the right to clear, honest, and understandable information about your diagnosis, treatment plan, and prognosis. You may ask questions at any time and expect answers in a language or manner you understand.'],
+  ['Informed Consent', 'You have the right to be informed of the benefits, risks, and alternatives of any treatment or procedure before giving your consent, and to participate actively in decisions about your care.'],
+  ['Refusal of Treatment', 'You have the right to refuse any treatment or procedure to the extent permitted by law, and to be informed of the medical consequences of your decision.'],
+  ['Privacy and Confidentiality', 'You have the right to personal privacy during treatment and to the confidentiality of your medical records and health information, consistent with the Data Privacy Act and applicable laws.'],
+  ['Continuity of Care', 'You have the right to reasonable continuity of care, to be informed of your ongoing treatment schedule, and to receive appropriate instructions for care after each session and upon discharge or referral.'],
+  ['Access to Your Health Information', 'You have the right to access and request an explanation of the information in your medical record, subject to facility policy and law.'],
+  ['Voice Concerns and Grievances', 'You have the right to express concerns, complaints, or suggestions without fear of discrimination or reprisal, and to expect a fair and timely response.'],
+  ['Know Your Care Team', 'You have the right to know the identity and professional role of the physicians, nurses, and staff involved in your care.'],
+];
+
+const responsibilities = [
+  ['Provide Accurate Information', 'Share complete and honest information about your medical history, current medications, allergies, and any changes in your condition.'],
+  ['Follow the Agreed Plan of Care', 'Adhere to your prescribed dialysis schedule, treatment plan, medications, diet, and fluid restrictions, and inform your care team if you are unable to do so.'],
+  ['Attend Scheduled Sessions', 'Arrive on time for your dialysis sessions and notify the center in advance if you need to reschedule or will be absent.'],
+  ['Ask Questions', 'Speak up if you do not understand any instruction, information, or aspect of your care.'],
+  ['Show Respect and Consideration', 'Treat staff, other patients, relatives, and visitors with courtesy. Help maintain a calm, safe, and orderly environment, and be considerate of shared spaces and belongings.'],
+  ['Observe Facility Policies', 'Follow the center\'s rules, including those on safety, infection control, visiting, and conduct within the facility.'],
+  ['Meet Financial Obligations', 'Fulfill the financial responsibilities associated with your care in a timely manner, and coordinate with our staff regarding billing, PhilHealth, or other coverage.'],
+  ['Take Care of Your Access and Health', 'Follow instructions for the care of your vascular access, report any problems promptly, and take an active role in maintaining your overall health.'],
+  ['Provide Feedback', 'Share your experiences, concerns, and suggestions so we can continue to improve our services.'],
+];
 ---
-<BaseLayout title="Patient Rights & Responsibilities" description="The rights and responsibilities of every client-patient at St. John Biocare.">
+<BaseLayout
+  title="Patient Rights & Responsibilities"
+  description="The rights and responsibilities of every patient at St. John Biocare & Dialysis Center — our shared commitment to safe, compassionate, high-quality care."
+>
   <article class="section">
-    <div class="container" style="max-width:720px">
+    <div class="container" style="max-width:760px">
       <h1>Patient Rights &amp; Responsibilities</h1>
-      <p class="lead">Every client-patient deserves respect, safety, and clear information.</p>
-      <div class="notice">Draft outline — to be finalised with your clinical and compliance team.</div>
-      <h2>Your rights</h2>
-      <ul style="line-height:1.9">
-        <li>To be treated with dignity and respect.</li>
-        <li>To clear information about your care and its costs.</li>
-        <li>To privacy and confidentiality of your health information.</li>
-        <li>To ask questions and take part in decisions about your treatment.</li>
-      </ul>
-      <h2>Your responsibilities</h2>
-      <ul style="line-height:1.9">
-        <li>To share accurate health information.</li>
-        <li>To follow the agreed care plan and schedule where you can.</li>
-        <li>To treat staff and other patients with courtesy.</li>
-      </ul>
+      <p class="pr-org">St. John Biocare &amp; Dialysis Center</p>
+      <p class="lead">At St. John Biocare &amp; Dialysis Center, we are committed to providing safe, compassionate,
+      and high-quality care to every patient. We believe that a clear understanding of your rights and
+      responsibilities strengthens the partnership between you, your family, and our healthcare team, and helps us
+      deliver the best possible outcomes. This statement applies to all patients, relatives, and visitors within
+      our facility.</p>
+
+      <!-- RIGHTS -->
+      <section class="pr-block pr-block--rights" aria-labelledby="rights-h">
+        <h2 id="rights-h" class="pr-h">Your Rights as a Patient</h2>
+        <p class="pr-intro">As a patient of St. John Biocare &amp; Dialysis Center, you have the right to:</p>
+        <ol class="pr-list">
+          {rights.map(([t, d]) => (
+            <li>
+              <p class="pr-item-t">{t}</p>
+              <p class="pr-item-d">{d}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <!-- RESPONSIBILITIES -->
+      <section class="pr-block pr-block--resp" aria-labelledby="resp-h">
+        <h2 id="resp-h" class="pr-h">Your Responsibilities as a Patient</h2>
+        <p class="pr-intro">To help us provide the safest and most effective care, we ask that you:</p>
+        <ol class="pr-list">
+          {responsibilities.map(([t, d]) => (
+            <li>
+              <p class="pr-item-t">{t}</p>
+              <p class="pr-item-d">{d}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <!-- CLOSING -->
+      <section class="pr-closing" aria-label="We are here for you">
+        <h2 class="pr-h">We Are Here for You</h2>
+        <p>Your care, safety, and comfort are our highest priorities. If you have any questions about your rights
+        and responsibilities, or if you wish to raise a concern, please speak with our nursing staff, Head Nurse,
+        or Nursing Director. We welcome your feedback as part of our ongoing commitment to excellence.</p>
+        <p class="pr-tag">St. John Biocare &amp; Dialysis Center — <span>Because We Care.</span></p>
+      </section>
     </div>
   </article>
 </BaseLayout>
+
+<style>
+  .pr-org {
+    margin: -6px 0 18px;
+    font-weight: 700;
+    color: var(--forest, #006028);
+    font-size: 1.02rem;
+  }
+
+  .pr-block { margin-top: 40px; }
+  .pr-h {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pr-h::before {
+    content: "";
+    width: 6px;
+    height: 1.15em;
+    border-radius: 3px;
+    background: var(--forest, #006028);
+    flex: none;
+  }
+  .pr-block--resp .pr-h::before { background: var(--crimson, #E02048); }
+
+  .pr-intro { color: var(--ink-soft, #5c6a5f); margin: 4px 0 18px; }
+
+  /* Numbered items with circular badges */
+  .pr-list {
+    list-style: none;
+    counter-reset: pr;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+  .pr-list > li {
+    counter-increment: pr;
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 16px 18px;
+    background: var(--sand, #F5EEE0);
+    border: 1px solid var(--border, #e5ddce);
+    border-radius: 12px;
+  }
+  .pr-list > li::before {
+    content: counter(pr);
+    grid-row: span 2;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--forest, #006028);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .pr-block--resp .pr-list > li::before { background: var(--crimson, #E02048); }
+
+  .pr-item-t { margin: 3px 0 0; font-weight: 700; color: var(--ink, #1e2820); }
+  .pr-item-d { margin: 5px 0 0; color: var(--ink-soft, #5c6a5f); line-height: 1.6; }
+
+  /* Closing */
+  .pr-closing {
+    margin-top: 44px;
+    padding: 26px 28px;
+    border-radius: 16px;
+    background: var(--mist, #E8F1EA);
+    border: 1px solid var(--border, #e5ddce);
+  }
+  .pr-closing p { color: var(--ink-soft, #5c6a5f); }
+  .pr-tag {
+    margin-top: 16px;
+    font-weight: 700;
+    color: var(--ink, #1e2820);
+  }
+  .pr-tag span { color: var(--forest, #006028); }
+
+  @media (max-width: 520px) {
+    .pr-list > li { grid-template-columns: 28px 1fr; gap: 11px; padding: 14px 15px; }
+    .pr-list > li::before { width: 28px; height: 28px; font-size: .9rem; }
+  }
+</style>
