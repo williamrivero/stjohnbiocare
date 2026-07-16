@@ -288,6 +288,36 @@ const hasAnyHospital = partners.length > 0 || nearby.length > 0;
             <a href={waze} target="_blank" rel="noopener">Waze</a>
           </p>
         </div>
+
+        <div class="card">
+          <h3>Care team</h3>
+          <p style="margin:0 0 .3rem"><strong>Medical Director:</strong> {branch.medicalDirector}</p>
+          <p style="margin:0 0 .3rem"><strong>Head Nurse:</strong> {branch.headNurse}</p>
+          {branch.stations && <p style="margin:0"><strong>Dialysis stations:</strong> {branch.stations}</p>}
+        </div>
+
+        {branch.affiliatedNephrologists && branch.affiliatedNephrologists.length > 0 && (
+          <div class="card">
+            <h3>Affiliated nephrologists</h3>
+            <ul class="docs">
+              {branch.affiliatedNephrologists.map((d) => (
+                <li class="docs__item">
+                  <strong class="docs__name">{d.name}</strong>
+                  {d.hospitals && d.hospitals.map((h) => (
+                    <div class="docs__hosp">
+                      <span class="docs__hospname">{h.name}</span>
+                      <a
+                        class="docs__map"
+                        href={h.map ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}`}
+                        target="_blank"
+                        rel="noopener">View map</a>
+                    </div>
+                  ))}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <aside class="branch__side stack">
@@ -372,35 +402,6 @@ const hasAnyHospital = partners.length > 0 || nearby.length > 0;
           </div>
         )}
 
-        <div class="card">
-          <h3>Care team</h3>
-          <p style="margin:0 0 .3rem"><strong>Medical Director:</strong> {branch.medicalDirector}</p>
-          <p style="margin:0 0 .3rem"><strong>Head Nurse:</strong> {branch.headNurse}</p>
-          {branch.stations && <p style="margin:0"><strong>Dialysis stations:</strong> {branch.stations}</p>}
-        </div>
-
-        {branch.affiliatedNephrologists && branch.affiliatedNephrologists.length > 0 && (
-          <div class="card">
-            <h3>Affiliated nephrologists</h3>
-            <ul class="docs">
-              {branch.affiliatedNephrologists.map((d) => (
-                <li class="docs__item">
-                  <strong class="docs__name">{d.name}</strong>
-                  {d.hospitals && d.hospitals.map((h) => (
-                    <div class="docs__hosp">
-                      <span class="docs__hospname">{h.name}</span>
-                      <a
-                        class="docs__map"
-                        href={h.map ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}`}
-                        target="_blank"
-                        rel="noopener">View map</a>
-                    </div>
-                  ))}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
       </aside>
     </div>
   </section>
