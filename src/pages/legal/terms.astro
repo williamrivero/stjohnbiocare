@@ -1,15 +1,198 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
 ---
-<BaseLayout title="Terms & Medical Disclaimer" description="Terms of use and the medical disclaimer for the St. John Biocare website.">
+<BaseLayout
+  title="Terms of Use"
+  description="The terms of use and medical disclaimer for the St. John Biocare website, under the laws of the Republic of the Philippines."
+>
   <article class="section">
     <div class="container" style="max-width:720px">
-      <h1>Terms &amp; Medical Disclaimer</h1>
-      <div class="notice">Draft — to be reviewed by legal counsel before launch.</div>
-      <h2>Medical disclaimer</h2>
-      <p>This website is for general education and information. It is not a substitute for professional medical advice, diagnosis, or treatment, and it is not for emergencies. Always seek the advice of your physician or a qualified health provider with any questions about a medical condition.</p>
-      <h2>Use of this site</h2>
-      <p>Content may be updated at any time. Links to third-party services (such as maps or forms) are governed by their own terms.</p>
+      <h1 id="top">Terms of Use</h1>
+      <p class="tos-org">St. John Biocare &amp; Dialysis Center</p>
+      <p class="muted"><strong>Effective Date:</strong> <mark>[To be confirmed by legal counsel]</mark>
+      &nbsp;·&nbsp; <strong>Last Updated:</strong> <mark>[To be confirmed by legal counsel]</mark></p>
+
+      <p class="lead">Welcome to stjohnbiocare.com (the "Website"), operated by St. John Biocare &amp; Dialysis Center
+      ("St. John Biocare," "we," "us," or "our"). By accessing or using this Website, you ("you" or "user") agree
+      to be bound by these Terms of Use ("Terms"). If you do not agree with any part of these Terms, please do not
+      use the Website.</p>
+
+      <div class="notice">These Terms are provided as a general template and should be reviewed by qualified legal
+      counsel in the Philippines before publication, to ensure compliance with all applicable laws and to reflect
+      the specific operations of the center.</div>
+
+      <!-- TABLE OF CONTENTS -->
+      <nav class="toc" aria-label="On this page">
+        <p class="toc__title">On this page</p>
+        <ol>
+          <li><a href="#acceptance">Acceptance of Terms</a></li>
+          <li><a href="#no-medical-advice">No Medical Advice</a></li>
+          <li><a href="#use">Use of the Website</a></li>
+          <li><a href="#ip">Intellectual Property</a></li>
+          <li><a href="#appointments">Appointments and Communications</a></li>
+          <li><a href="#privacy">Privacy and Data Protection</a></li>
+          <li><a href="#third-party">Third-Party Links</a></li>
+          <li><a href="#warranties">Disclaimer of Warranties</a></li>
+          <li><a href="#liability">Limitation of Liability</a></li>
+          <li><a href="#indemnification">Indemnification</a></li>
+          <li><a href="#governing-law">Governing Law and Jurisdiction</a></li>
+          <li><a href="#changes">Changes to These Terms</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ol>
+      </nav>
+
+      <!-- 1 -->
+      <h2 id="acceptance">1. Acceptance of Terms</h2>
+      <p>By accessing, browsing, or using this Website, you acknowledge that you have read, understood, and agree
+      to be bound by these Terms and by our <a href="/legal/privacy">Privacy Policy</a>. These Terms apply to all
+      visitors, patients, relatives, and other users of the Website. We may update these Terms from time to time,
+      and your continued use of the Website constitutes acceptance of any changes.</p>
+
+      <!-- 2 -->
+      <h2 id="no-medical-advice">2. No Medical Advice</h2>
+      <p>The content on this Website — including text, graphics, images, and other materials — is provided for
+      general informational purposes only and is <strong>not a substitute for professional medical advice,
+      diagnosis, or treatment.</strong></p>
+      <p>Nothing on this Website is intended to create a physician-patient relationship. Always seek the advice of
+      your physician or another qualified healthcare provider with any questions you may have regarding a medical
+      condition or treatment. Never disregard professional medical advice or delay seeking it because of something
+      you have read on this Website.</p>
+      <p><strong>In case of a medical emergency, call your physician or the nearest emergency service
+      immediately.</strong></p>
+
+      <!-- 3 -->
+      <h2 id="use">3. Use of the Website</h2>
+      <p>You agree to use the Website only for lawful purposes and in a manner that does not infringe the rights of,
+      or restrict or inhibit the use and enjoyment of, the Website by any third party. You agree not to:</p>
+      <ul>
+        <li>use the Website in any way that violates any applicable local, national, or international law or
+        regulation;</li>
+        <li>attempt to gain unauthorized access to any portion of the Website, its servers, or any connected systems
+        or networks;</li>
+        <li>introduce any viruses, malware, or other harmful code;</li>
+        <li>use any automated means to access, scrape, or collect data from the Website without our prior written
+        consent;</li>
+        <li>impersonate or attempt to impersonate St. John Biocare, its staff, or any other person or entity.</li>
+      </ul>
+
+      <!-- 4 -->
+      <h2 id="ip">4. Intellectual Property</h2>
+      <p>All content on this Website — including but not limited to text, graphics, logos, images, and the
+      compilation thereof — is the property of St. John Biocare &amp; Dialysis Center or its content suppliers and
+      is protected by applicable intellectual property laws. You may view and print content for personal,
+      non-commercial use only. You may not reproduce, distribute, modify, or create derivative works from any
+      content without our prior written permission.</p>
+
+      <!-- 5 -->
+      <h2 id="appointments">5. Appointments and Communications</h2>
+      <p>Any appointment request, inquiry, or message submitted through the Website is a <strong>request only</strong>
+      and is not confirmed until acknowledged by our staff. Please do not transmit sensitive or detailed medical
+      information through general Website forms or unsecured email. For matters concerning your care, contact the
+      center directly through the official channels listed on the Website.</p>
+
+      <!-- 6 -->
+      <h2 id="privacy">6. Privacy and Data Protection</h2>
+      <p>Your use of the Website is also governed by our <a href="/legal/privacy">Privacy Policy</a>, which explains
+      how we collect, use, and protect your personal information in accordance with the Data Privacy Act of 2012
+      (Republic Act No. 10173) and its implementing rules and regulations. By using the Website, you consent to the
+      practices described in the Privacy Policy.</p>
+
+      <!-- 7 -->
+      <h2 id="third-party">7. Third-Party Links</h2>
+      <p>The Website may contain links to third-party websites or resources provided for your convenience. We do not
+      control and are not responsible for the content, accuracy, or practices of any third-party sites. Accessing
+      third-party links is at your own risk, and we encourage you to review the terms and privacy policies of those
+      sites.</p>
+
+      <!-- 8 -->
+      <h2 id="warranties">8. Disclaimer of Warranties</h2>
+      <p>The Website and its content are provided on an "as is" and "as available" basis without warranties of any
+      kind, whether express or implied. To the fullest extent permitted by law, St. John Biocare disclaims all
+      warranties, including but not limited to warranties of merchantability, fitness for a particular purpose, and
+      non-infringement. We do not warrant that the Website will be uninterrupted, error-free, secure, or free of
+      viruses or other harmful components, nor that the information provided is complete, accurate, or current.</p>
+
+      <!-- 9 -->
+      <h2 id="liability">9. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by applicable law, St. John Biocare &amp; Dialysis Center, its directors,
+      physicians, staff, and affiliates shall not be liable for any direct, indirect, incidental, consequential, or
+      special damages arising out of or in connection with your access to or use of, or inability to access or use,
+      the Website or its content.</p>
+
+      <!-- 10 -->
+      <h2 id="indemnification">10. Indemnification</h2>
+      <p>You agree to indemnify and hold harmless St. John Biocare &amp; Dialysis Center and its personnel from any
+      claims, losses, liabilities, damages, costs, or expenses (including reasonable legal fees) arising from your
+      use of the Website or your violation of these Terms.</p>
+
+      <!-- 11 -->
+      <h2 id="governing-law">11. Governing Law and Jurisdiction</h2>
+      <p>These Terms shall be governed by and construed in accordance with the laws of the Republic of the
+      Philippines. Any disputes arising from or relating to these Terms or the Website shall be subject to the
+      exclusive jurisdiction of the courts of <mark>[To be confirmed by legal counsel: City/Province]</mark>,
+      Philippines.</p>
+
+      <!-- 12 -->
+      <h2 id="changes">12. Changes to These Terms</h2>
+      <p>We reserve the right to modify or replace these Terms at any time at our sole discretion. Any changes will
+      be posted on this page with an updated "Last Updated" date. Your continued use of the Website after changes
+      are posted constitutes your acceptance of the revised Terms.</p>
+
+      <!-- 13 -->
+      <h2 id="contact">13. Contact Us</h2>
+      <p>If you have any questions about these Terms of Use, please contact us at:</p>
+      <ul>
+        <li><strong>St. John Biocare &amp; Dialysis Center</strong></li>
+        <li><strong>Address:</strong> #10 CK Building, South A Street corner Alejandro Roces Avenue, Barangay
+        Paligsahan, Quezon City 1103</li>
+        <li><strong>Phone:</strong> <a href={site.phoneHref}>{site.phone}</a></li>
+        <li><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></li>
+      </ul>
+
+      <p><a href="#top" class="toc__back">↑ Back to top</a></p>
     </div>
   </article>
 </BaseLayout>
+
+<style>
+  .tos-org {
+    margin: -6px 0 14px;
+    font-weight: 700;
+    color: var(--forest, #006028);
+    font-size: 1.02rem;
+  }
+
+  /* Table of contents — scoped; the rest of the page reuses global styles */
+  .toc {
+    margin: 28px 0;
+    padding: 20px 24px;
+    background: var(--sand, #F5EEE0);
+    border: 1px solid var(--border, #e5ddce);
+    border-radius: 12px;
+  }
+  .toc__title {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: .82rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-soft, #5c6a5f);
+  }
+  .toc ol { margin: 0; padding-left: 1.35rem; display: grid; gap: 7px; }
+  .toc a { color: var(--forest, #006028); text-decoration: none; font-weight: 600; }
+  .toc a:hover { text-decoration: underline; }
+  .toc__back { color: var(--forest, #006028); font-weight: 700; text-decoration: none; }
+
+  /* Placeholders — visible, obviously provisional, readable in both themes */
+  mark {
+    background: color-mix(in srgb, var(--crimson, #E02048) 14%, transparent);
+    color: inherit;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-style: italic;
+    font-size: .95em;
+  }
+
+  h1[id], h2[id] { scroll-margin-top: 90px; }
+</style>
