@@ -28,7 +28,7 @@ export const site = {
     { letter: 'C', title: 'Compassionate & competent staff', text: 'Skilled people who treat you like family.' },
     { letter: 'A', title: 'Affordable & accountable', text: 'Honest, accessible dialysis care, and honest answers about every peso it costs.' },
     { letter: 'R', title: 'Responsive & adaptive', text: 'We answer the real needs of every client-patient.' },
-    { letter: 'E', title: 'Expertise in renal education', text: 'We teach patients and families to understand their care, and we train the renal nurses who will carry that standard into the next generation.' },
+    { letter: 'E', title: 'Expertise in renal education', text: 'We teach patients and families to understand their care, and we train the hemodialysis staff who will carry that standard into the next generation.' },
   ],
 
   // Primary navigation (header)
