@@ -20,6 +20,22 @@ export const site = {
   viber: '',                                  // TODO if used
   facebook: '',                               // TODO
 
+  // Partner ambulance service (MOA) — shown on every center's hospital-care card.
+  ambulance: {
+    name: 'Ace Cor Medical Services, Inc.',
+    tagline: 'Land, Sea & Air Ambulance — the pioneer in Philippine ambulance service',
+    map: 'https://www.google.com/maps/search/?api=1&query=Ace%20Cor%20Medical%20Services%2C%20756%20Instruccion%20Street%2C%20Sampaloc%2C%20Manila',
+    website: '',   // pending confirmation of official site
+    phones: [
+      { label: '(02) 8749-5621', href: 'tel:+63287495621' },
+      { label: '(02) 8749-5477', href: 'tel:+63287495477' },
+      { label: '(02) 8749-5476', href: 'tel:+63287495476' },
+      { label: '(02) 8781-2280', href: 'tel:+63287812280' },
+      { label: '0917 855 6844', href: 'tel:+639178556844' },
+      { label: '0917 506 2280', href: 'tel:+639175062280' },
+    ],
+  },
+
   // The BIOCARE values — the brand's own device
   biocare: [
     { letter: 'B', title: 'Best-quality & ethical care', text: 'Exemplary clinical care as our first promise, and unwavering integrity as the standard beneath it: informed consent, fair treatment, and honesty with every patient, every time.' },
