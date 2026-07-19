@@ -11,6 +11,8 @@ const foundationLogo = {
   'Core Renal Center': '/images/logos/corerenalcare-logo.webp',
   'St. Josef Renal Care Foundation': '/images/logos/stjosef-logo.webp',
 };
+// Flip to true once the survey page is live at renalcarematters.com/guides/dialysis-satisfaction-survey.html
+const surveyLive = false;
 ---
 <BaseLayout title="Our Centers" description="St. John Biocare, Core Renal Center and St. Josef Renal Care hemodialysis centers across Metro Manila, Rizal and Bulacan — addresses, hours and directions." image="/images/og/og-centers.jpg">
   <PageHero
@@ -31,7 +33,9 @@ const foundationLogo = {
     </div>
   </section>
 
-  <!-- PATIENT SATISFACTION SURVEY — for patients only; links to the shared canonical survey -->
+  <!-- PATIENT SATISFACTION SURVEY — for patients only; links to the shared canonical survey.
+       Hidden until the survey page is live (set surveyLive=true above). -->
+  {surveyLive && (
   <section class="section" style="padding-bottom:0">
     <div class="container" style="max-width:720px">
       <div class="card" style="border-left:5px solid var(--life)">
@@ -51,6 +55,7 @@ const foundationLogo = {
       </div>
     </div>
   </section>
+  )}
 
   <section class="section">
     <div class="container">
