@@ -107,22 +107,31 @@ const surveyLive = true;
   <!-- PATIENT SATISFACTION SURVEY — for patients only; links to the shared canonical survey.
        Hidden until the survey page is live (set surveyLive=true above). -->
   {surveyLive && (
-  <section class="section" style="padding-top:0">
-    <div class="container" style="max-width:720px">
+  <section id="patient-survey" class="section" style="padding-top:0;scroll-margin-top:90px">
+    <div class="container" style="max-width:860px">
       <div class="card" style="border-left:5px solid var(--life)">
-        <span class="pill" style="background:var(--mist);color:var(--forest);font-weight:700">For patients only</span>
-        <h2 style="font-size:1.5rem;margin:12px 0 8px">Patient Satisfaction Survey</h2>
-        <p style="margin:0 0 14px">Are you a dialysis patient at one of our centers? Please tell us how we are doing.
-        Your feedback is <strong>confidential and anonymous</strong> — you do not need to give your name, and your
-        answers will <strong>never affect your treatment</strong> in any way.</p>
-        <ul style="margin:0 0 18px;padding-left:20px;line-height:1.7">
-          <li>Choose your <strong>center and branch</strong>, then rate your care.</li>
-          <li>Takes about <strong>3–5 minutes</strong> — you can do it on your phone.</li>
-          <li>Your response goes straight to your branch team.</li>
-        </ul>
-        <a class="btn btn--primary" href="https://renalcarematters.com/guides/dialysis-satisfaction-survey.html" target="_blank" rel="noopener">Start the survey →</a>
-        <p class="muted" style="margin:14px 0 0;font-size:.85rem">This survey is for current patients and their
-        families. If you are not a patient here, please do not submit a response.</p>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:center">
+          <div style="flex:1 1 340px;min-width:0">
+            <span class="pill" style="background:var(--mist);color:var(--forest);font-weight:700">For patients only</span>
+            <h2 style="font-size:1.5rem;margin:12px 0 8px">Patient Satisfaction Survey</h2>
+            <p style="margin:0 0 14px">Are you a dialysis patient at one of our centers? Please tell us how we are doing.
+            Your feedback is <strong>confidential and anonymous</strong> — you do not need to give your name, and your
+            answers will <strong>never affect your treatment</strong> in any way.</p>
+            <ul style="margin:0 0 18px;padding-left:20px;line-height:1.7">
+              <li>Choose your <strong>center and branch</strong>, then rate your care.</li>
+              <li>Takes about <strong>3–5 minutes</strong> — you can do it on your phone.</li>
+              <li>Your response goes straight to your branch team.</li>
+            </ul>
+            <a class="btn btn--primary" href="https://renalcarematters.com/guides/dialysis-satisfaction-survey.html" target="_blank" rel="noopener">Start the survey →</a>
+            <p class="muted" style="margin:14px 0 0;font-size:.85rem">This survey is for current patients and their
+            families. If you are not a patient here, please do not submit a response.</p>
+          </div>
+          <figure style="flex:0 0 auto;margin:0 auto;text-align:center">
+            <img src="/images/survey-qr.svg" alt="QR code that opens the Patient Satisfaction Survey" width="210" height="210"
+                 style="width:210px;height:210px;display:block;border:1px solid var(--border);border-radius:16px;padding:12px;background:#fff;box-shadow:var(--shadow)" />
+            <figcaption class="muted" style="margin:10px auto 0;font-size:.85rem;font-weight:600;max-width:210px">Scan to open the survey</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
