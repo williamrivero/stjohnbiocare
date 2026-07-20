@@ -173,7 +173,7 @@ export const branches: Branch[] = [
     hours: 'Mon–Sat, 5:30 AM – 8:00 PM',
     services: ['Hemodialysis'],
     medicalDirector: 'Dr. Romina Navarro-Laguesma',
-    headNurse: 'J-cel V. Viernes',
+    headNurse: 'Ms. Jayce Vicente',
     stations: null,
     transit: 'Along Gil Fernando Avenue, San Roque; accessible by jeepney and tricycle routes.',
     opened: '2013-01-25',
