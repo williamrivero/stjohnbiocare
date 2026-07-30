@@ -62,7 +62,15 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   .site-nav__cta { margin-left: 8px; padding: .6rem 1.1rem; font-size: .95rem; }
 
   .navbtn { display: none; }
-  .navbtn span { display: block; width: 26px; height: 3px; background: var(--forest); border-radius: 3px; margin: 5px 0; }
+  .navbtn span {
+    display: block; width: 26px; height: 3px; background: var(--forest); border-radius: 3px; margin: 5px 0;
+    transform-origin: center; transition: transform .2s ease, opacity .2s ease;
+  }
+  /* Hamburger morphs into an X when the menu is open (state indication + feedback).
+     Bars are 3px tall on 5px margins → 8px between centres. */
+  .navtoggle:checked ~ .navbtn span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .navtoggle:checked ~ .navbtn span:nth-child(2) { opacity: 0; }
+  .navtoggle:checked ~ .navbtn span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
   @media (max-width: 960px) {
     .navbtn { display: block; margin-left: auto; cursor: pointer; padding: 6px; }
@@ -71,9 +79,16 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(251, 247, 240, 0.78));
       backdrop-filter: blur(20px) saturate(185%); -webkit-backdrop-filter: blur(20px) saturate(185%);
       border-bottom: 1px solid rgba(255, 255, 255, 0.4); padding: 16px 22px 24px;
-      gap: 4px; margin-left: 0; box-shadow: 0 12px 30px rgba(6, 60, 30, 0.10); display: none;
+      gap: 4px; margin-left: 0; box-shadow: 0 12px 30px rgba(6, 60, 30, 0.10);
+      /* Panel eases down from the header edge instead of teleporting in.
+         transition-behavior: allow-discrete lets display:none↔flex participate. */
+      display: none; opacity: 0; transform: translateY(-8px);
+      transition: opacity .2s ease, transform .2s ease, display .2s allow-discrete;
     }
-    .navtoggle:checked ~ .site-nav { display: flex; }
+    .navtoggle:checked ~ .site-nav {
+      display: flex; opacity: 1; transform: translateY(0);
+      @starting-style { opacity: 0; transform: translateY(-8px); }
+    }
     .site-nav__link { padding: 12px; font-size: 1.05rem; }
     .site-nav__cta { margin: 8px 0 0; justify-content: center; }
   }

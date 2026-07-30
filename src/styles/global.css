@@ -97,7 +97,10 @@ p { margin: 0 0 1rem; }
   transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
   line-height: 1.1;
 }
-.btn:hover { transform: translateY(-2px); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-2px); }
+}
+.btn:active { transform: translateY(-2px) scale(.97); } /* press feedback — fires on touch, no hover needed */
 .btn--primary { background: var(--life); color: var(--white); box-shadow: 0 8px 20px rgba(8,152,56,.25); }
 .btn--primary:hover { background: var(--forest); color: var(--white); }
 .btn--crimson { background: var(--crimson); color: var(--white); box-shadow: 0 8px 20px rgba(224,32,72,.22); }
@@ -121,7 +124,9 @@ textarea:focus-visible, select:focus-visible {
   border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow);
   transition: transform .18s ease, box-shadow .18s ease;
 }
-.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+@media (hover: hover) and (pointer: fine) {
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+}
 .grid { display: grid; gap: 22px; }
 .grid--2 { grid-template-columns: repeat(2, 1fr); }
 .grid--3 { grid-template-columns: repeat(3, 1fr); }
@@ -146,12 +151,6 @@ textarea:focus-visible, select:focus-visible {
   transition: top .2s ease;
 }
 .skip-link:focus { top: 12px; }
-
-/* ---- Gentle scroll-in motion ---- */
-@media (prefers-reduced-motion: no-preference) {
-  .reveal { opacity: 0; transform: translateY(16px); animation: rise .7s ease forwards; }
-  @keyframes rise { to { opacity: 1; transform: none; } }
-}
 
 /* ---- Footer ---- */
 .footer { background: var(--forest); color: var(--cream); padding-block: 56px 30px; }

@@ -19,8 +19,8 @@ import { site } from '../data/site';
 
   <section class="section">
     <div class="container" style="max-width:720px">
-      <div class="card" style="text-align:center">
-        <div style="font-size:2.4rem;line-height:1;margin-bottom:.4rem" aria-hidden="true">💚</div>
+      <div class="card ty-card" style="text-align:center">
+        <div class="ty-heart" style="font-size:2.4rem;line-height:1;margin-bottom:.4rem" aria-hidden="true">💚</div>
         <h2 style="font-size:1.5rem;margin:.2rem 0 .6rem">We'll be in touch soon.</h2>
         <p style="margin:0 auto;max-width:56ch">
           Thank you for reaching out to St. John Biocare. We've received your message and someone from
@@ -45,4 +45,26 @@ import { site } from '../data/site';
       </div>
     </div>
   </section>
+
+  <style>
+    /* Success is the one rare, high-emotion moment on the site — the delight budget lives here.
+       Card eases up on load; the heart pops in just after. Visible by default, so no-JS and
+       reduced-motion visitors simply see the settled state (no animation applied). */
+    @media (prefers-reduced-motion: no-preference) {
+      .ty-card {
+        opacity: 0; transform: translateY(12px) scale(.98);
+        animation: ty-in .5s cubic-bezier(.2, .75, .2, 1) .08s both;
+      }
+      .ty-heart {
+        display: inline-block;
+        animation: ty-heart .5s cubic-bezier(.2, .75, .2, 1) .3s both;
+      }
+      @keyframes ty-in { to { opacity: 1; transform: none; } }
+      @keyframes ty-heart {
+        from { opacity: 0; transform: scale(.4); }
+        60%  { transform: scale(1.12); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+    }
+  </style>
 </BaseLayout>

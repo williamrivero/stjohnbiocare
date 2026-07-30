@@ -335,9 +335,17 @@ const faqs = [
   .faq { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px 22px; box-shadow: var(--shadow); }
   .faq summary { cursor: pointer; font-weight: 700; color: var(--forest); font-family: var(--font-head); font-size: 1.1rem; padding: 16px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: '+'; color: var(--life); font-weight: 700; font-size: 1.4rem; line-height: 1; }
-  .faq[open] summary::after { content: '\2212'; }
+  .faq summary::after { content: '+'; color: var(--life); font-weight: 700; font-size: 1.4rem; line-height: 1; display: inline-block; transition: transform .2s ease; }
+  .faq[open] summary::after { transform: rotate(45deg); } /* the + rotates into an × */
   .faq__a { padding: 0 0 18px; color: var(--ink-soft); }
+  /* Ease the answer open where the browser supports it (Chromium 129+); snaps gracefully elsewhere — no regression. */
+  .faq { interpolate-size: allow-keywords; }
+  .faq::details-content {
+    opacity: 0; block-size: 0; overflow: hidden;
+    transition: opacity .2s ease, block-size .24s ease, content-visibility .24s;
+    transition-behavior: allow-discrete;
+  }
+  .faq[open]::details-content { opacity: 1; block-size: auto; }
 </style>
 
 <script>
