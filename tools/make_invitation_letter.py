@@ -35,7 +35,7 @@ LINE    = HexColor('#E3E0D8')
 
 # ── Programme details (source: /training-academy) ────────────────────────────
 ORG_LEGAL = "St. John Biocare & Dialysis Center Foundation, Inc."
-BATCH       = "20 July – 28 August 2026"
+BATCH       = "16 September – 28 October 2026"
 DURATION    = "6 weeks"
 DAYS        = "Monday to Friday"
 TIME        = "8:00 AM – 4:00 PM"
@@ -214,7 +214,7 @@ def build(out=OUT, recipient=None):
     c.roundRect(M, y - band_h, CW, band_h, 3 * mm, stroke=0, fill=1)
     c.setFillColor(SOFT)
     c.setFont('Helvetica-Bold', 7.4)
-    c.drawString(M + 6 * mm, y - 6 * mm, "NEXT BATCH — NOW ENROLLING")
+    c.drawString(M + 6 * mm, y - 6 * mm, "BATCH 86 — NOW ENROLLING")
     c.setFillColor(FOREST)
     c.setFont('Helvetica-Bold', 14)
     c.drawString(M + 6 * mm, y - 12.6 * mm, BATCH)
