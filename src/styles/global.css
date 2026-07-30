@@ -94,7 +94,7 @@ p { margin: 0 0 1rem; }
   font-family: var(--font-body); font-weight: 700; font-size: 1.02rem;
   padding: .85rem 1.5rem; border-radius: 999px;
   border: 2px solid transparent; cursor: pointer; text-decoration: none;
-  transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+  transition: transform .15s ease, background .15s ease;
   line-height: 1.1;
 }
 @media (hover: hover) and (pointer: fine) {
@@ -120,12 +120,21 @@ textarea:focus-visible, select:focus-visible {
 
 /* ---- Cards ---- */
 .card {
+  position: relative;
   background: var(--white); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow);
-  transition: transform .18s ease, box-shadow .18s ease;
+  transition: transform .18s ease;
+}
+/* Deepen the shadow on hover by fading in a pseudo-element — opacity is
+   composited, whereas animating box-shadow forces a paint each frame. */
+.card::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit; box-shadow: var(--shadow-lg);
+  opacity: 0; transition: opacity .18s ease; pointer-events: none;
 }
 @media (hover: hover) and (pointer: fine) {
-  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .card:hover { transform: translateY(-4px); }
+  .card:hover::after { opacity: 1; }
 }
 .grid { display: grid; gap: 22px; }
 .grid--2 { grid-template-columns: repeat(2, 1fr); }

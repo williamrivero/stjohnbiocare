@@ -374,6 +374,8 @@ const safety = [
     100% { transform: translate(var(--mx, 0px), var(--my, -30px)) scale(2); opacity: 0; }
   }
   @media (prefers-reduced-motion: reduce) { .vb { animation: none; opacity: .22; transform: none; } }
+  /* Stop compositing the bubble field while the section is off-screen (battery/thermal). */
+  .voices-section.is-paused .vb { animation-play-state: paused; }
 
   .voices__stage { display: grid; margin-top: 6px; }
   .voices__slide { grid-area: 1 / 1; margin: 0; display: flex; flex-direction: column; justify-content: center;
@@ -413,4 +415,17 @@ const safety = [
   }
   initVoices();
   document.addEventListener('astro:page-load', initVoices);
+
+  // Pause the decorative bubble field's infinite animation while the section is
+  // scrolled out of view, so it isn't compositing frames the user can't see.
+  function initVoicesBgPause() {
+    const sec = document.querySelector('.voices-section');
+    if (!sec || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) sec.classList.toggle('is-paused', !e.isIntersecting);
+    });
+    io.observe(sec);
+  }
+  initVoicesBgPause();
+  document.addEventListener('astro:page-load', initVoicesBgPause);
 </script>

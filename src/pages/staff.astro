@@ -100,7 +100,7 @@ const ready = PORTAL_URL.length > 0;
     position: absolute; top: 0; height: 100%; width: 50%;
     display: flex; flex-direction: column; justify-content: center;
     padding: 0 clamp(26px, 4.5%, 54px);
-    transition: transform .6s ease-in-out, opacity .6s ease-in-out;
+    transition: transform .45s cubic-bezier(.32, .72, 0, 1), opacity .45s cubic-bezier(.32, .72, 0, 1);
   }
   .auth-signin  { left: 0; z-index: 2; }
   .auth-request { left: 0; opacity: 0; z-index: 1; }
@@ -128,12 +128,12 @@ const ready = PORTAL_URL.length > 0;
   .auth-need { display: none; align-self: flex-start; margin-top: 12px; font-weight: 700; text-decoration: none; color: var(--forest); font-size: .95rem; }
 
   /* Sliding gradient overlay */
-  .auth-ov-container { position: absolute; top: 0; left: 50%; width: 50%; height: 100%; overflow: hidden; z-index: 100; transition: transform .6s ease-in-out; }
+  .auth-ov-container { position: absolute; top: 0; left: 50%; width: 50%; height: 100%; overflow: hidden; z-index: 100; transition: transform .45s cubic-bezier(.32, .72, 0, 1); }
   .auth-card.active .auth-ov-container { transform: translateX(-100%); }
-  .auth-ov { position: relative; left: -100%; width: 200%; height: 100%; color: #fff; transition: transform .6s ease-in-out;
+  .auth-ov { position: relative; left: -100%; width: 200%; height: 100%; color: #fff; transition: transform .45s cubic-bezier(.32, .72, 0, 1);
     background: linear-gradient(135deg, var(--life), var(--forest)); }
   .auth-card.active .auth-ov { transform: translateX(50%); }
-  .auth-ov__panel { position: absolute; top: 0; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 clamp(24px, 4%, 44px); transition: transform .6s ease-in-out; }
+  .auth-ov__panel { position: absolute; top: 0; height: 100%; width: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 clamp(24px, 4%, 44px); transition: transform .45s cubic-bezier(.32, .72, 0, 1); }
   .auth-ov__panel h2 { color: #fff; font-size: clamp(1.4rem, 3.4vw, 1.9rem); margin: 0 0 10px; }
   .auth-ov__panel p { color: #eafaf0; margin: 0 0 22px; line-height: 1.55; font-size: .95rem; }
   .auth-ov__left  { left: 0;  transform: translateX(-20%); }
